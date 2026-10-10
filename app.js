@@ -83,7 +83,7 @@ function getSyncedTimestamp() {
 function updateSyncBadgeDOM() {
   const badge = document.getElementById('sync-indicator-badge');
   if (badge) {
-    badge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> СИНХРОН (МСК)`;
+    badge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> СИНХРОН (ЕКБ • UTC+5)`;
     badge.classList.remove('hidden');
     badge.classList.add('flex');
   }
@@ -171,14 +171,14 @@ function playBumperAmbientTone() {
   } catch (e) {}
 }
 
-// Calculate current Time of Day block label (Anchored to Moscow MSK Time UTC+3)
+// Calculate current Time of Day block label (Anchored to Sverdlovsk Time UTC+5 / ЕКБ)
 function getTimeOfDayBlock() {
-  const mskDate = new Date(getSyncedTimestamp() + (3 * 3600 * 1000));
-  const hour = mskDate.getUTCHours();
-  if (hour >= 6 && hour < 12) return { label: "☀️ УТРЕННИЙ БЛОК (МСК)", id: "morning" };
-  if (hour >= 12 && hour < 18) return { label: "🌤️ ДНЕВНОЙ МАРАФОН (МСК)", id: "day" };
-  if (hour >= 18 && hour < 23) return { label: "🌆 ВЕЧЕРНИЙ ПРАЙМ (МСК)", id: "evening" };
-  return { label: "🌙 НОЧНОЙ ADULT SWIM (МСК)", id: "night" };
+  const yektDate = new Date(getSyncedTimestamp() + (5 * 3600 * 1000));
+  const hour = yektDate.getUTCHours();
+  if (hour >= 6 && hour < 12) return { label: "☀️ УТРЕННИЙ БЛОК (ЕКБ)", id: "morning" };
+  if (hour >= 12 && hour < 18) return { label: "🌤️ ДНЕВНОЙ МАРАФОН (ЕКБ)", id: "day" };
+  if (hour >= 18 && hour < 23) return { label: "🌆 ВЕЧЕРНИЙ ПРАЙМ (ЕКБ)", id: "evening" };
+  return { label: "🌙 НОЧНОЙ ADULT SWIM (ЕКБ)", id: "night" };
 }
 
 // Deterministic Broadcast Timeline Math (Synchronized worldwide down to millisecond)
@@ -1125,16 +1125,16 @@ function setupEventListeners() {
     }
   });
 
-  // Periodic Clock Ticking, MSK Alignment & Active Stream Drift Correction
+  // Periodic Clock Ticking, Sverdlovsk (UTC+5 / ЕКБ) Alignment & Active Stream Drift Correction
   setInterval(() => {
-    // Unified Moscow Time (MSK, UTC+3)
-    const mskDate = new Date(getSyncedTimestamp() + (3 * 3600 * 1000));
-    const h = String(mskDate.getUTCHours()).padStart(2, '0');
-    const m = String(mskDate.getUTCMinutes()).padStart(2, '0');
-    const s = String(mskDate.getUTCSeconds()).padStart(2, '0');
+    // Unified Sverdlovsk Time (YEKT, UTC+5 / Екатеринбург)
+    const yektDate = new Date(getSyncedTimestamp() + (5 * 3600 * 1000));
+    const h = String(yektDate.getUTCHours()).padStart(2, '0');
+    const m = String(yektDate.getUTCMinutes()).padStart(2, '0');
+    const s = String(yektDate.getUTCSeconds()).padStart(2, '0');
     const clock = document.getElementById('current-clock');
     if (clock) {
-      clock.textContent = `${h}:${m}:${s} МСК`;
+      clock.textContent = `${h}:${m}:${s} ЕКБ`;
     }
 
     const channel = state.channels[state.currentChannelIndex];
