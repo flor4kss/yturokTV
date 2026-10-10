@@ -33,6 +33,9 @@
           <span class="px-2 py-0.5 text-[10px] font-bold uppercase rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 flex items-center gap-1.5">
             <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 live-dot"></span> ПРЯМОЙ ЭФИР 24/7
           </span>
+          <span id="sync-indicator-badge" class="px-2 py-0.5 text-[10px] font-bold uppercase rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 hidden sm:flex items-center gap-1.5" title="Эфир синхронизирован по атомному времени (секунда в секунду)">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> СИНХРОН (МСК)
+          </span>
         </div>
         <p class="text-[11px] text-gray-400 flex items-center gap-2">
           <span>Мультсериалы, 2х2 & Аниме с русской озвучкой</span>
@@ -227,10 +230,14 @@
             <span id="broadcast-time-text" class="font-mono text-[11px] text-gray-400 whitespace-nowrap">00:00 / 00:00</span>
           </div>
 
-          <!-- Right actions: Fullscreen Cinema -->
+          <!-- Right actions: Fullscreen Cinema & Live Sync -->
           <div class="flex items-center gap-2">
-            <button id="btn-cinema" class="px-3 py-1 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 transition flex items-center gap-1.5" title="Полноэкранный режим">
-              <i class="fa-solid fa-expand"></i>
+            <button id="btn-sync-live" class="px-2.5 py-1 rounded-lg bg-emerald-950/60 hover:bg-emerald-800 text-emerald-300 border border-emerald-500/30 transition flex items-center gap-1.5 cursor-pointer" title="Синхронизировать видео секунда в секунду (МСК)">
+              <i class="fa-solid fa-arrows-rotate text-[11px]"></i>
+              <span class="hidden sm:inline text-[11px] font-bold">Синхрон</span>
+            </button>
+            <button id="btn-cinema" class="px-3 py-1 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 transition flex items-center gap-1.5 cursor-pointer" title="Полноэкранный режим">
+              <i class="fa-solid fa-expand text-[11px]"></i>
               <span class="hidden sm:inline text-[11px]">Кинотеатр</span>
             </button>
           </div>

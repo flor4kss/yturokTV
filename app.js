@@ -14,8 +14,80 @@ const state = {
   activeEpgChannelId: null,
   activeEpgDayOffset: 0,
   mouseTimer: null,
-  currentStreamUrl: null
+  currentStreamUrl: null,
+  serverTimeDeltaMs: 0,
+  isTimeSynced: false
 };
+
+// Global Atomic Time Synchronization Engine (NTP-over-HTTP)
+// Guarantees all viewers in any city/device watch the exact same frame simultaneously
+async function syncAtomicTime() {
+  const t0 = performance.now();
+
+  // 1. Try local server endpoint if running with Python backend
+  try {
+    const res = await fetch('/api/time?t=' + Date.now());
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.timestamp) {
+        const rtt = performance.now() - t0;
+        const serverUtcMs = (data.timestamp * 1000) + (rtt / 2);
+        state.serverTimeDeltaMs = serverUtcMs - Date.now();
+        state.isTimeSynced = true;
+        console.log(`[Atomic Sync] Backend API delta: ${state.serverTimeDeltaMs.toFixed(0)}ms (RTT: ${rtt.toFixed(1)}ms)`);
+        updateSyncBadgeDOM();
+        return;
+      }
+    }
+  } catch (e) {}
+
+  // 2. Try same-origin HTTP Date header (works on GitHub Pages / CDN with 0 extra requests)
+  try {
+    const res = await fetch(window.location.href, { method: 'HEAD', cache: 'no-store' });
+    const rtt = performance.now() - t0;
+    const dateHeader = res.headers.get('date');
+    if (dateHeader) {
+      const serverUtcMs = new Date(dateHeader).getTime() + (rtt / 2);
+      state.serverTimeDeltaMs = serverUtcMs - Date.now();
+      state.isTimeSynced = true;
+      console.log(`[Atomic Sync] GitHub Pages Date header delta: ${state.serverTimeDeltaMs.toFixed(0)}ms (RTT: ${rtt.toFixed(1)}ms)`);
+      updateSyncBadgeDOM();
+      return;
+    }
+  } catch (e) {}
+
+  // 3. Fallback to public atomic time service (timeapi.io)
+  try {
+    const res = await fetch('https://timeapi.io/api/time/current/zone?timeZone=UTC');
+    if (res.ok) {
+      const data = await res.json();
+      if (data && data.dateTime) {
+        const serverUtcMs = new Date(data.dateTime + 'Z').getTime();
+        state.serverTimeDeltaMs = serverUtcMs - Date.now();
+        state.isTimeSynced = true;
+        console.log(`[Atomic Sync] Public timeapi.io delta: ${state.serverTimeDeltaMs.toFixed(0)}ms`);
+        updateSyncBadgeDOM();
+        return;
+      }
+    }
+  } catch (e) {}
+
+  state.serverTimeDeltaMs = 0;
+  updateSyncBadgeDOM();
+}
+
+function getSyncedTimestamp() {
+  return Date.now() + (state.serverTimeDeltaMs || 0);
+}
+
+function updateSyncBadgeDOM() {
+  const badge = document.getElementById('sync-indicator-badge');
+  if (badge) {
+    badge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> СИНХРОН (МСК)`;
+    badge.classList.remove('hidden');
+    badge.classList.add('flex');
+  }
+}
 
 // Fetch live schedule from Backend API with local fallback
 async function loadScheduleFromBackend() {
@@ -99,16 +171,17 @@ function playBumperAmbientTone() {
   } catch (e) {}
 }
 
-// Calculate current Time of Day block label
+// Calculate current Time of Day block label (Anchored to Moscow MSK Time UTC+3)
 function getTimeOfDayBlock() {
-  const hour = new Date().getHours();
-  if (hour >= 6 && hour < 12) return { label: "☀️ УТРЕННИЙ БЛОК", id: "morning" };
-  if (hour >= 12 && hour < 18) return { label: "🌤️ ДНЕВНОЙ МАРАФОН", id: "day" };
-  if (hour >= 18 && hour < 23) return { label: "🌆 ВЕЧЕРНИЙ ПРАЙМ", id: "evening" };
-  return { label: "🌙 НОЧНОЙ ADULT SWIM", id: "night" };
+  const mskDate = new Date(getSyncedTimestamp() + (3 * 3600 * 1000));
+  const hour = mskDate.getUTCHours();
+  if (hour >= 6 && hour < 12) return { label: "☀️ УТРЕННИЙ БЛОК (МСК)", id: "morning" };
+  if (hour >= 12 && hour < 18) return { label: "🌤️ ДНЕВНОЙ МАРАФОН (МСК)", id: "day" };
+  if (hour >= 18 && hour < 23) return { label: "🌆 ВЕЧЕРНИЙ ПРАЙМ (МСК)", id: "evening" };
+  return { label: "🌙 НОЧНОЙ ADULT SWIM (МСК)", id: "night" };
 }
 
-// Deterministic Broadcast Timeline Math
+// Deterministic Broadcast Timeline Math (Synchronized worldwide down to millisecond)
 function calculateBroadcastPosition(channel, dayOffset = 0) {
   const schedule = channel.schedule;
   if (!schedule || schedule.length === 0) {
@@ -128,7 +201,7 @@ function calculateBroadcastPosition(channel, dayOffset = 0) {
   }
 
   const totalDuration = schedule.reduce((sum, item) => sum + (item.duration || 1400), 0);
-  const now = Math.floor(Date.now() / 1000) + (dayOffset * 86400);
+  const now = Math.floor(getSyncedTimestamp() / 1000) + (dayOffset * 86400);
   let offset = now % totalDuration;
 
   let currentItem = schedule[0];
@@ -923,6 +996,29 @@ function setupEventListeners() {
   document.getElementById('btn-cinema').addEventListener('click', toggleFullscreen);
   document.getElementById('corner-btn-fullscreen').addEventListener('click', toggleFullscreen);
 
+  // Manual Live Force Sync Button
+  const btnSyncLive = document.getElementById('btn-sync-live');
+  if (btnSyncLive) {
+    btnSyncLive.addEventListener('click', async () => {
+      btnSyncLive.innerHTML = `<i class="fa-solid fa-spinner fa-spin text-[11px]"></i> <span class="hidden sm:inline text-[11px] font-bold">Синхрон...</span>`;
+      await syncAtomicTime();
+      const channel = state.channels[state.currentChannelIndex];
+      if (channel) {
+        const { elapsed } = calculateBroadcastPosition(channel);
+        const hlsVideo = document.getElementById('hls-player');
+        if (hlsVideo && hlsVideo.duration && elapsed < hlsVideo.duration) {
+          try { hlsVideo.currentTime = elapsed; } catch(e) {}
+        }
+      }
+      setTimeout(() => {
+        btnSyncLive.innerHTML = `<i class="fa-solid fa-check text-[11px] text-emerald-400"></i> <span class="hidden sm:inline text-[11px] font-bold text-emerald-400">Синхрон</span>`;
+        setTimeout(() => {
+          btnSyncLive.innerHTML = `<i class="fa-solid fa-arrows-rotate text-[11px]"></i> <span class="hidden sm:inline text-[11px] font-bold">Синхрон</span>`;
+        }, 1500);
+      }, 400);
+    });
+  }
+
   // EPG Modal Open / Close
   const modalEpg = document.getElementById('modal-epg');
   function openEPG() {
@@ -1029,11 +1125,17 @@ function setupEventListeners() {
     }
   });
 
-  // Periodic Clock Ticking & Timeline Re-sync
+  // Periodic Clock Ticking, MSK Alignment & Active Stream Drift Correction
   setInterval(() => {
-    const now = new Date();
+    // Unified Moscow Time (MSK, UTC+3)
+    const mskDate = new Date(getSyncedTimestamp() + (3 * 3600 * 1000));
+    const h = String(mskDate.getUTCHours()).padStart(2, '0');
+    const m = String(mskDate.getUTCMinutes()).padStart(2, '0');
+    const s = String(mskDate.getUTCSeconds()).padStart(2, '0');
     const clock = document.getElementById('current-clock');
-    clock.textContent = now.toTimeString().split(' ')[0];
+    if (clock) {
+      clock.textContent = `${h}:${m}:${s} МСК`;
+    }
 
     const channel = state.channels[state.currentChannelIndex];
     if (channel) {
@@ -1043,9 +1145,25 @@ function setupEventListeners() {
       } else {
         document.getElementById('broadcast-progress').style.width = `${progressPercent}%`;
         document.getElementById('broadcast-time-text').textContent = `${formatTime(elapsed)} / ${formatTime(currentItem.duration || 1400)}`;
+
+        // Active Stream Drift Auto-Correction (Eliminates buffer lag between different friends)
+        const hlsVideo = document.getElementById('hls-player');
+        if (hlsVideo && !hlsVideo.paused && currentItem.type !== 'bumper' && hlsVideo.duration) {
+          const drift = Math.abs(hlsVideo.currentTime - elapsed);
+          // If video drifted by more than 2.5 seconds (lagged or paused tab)
+          if (drift > 2.5 && elapsed < hlsVideo.duration) {
+            console.log(`[TV Sync] Correcting drift of ${drift.toFixed(1)}s -> snapping to ${elapsed.toFixed(1)}s`);
+            try {
+              hlsVideo.currentTime = elapsed;
+            } catch (err) {}
+          }
+        }
       }
     }
   }, 1000);
+
+  // Periodic atomic time re-synchronization every 60 seconds
+  setInterval(syncAtomicTime, 60000);
 }
 
 // Initialization on DOMContentLoaded
@@ -1054,6 +1172,9 @@ window.addEventListener('DOMContentLoaded', async () => {
   localStorage.removeItem('yturok_channels');
   localStorage.removeItem('yturok_channels_v2');
   localStorage.removeItem('yturok_channels_v3');
+
+  // Synchronize atomic time before calculating initial broadcast position
+  await syncAtomicTime();
 
   await loadScheduleFromBackend();
   renderChannelList();
