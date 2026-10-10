@@ -236,7 +236,10 @@ function formatTime(sec) {
 // Update Dynamic Ambilight Color
 function updateAmbilight(colorHex) {
   const rgb = hexToRgb(colorHex || "#06b6d4");
-  document.documentElement.style.setProperty('--ambilight-color', `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.28)`);
+  document.documentElement.style.setProperty('--channel-primary', colorHex || '#06b6d4');
+  document.documentElement.style.setProperty('--channel-glow', `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.5)`);
+  document.documentElement.style.setProperty('--channel-glow-soft', `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.18)`);
+  document.documentElement.style.setProperty('--channel-border', `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.4)`);
 }
 
 function hexToRgb(hex) {
@@ -406,7 +409,7 @@ function playCurrentChannel(withGlitch = true) {
   }
 
   renderChannelList();
-  renderCornerChannelButtons();
+  renderVerticalChannelDock();
   renderInspectorGrid();
 }
 
@@ -414,55 +417,47 @@ function playCurrentChannel(withGlitch = true) {
 function updateChannelInfoDOM(channel, currentItem, elapsed, nextItem, progressPercent) {
   const timeBlock = getTimeOfDayBlock();
 
+  const setElText = (id, val) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = val;
+  };
+
   // Watermark (top-left) & Slot Badge
-  document.getElementById('channel-watermark').textContent = `${channel.logo || ''} ${channel.name}`;
-  document.getElementById('screen-slot-badge').textContent = currentItem.timeSlotLabel || timeBlock.label;
-  document.getElementById('header-time-block').textContent = timeBlock.label;
+  setElText('channel-watermark', `${channel.logo || ''} ${channel.name}`);
+  setElText('screen-slot-badge', currentItem.timeSlotLabel || timeBlock.label);
 
-  // Header badges & corner indicators
-  document.getElementById('current-channel-badge').textContent = `CH ${channel.number}`;
-  document.getElementById('corner-channel-indicator').textContent = `CH ${channel.number}`;
-  document.getElementById('corner-nav-channel-title').textContent = channel.name;
+  // Badges & Show info
+  setElText('current-channel-badge', `CH ${channel.number}`);
+  setElText('show-title', currentItem.title);
+  setElText('show-episode', currentItem.episode || "");
+  setElText('show-description', currentItem.description || "");
+  setElText('show-slot-badge', currentItem.timeSlotLabel || timeBlock.label);
 
-  document.getElementById('show-channel-name').textContent = channel.name;
-  document.getElementById('show-slot-badge').textContent = currentItem.timeSlotLabel || timeBlock.label;
-
-  // Current Show details
-  document.getElementById('show-title').textContent = currentItem.title;
-  document.getElementById('show-episode').textContent = currentItem.episode || "";
-  document.getElementById('show-description').textContent = currentItem.description || "";
-  if (currentItem.poster) {
-    document.getElementById('show-poster').src = currentItem.poster;
-  }
-
-  // Next Show preview
-  if (nextItem) {
-    document.getElementById('show-next-title').textContent = `${nextItem.title} (${nextItem.episode || ''})`;
-    const remaining = (currentItem.duration || 1400) - elapsed;
-    document.getElementById('show-next-time').textContent = `через ~${Math.ceil(remaining / 60)} мин`;
-  } else {
-    document.getElementById('show-next-title').textContent = "Конец эфира";
-    document.getElementById('show-next-time').textContent = "";
+  const poster = document.getElementById('show-poster');
+  if (poster && currentItem.poster) {
+    poster.src = currentItem.poster;
   }
 
   // Progress Bar
-  document.getElementById('broadcast-progress').style.width = `${progressPercent}%`;
-  document.getElementById('broadcast-time-text').textContent = `${formatTime(elapsed)} / ${formatTime(currentItem.duration || 1400)}`;
+  const prog = document.getElementById('broadcast-progress');
+  if (prog) prog.style.width = `${progressPercent}%`;
+  setElText('broadcast-time-text', `${formatTime(elapsed)} / ${formatTime(currentItem.duration || 1400)}`);
 }
 
 // Retro OSD Banner Popup
 let osdTimeout = null;
 function showOSDBanner(channel, currentItem, nextItem) {
   const osd = document.getElementById('osd-banner');
-  document.getElementById('osd-channel-num').textContent = `CH ${channel.number} • ${channel.name}`;
-  
-  const now = new Date();
-  const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
-  document.getElementById('osd-time').textContent = `${timeStr} • STEREO HQ`;
+  if (!osd) return;
 
-  document.getElementById('osd-title').textContent = currentItem.title;
-  document.getElementById('osd-subtitle').textContent = currentItem.episode || "В эфире";
-  document.getElementById('osd-next').textContent = nextItem ? nextItem.title : "—";
+  const setElText = (id, val) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = val;
+  };
+
+  setElText('osd-channel', `CH ${channel.number} • ${channel.name}`);
+  setElText('osd-title', currentItem.title);
+  setElText('osd-next', nextItem ? `Далее: ${nextItem.title}` : "Далее: Конец блока");
 
   osd.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-2');
   osd.classList.add('opacity-100', 'translate-y-0');
@@ -471,12 +466,13 @@ function showOSDBanner(channel, currentItem, nextItem) {
   osdTimeout = setTimeout(() => {
     osd.classList.remove('opacity-100', 'translate-y-0');
     osd.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
-  }, 3800);
+  }, 3500);
 }
 
-// Render Channel List on the Right Sidebar
+// Render Channel Bento Cards in the Bottom Showcase
 function renderChannelList() {
-  const container = document.getElementById('channels-list');
+  const container = document.getElementById('channels-container');
+  if (!container) return;
   container.innerHTML = '';
 
   state.channels.forEach((ch, idx) => {
@@ -484,35 +480,41 @@ function renderChannelList() {
     const { currentItem, progressPercent } = calculateBroadcastPosition(ch);
 
     const card = document.createElement('div');
-    card.className = `channel-card glass-card-interactive cursor-pointer p-3 rounded-2xl border transition-all flex flex-col gap-2 ${
+    card.className = `glass-panel p-4 flex flex-col justify-between gap-3 cursor-pointer transition-all duration-300 relative overflow-hidden group ${
       isActive 
-        ? 'active border-cyan-400 bg-cyan-950/20 shadow-lg shadow-cyan-950/30' 
-        : 'border-white/10 bg-black/40 hover:border-white/20'
+        ? 'channel-card-bento active ring-2 ring-rose-500/80 shadow-2xl scale-[1.02]' 
+        : 'hover:scale-[1.01] hover:border-white/20'
     }`;
 
     card.innerHTML = `
-      <div class="flex items-center justify-between gap-3">
-        <div class="flex items-center gap-3 truncate">
-          <span class="w-8 h-8 rounded-xl bg-gray-900 border border-white/10 flex items-center justify-center font-mono font-bold text-xs ${isActive ? 'text-cyan-400 border-cyan-500/40' : 'text-gray-400'}">
+      <div class="flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+          <span class="w-8 h-8 rounded-xl glass-pill font-mono font-black text-xs flex items-center justify-center ${isActive ? 'text-rose-400 border-rose-500/50' : 'text-gray-400'}">
             ${ch.number}
           </span>
-          <div class="truncate">
-            <div class="flex items-center gap-2">
-              <span class="font-bold text-xs text-white truncate">${ch.name}</span>
-              <span class="text-[9px] font-bold uppercase px-1.5 py-0.2 rounded bg-gray-800 text-gray-300 font-mono">${ch.badge || 'TV'}</span>
-            </div>
-            <div class="text-[11px] text-gray-400 truncate mt-0.5">
-              ${currentItem.title}
-            </div>
+          <div>
+            <h4 class="font-display font-extrabold text-xs text-white truncate max-w-[120px]">${ch.name}</h4>
+            <span class="text-[9px] text-gray-400 font-mono">${ch.badge || 'HD'}</span>
           </div>
         </div>
-        <div class="flex items-center gap-2">
-          ${isActive ? '<span class="w-2 h-2 rounded-full bg-cyan-400 live-dot"></span>' : ''}
-          <i class="fa-solid fa-play text-[10px] ${isActive ? 'text-cyan-400' : 'text-gray-600'}"></i>
-        </div>
+        ${isActive ? '<span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40 animate-pulse">В ЭФИРЕ</span>' : ''}
       </div>
-      <div class="w-full bg-gray-800/80 h-1 rounded-full overflow-hidden">
-        <div class="h-full bg-cyan-400/80" style="width: ${progressPercent}%"></div>
+
+      <div class="my-1">
+        <div class="text-xs font-bold text-gray-200 line-clamp-1">${currentItem.title}</div>
+        <div class="text-[10px] text-gray-400 line-clamp-1 mt-0.5">${currentItem.episode || ch.tagline || ''}</div>
+      </div>
+
+      <div>
+        <div class="w-full bg-gray-800/80 h-1 rounded-full overflow-hidden mb-2">
+          <div class="h-full bg-gradient-to-r from-rose-500 to-cyan-400 transition-all" style="width: ${progressPercent}%"></div>
+        </div>
+        <div class="flex items-center justify-between text-[10px] text-gray-400">
+          <span>${progressPercent}% эфира</span>
+          <span class="text-cyan-400 font-bold group-hover:translate-x-1 transition flex items-center gap-1">
+            Смотреть <i class="fa-solid fa-arrow-right text-[8px]"></i>
+          </span>
+        </div>
       </div>
     `;
 
@@ -527,6 +529,35 @@ function renderChannelList() {
   });
 }
 
+// Render Left Vertical Floating Channel Dock
+function renderVerticalChannelDock() {
+  const dock = document.getElementById('vertical-channel-dock');
+  if (!dock) return;
+  dock.innerHTML = '';
+
+  state.channels.forEach((ch, idx) => {
+    const isActive = idx === state.currentChannelIndex;
+    const btn = document.createElement('button');
+    btn.className = `w-10 h-11 rounded-2xl glass-pill flex flex-col items-center justify-center transition-all cursor-pointer ${
+      isActive 
+        ? 'bg-gradient-to-b from-rose-500/30 to-purple-500/30 border-rose-400 text-white font-black shadow-lg shadow-rose-500/30 scale-105 ring-1 ring-rose-400' 
+        : 'text-gray-400 hover:text-white hover:border-white/30'
+    }`;
+    btn.title = `${ch.number}: ${ch.name}`;
+    btn.innerHTML = `
+      <span class="text-xs font-mono font-extrabold leading-none">${ch.number}</span>
+      <span class="text-[9px] mt-0.5 leading-none opacity-80">${ch.logo || ''}</span>
+    `;
+    btn.addEventListener('click', () => {
+      if (state.currentChannelIndex !== idx) {
+        state.currentChannelIndex = idx;
+        playCurrentChannel(true);
+      }
+    });
+    dock.appendChild(btn);
+  });
+}
+
 // Render Multi-Channel Timeline Inspector
 function renderInspectorGrid() {
   const container = document.getElementById('inspector-grid');
@@ -537,62 +568,34 @@ function renderInspectorGrid() {
     if (idx === state.currentChannelIndex) return; // Don't show currently active channel here
     const { currentItem, progressPercent, nextItem } = calculateBroadcastPosition(ch);
 
-    const el = document.createElement('div');
-    el.className = "p-2.5 rounded-xl bg-black/40 border border-white/10 hover:border-white/20 cursor-pointer transition flex flex-col gap-1.5";
-    el.innerHTML = `
+    const card = document.createElement('div');
+    card.className = "glass-panel p-2.5 rounded-2xl border border-white/8 hover:border-white/25 cursor-pointer transition flex flex-col gap-1.5 group";
+    card.innerHTML = `
       <div class="flex items-center justify-between text-[11px]">
         <div class="flex items-center gap-1.5 truncate">
-          <span class="font-mono text-cyan-400 font-bold">${ch.number}</span>
-          <span class="font-bold text-gray-300 truncate">${ch.name}</span>
+          <span class="w-5 h-5 rounded-lg glass-pill text-[10px] font-mono text-cyan-300 font-bold flex items-center justify-center">${ch.number}</span>
+          <span class="font-bold text-gray-200 truncate">${ch.name}</span>
         </div>
         <span class="text-[10px] text-gray-500 font-mono">${progressPercent}%</span>
       </div>
-      <div class="text-[11px] font-semibold text-white truncate">
+      <div class="text-xs font-semibold text-white truncate group-hover:text-cyan-300 transition">
         ${currentItem.title}
       </div>
       <div class="w-full bg-gray-800/80 h-1 rounded-full overflow-hidden">
-        <div class="h-full bg-cyan-500/60" style="width: ${progressPercent}%"></div>
+        <div class="h-full bg-gradient-to-r from-cyan-500 to-rose-500" style="width: ${progressPercent}%"></div>
       </div>
-      <div class="text-[10px] text-gray-500 truncate">
-        Далее: ${nextItem ? nextItem.title : '—'}
+      <div class="text-[10px] text-gray-500 truncate flex items-center justify-between">
+        <span class="truncate">Далее: ${nextItem ? nextItem.title : '—'}</span>
+        <i class="fa-solid fa-play text-[8px] text-gray-600 group-hover:text-rose-400 transition"></i>
       </div>
     `;
 
-    el.addEventListener('click', () => {
+    card.addEventListener('click', () => {
       state.currentChannelIndex = idx;
       playCurrentChannel(true);
     });
 
-    container.appendChild(el);
-  });
-}
-
-// Render Quick Buttons in the Corner Navigation Hub
-function renderCornerChannelButtons() {
-  const container = document.getElementById('corner-channel-buttons');
-  if (!container) return;
-  container.innerHTML = '';
-
-  state.channels.forEach((ch, idx) => {
-    const isActive = idx === state.currentChannelIndex;
-    const btn = document.createElement('button');
-    btn.className = `py-2 rounded-xl font-mono font-bold text-xs transition flex flex-col items-center justify-center ${
-      isActive 
-        ? 'bg-cyan-500 text-black font-black shadow-md shadow-cyan-500/40 ring-1 ring-white/50' 
-        : 'bg-gray-900/80 hover:bg-gray-800 text-gray-300'
-    }`;
-    btn.innerHTML = `
-      <span>${ch.number}</span>
-      <span class="text-[9px] opacity-75">${ch.logo || ''}</span>
-    `;
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (state.currentChannelIndex !== idx) {
-        state.currentChannelIndex = idx;
-        playCurrentChannel(true);
-      }
-    });
-    container.appendChild(btn);
+    container.appendChild(card);
   });
 }
 
@@ -863,42 +866,28 @@ async function saveChannelsToBackend() {
   }
 }
 
-// Setup Event Listeners & Corner Navigation
+// Setup Event Listeners
 function setupEventListeners() {
   const screenContainer = document.getElementById('tv-screen-container');
-  const cornerNavZone = document.getElementById('corner-nav-zone');
-  const cornerNavTrigger = document.getElementById('corner-nav-trigger-btn');
 
   // 1. AUTO-HIDE CURSOR ON INACTIVITY
   function resetMouseTimer() {
-    screenContainer.classList.remove('cursor-hidden');
+    if (screenContainer) screenContainer.classList.remove('cursor-hidden');
     if (state.mouseTimer) clearTimeout(state.mouseTimer);
 
     state.mouseTimer = setTimeout(() => {
-      if (!cornerNavZone.classList.contains('menu-open')) {
-        screenContainer.classList.add('cursor-hidden');
-      }
+      if (screenContainer) screenContainer.classList.add('cursor-hidden');
     }, 2500);
   }
 
-  screenContainer.addEventListener('mousemove', resetMouseTimer);
-  screenContainer.addEventListener('mouseenter', resetMouseTimer);
-  screenContainer.addEventListener('mouseleave', () => {
-    screenContainer.classList.remove('cursor-hidden');
-    if (state.mouseTimer) clearTimeout(state.mouseTimer);
-  });
-
-  // 2. CORNER NAVIGATION POD TOGGLE
-  cornerNavTrigger.addEventListener('click', (e) => {
-    e.stopPropagation();
-    cornerNavZone.classList.toggle('menu-open');
-  });
-
-  document.addEventListener('click', (e) => {
-    if (!cornerNavZone.contains(e.target)) {
-      cornerNavZone.classList.remove('menu-open');
-    }
-  });
+  if (screenContainer) {
+    screenContainer.addEventListener('mousemove', resetMouseTimer);
+    screenContainer.addEventListener('mouseenter', resetMouseTimer);
+    screenContainer.addEventListener('mouseleave', () => {
+      screenContainer.classList.remove('cursor-hidden');
+      if (state.mouseTimer) clearTimeout(state.mouseTimer);
+    });
+  }
 
   // Unmute / Sound activate click
   document.getElementById('unmute-overlay').addEventListener('click', () => {
@@ -927,65 +916,67 @@ function setupEventListeners() {
 
   // Volume Slider & Mute synchronization
   const volumeSlider = document.getElementById('volume-slider');
-  const cornerVolumeSlider = document.getElementById('corner-volume-slider');
   const muteIcon = document.getElementById('mute-icon');
-  const cornerMuteIcon = document.getElementById('corner-mute-icon');
+  const dockMuteIcon = document.getElementById('dock-mute-icon');
 
   function handleVolumeChange(val) {
     state.volume = parseInt(val, 10);
     state.isMuted = state.volume === 0;
-    volumeSlider.value = state.volume;
-    cornerVolumeSlider.value = state.volume;
+    if (volumeSlider) volumeSlider.value = state.volume;
     applyVolume();
   }
 
-  volumeSlider.addEventListener('input', (e) => handleVolumeChange(e.target.value));
-  cornerVolumeSlider.addEventListener('input', (e) => handleVolumeChange(e.target.value));
+  if (volumeSlider) {
+    volumeSlider.addEventListener('input', (e) => handleVolumeChange(e.target.value));
+  }
 
   function toggleMute() {
     state.isMuted = !state.isMuted;
     applyVolume();
   }
 
-  document.getElementById('btn-mute').addEventListener('click', toggleMute);
-  document.getElementById('corner-btn-mute').addEventListener('click', toggleMute);
+  const btnMute = document.getElementById('btn-mute');
+  if (btnMute) btnMute.addEventListener('click', toggleMute);
+  const dockBtnMute = document.getElementById('dock-btn-mute');
+  if (dockBtnMute) dockBtnMute.addEventListener('click', toggleMute);
 
   function applyVolume() {
     const iconClass = state.isMuted || state.volume === 0 
       ? "fa-solid fa-volume-xmark text-rose-500" 
       : "fa-solid fa-volume-high";
-    muteIcon.className = iconClass;
-    cornerMuteIcon.className = iconClass;
+    if (muteIcon) muteIcon.className = iconClass;
+    if (dockMuteIcon) dockMuteIcon.className = iconClass;
 
     const hlsVideo = document.getElementById('hls-player');
-    hlsVideo.muted = state.isMuted;
-    hlsVideo.volume = state.volume / 100;
+    if (hlsVideo) {
+      hlsVideo.muted = state.isMuted;
+      hlsVideo.volume = state.volume / 100;
+    }
   }
 
   // CRT Screen Toggle
   const crtBtn = document.getElementById('btn-toggle-crt');
-  const cornerCrtBtn = document.getElementById('corner-btn-crt');
   const crtText = document.getElementById('crt-status-text');
 
   function toggleCRT() {
     state.crtEnabled = !state.crtEnabled;
-    if (state.crtEnabled) {
-      screenContainer.classList.add('crt-mode');
-      crtText.textContent = "ВКЛ";
-      crtText.className = "text-amber-400";
-    } else {
-      screenContainer.classList.remove('crt-mode');
-      crtText.textContent = "ВЫКЛ";
-      crtText.className = "text-gray-400";
+    if (screenContainer) {
+      if (state.crtEnabled) {
+        screenContainer.classList.add('crt-mode');
+        if (crtText) { crtText.textContent = "ЭЛТ"; crtText.className = "text-amber-400 font-bold text-[10px]"; }
+      } else {
+        screenContainer.classList.remove('crt-mode');
+        if (crtText) { crtText.textContent = "ВЫКЛ"; crtText.className = "text-gray-400 text-[10px]"; }
+      }
     }
   }
 
-  crtBtn.addEventListener('click', toggleCRT);
-  cornerCrtBtn.addEventListener('click', toggleCRT);
+  if (crtBtn) crtBtn.addEventListener('click', toggleCRT);
 
   // Fullscreen Cinema mode
   function toggleFullscreen() {
     const el = document.getElementById('tv-screen-container');
+    if (!el) return;
     if (!document.fullscreenElement) {
       el.requestFullscreen().catch(err => alert("Fullscreen error: " + err.message));
     } else {
@@ -993,8 +984,10 @@ function setupEventListeners() {
     }
   }
 
-  document.getElementById('btn-cinema').addEventListener('click', toggleFullscreen);
-  document.getElementById('corner-btn-fullscreen').addEventListener('click', toggleFullscreen);
+  const btnCinema = document.getElementById('btn-cinema');
+  if (btnCinema) btnCinema.addEventListener('click', toggleFullscreen);
+  const dockBtnCinema = document.getElementById('dock-btn-cinema');
+  if (dockBtnCinema) dockBtnCinema.addEventListener('click', toggleFullscreen);
 
   // Manual Live Force Sync Button
   const btnSyncLive = document.getElementById('btn-sync-live');
@@ -1023,23 +1016,21 @@ function setupEventListeners() {
   const modalEpg = document.getElementById('modal-epg');
   function openEPG() {
     renderEPG();
-    modalEpg.classList.remove('hidden');
-    cornerNavZone.classList.remove('menu-open');
+    if (modalEpg) modalEpg.classList.remove('hidden');
   }
 
-  document.getElementById('btn-open-epg').addEventListener('click', openEPG);
-  document.getElementById('corner-btn-epg').addEventListener('click', openEPG);
-  document.getElementById('btn-close-epg').addEventListener('click', () => {
-    modalEpg.classList.add('hidden');
-  });
+  const btnNavEpg = document.getElementById('btn-nav-epg');
+  if (btnNavEpg) btnNavEpg.addEventListener('click', openEPG);
+  const btnCloseEpg = document.getElementById('btn-close-epg');
+  if (btnCloseEpg) btnCloseEpg.addEventListener('click', () => modalEpg.classList.add('hidden'));
 
   // EPG Day Selector Buttons
   document.querySelectorAll('.epg-day-btn').forEach((btn, idx) => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.epg-day-btn').forEach(b => {
-        b.className = "epg-day-btn px-3.5 py-1 rounded-lg bg-gray-800/60 text-gray-400 hover:text-white";
+        b.className = "epg-day-btn glass-pill px-4 py-1.5 text-xs text-gray-400 hover:text-white cursor-pointer";
       });
-      btn.className = "epg-day-btn active px-3.5 py-1 rounded-lg bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-bold";
+      btn.className = "epg-day-btn active glass-pill px-4 py-1.5 text-xs font-bold text-cyan-300 border-cyan-500/40 cursor-pointer";
       
       const offsets = [0, 1, 3, 5];
       state.activeEpgDayOffset = offsets[idx] || 0;
@@ -1051,15 +1042,15 @@ function setupEventListeners() {
   const modalStudio = document.getElementById('modal-studio');
   function openStudio() {
     renderCustomSchedule();
-    modalStudio.classList.remove('hidden');
-    cornerNavZone.classList.remove('menu-open');
+    if (modalStudio) modalStudio.classList.remove('hidden');
   }
 
-  document.getElementById('btn-open-studio').addEventListener('click', openStudio);
-  document.getElementById('corner-btn-studio').addEventListener('click', openStudio);
-  document.getElementById('btn-close-studio').addEventListener('click', () => {
-    modalStudio.classList.add('hidden');
-  });
+  const btnOpenStudio = document.getElementById('btn-open-studio');
+  if (btnOpenStudio) btnOpenStudio.addEventListener('click', openStudio);
+  const btnBannerStudio = document.getElementById('btn-banner-studio');
+  if (btnBannerStudio) btnBannerStudio.addEventListener('click', openStudio);
+  const btnCloseStudio = document.getElementById('btn-close-studio');
+  if (btnCloseStudio) btnCloseStudio.addEventListener('click', () => modalStudio.classList.add('hidden'));
 
   // Studio Search Button & Enter Key
   const searchInput = document.getElementById('studio-search-input');
@@ -1178,7 +1169,7 @@ window.addEventListener('DOMContentLoaded', async () => {
 
   await loadScheduleFromBackend();
   renderChannelList();
-  renderCornerChannelButtons();
+  renderVerticalChannelDock();
   renderInspectorGrid();
   setupEventListeners();
 
