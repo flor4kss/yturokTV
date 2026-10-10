@@ -1,305 +1,917 @@
-// Сетка вещания телеканалов yturokTV (Многосерийный марафон 24/7)
+// Сетка вещания телеканалов yturokTV (4 тематических канала с полными сезонами)
 export const DEFAULT_CHANNELS = [
   {
-    "id": "cartoons-gold",
+    "id": "toonster",
     "number": "01",
-    "name": "МУЛЬТ-КЛАССИКА (РУС)",
-    "tagline": "Культовые мультсериалы в оригинале: Ну Погоди 1080p Remastered, блоки Утро/День/Вечер/Ночь",
-    "logo": "🐺",
-    "badge": "МУЛЬТИКИ HD",
+    "name": "ТОЙСТЕР",
+    "tagline": "Мультипликация, комедии и приключения: Семья шпиона, Доктор Стоун, Одинокий рокер",
+    "logoSvg": "toonster",
+    "badge": "МУЛЬТ & КОМЕДИЯ",
     "color": "#06b6d4",
     "schedule": [
       {
-        "title": "Ну, погоди! (1080p Remaster)",
-        "episode": "Выпуск 1: В городе и на пляже",
-        "duration": 600,
-        "type": "video",
-        "url": "https://archive.org/download/NuPogody/Nu_Pogody!E01.BDRip.1080p.by_genkasper.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "description": "Легендарный первый выпуск «Ну, погоди!». Заяц на водных лыжах, Волк и знаменитая погоня."
+        "title": "Семья шпиона (Сезон 1)",
+        "episode": "Серия 1: Серия 1",
+        "duration": 1449,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9161/1/720/035988346d1cc4626f7126516a92d59a.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
+        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира меж..."
       },
       {
-        "title": "Ну, погоди! (1080p Remaster)",
-        "episode": "Выпуск 2: В городском парке",
-        "duration": 600,
-        "type": "video",
-        "url": "https://archive.org/download/NuPogody/Nu_Pogody!E02.BDRip.1080p.by_genkasper.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "description": "Летний вечер в парке культуры. Танго на эстраде, фокусы кота и колесо обозрения."
+        "title": "Семья шпиона (Сезон 1)",
+        "episode": "Серия 2: Серия 2",
+        "duration": 1450,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9161/2/720/d3088b1ee0b6cb108cf269e1bc51f1bc.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
+        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира меж..."
       },
       {
-        "title": "Бампер: Мульт-Канал",
-        "episode": "Отбивка",
-        "duration": 15,
-        "type": "bumper",
-        "bumperText": "МУЛЬТ-КЛАССИКА\n\nНе переключайтесь! Далее: Выпуски 3 и 4!",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "description": "Заставка мульт-канала"
+        "title": "Семья шпиона (Сезон 1)",
+        "episode": "Серия 3: Серия 3",
+        "duration": 1450,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9161/3/720/cc439da357051e55f535d79cde9db8b8.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
+        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира меж..."
       },
       {
-        "title": "Ну, погоди! (1080p Remaster)",
-        "episode": "Выпуск 3: На дороге и стройке",
-        "duration": 580,
-        "type": "video",
-        "url": "https://archive.org/download/NuPogody/Nu_Pogody!E03.BDRip.1080p.by_genkasper.mp4",
-        "poster": "https://images.unsplash.com/photo-1514533450685-4493e01d1fdc?w=600",
-        "description": "Волк на гоночном автомобиле, каток и сумасшедшая стройка."
+        "title": "Семья шпиона (Сезон 1)",
+        "episode": "Серия 4: Серия 4",
+        "duration": 1450,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9161/4/720/b222070504cb5717cf01276362ba1ebf.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
+        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира меж..."
       },
       {
-        "title": "Ну, погоди! (1080p Remaster)",
-        "episode": "Выпуск 4: На стадионе",
-        "duration": 585,
-        "type": "video",
-        "url": "https://archive.org/download/NuPogody/Nu_Pogody!E04.BDRip.1080p.by_genkasper.mp4",
-        "poster": "https://images.unsplash.com/photo-1514533450685-4493e01d1fdc?w=600",
-        "description": "Спортивные состязания: прыжки с шестом, штанга и бег."
+        "title": "Семья шпиона (Сезон 1)",
+        "episode": "Серия 5: Серия 5",
+        "duration": 1449,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9161/5/720/ad6d189109340dc01c6955ffff7fae3c.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
+        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира меж..."
       },
       {
-        "title": "Бампер: Мульт-Канал",
-        "episode": "Отбивка",
-        "duration": 15,
-        "type": "bumper",
-        "bumperText": "МУЛЬТ-КЛАССИКА\n\nДалее: Выпуски 5 и 6!",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "description": "Заставка мульт-канала"
+        "title": "Семья шпиона (Сезон 1)",
+        "episode": "Серия 6: Серия 6",
+        "duration": 1450,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9161/6/720/c56e76df52f1c0407ec02c9a8338f602.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
+        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира меж..."
       },
       {
-        "title": "Ну, погоди! (1080p Remaster)",
-        "episode": "Выпуск 5: В метро и универсаме",
-        "duration": 590,
-        "type": "video",
-        "url": "https://archive.org/download/NuPogody/Nu_Pogody!E05.BDRip.1080p.by_genkasper.mp4",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "description": "Приключения Волка в центре города, троллейбусе и магазине телевизоров."
+        "title": "Семья шпиона (Сезон 1)",
+        "episode": "Серия 7: Серия 7",
+        "duration": 1450,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9161/7/720/803bc7a842c985ec1d7bbddff5d29317.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
+        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира меж..."
       },
       {
-        "title": "Ну, погоди! (1080p Remaster)",
-        "episode": "Выпуск 6: В деревне",
-        "duration": 570,
-        "type": "video",
-        "url": "https://archive.org/download/NuPogody/Nu_Pogody!E06.BDRip.1080p.by_genkasper.mp4",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "description": "Погоня на парашютах над полями, курятник и поезд."
+        "title": "Семья шпиона (Сезон 1)",
+        "episode": "Серия 8: Серия 8",
+        "duration": 1449,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9161/8/720/38c2ffead92ee4fbef4cc3fadfd58367.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
+        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира меж..."
       },
       {
-        "title": "Бампер: Мульт-Канал",
-        "episode": "Отбивка",
-        "duration": 15,
-        "type": "bumper",
-        "bumperText": "МУЛЬТ-КЛАССИКА\n\nНочной блок: Выпуски 7 и 8!",
-        "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
-        "description": "Заставка мульт-канала"
+        "title": "Семья шпиона (Сезон 1)",
+        "episode": "Серия 9: Серия 9",
+        "duration": 1450,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9161/9/720/72e5e1013de0df68649f57e017f1d005.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
+        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира меж..."
       },
       {
-        "title": "Ну, погоди! (1080p Remaster)",
-        "episode": "Выпуск 7: На теплоходе",
-        "duration": 580,
-        "type": "video",
-        "url": "https://archive.org/download/NuPogody/Nu_Pogody!E07.BDRip.1080p.by_genkasper.mp4",
-        "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
-        "description": "Морской круиз, капитан Морж и спасательный круг."
+        "title": "Семья шпиона (Сезон 1)",
+        "episode": "Серия 10: Серия 10",
+        "duration": 1450,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9161/10/720/c55d189df3479f35d9029ae8b99b66f9.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
+        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира меж..."
       },
       {
-        "title": "Ну, погоди! (1080p Remaster)",
-        "episode": "Выпуск 8: Новый Год",
-        "duration": 585,
-        "type": "video",
-        "url": "https://archive.org/download/NuPogody/Nu_Pogody!E08.BDRip.1080p.by_genkasper.mp4",
-        "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
-        "description": "«Расскажи, Снегурочка, где была...» Знаменитый новогодний выпуск."
+        "title": "Семья шпиона (Сезон 1)",
+        "episode": "Серия 11: Серия 11",
+        "duration": 1449,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9161/11/720/14feecd9f5aca68360945077480d90d5.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
+        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира меж..."
+      },
+      {
+        "title": "Семья шпиона (Сезон 1)",
+        "episode": "Серия 12: Серия 12",
+        "duration": 1450,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9161/12/720/259a37788ebefb0e573366672c7a8fbd.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
+        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира меж..."
+      },
+      {
+        "title": "Семья шпиона (Сезон 2)",
+        "episode": "Серия 1: Серия 1",
+        "duration": 1511,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9259/1/720/89862cdadfc38422af90b881a559fcf2.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9259/ZJVTZrytxMDJaAExifatUr7qNrggS3jA.jpg",
+        "description": "У всех есть стороны, которые не хочется показывать другим. Ни друзьям, ни возлюбленным, и даже своей семье.\r\nИ Форджеры тому яркий пример. Приключения..."
+      },
+      {
+        "title": "Семья шпиона (Сезон 2)",
+        "episode": "Серия 2: Серия 2",
+        "duration": 1450,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9259/2/720/655a8be588a2a684bbd15f902c58396c.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9259/ZJVTZrytxMDJaAExifatUr7qNrggS3jA.jpg",
+        "description": "У всех есть стороны, которые не хочется показывать другим. Ни друзьям, ни возлюбленным, и даже своей семье.\r\nИ Форджеры тому яркий пример. Приключения..."
+      },
+      {
+        "title": "Семья шпиона (Сезон 2)",
+        "episode": "Серия 3: Серия 3",
+        "duration": 1450,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9259/3/720/14a9df531bb759fa3d696c0f9378c0dc.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9259/ZJVTZrytxMDJaAExifatUr7qNrggS3jA.jpg",
+        "description": "У всех есть стороны, которые не хочется показывать другим. Ни друзьям, ни возлюбленным, и даже своей семье.\r\nИ Форджеры тому яркий пример. Приключения..."
+      },
+      {
+        "title": "Семья шпиона (Сезон 2)",
+        "episode": "Серия 4: Серия 4",
+        "duration": 1450,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9259/4/720/3c76c05ded1f7a97fb58ab52d598cd6a.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9259/ZJVTZrytxMDJaAExifatUr7qNrggS3jA.jpg",
+        "description": "У всех есть стороны, которые не хочется показывать другим. Ни друзьям, ни возлюбленным, и даже своей семье.\r\nИ Форджеры тому яркий пример. Приключения..."
+      },
+      {
+        "title": "Семья шпиона (Сезон 2)",
+        "episode": "Серия 5: Серия 5",
+        "duration": 1450,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9259/5/720/e02476c66ba638352b257e30542c3b82.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9259/ZJVTZrytxMDJaAExifatUr7qNrggS3jA.jpg",
+        "description": "У всех есть стороны, которые не хочется показывать другим. Ни друзьям, ни возлюбленным, и даже своей семье.\r\nИ Форджеры тому яркий пример. Приключения..."
+      },
+      {
+        "title": "Семья шпиона (Сезон 2)",
+        "episode": "Серия 6: Серия 6",
+        "duration": 1450,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9259/6/720/7f9ed05efe724d37d0bd0cc75443fc0e.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9259/ZJVTZrytxMDJaAExifatUr7qNrggS3jA.jpg",
+        "description": "У всех есть стороны, которые не хочется показывать другим. Ни друзьям, ни возлюбленным, и даже своей семье.\r\nИ Форджеры тому яркий пример. Приключения..."
+      },
+      {
+        "title": "Семья шпиона (Сезон 2)",
+        "episode": "Серия 7: Серия 7",
+        "duration": 1450,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9259/7/720/f9d3dbf70513bacf66ba1a826c23a9d1.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9259/ZJVTZrytxMDJaAExifatUr7qNrggS3jA.jpg",
+        "description": "У всех есть стороны, которые не хочется показывать другим. Ни друзьям, ни возлюбленным, и даже своей семье.\r\nИ Форджеры тому яркий пример. Приключения..."
+      },
+      {
+        "title": "Семья шпиона (Сезон 2)",
+        "episode": "Серия 8: Серия 8",
+        "duration": 1451,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9259/8/720/16bb0b6d8f315200df7188e253bfa169.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9259/ZJVTZrytxMDJaAExifatUr7qNrggS3jA.jpg",
+        "description": "У всех есть стороны, которые не хочется показывать другим. Ни друзьям, ни возлюбленным, и даже своей семье.\r\nИ Форджеры тому яркий пример. Приключения..."
+      },
+      {
+        "title": "Семья шпиона (Сезон 2)",
+        "episode": "Серия 9: Серия 9",
+        "duration": 1450,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9259/9/720/af5d0b8b7bfaf3fb64314fa9a1ccaa56.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9259/ZJVTZrytxMDJaAExifatUr7qNrggS3jA.jpg",
+        "description": "У всех есть стороны, которые не хочется показывать другим. Ни друзьям, ни возлюбленным, и даже своей семье.\r\nИ Форджеры тому яркий пример. Приключения..."
+      },
+      {
+        "title": "Семья шпиона (Сезон 2)",
+        "episode": "Серия 10: Серия 10",
+        "duration": 1450,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9259/10/720/9c50e6cd376908ad740184e526fa3026.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9259/ZJVTZrytxMDJaAExifatUr7qNrggS3jA.jpg",
+        "description": "У всех есть стороны, которые не хочется показывать другим. Ни друзьям, ни возлюбленным, и даже своей семье.\r\nИ Форджеры тому яркий пример. Приключения..."
+      },
+      {
+        "title": "Семья шпиона (Сезон 2)",
+        "episode": "Серия 11: Серия 11",
+        "duration": 1450,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9259/11/720/cfbdeaa78646711ff8bc7f7b732bc945.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9259/ZJVTZrytxMDJaAExifatUr7qNrggS3jA.jpg",
+        "description": "У всех есть стороны, которые не хочется показывать другим. Ни друзьям, ни возлюбленным, и даже своей семье.\r\nИ Форджеры тому яркий пример. Приключения..."
+      },
+      {
+        "title": "Семья шпиона (Сезон 2)",
+        "episode": "Серия 12: Серия 12",
+        "duration": 1450,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9259/12/720/b5bc18116d696d4baad2a6786ab229fa.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9259/ZJVTZrytxMDJaAExifatUr7qNrggS3jA.jpg",
+        "description": "У всех есть стороны, которые не хочется показывать другим. Ни друзьям, ни возлюбленным, и даже своей семье.\r\nИ Форджеры тому яркий пример. Приключения..."
+      },
+      {
+        "title": "Семья шпиона (Сезон 2)",
+        "episode": "Серия 13: Серия 13",
+        "duration": 1450,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9259/13/720/c1a18664c2502889b6918895d0934404.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9259/ZJVTZrytxMDJaAExifatUr7qNrggS3jA.jpg",
+        "description": "У всех есть стороны, которые не хочется показывать другим. Ни друзьям, ни возлюбленным, и даже своей семье.\r\nИ Форджеры тому яркий пример. Приключения..."
+      },
+      {
+        "title": "Доктор Стоун",
+        "episode": "Серия 1: Каменный мир",
+        "duration": 1446,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8398/1/720/cdd452f04705ec04e81e2d666693327e.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
+        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
+      },
+      {
+        "title": "Доктор Стоун",
+        "episode": "Серия 2: Король каменного мира",
+        "duration": 1446,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8398/2/720/3c16825d2b7b1530520d9bb968ff1720.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
+        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
+      },
+      {
+        "title": "Доктор Стоун",
+        "episode": "Серия 3: Оружие науки",
+        "duration": 1446,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8398/3/720/5953f8ede28f2ec0b4a40b166c915760.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
+        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
+      },
+      {
+        "title": "Доктор Стоун",
+        "episode": "Серия 4: Дымовой сигнал",
+        "duration": 1446,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8398/4/720/dd94d0f616dedc2d7c9b2d2a03777ca6.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
+        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
+      },
+      {
+        "title": "Доктор Стоун",
+        "episode": "Серия 5: Начало Каменного Мира",
+        "duration": 1440,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8398/5/720/c0eecedeed04d2208255d1446e1ce38d.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
+        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
+      },
+      {
+        "title": "Доктор Стоун",
+        "episode": "Серия 6: Два народа каменного мира",
+        "duration": 1439,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8398/6/720/d822b09188518404f5b0392e7bda7502.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
+        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
+      },
+      {
+        "title": "Доктор Стоун",
+        "episode": "Серия 7: Куда ушли два миллиона лет",
+        "duration": 1439,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8398/7/720/ce887151adb1f2e09721ed19f95210e6.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
+        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
+      },
+      {
+        "title": "Доктор Стоун",
+        "episode": "Серия 8: Каменный путь",
+        "duration": 1440,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8398/8/720/a73c5e26b26c44d67cd654261766abf9.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
+        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
+      },
+      {
+        "title": "Доктор Стоун",
+        "episode": "Серия 9: Да будет свет науки",
+        "duration": 1446,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8398/9/720/362410933a363cd08586912add6e76ef.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
+        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
+      },
+      {
+        "title": "Доктор Стоун",
+        "episode": "Серия 10: Хрупкий союз",
+        "duration": 1446,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8398/10/720/09d72073f24688b4d037279d5d82c3f3.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
+        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
+      },
+      {
+        "title": "Доктор Стоун",
+        "episode": "Серия 11: Ясный мир",
+        "duration": 1446,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8398/11/720/490fb9ea4f563444e216a7ed5431abfc.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
+        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
+      },
+      {
+        "title": "Доктор Стоун",
+        "episode": "Серия 12: Спина к спине",
+        "duration": 1446,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8398/12/720/dcecb593b1861fbde506acd851132bbd.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
+        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
+      },
+      {
+        "title": "Доктор Стоун",
+        "episode": "Серия 13: Воин в маске",
+        "duration": 1446,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8398/13/720/6a7d0a621e339aedfd5f892ec9e93c72.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
+        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
+      },
+      {
+        "title": "Доктор Стоун",
+        "episode": "Серия 14: Повелитель пламени",
+        "duration": 1446,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8398/14/720/548cd46d38dc96d52efa1190af365f78.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
+        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
+      },
+      {
+        "title": "Доктор Стоун",
+        "episode": "Серия 15: Итог двух миллионов лет",
+        "duration": 1446,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8398/15/720/edabcdaf41a420561f54ed6dd1b3df8c.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
+        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
+      },
+      {
+        "title": "Доктор Стоун",
+        "episode": "Серия 16: История на века",
+        "duration": 1446,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8398/16/720/d418592cbfba428dd56a020370565ac2.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
+        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
+      },
+      {
+        "title": "Доктор Стоун",
+        "episode": "Серия 17: Сотня ночей и тысяча небес",
+        "duration": 1446,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8398/17/720/14682aafb632cc4090215518ab0f1e88.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
+        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
+      },
+      {
+        "title": "Доктор Стоун",
+        "episode": "Серия 18: Каменные войны",
+        "duration": 1446,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8398/18/720/73afe6175441fc64c4f1ce5db2531202.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
+        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
+      },
+      {
+        "title": "Доктор Стоун",
+        "episode": "Серия 19: К современности!",
+        "duration": 1440,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8398/19/720/975f8fd4e7d7197e795427a13fd8aab0.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
+        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
+      },
+      {
+        "title": "Доктор Стоун",
+        "episode": "Серия 20: Эпоха энергии",
+        "duration": 1446,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8398/20/720/5c259931255b0ccedba568333bb30af5.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
+        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
+      },
+      {
+        "title": "Доктор Стоун",
+        "episode": "Серия 21: Клуб спартанского ремесла",
+        "duration": 1440,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8398/21/720/fdc69b1305631968ac4a68dc8f2f84bd.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
+        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
+      },
+      {
+        "title": "Доктор Стоун",
+        "episode": "Серия 22: Сокровища",
+        "duration": 1440,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8398/22/720/7016a3f95a92c44649d97e01c6b3f924.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
+        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
+      },
+      {
+        "title": "Доктор Стоун",
+        "episode": "Серия 23: Научная Волна",
+        "duration": 1446,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8398/23/720/0c74e0c21503c7d59bb66e99f3db6cd5.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
+        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
+      },
+      {
+        "title": "Доктор Стоун",
+        "episode": "Серия 24: Сквозь безграничное расстояние",
+        "duration": 1440,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8398/24/720/077ac8b2675b5671862406fffecbc971.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
+        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
+      },
+      {
+        "title": "Одинокий рокер!",
+        "episode": "Серия 1: Серия 1",
+        "duration": 1421,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9293/1/720/22c6c333192895bd2ec3fe6cdb36dd57.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9293/pqI3PQ8v8c7tlFHuPjsSbAbHrbm8madK.jpg",
+        "description": "Забавная история об одинокой и до ужаса стеснительной школьнице Хитори Гото, которая, взяв в руки гитару, загорелась желанием создать в старшей школе ..."
+      },
+      {
+        "title": "Одинокий рокер!",
+        "episode": "Серия 2: Серия 2",
+        "duration": 1421,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9293/2/720/cae377914abe8817c7f71060d32d0dc5.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9293/pqI3PQ8v8c7tlFHuPjsSbAbHrbm8madK.jpg",
+        "description": "Забавная история об одинокой и до ужаса стеснительной школьнице Хитори Гото, которая, взяв в руки гитару, загорелась желанием создать в старшей школе ..."
+      },
+      {
+        "title": "Одинокий рокер!",
+        "episode": "Серия 3: Серия 3",
+        "duration": 1421,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9293/3/720/4e64d2a7364cb36223d8f5e46ecaa8fd.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9293/pqI3PQ8v8c7tlFHuPjsSbAbHrbm8madK.jpg",
+        "description": "Забавная история об одинокой и до ужаса стеснительной школьнице Хитори Гото, которая, взяв в руки гитару, загорелась желанием создать в старшей школе ..."
+      },
+      {
+        "title": "Одинокий рокер!",
+        "episode": "Серия 4: Серия 4",
+        "duration": 1420,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9293/4/720/4601ebb20b06ac7b8f4e9b8bda1cc87f.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9293/pqI3PQ8v8c7tlFHuPjsSbAbHrbm8madK.jpg",
+        "description": "Забавная история об одинокой и до ужаса стеснительной школьнице Хитори Гото, которая, взяв в руки гитару, загорелась желанием создать в старшей школе ..."
+      },
+      {
+        "title": "Одинокий рокер!",
+        "episode": "Серия 5: Серия 5",
+        "duration": 1421,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9293/5/720/3b812674644abc351f83b1bc9dcac32e.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9293/pqI3PQ8v8c7tlFHuPjsSbAbHrbm8madK.jpg",
+        "description": "Забавная история об одинокой и до ужаса стеснительной школьнице Хитори Гото, которая, взяв в руки гитару, загорелась желанием создать в старшей школе ..."
+      },
+      {
+        "title": "Одинокий рокер!",
+        "episode": "Серия 6: Серия 6",
+        "duration": 1421,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9293/6/720/921ec55cf3f259e1c9ef52070e7d156e.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9293/pqI3PQ8v8c7tlFHuPjsSbAbHrbm8madK.jpg",
+        "description": "Забавная история об одинокой и до ужаса стеснительной школьнице Хитори Гото, которая, взяв в руки гитару, загорелась желанием создать в старшей школе ..."
+      },
+      {
+        "title": "Одинокий рокер!",
+        "episode": "Серия 7: Серия 7",
+        "duration": 1421,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9293/7/720/658b15271e02613011dae54f53acc5e7.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9293/pqI3PQ8v8c7tlFHuPjsSbAbHrbm8madK.jpg",
+        "description": "Забавная история об одинокой и до ужаса стеснительной школьнице Хитори Гото, которая, взяв в руки гитару, загорелась желанием создать в старшей школе ..."
+      },
+      {
+        "title": "Одинокий рокер!",
+        "episode": "Серия 8: Серия 8",
+        "duration": 1421,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9293/8/720/ce968230f62edd20fb8794ce2c836f90.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9293/pqI3PQ8v8c7tlFHuPjsSbAbHrbm8madK.jpg",
+        "description": "Забавная история об одинокой и до ужаса стеснительной школьнице Хитори Гото, которая, взяв в руки гитару, загорелась желанием создать в старшей школе ..."
+      },
+      {
+        "title": "Одинокий рокер!",
+        "episode": "Серия 9: Серия 9",
+        "duration": 1421,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9293/9/720/b1da96f6994f96d9b6b86685d5dea50f.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9293/pqI3PQ8v8c7tlFHuPjsSbAbHrbm8madK.jpg",
+        "description": "Забавная история об одинокой и до ужаса стеснительной школьнице Хитори Гото, которая, взяв в руки гитару, загорелась желанием создать в старшей школе ..."
+      },
+      {
+        "title": "Одинокий рокер!",
+        "episode": "Серия 10: Серия 10",
+        "duration": 1421,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9293/10/720/f88d322c297b5d257226c61e968fc2cc.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9293/pqI3PQ8v8c7tlFHuPjsSbAbHrbm8madK.jpg",
+        "description": "Забавная история об одинокой и до ужаса стеснительной школьнице Хитори Гото, которая, взяв в руки гитару, загорелась желанием создать в старшей школе ..."
+      },
+      {
+        "title": "Одинокий рокер!",
+        "episode": "Серия 11: Серия 11",
+        "duration": 1421,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9293/11/720/1339b733dcf987ec359c5cf88ae5d0cc.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9293/pqI3PQ8v8c7tlFHuPjsSbAbHrbm8madK.jpg",
+        "description": "Забавная история об одинокой и до ужаса стеснительной школьнице Хитори Гото, которая, взяв в руки гитару, загорелась желанием создать в старшей школе ..."
+      },
+      {
+        "title": "Одинокий рокер!",
+        "episode": "Серия 12: Серия 12",
+        "duration": 1421,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9293/12/720/fef87cd34e38fc92092677f2da03b6af.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9293/pqI3PQ8v8c7tlFHuPjsSbAbHrbm8madK.jpg",
+        "description": "Забавная история об одинокой и до ужаса стеснительной школьнице Хитори Гото, которая, взяв в руки гитару, загорелась желанием создать в старшей школе ..."
       }
     ]
   },
   {
-    "id": "2x2-prime",
+    "id": "2x2-max",
     "number": "02",
-    "name": "2х2 PRIME & ADULT SWIM",
-    "tagline": "Ванпанчмен (1-6 серии), Моб Психо 100 (1-6 серии) и культовые бамперы",
-    "logo": "[2x2]",
+    "name": "2х2 МАКС",
+    "tagline": "Культовый сёнэн и ночной Adult Swim: Ванпанчмен (12 серий), Моб Психо (12 серий) и бамперы",
+    "logoSvg": "2x2",
     "badge": "2x2 PRIME",
     "color": "#f59e0b",
     "schedule": [
       {
         "title": "Ванпанчмен",
-        "episode": "Серия 1",
+        "episode": "Серия 1: Серия 1",
         "duration": 1465,
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/1210/1/720/4c5ec6d26457611fef4853bfa7053746.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/1210/XssyhK2MH4H8S7A35bMJeuXbpFgbaW4X.jpg",
-        "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайтама. Однаж..."
+        "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайт..."
       },
       {
         "title": "Ванпанчмен",
-        "episode": "Серия 2",
+        "episode": "Серия 2: Серия 2",
         "duration": 1465,
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/1210/2/720/4284104794c97eafa88b1cf8aeadc406.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/1210/XssyhK2MH4H8S7A35bMJeuXbpFgbaW4X.jpg",
-        "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайтама. Однаж..."
+        "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайт..."
       },
       {
         "title": "Бампер 2х2",
-        "episode": "Отбивка эфира",
+        "episode": "Фирменная заставка",
         "duration": 15,
         "type": "bumper",
         "bumperText": "Вы смотрите 2х2.\n\nНе переключайтесь, а то вырастет хвост.",
         "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
-        "description": "Фирменная отбивка 2х2"
+        "description": "Культовая заставка 2х2"
       },
       {
         "title": "Ванпанчмен",
-        "episode": "Серия 3",
+        "episode": "Серия 3: Серия 3",
         "duration": 1465,
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/1210/3/720/b18a4747766dfef37b9a6dce893bfc4f.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/1210/XssyhK2MH4H8S7A35bMJeuXbpFgbaW4X.jpg",
-        "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайтама. Однаж..."
+        "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайт..."
       },
       {
         "title": "Ванпанчмен",
-        "episode": "Серия 4",
+        "episode": "Серия 4: Серия 4",
         "duration": 1465,
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/1210/4/720/1eb4dbc8d45e0fa82503eb678ad38d25.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/1210/XssyhK2MH4H8S7A35bMJeuXbpFgbaW4X.jpg",
-        "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайтама. Однаж..."
+        "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайт..."
       },
       {
         "title": "Бампер 2х2",
-        "episode": "Отбивка эфира",
+        "episode": "Фирменная заставка",
         "duration": 15,
         "type": "bumper",
         "bumperText": "Вы смотрите 2х2.\n\nНе переключайтесь, а то вырастет хвост.",
         "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
-        "description": "Фирменная отбивка 2х2"
+        "description": "Культовая заставка 2х2"
       },
       {
         "title": "Ванпанчмен",
-        "episode": "Серия 5",
+        "episode": "Серия 5: Серия 5",
         "duration": 1465,
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/1210/5/720/e0f001a5d28719767f9fa2cd88fc531e.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/1210/XssyhK2MH4H8S7A35bMJeuXbpFgbaW4X.jpg",
-        "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайтама. Однаж..."
+        "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайт..."
       },
       {
         "title": "Ванпанчмен",
-        "episode": "Серия 6",
+        "episode": "Серия 6: Серия 6",
         "duration": 1465,
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/1210/6/720/3e8456a31e217d4ddeafbcfae8f528ea.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/1210/XssyhK2MH4H8S7A35bMJeuXbpFgbaW4X.jpg",
-        "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайтама. Однаж..."
+        "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайт..."
       },
       {
         "title": "Бампер 2х2",
-        "episode": "Отбивка эфира",
+        "episode": "Фирменная заставка",
         "duration": 15,
         "type": "bumper",
         "bumperText": "Вы смотрите 2х2.\n\nНе переключайтесь, а то вырастет хвост.",
         "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
-        "description": "Фирменная отбивка 2х2"
+        "description": "Культовая заставка 2х2"
+      },
+      {
+        "title": "Ванпанчмен",
+        "episode": "Серия 7: Серия 7",
+        "duration": 1465,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/1210/7/720/ab3d6ff896c66bb489985dc229ab9491.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/1210/XssyhK2MH4H8S7A35bMJeuXbpFgbaW4X.jpg",
+        "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайт..."
+      },
+      {
+        "title": "Ванпанчмен",
+        "episode": "Серия 8: Серия 8",
+        "duration": 1465,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/1210/8/720/89a33651f7c640c04168cc8a4375a207.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/1210/XssyhK2MH4H8S7A35bMJeuXbpFgbaW4X.jpg",
+        "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайт..."
+      },
+      {
+        "title": "Бампер 2х2",
+        "episode": "Фирменная заставка",
+        "duration": 15,
+        "type": "bumper",
+        "bumperText": "Вы смотрите 2х2.\n\nНе переключайтесь, а то вырастет хвост.",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "description": "Культовая заставка 2х2"
+      },
+      {
+        "title": "Ванпанчмен",
+        "episode": "Серия 9: Серия 9",
+        "duration": 1465,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/1210/9/720/99b16ebc3107adcbb18d1d1b7734d8a2.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/1210/XssyhK2MH4H8S7A35bMJeuXbpFgbaW4X.jpg",
+        "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайт..."
+      },
+      {
+        "title": "Ванпанчмен",
+        "episode": "Серия 10: Серия 10",
+        "duration": 1465,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/1210/10/720/3957a7db597d072136e98dd2843710d4.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/1210/XssyhK2MH4H8S7A35bMJeuXbpFgbaW4X.jpg",
+        "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайт..."
+      },
+      {
+        "title": "Бампер 2х2",
+        "episode": "Фирменная заставка",
+        "duration": 15,
+        "type": "bumper",
+        "bumperText": "Вы смотрите 2х2.\n\nНе переключайтесь, а то вырастет хвост.",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "description": "Культовая заставка 2х2"
+      },
+      {
+        "title": "Ванпанчмен",
+        "episode": "Серия 11: Серия 11",
+        "duration": 1465,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/1210/11/720/638fec2607a64f2457c886aeef2d15bf.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/1210/XssyhK2MH4H8S7A35bMJeuXbpFgbaW4X.jpg",
+        "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайт..."
+      },
+      {
+        "title": "Ванпанчмен",
+        "episode": "Серия 12: Серия 12",
+        "duration": 1445,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/1210/12/720/fedcdc4dddda6d52fcf79abb9ed468e7.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/1210/XssyhK2MH4H8S7A35bMJeuXbpFgbaW4X.jpg",
+        "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайт..."
+      },
+      {
+        "title": "Бампер 2х2",
+        "episode": "Фирменная заставка",
+        "duration": 15,
+        "type": "bumper",
+        "bumperText": "Вы смотрите 2х2.\n\nНе переключайтесь, а то вырастет хвост.",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "description": "Культовая заставка 2х2"
       },
       {
         "title": "Моб Психо 100",
-        "episode": "Серия 1",
+        "episode": "Серия 1: Серия 1",
         "duration": 1469,
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/2622/1/720/d14330a13846be8a068ab7e52796a0c2.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/2622/AeySGfVDvfc3xmhXuOMFQO7fgDUqEfJ8.jpg",
-        "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с ранних лет,..."
+        "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с р..."
       },
       {
         "title": "Моб Психо 100",
-        "episode": "Серия 2",
+        "episode": "Серия 2: Серия 2",
         "duration": 1469,
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/2622/2/720/072eb4791945ff7bb59a48e65bd8b8db.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/2622/AeySGfVDvfc3xmhXuOMFQO7fgDUqEfJ8.jpg",
-        "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с ранних лет,..."
+        "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с р..."
       },
       {
         "title": "Бампер Adult Swim",
-        "episode": "Ночной блок",
-        "duration": 20,
+        "episode": "Ночной эфир",
+        "duration": 18,
         "type": "bumper",
         "bumperText": "[adult swim]\n\nСпать пора. Завтра опять всё проспишь.",
         "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
-        "description": "Ночная отбивка Adult Swim"
+        "description": "Ночная заставка Adult Swim"
       },
       {
         "title": "Моб Психо 100",
-        "episode": "Серия 3",
+        "episode": "Серия 3: Серия 3",
         "duration": 1469,
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/2622/3/720/8955ac6b7d399ebccf85387e6f9d7b81.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/2622/AeySGfVDvfc3xmhXuOMFQO7fgDUqEfJ8.jpg",
-        "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с ранних лет,..."
+        "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с р..."
       },
       {
         "title": "Моб Психо 100",
-        "episode": "Серия 4",
+        "episode": "Серия 4: Серия 4",
         "duration": 1469,
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/2622/4/720/ef98ee89424adba6cd69ee9116abd8cf.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/2622/AeySGfVDvfc3xmhXuOMFQO7fgDUqEfJ8.jpg",
-        "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с ранних лет,..."
+        "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с р..."
       },
       {
         "title": "Бампер Adult Swim",
-        "episode": "Ночной блок",
-        "duration": 20,
+        "episode": "Ночной эфир",
+        "duration": 18,
         "type": "bumper",
         "bumperText": "[adult swim]\n\nСпать пора. Завтра опять всё проспишь.",
         "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
-        "description": "Ночная отбивка Adult Swim"
+        "description": "Ночная заставка Adult Swim"
       },
       {
         "title": "Моб Психо 100",
-        "episode": "Серия 5",
+        "episode": "Серия 5: Серия 5",
         "duration": 1469,
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/2622/5/720/6fdb357b4b81f06d1bfff08fa5dfa993.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/2622/AeySGfVDvfc3xmhXuOMFQO7fgDUqEfJ8.jpg",
-        "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с ранних лет,..."
+        "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с р..."
       },
       {
         "title": "Моб Психо 100",
-        "episode": "Серия 6",
+        "episode": "Серия 6: Серия 6",
         "duration": 1469,
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/2622/6/720/1d10d4a007a732ddea723e21606a902b.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/2622/AeySGfVDvfc3xmhXuOMFQO7fgDUqEfJ8.jpg",
-        "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с ранних лет,..."
+        "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с р..."
       },
       {
         "title": "Бампер Adult Swim",
-        "episode": "Ночной блок",
-        "duration": 20,
+        "episode": "Ночной эфир",
+        "duration": 18,
         "type": "bumper",
         "bumperText": "[adult swim]\n\nСпать пора. Завтра опять всё проспишь.",
         "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
-        "description": "Ночная отбивка Adult Swim"
+        "description": "Ночная заставка Adult Swim"
+      },
+      {
+        "title": "Моб Психо 100",
+        "episode": "Серия 7: Серия 7",
+        "duration": 1469,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/2622/7/720/a79e03a30ae8897e846a85aec1126d42.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/2622/AeySGfVDvfc3xmhXuOMFQO7fgDUqEfJ8.jpg",
+        "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с р..."
+      },
+      {
+        "title": "Моб Психо 100",
+        "episode": "Серия 8: Серия 8",
+        "duration": 1469,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/2622/8/720/a039818d16ab9fae74b6e69199544ca0.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/2622/AeySGfVDvfc3xmhXuOMFQO7fgDUqEfJ8.jpg",
+        "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с р..."
+      },
+      {
+        "title": "Бампер Adult Swim",
+        "episode": "Ночной эфир",
+        "duration": 18,
+        "type": "bumper",
+        "bumperText": "[adult swim]\n\nСпать пора. Завтра опять всё проспишь.",
+        "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
+        "description": "Ночная заставка Adult Swim"
+      },
+      {
+        "title": "Моб Психо 100",
+        "episode": "Серия 9: Серия 9",
+        "duration": 1469,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/2622/9/720/39564331ffd09e095cc67381936d3ee4.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/2622/AeySGfVDvfc3xmhXuOMFQO7fgDUqEfJ8.jpg",
+        "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с р..."
+      },
+      {
+        "title": "Моб Психо 100",
+        "episode": "Серия 10: Серия 10",
+        "duration": 1469,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/2622/10/720/f2968e3d70dea504f4ff68c51a59ee27.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/2622/AeySGfVDvfc3xmhXuOMFQO7fgDUqEfJ8.jpg",
+        "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с р..."
+      },
+      {
+        "title": "Бампер Adult Swim",
+        "episode": "Ночной эфир",
+        "duration": 18,
+        "type": "bumper",
+        "bumperText": "[adult swim]\n\nСпать пора. Завтра опять всё проспишь.",
+        "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
+        "description": "Ночная заставка Adult Swim"
+      },
+      {
+        "title": "Моб Психо 100",
+        "episode": "Серия 11: Серия 11",
+        "duration": 1469,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/2622/11/720/a9dd6f1dd80d8b7640e75a07af5ff79a.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/2622/AeySGfVDvfc3xmhXuOMFQO7fgDUqEfJ8.jpg",
+        "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с р..."
+      },
+      {
+        "title": "Моб Психо 100",
+        "episode": "Серия 12: Серия 12",
+        "duration": 1469,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/2622/12/720/249dd395813d999c0c7c8ed457fbf4c8.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/2622/AeySGfVDvfc3xmhXuOMFQO7fgDUqEfJ8.jpg",
+        "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с р..."
+      },
+      {
+        "title": "Бампер Adult Swim",
+        "episode": "Ночной эфир",
+        "duration": 18,
+        "type": "bumper",
+        "bumperText": "[adult swim]\n\nСпать пора. Завтра опять всё проспишь.",
+        "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
+        "description": "Ночная заставка Adult Swim"
       }
     ]
   },
   {
-    "id": "anime-hits",
+    "id": "anime-hit",
     "number": "03",
-    "name": "ANIME HITS (ПРАЙМ)",
-    "tagline": "Клинок (1-6 серии), Магическая битва (1-6 серии), Семья шпиона (1-4 серии)",
-    "logo": "⛩️",
-    "badge": "ANIME HITS",
+    "name": "АНИМЕ ХИТ",
+    "tagline": "Мировые блокбастеры: Клинок, рассекающий демонов (26 серий) и Магическая битва (24 серии)",
+    "logoSvg": "animehit",
+    "badge": "ТОП ШЕДЕВРЫ",
     "color": "#e11d48",
     "schedule": [
       {
         "title": "Клинок, рассекающий демонов",
-        "episode": "Серия 1",
+        "episode": "Серия 1: Серия 1",
         "duration": 1440,
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/8325/1/720/6345e24e3d20a19882e0a992f9f7d8d4.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
-        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на трагедию, их..."
+        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
       },
       {
         "title": "Клинок, рассекающий демонов",
@@ -308,16 +920,7 @@ export const DEFAULT_CHANNELS = [
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/8325/2/720/189457294d11300596b717b7081bd365.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
-        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на трагедию, их..."
-      },
-      {
-        "title": "Бампер Anime Prime",
-        "episode": "Анонс",
-        "duration": 15,
-        "type": "bumper",
-        "bumperText": "ANIME PRIME\n\nМарафон суперхитов продолжается!",
-        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
-        "description": "Анонс блока"
+        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
       },
       {
         "title": "Клинок, рассекающий демонов",
@@ -326,7 +929,7 @@ export const DEFAULT_CHANNELS = [
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/8325/3/720/36ed7d31a112aeaefc2e9e249ed89b32.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
-        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на трагедию, их..."
+        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
       },
       {
         "title": "Клинок, рассекающий демонов",
@@ -335,16 +938,7 @@ export const DEFAULT_CHANNELS = [
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/8325/4/720/b3dd9f7fe28032a42869fa89e5138f97.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
-        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на трагедию, их..."
-      },
-      {
-        "title": "Бампер Anime Prime",
-        "episode": "Анонс",
-        "duration": 15,
-        "type": "bumper",
-        "bumperText": "ANIME PRIME\n\nМарафон суперхитов продолжается!",
-        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
-        "description": "Анонс блока"
+        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
       },
       {
         "title": "Клинок, рассекающий демонов",
@@ -353,7 +947,7 @@ export const DEFAULT_CHANNELS = [
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/8325/5/720/bda04ab7382ed51be5f08c9bdda59abf.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
-        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на трагедию, их..."
+        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
       },
       {
         "title": "Клинок, рассекающий демонов",
@@ -362,143 +956,413 @@ export const DEFAULT_CHANNELS = [
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/8325/6/720/d7b2563a683771bd1f1e508f51856eae.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
-        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на трагедию, их..."
+        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
       },
       {
-        "title": "Бампер Anime Prime",
-        "episode": "Анонс",
-        "duration": 15,
-        "type": "bumper",
-        "bumperText": "ANIME PRIME\n\nМарафон суперхитов продолжается!",
-        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
-        "description": "Анонс блока"
+        "title": "Клинок, рассекающий демонов",
+        "episode": "Серия 7: Кибутсуджи Мудзан",
+        "duration": 1440,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8325/7/720/e1ac01b4c2e731827ce6ee7397eed3ad.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
+        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
+      },
+      {
+        "title": "Клинок, рассекающий демонов",
+        "episode": "Серия 8: Запах чарующей крови",
+        "duration": 1440,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8325/8/720/78d21ee3029b366d156b2f4171d7751d.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
+        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
+      },
+      {
+        "title": "Клинок, рассекающий демонов",
+        "episode": "Серия 9: Демон Тэмари и демон Стрелок",
+        "duration": 1440,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8325/9/720/4ed3761b273809556590ebb6f98328ee.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
+        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
+      },
+      {
+        "title": "Клинок, рассекающий демонов",
+        "episode": "Серия 10: Вместе навсегда",
+        "duration": 1440,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8325/10/720/40b01f1b8c0b9641ef29dd6ba6b6188c.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
+        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
+      },
+      {
+        "title": "Клинок, рассекающий демонов",
+        "episode": "Серия 11: Дом с Цузуми",
+        "duration": 1440,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8325/11/720/a8372a9eaeb811e630423a6540cedb7a.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
+        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
+      },
+      {
+        "title": "Клинок, рассекающий демонов",
+        "episode": "Серия 12: Кабан обнажает клыки, Зэницу засыпает",
+        "duration": 1441,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8325/12/720/342645986b6be18f7ec427dde58b1f14.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
+        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
+      },
+      {
+        "title": "Клинок, рассекающий демонов",
+        "episode": "Серия 13: То, что ценнее жизни",
+        "duration": 1440,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8325/13/720/faa6d56a29682f3effb7fe7508bd4a33.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
+        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
+      },
+      {
+        "title": "Клинок, рассекающий демонов",
+        "episode": "Серия 14: Дом с гербом глицинии",
+        "duration": 1440,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8325/14/720/3c5ad2fbab1d3f5643d5b12ba617df00.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
+        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
+      },
+      {
+        "title": "Клинок, рассекающий демонов",
+        "episode": "Серия 15: Гора Натагумо",
+        "duration": 1440,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8325/15/720/6aa37c75ddb75733e74beabe14751a74.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
+        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
+      },
+      {
+        "title": "Клинок, рассекающий демонов",
+        "episode": "Серия 16: Позволить другому сделать первый шаг",
+        "duration": 1440,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8325/16/720/7f40b30de061f9ff6a21856f1390b3b3.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
+        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
+      },
+      {
+        "title": "Клинок, рассекающий демонов",
+        "episode": "Серия 17: Ты должен кое-что освоить",
+        "duration": 1440,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8325/17/720/cba2e9d627ed6cba635334ffcb527809.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
+        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
+      },
+      {
+        "title": "Клинок, рассекающий демонов",
+        "episode": "Серия 18: Ложные узы",
+        "duration": 1440,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8325/18/720/73ff86be504f22b4e555722c7e090a6f.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
+        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
+      },
+      {
+        "title": "Клинок, рассекающий демонов",
+        "episode": "Серия 19: Хиноками",
+        "duration": 1440,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8325/19/720/e675a6c1e376a1b72a0ccf9d6362ae82.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
+        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
+      },
+      {
+        "title": "Клинок, рассекающий демонов",
+        "episode": "Серия 20: Притворная семья",
+        "duration": 1440,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8325/20/720/0a3952b196558e5f1f53ffc262969261.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
+        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
+      },
+      {
+        "title": "Клинок, рассекающий демонов",
+        "episode": "Серия 21: Против правил отряда",
+        "duration": 1440,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8325/21/720/562905d7930ad7789cad1052a12d6fc4.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
+        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
+      },
+      {
+        "title": "Клинок, рассекающий демонов",
+        "episode": "Серия 22: Хозяин поместья",
+        "duration": 1440,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8325/22/720/4eecfaa9063b134e44d5271a71a4f50a.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
+        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
+      },
+      {
+        "title": "Клинок, рассекающий демонов",
+        "episode": "Серия 23: Собрание Хашира",
+        "duration": 1440,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8325/23/720/a32bbd8aa9e107e8c983c6934d5f5bb0.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
+        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
+      },
+      {
+        "title": "Клинок, рассекающий демонов",
+        "episode": "Серия 24: Восстановительная тренировка",
+        "duration": 1440,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8325/24/720/5c94a5d3ac91e50c97280f71bf89ecb1.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
+        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
+      },
+      {
+        "title": "Клинок, рассекающий демонов",
+        "episode": "Серия 25: Тсугуко, Канао Тсуюри",
+        "duration": 1440,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8325/25/720/3210d5f913f6b00d5fe75656de9d192f.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
+        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
+      },
+      {
+        "title": "Клинок, рассекающий демонов",
+        "episode": "Серия 26: Новое задание",
+        "duration": 1440,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8325/26/720/e2469fd11b259c7f8cc33b9a2e80c67c.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
+        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
       },
       {
         "title": "Магическая битва",
-        "episode": "Серия 1",
+        "episode": "Серия 1: Серия 1",
         "duration": 1435,
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/8789/1/720/6673036bb2bf535a5e149abe4ed52af3.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
-        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже легенды о вели..."
+        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
       },
       {
         "title": "Магическая битва",
-        "episode": "Серия 2",
+        "episode": "Серия 2: Серия 2",
         "duration": 1435,
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/8789/2/720/2580e1bc9a9b85aebcc3d1b388e998a9.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
-        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже легенды о вели..."
-      },
-      {
-        "title": "Бампер Anime Prime",
-        "episode": "Отбивка",
-        "duration": 15,
-        "type": "bumper",
-        "bumperText": "МАГИЧЕСКАЯ БИТВА\n\nОставайтесь с нами на yturokTV!",
-        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
-        "description": "Отбивка блока"
+        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
       },
       {
         "title": "Магическая битва",
-        "episode": "Серия 3",
+        "episode": "Серия 3: Серия 3",
         "duration": 1435,
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/8789/3/720/3fb53b7e8c96803d13ccc4b18ca8d748.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
-        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже легенды о вели..."
+        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
       },
       {
         "title": "Магическая битва",
-        "episode": "Серия 4",
+        "episode": "Серия 4: Серия 4",
         "duration": 1435,
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/8789/4/720/7a43b7781730a5d5ae47d5b1b6bdd3fb.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
-        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже легенды о вели..."
-      },
-      {
-        "title": "Бампер Anime Prime",
-        "episode": "Отбивка",
-        "duration": 15,
-        "type": "bumper",
-        "bumperText": "МАГИЧЕСКАЯ БИТВА\n\nОставайтесь с нами на yturokTV!",
-        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
-        "description": "Отбивка блока"
+        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
       },
       {
         "title": "Магическая битва",
-        "episode": "Серия 5",
+        "episode": "Серия 5: Серия 5",
         "duration": 1435,
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/8789/5/720/fea53eece8f1dd9a43653eac0dc5784b.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
-        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже легенды о вели..."
+        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
       },
       {
         "title": "Магическая битва",
-        "episode": "Серия 6",
+        "episode": "Серия 6: Серия 6",
         "duration": 1435,
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/8789/6/720/461931f046532de3589ea75b9a8c84a6.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
-        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже легенды о вели..."
+        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
       },
       {
-        "title": "Бампер Anime Prime",
-        "episode": "Отбивка",
-        "duration": 15,
-        "type": "bumper",
-        "bumperText": "МАГИЧЕСКАЯ БИТВА\n\nОставайтесь с нами на yturokTV!",
-        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
-        "description": "Отбивка блока"
-      },
-      {
-        "title": "Семья шпиона",
-        "episode": "Серия 1",
-        "duration": 1449,
+        "title": "Магическая битва",
+        "episode": "Серия 7: Серия 7",
+        "duration": 1435,
         "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9161/1/720/035988346d1cc4626f7126516a92d59a.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
-        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира между двумя с..."
+        "url": "https://cache.libria.fun/videos/media/ts/8789/7/720/d6ba961d788304c02a363ba860513425.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
+        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
       },
       {
-        "title": "Семья шпиона",
-        "episode": "Серия 2",
-        "duration": 1450,
+        "title": "Магическая битва",
+        "episode": "Серия 8: Серия 8",
+        "duration": 1435,
         "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9161/2/720/d3088b1ee0b6cb108cf269e1bc51f1bc.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
-        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира между двумя с..."
+        "url": "https://cache.libria.fun/videos/media/ts/8789/8/720/d7bc12466e72d3cab45eb74dd832fe7c.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
+        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
       },
       {
-        "title": "Семья шпиона",
-        "episode": "Серия 3",
-        "duration": 1450,
+        "title": "Магическая битва",
+        "episode": "Серия 9: Серия 9",
+        "duration": 1435,
         "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9161/3/720/cc439da357051e55f535d79cde9db8b8.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
-        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира между двумя с..."
+        "url": "https://cache.libria.fun/videos/media/ts/8789/9/720/8ca986a4ec53ff06b6d5ce2091027541.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
+        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
       },
       {
-        "title": "Семья шпиона",
-        "episode": "Серия 4",
-        "duration": 1450,
+        "title": "Магическая битва",
+        "episode": "Серия 10: Серия 10",
+        "duration": 1435,
         "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9161/4/720/b222070504cb5717cf01276362ba1ebf.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
-        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира между двумя с..."
+        "url": "https://cache.libria.fun/videos/media/ts/8789/10/720/854fbad3131334eed8f6e066d1b6c11b.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
+        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
+      },
+      {
+        "title": "Магическая битва",
+        "episode": "Серия 11: Серия 11",
+        "duration": 1435,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8789/11/720/ca396ff76dffe38b375574d577073146.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
+        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
+      },
+      {
+        "title": "Магическая битва",
+        "episode": "Серия 12: Серия 12",
+        "duration": 1435,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8789/12/720/9378dd3bbe5fe4c4ba34aa1a3bec1853.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
+        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
+      },
+      {
+        "title": "Магическая битва",
+        "episode": "Серия 13: Серия 13",
+        "duration": 1435,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8789/13/720/ac146ac1d90c039e53e7639a0fc97168.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
+        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
+      },
+      {
+        "title": "Магическая битва",
+        "episode": "Серия 14: Серия 14",
+        "duration": 1435,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8789/14/720/f2c67c00e048e58bc937f5cc3ec2973b.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
+        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
+      },
+      {
+        "title": "Магическая битва",
+        "episode": "Серия 15: Серия 15",
+        "duration": 1435,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8789/15/720/dcd1d08514d03f9b950b4ed2ce0a3ba9.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
+        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
+      },
+      {
+        "title": "Магическая битва",
+        "episode": "Серия 16: Серия 16",
+        "duration": 1435,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8789/16/720/2a212329220491032eb6de4275a2c150.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
+        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
+      },
+      {
+        "title": "Магическая битва",
+        "episode": "Серия 17: Серия 17",
+        "duration": 1435,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8789/17/720/9397a1ffa9ada74e67d07f72b5b44dfe.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
+        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
+      },
+      {
+        "title": "Магическая битва",
+        "episode": "Серия 18: Серия 18",
+        "duration": 1435,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8789/18/720/ce1bfd787e5be1e9115edab106661d11.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
+        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
+      },
+      {
+        "title": "Магическая битва",
+        "episode": "Серия 19: Серия 19",
+        "duration": 1420,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8789/19/720/3ce6e00100060e1169874d2d799920ec.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
+        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
+      },
+      {
+        "title": "Магическая битва",
+        "episode": "Серия 20: Серия 20",
+        "duration": 1420,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8789/20/720/5889f1809d3e9fdcf4d7585db5ed10ab.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
+        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
+      },
+      {
+        "title": "Магическая битва",
+        "episode": "Серия 21: Серия 21",
+        "duration": 1420,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8789/21/720/1fa1944af34b3fe7af0a729421aaf7f2.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
+        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
+      },
+      {
+        "title": "Магическая битва",
+        "episode": "Серия 22: Серия 22",
+        "duration": 1420,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8789/22/720/010d86b54769b3b088d26983d5e1318a.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
+        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
+      },
+      {
+        "title": "Магическая битва",
+        "episode": "Серия 23: Серия 23",
+        "duration": 1420,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8789/23/720/f48ef006ebce964bb2254aa4a9157569.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
+        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
+      },
+      {
+        "title": "Магическая битва",
+        "episode": "Серия 24: Серия 24",
+        "duration": 1420,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/8789/24/720/c72cbaaab636e8a22d0f9c3e271fea0c.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
+        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
       }
     ]
   },
   {
     "id": "dark-cyber",
     "number": "04",
-    "name": "ТЁМНЫЙ ЭФИР & CYBER",
-    "tagline": "Киберпанк (1-6 серии), Токийский Гуль (1-6 серии) с озвучкой",
-    "logo": "💀",
-    "badge": "18+ CYBER",
+    "name": "ДАРК САЙБЕР",
+    "tagline": "Тёмное фэнтези и неоновый киберпанк: Киберпанк (10 серий), Токийский Гуль (12 серий), Хантер",
+    "logoSvg": "cyber",
+    "badge": "18+ ТЁМНЫЙ ЭФИР",
     "color": "#8b5cf6",
     "schedule": [
       {
@@ -508,7 +1372,7 @@ export const DEFAULT_CHANNELS = [
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/9307/1/720/585351ecd1ab4afbef42db505154e407.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
-        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность сродни об..."
+        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность..."
       },
       {
         "title": "Киберпанк: Бегущие по краю",
@@ -517,16 +1381,7 @@ export const DEFAULT_CHANNELS = [
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/9307/2/720/80967bea66eafa4f14f9b2783c3cc7e8.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
-        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность сродни об..."
-      },
-      {
-        "title": "Бампер Cyber 2x2",
-        "episode": "Ночной киберпанк",
-        "duration": 20,
-        "type": "bumper",
-        "bumperText": "ТЁМНЫЙ ЭФИР 2х2\n\nНайт-сити никогда не спит. И ты не спишь.",
-        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
-        "description": "Ночной бампер"
+        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность..."
       },
       {
         "title": "Киберпанк: Бегущие по краю",
@@ -535,7 +1390,7 @@ export const DEFAULT_CHANNELS = [
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/9307/3/720/510148db904101c21153514e0d2b7ff3.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
-        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность сродни об..."
+        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность..."
       },
       {
         "title": "Киберпанк: Бегущие по краю",
@@ -544,16 +1399,7 @@ export const DEFAULT_CHANNELS = [
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/9307/4/720/1910585f5a24b0a910f3738b40caefa1.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
-        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность сродни об..."
-      },
-      {
-        "title": "Бампер Cyber 2x2",
-        "episode": "Ночной киберпанк",
-        "duration": 20,
-        "type": "bumper",
-        "bumperText": "ТЁМНЫЙ ЭФИР 2х2\n\nНайт-сити никогда не спит. И ты не спишь.",
-        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
-        "description": "Ночной бампер"
+        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность..."
       },
       {
         "title": "Киберпанк: Бегущие по краю",
@@ -562,7 +1408,7 @@ export const DEFAULT_CHANNELS = [
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/9307/5/720/ba6f83818599b2dc48d210f1126de549.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
-        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность сродни об..."
+        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность..."
       },
       {
         "title": "Киберпанк: Бегущие по краю",
@@ -571,109 +1417,197 @@ export const DEFAULT_CHANNELS = [
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/9307/6/720/88bb72a724b2a19e208a4fb0368032ba.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
-        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность сродни об..."
+        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность..."
       },
       {
-        "title": "Бампер Cyber 2x2",
-        "episode": "Ночной киберпанк",
-        "duration": 20,
-        "type": "bumper",
-        "bumperText": "ТЁМНЫЙ ЭФИР 2х2\n\nНайт-сити никогда не спит. И ты не спишь.",
-        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
-        "description": "Ночной бампер"
+        "title": "Киберпанк: Бегущие по краю",
+        "episode": "Серия 7: Сильнее",
+        "duration": 1536,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9307/7/720/7d7a1600ea51b4fa60520420223bd91a.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
+        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность..."
+      },
+      {
+        "title": "Киберпанк: Бегущие по краю",
+        "episode": "Серия 8: Останься",
+        "duration": 1538,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9307/8/720/2ce1189d822e9792672d595a0fb0c791.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
+        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность..."
+      },
+      {
+        "title": "Киберпанк: Бегущие по краю",
+        "episode": "Серия 9: Человечность",
+        "duration": 1600,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9307/9/720/c558f2ffb10a89fc04bd8aff6566c3e9.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
+        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность..."
+      },
+      {
+        "title": "Киберпанк: Бегущие по краю",
+        "episode": "Серия 10: Моя Луна Мой Мужчина",
+        "duration": 1696,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/9307/10/720/267b693e8bfa0419083d0a9e49d86d7f.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
+        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность..."
       },
       {
         "title": "Токийский Гуль",
-        "episode": "Серия 1",
+        "episode": "Серия 1: Серия 1",
         "duration": 1470,
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/432/1/720/2257451a7b079b3e54fba7676460877b.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/432/LpoztaRxyEgwc29nheLdWR5sKVdEAOqS.jpg",
-        "description": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать не только..."
+        "description": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать..."
       },
       {
         "title": "Токийский Гуль",
-        "episode": "Серия 2",
+        "episode": "Серия 2: Серия 2",
         "duration": 1469,
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/432/2/720/300341b76b9feccf7f33c7cd550ad488.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/432/LpoztaRxyEgwc29nheLdWR5sKVdEAOqS.jpg",
-        "description": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать не только..."
-      },
-      {
-        "title": "Бампер Тёмный Эфир",
-        "episode": "Хоррор блок",
-        "duration": 20,
-        "type": "bumper",
-        "bumperText": "ТЁМНЫЙ ЭФИР\n\nТокийский Гуль продолжается...",
-        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
-        "description": "Отбивка хоррор блока"
+        "description": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать..."
       },
       {
         "title": "Токийский Гуль",
-        "episode": "Серия 3",
+        "episode": "Серия 3: Серия 3",
         "duration": 1470,
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/432/3/720/608e32f1d487739b19c68f8f81270fe4.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/432/LpoztaRxyEgwc29nheLdWR5sKVdEAOqS.jpg",
-        "description": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать не только..."
+        "description": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать..."
       },
       {
         "title": "Токийский Гуль",
-        "episode": "Серия 4",
+        "episode": "Серия 4: Серия 4",
         "duration": 1470,
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/432/4/720/8e577b60dcb571900ef80c335975c1a0.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/432/LpoztaRxyEgwc29nheLdWR5sKVdEAOqS.jpg",
-        "description": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать не только..."
-      },
-      {
-        "title": "Бампер Тёмный Эфир",
-        "episode": "Хоррор блок",
-        "duration": 20,
-        "type": "bumper",
-        "bumperText": "ТЁМНЫЙ ЭФИР\n\nТокийский Гуль продолжается...",
-        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
-        "description": "Отбивка хоррор блока"
+        "description": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать..."
       },
       {
         "title": "Токийский Гуль",
-        "episode": "Серия 5",
+        "episode": "Серия 5: Серия 5",
         "duration": 1470,
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/432/5/720/35d184e1edf310dbbd6d036bced94123.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/432/LpoztaRxyEgwc29nheLdWR5sKVdEAOqS.jpg",
-        "description": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать не только..."
+        "description": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать..."
       },
       {
         "title": "Токийский Гуль",
-        "episode": "Серия 6",
+        "episode": "Серия 6: Серия 6",
         "duration": 1470,
         "type": "hls",
         "url": "https://cache.libria.fun/videos/media/ts/432/6/720/80dc4128ae6e0c36979d93bfe0e278da.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
         "poster": "https://anilibria.top/storage/releases/posters/432/LpoztaRxyEgwc29nheLdWR5sKVdEAOqS.jpg",
-        "description": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать не только..."
+        "description": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать..."
       },
       {
-        "title": "Бампер Тёмный Эфир",
-        "episode": "Хоррор блок",
-        "duration": 20,
-        "type": "bumper",
-        "bumperText": "ТЁМНЫЙ ЭФИР\n\nТокийский Гуль продолжается...",
-        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
-        "description": "Отбивка хоррор блока"
+        "title": "Токийский Гуль",
+        "episode": "Серия 7: Серия 7",
+        "duration": 1470,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/432/7/720/cafdb4ef1b66a99d14e3bbf037f34913.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/432/LpoztaRxyEgwc29nheLdWR5sKVdEAOqS.jpg",
+        "description": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать..."
+      },
+      {
+        "title": "Токийский Гуль",
+        "episode": "Серия 8: Серия 8",
+        "duration": 1470,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/432/8/720/ae4f7571a4145002563bd612bc68b64c.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/432/LpoztaRxyEgwc29nheLdWR5sKVdEAOqS.jpg",
+        "description": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать..."
+      },
+      {
+        "title": "Токийский Гуль",
+        "episode": "Серия 9: Серия 9",
+        "duration": 1470,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/432/9/720/68ee621448000ca4e768938e034a2666.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/432/LpoztaRxyEgwc29nheLdWR5sKVdEAOqS.jpg",
+        "description": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать..."
+      },
+      {
+        "title": "Токийский Гуль",
+        "episode": "Серия 10: Серия 10",
+        "duration": 1470,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/432/10/720/f2d95ec2face9fc5fcc6ee823ac72dee.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/432/LpoztaRxyEgwc29nheLdWR5sKVdEAOqS.jpg",
+        "description": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать..."
+      },
+      {
+        "title": "Токийский Гуль",
+        "episode": "Серия 11: Серия 11",
+        "duration": 1470,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/432/11/720/3376f411784dce1b181702e6671ac505.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/432/LpoztaRxyEgwc29nheLdWR5sKVdEAOqS.jpg",
+        "description": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать..."
+      },
+      {
+        "title": "Токийский Гуль",
+        "episode": "Серия 12: Серия 12",
+        "duration": 1470,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/432/12/720/6509a44704428c477a45b2e13cfb7139.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/432/LpoztaRxyEgwc29nheLdWR5sKVdEAOqS.jpg",
+        "description": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать..."
+      },
+      {
+        "title": "Хантер х Хантер",
+        "episode": "Серия 1: Начало пути × И × Дружба",
+        "duration": 1417,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/10294/1/720/86aeeac26b2f8f1c50007991f605c667.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/10294/DJH6l8g7gykL58F6ECUbHMxodbhu1Un3.jpg",
+        "description": "Охотник — это тот, кто путешествует по миру, выполняя различные опасные миссии: от поимки преступников до поиска сокровищ в неизведанных землях. Главн..."
+      },
+      {
+        "title": "Хантер х Хантер",
+        "episode": "Серия 2: Экзамен × На × Экзамене",
+        "duration": 1417,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/10294/2/720/99e6249573d32e75bb3eed83cc39941e.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/10294/DJH6l8g7gykL58F6ECUbHMxodbhu1Un3.jpg",
+        "description": "Охотник — это тот, кто путешествует по миру, выполняя различные опасные миссии: от поимки преступников до поиска сокровищ в неизведанных землях. Главн..."
+      },
+      {
+        "title": "Хантер х Хантер",
+        "episode": "Серия 3: Соперники × На × Выживание",
+        "duration": 1417,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/10294/3/720/4e9e364119f2ac67661bd9ddb25c63d7.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/10294/DJH6l8g7gykL58F6ECUbHMxodbhu1Un3.jpg",
+        "description": "Охотник — это тот, кто путешествует по миру, выполняя различные опасные миссии: от поимки преступников до поиска сокровищ в неизведанных землях. Главн..."
+      },
+      {
+        "title": "Хантер х Хантер",
+        "episode": "Серия 4: Чаяния × И × Желания",
+        "duration": 1417,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/10294/4/720/0fb34c3934f7bfb029e205cf1be62e84.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/10294/DJH6l8g7gykL58F6ECUbHMxodbhu1Un3.jpg",
+        "description": "Охотник — это тот, кто путешествует по миру, выполняя различные опасные миссии: от поимки преступников до поиска сокровищ в неизведанных землях. Главн..."
+      },
+      {
+        "title": "Хантер х Хантер",
+        "episode": "Серия 5: Морока × С × Хисокой",
+        "duration": 1416,
+        "type": "hls",
+        "url": "https://cache.libria.fun/videos/media/ts/10294/5/720/515a62ffd70da15efb7bf52316c025fa.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/10294/DJH6l8g7gykL58F6ECUbHMxodbhu1Un3.jpg",
+        "description": "Охотник — это тот, кто путешествует по миру, выполняя различные опасные миссии: от поимки преступников до поиска сокровищ в неизведанных землях. Главн..."
       }
     ]
-  },
-  {
-    "id": "my-custom-channel",
-    "number": "05",
-    "name": "МОЙ КАНАЛ (СТУДИЯ)",
-    "tagline": "Твоя персональная ТВ-сетка. Ищи и добавляй любые тайтлы через Конструктор!",
-    "logo": "⭐",
-    "badge": "CUSTOM DIY",
-    "color": "#10b981",
-    "isCustom": true,
-    "schedule": []
   }
 ];
