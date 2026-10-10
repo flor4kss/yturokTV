@@ -11,6 +11,9 @@
   <!-- HLS.js for direct AniLibria & video streaming -->
   <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.7/dist/hls.min.js"></script>
   
+  <!-- YouTube IFrame API for Streamers & Music Channels -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+  
   <!-- Google Material Symbols & Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   
@@ -90,23 +93,35 @@
        ===================================================================== -->
   <main class="flex-1 min-h-0 flex gap-3 p-3 overflow-hidden">
 
-    <!-- LEFT: NAVIGATION RAIL (3 Stream Variations & Media Buttons) -->
-    <aside class="w-20 sm:w-24 flex flex-col items-center justify-between py-3 m3-surface flex-shrink-0 z-20">
+    <!-- LEFT: NAVIGATION RAIL (12 Channels Across 4 Categories) -->
+    <aside class="w-52 lg:w-60 flex flex-col justify-between py-3 px-2.5 m3-surface flex-shrink-0 z-20 overflow-hidden">
       
-      <!-- Vertical Stream Variations (УТРО, ДЕНЬ, ВЕЧЕР) -->
-      <div class="flex flex-col items-center gap-2 w-full">
-        <span class="text-[9px] font-mono uppercase font-bold text-gray-400 tracking-wider">Потоки</span>
-        <div id="vertical-channel-dock" class="flex flex-col gap-2.5 w-full px-2">
-          <!-- Populated by app.js: 3 Stream Variations -->
+      <!-- Top: Category Filter Chips -->
+      <div class="flex flex-col gap-2 w-full pb-2 border-b border-white/5 flex-shrink-0">
+        <div class="flex items-center justify-between px-1">
+          <span class="text-[10px] font-mono uppercase font-bold text-gray-400 tracking-wider">Категории</span>
+          <span id="active-category-count" class="text-[9px] font-mono text-purple-300 font-bold">12 каналов</span>
+        </div>
+        <div id="category-selector-tabs" class="flex flex-wrap items-center gap-1.5 pb-1">
+          <button class="m3-category-chip active" data-cat="all">⚡ Все</button>
+          <button class="m3-category-chip" data-cat="anime">📺 Аниме</button>
+          <button class="m3-category-chip" data-cat="cartoons">🎨 Мульты</button>
+          <button class="m3-category-chip" data-cat="minecrafters">⛏️ Крафт</button>
+          <button class="m3-category-chip" data-cat="music">🎵 Муз</button>
         </div>
       </div>
 
-      <!-- Bottom Quick Action Icons -->
-      <div class="flex flex-col items-center gap-2">
-        <button id="dock-btn-mute" class="m3-icon-btn tonal" title="Звук">
+      <!-- Center: Filtered Channels List -->
+      <div id="vertical-channel-dock" class="flex-1 overflow-y-auto flex flex-col gap-1.5 w-full pr-1 min-h-0 my-2">
+        <!-- Populated by app.js: 12 Channels -->
+      </div>
+
+      <!-- Bottom Quick Action Controls -->
+      <div class="flex items-center justify-between gap-1 pt-2 border-t border-white/5 flex-shrink-0">
+        <button id="dock-btn-mute" class="m3-icon-btn tonal w-9 h-9" title="Звук">
           <span id="dock-mute-icon" class="material-symbols-outlined text-[18px]">volume_up</span>
         </button>
-        <button id="dock-btn-cinema" class="m3-icon-btn tonal" title="На весь экран">
+        <button id="dock-btn-cinema" class="m3-icon-btn tonal w-9 h-9" title="На весь экран">
           <span class="material-symbols-outlined text-[18px]">fullscreen</span>
         </button>
       </div>
@@ -119,8 +134,13 @@
       <!-- THE TV SCREEN CABINET (Ambilight Aura & Interactive Hover Controls) -->
       <div id="tv-cabinet" class="tv-stage flex-1 min-h-0 w-full relative flex items-center justify-center crt-mode select-none">
         
-        <!-- Video Stream Player -->
+        <!-- Video Stream Player (Direct HLS / MP4) -->
         <video id="hls-player" class="w-full h-full object-contain absolute inset-0 z-0 hidden" playsinline></video>
+
+        <!-- YouTube IFrame Player Container -->
+        <div id="yt-player-container" class="w-full h-full absolute inset-0 z-0 hidden overflow-hidden pointer-events-none">
+          <div id="yt-player" class="w-full h-full"></div>
+        </div>
 
         <!-- 2x2 Retro Text Bumper Screen -->
         <div id="bumper-screen" class="absolute inset-0 z-10 bumper-screen flex flex-col items-center justify-center p-8 text-center select-none hidden">
@@ -328,8 +348,17 @@
         </button>
       </div>
 
-      <!-- Channels Selector Tabs (01, 02, 03, 04) -->
-      <div id="epg-tabs" class="flex items-center gap-2 py-3 overflow-x-auto border-b border-white/5">
+      <!-- EPG Categories Selector Tabs -->
+      <div id="epg-categories" class="flex items-center gap-1.5 py-2 overflow-x-auto border-b border-white/5 no-scrollbar">
+        <button class="m3-category-chip active" data-epg-cat="all">⚡ Все</button>
+        <button class="m3-category-chip" data-epg-cat="anime">📺 Аниме</button>
+        <button class="m3-category-chip" data-epg-cat="cartoons">🎨 Мульты</button>
+        <button class="m3-category-chip" data-epg-cat="minecrafters">⛏️ Крафт</button>
+        <button class="m3-category-chip" data-epg-cat="music">🎵 Муз</button>
+      </div>
+
+      <!-- Channels Selector Tabs (12 Channels) -->
+      <div id="epg-tabs" class="flex items-center gap-2 py-2.5 overflow-x-auto border-b border-white/5 no-scrollbar">
         <!-- Rendered by app.js -->
       </div>
 

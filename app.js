@@ -4,17 +4,22 @@ import { DEFAULT_CHANNELS } from './channels.js';
 const state = {
   channels: DEFAULT_CHANNELS,
   currentChannelIndex: 0,
+  activeCategory: 'all',
+  activeEpgCategory: 'all',
   isMuted: false,
   volume: 80,
-  crtEnabled: false, // Default CRT state loaded from localStorage
+  crtEnabled: false,
   currentShow: null,
   hlsInstance: null,
+  ytPlayer: null,
+  isYtReady: false,
   audioCtx: null,
   isTVStarted: false,
   activeEpgChannelId: null,
   activeEpgDayOffset: 0,
   mouseTimer: null,
   currentStreamUrl: null,
+  currentYtId: null,
   serverTimeDeltaMs: 0,
   isTimeSynced: false,
   isCatchUpMode: false,
@@ -39,9 +44,8 @@ function getChannelLogo(ch) {
   if (ch.logoSvg && CHANNEL_LOGOS[ch.logoSvg]) {
     return CHANNEL_LOGOS[ch.logoSvg];
   }
-  if (ch.streamId === 'morning' || ch.id === 'yturok-morning') return CHANNEL_LOGOS['toonster'];
-  if (ch.streamId === 'day' || ch.id === 'yturok-day') return CHANNEL_LOGOS['animehit'];
-  if (ch.streamId === 'night' || ch.id === 'yturok-night') return CHANNEL_LOGOS['cyber'];
+  if (ch.category === 'anime') return CHANNEL_LOGOS['animehit'];
+  if (ch.category === 'minecrafters') return CHANNEL_LOGOS['cyber'];
   return CHANNEL_LOGOS['toonster'];
 }
 
@@ -149,55 +153,105 @@ function playChannelSwitchAudio() {
     const clickGain = ctx.createGain();
     osc.type = 'triangle';
     osc.frequency.setValueAtTime(140, ctx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(30, ctx.currentTime + 0.08);
-    clickGain.gain.setValueAtTime(0.2, ctx.currentTime);
-    clickGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.08);
+    osc.frequency.exponentialRampToValueAtTime(35, ctx.currentTime + 0.04);
+
+    clickGain.gain.setValueAtTime(0.25, ctx.currentTime);
+    clickGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.04);
+
     osc.connect(clickGain);
     clickGain.connect(ctx.destination);
-    osc.start();
-    osc.stop(ctx.currentTime + 0.08);
 
-    const bufferSize = ctx.sampleRate * 0.1;
-    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-    const data = buffer.getChannelData(0);
-    for (let i = 0; i < bufferSize; i++) {
-      data[i] = Math.random() * 2 - 1;
-    }
-    const noise = ctx.createBufferSource();
-    noise.buffer = buffer;
-    const filter = ctx.createBiquadFilter();
-    filter.type = 'bandpass';
-    filter.frequency.value = 1100;
-    const noiseGain = ctx.createGain();
-    noiseGain.gain.setValueAtTime(0.08, ctx.currentTime);
-    noiseGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1);
-    noise.connect(filter);
-    filter.connect(noiseGain);
-    noiseGain.connect(ctx.destination);
-    noise.start();
-  } catch (err) {}
-}
-
-// Lo-Fi Synth tone for 2x2 retro bumpers
-function playBumperAmbientTone() {
-  try {
-    if (!state.audioCtx || state.isMuted) return;
-    const ctx = state.audioCtx;
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(220, ctx.currentTime);
-    gain.gain.setValueAtTime(0.04, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.2);
-    osc.connect(gain);
-    gain.connect(ctx.destination);
     osc.start();
-    osc.stop(ctx.currentTime + 1.2);
+    osc.stop(ctx.currentTime + 0.05);
   } catch (e) {}
 }
 
-// Deterministic Broadcast Timeline Math (Continuous Multi-Season Broadcast Anchored to Today YEKT)
-const EPOCH_START = 1791658800; // Today 00:00:00 YEKT (Starts cleanly from early episodes!)
+// Ambient Bumper Tone for 2x2 Screen
+function playBumperAmbientTone() {
+  try {
+    if (!state.audioCtx) {
+      state.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (state.audioCtx.state === 'suspended') {
+      state.audioCtx.resume();
+    }
+    const ctx = state.audioCtx;
+
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(80, ctx.currentTime);
+    osc.frequency.linearRampToValueAtTime(65, ctx.currentTime + 1.2);
+
+    gain.gain.setValueAtTime(0.08, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.2);
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start();
+    osc.stop(ctx.currentTime + 1.3);
+  } catch (e) {}
+}
+
+// -----------------------------------------------------------------------------
+// YouTube IFrame Player Engine
+// -----------------------------------------------------------------------------
+window.onYouTubeIframeAPIReady = function() {
+  state.isYtReady = true;
+  initYouTubePlayer();
+};
+
+function initYouTubePlayer() {
+  if (state.ytPlayer || !window.YT || !window.YT.Player) return;
+  state.ytPlayer = new YT.Player('yt-player', {
+    height: '100%',
+    width: '100%',
+    playerVars: {
+      autoplay: 1,
+      controls: 0,
+      disablekb: 1,
+      fs: 0,
+      modestbranding: 1,
+      rel: 0,
+      playsinline: 1,
+      iv_load_policy: 3
+    },
+    events: {
+      onReady: (event) => {
+        state.isYtReady = true;
+        if (!state.isTVStarted || state.isMuted) {
+          event.target.mute();
+        } else {
+          event.target.unMute();
+          event.target.setVolume(state.volume);
+        }
+        // If current show is YouTube, start playing
+        const ch = state.channels[state.currentChannelIndex];
+        if (ch) {
+          const { currentItem, elapsed } = calculateBroadcastPosition(ch);
+          if (currentItem.type === 'youtube' || currentItem.youtubeId) {
+            event.target.loadVideoById({
+              videoId: currentItem.youtubeId,
+              startSeconds: Math.max(0, Math.floor(elapsed))
+            });
+            event.target.playVideo();
+          }
+        }
+      },
+      onStateChange: (event) => {
+        if (event.data === 0) { // ENDED
+          playCurrentChannel(false);
+        }
+      }
+    }
+  });
+}
+
+// -----------------------------------------------------------------------------
+// Deterministic Sverdlovsk Broadcast Scheduler (UTC+5 / YEKT)
+// -----------------------------------------------------------------------------
+const EPOCH_START = 1791658800; // Today 00:00:00 YEKT (Clean, non-repetitive cycle)
 
 function calculateBroadcastPosition(channel, dayOffset = 0) {
   const schedule = channel.schedule;
@@ -270,7 +324,9 @@ function hexToRgb(hex) {
   };
 }
 
-// Play Current Channel (Guaranteed 100% Stream Switching)
+// -----------------------------------------------------------------------------
+// Play Current Channel (Dual Playback: HLS + YouTube + Video)
+// -----------------------------------------------------------------------------
 function playCurrentChannel(withGlitch = true) {
   const channel = state.channels[state.currentChannelIndex];
   if (!channel) return;
@@ -292,7 +348,7 @@ function playCurrentChannel(withGlitch = true) {
   updateAmbilight(channel.color);
   updateChannelInfoDOM(channel, currentItem, elapsed, nextItem, progressPercent);
 
-  // Apply CRT mode strictly according to state.crtEnabled (never resets on channel switch!)
+  // Apply CRT mode strictly according to state.crtEnabled
   applyCRT();
 
   // Reset Catch-Up mode on channel switch
@@ -301,26 +357,75 @@ function playCurrentChannel(withGlitch = true) {
   $('btn-start-over')?.classList.remove('hidden');
 
   const hlsVideo = $('hls-player');
+  const ytContainer = $('yt-player-container');
   const bumperScreen = $('bumper-screen');
 
-  // Handle Stream Types
-  if (currentItem.type === 'bumper') {
+  // Handle Playback by Stream Type
+  if (currentItem.type === 'youtube' || currentItem.youtubeId) {
+    if (bumperScreen) bumperScreen.classList.add('hidden');
+    if (hlsVideo) {
+      hlsVideo.pause();
+      hlsVideo.classList.add('hidden');
+    }
+    if (ytContainer) ytContainer.classList.remove('hidden');
+
+    const ytid = currentItem.youtubeId;
+    state.currentStreamUrl = null;
+    const isNewYt = (state.currentYtId !== ytid);
+    state.currentYtId = ytid;
+
+    if (state.ytPlayer && state.ytPlayer.loadVideoById) {
+      if (isNewYt) {
+        state.ytPlayer.loadVideoById({
+          videoId: ytid,
+          startSeconds: Math.max(0, Math.floor(elapsed))
+        });
+        if (state.isTVStarted && !state.isMuted) {
+          state.ytPlayer.unMute();
+          state.ytPlayer.setVolume(state.volume);
+        } else {
+          state.ytPlayer.mute();
+        }
+        state.ytPlayer.playVideo();
+      } else {
+        // Drift check for YouTube
+        try {
+          const curTime = state.ytPlayer.getCurrentTime();
+          if (Math.abs(curTime - elapsed) > 4 && !state.isCatchUpMode) {
+            state.ytPlayer.seekTo(elapsed, true);
+          }
+        } catch (e) {}
+      }
+    } else if (window.YT && window.YT.Player && !state.ytPlayer) {
+      initYouTubePlayer();
+    }
+
+  } else if (currentItem.type === 'bumper') {
+    if (ytContainer) {
+      ytContainer.classList.add('hidden');
+      try { state.ytPlayer?.pauseVideo(); } catch (e) {}
+    }
     if (hlsVideo) {
       hlsVideo.pause();
       hlsVideo.classList.add('hidden');
     }
     if (bumperScreen) {
       bumperScreen.classList.remove('hidden');
-      text('bumper-logo', channel.logo || "[2x2]");
+      text('bumper-logo', "[2x2]");
       text('bumper-text', currentItem.bumperText || "Вы смотрите 2х2. Не переключайтесь.");
     }
     playBumperAmbientTone();
 
   } else if (currentItem.type === 'video') {
+    if (ytContainer) {
+      ytContainer.classList.add('hidden');
+      try { state.ytPlayer?.pauseVideo(); } catch (e) {}
+    }
+    state.currentYtId = null;
     if (bumperScreen) bumperScreen.classList.add('hidden');
+
     if (hlsVideo) {
       hlsVideo.classList.remove('hidden');
-
       if (state.hlsInstance) {
         state.hlsInstance.destroy();
         state.hlsInstance = null;
@@ -341,17 +446,23 @@ function playCurrentChannel(withGlitch = true) {
         };
         hlsVideo.addEventListener('loadedmetadata', applySeek, { once: true });
         if (hlsVideo.readyState >= 1) applySeek();
-        hlsVideo.play().catch(e => console.log("Play waiting user interaction:", e));
+        hlsVideo.play().catch(e => console.log("Play waiting interaction:", e));
       } else {
         if (Math.abs(hlsVideo.currentTime - elapsed) > 3) {
           try { hlsVideo.currentTime = elapsed; } catch (e) {}
         }
-        if (hlsVideo.paused) hlsVideo.play().catch(() => {});
+        if (hlsVideo.paused && state.isTVStarted) hlsVideo.play().catch(() => {});
       }
     }
 
   } else if (currentItem.type === 'hls' || currentItem.url) {
+    if (ytContainer) {
+      ytContainer.classList.add('hidden');
+      try { state.ytPlayer?.pauseVideo(); } catch (e) {}
+    }
+    state.currentYtId = null;
     if (bumperScreen) bumperScreen.classList.add('hidden');
+
     if (hlsVideo) {
       hlsVideo.classList.remove('hidden');
       const isNewUrl = (state.currentStreamUrl !== currentItem.url);
@@ -422,14 +533,14 @@ function updateChannelInfoDOM(channel, currentItem, elapsed, nextItem, progressP
   text('channel-watermark', `yturokTV • ${channel.shortName || channel.name}`);
 
   // Badges & Show info in Player Hover Overlay
-  text('hover-channel-badge', `${channel.shortName || channel.number} • ПОТОК`);
+  text('hover-channel-badge', `${channel.number} • ${channel.shortName}`);
   text('hover-show-title', `${currentItem.badgeTag ? currentItem.badgeTag + ' ' : ''}${currentItem.title} • ${currentItem.episode || ''}`);
 
   // Badges & Show info in under-player metadata card
-  text('current-channel-badge', `${channel.shortName || channel.number}`);
+  text('current-channel-badge', `${channel.number} ${channel.shortName}`);
   text('show-title', currentItem.title);
   text('show-episode', currentItem.episode || "");
-  text('show-slot-badge', `${channel.shortName === 'УТРО' ? '☀️' : channel.shortName === 'ДЕНЬ' ? '🌤️' : '🌙'} ${channel.name}`);
+  text('show-slot-badge', `${channel.categoryName || 'ЭФИР'} • ${channel.name}`);
 
   const tagBadge = $('show-tag-badge');
   if (tagBadge) {
@@ -449,67 +560,86 @@ function updateChannelInfoDOM(channel, currentItem, elapsed, nextItem, progressP
     poster.src = currentItem.poster;
   }
 
-  // Progress Bar
-  const prog = $('broadcast-progress');
-  if (prog) prog.style.width = `${progressPercent}%`;
-  text('broadcast-time-text', `${formatTime(elapsed)} / ${formatTime(currentItem.duration || 1400)}`);
-
-  // Update Broadcast News Ticker
-  updateNewsTickerDOM(channel, currentItem, nextItem);
+  // News Ticker text update
+  const tickerText = $('ticker-text');
+  if (tickerText) {
+    tickerText.textContent = `СЕЙЧАС В ЭФИРЕ [${channel.number} ${channel.name}]: ${currentItem.title} (${currentItem.episode || 'Трансляция'}) • ДАЛЕЕ: ${nextItem ? nextItem.title : 'Продолжение эфира'} • ВРЕМЯ ЕКАТЕРИНБУРГ (YEKT • UTC+5) • yturokTV`;
+  }
 }
 
-// Update News Ticker Track (Бегущая строка)
-function updateNewsTickerDOM(channel, currentItem, nextItem) {
-  const tickerEl = $('ticker-text');
-  if (!tickerEl) return;
-  const nextInfo = nextItem ? `СЛЕДУЮЩИМ: ${nextItem.title} (${nextItem.episode || ''})` : 'КРУГЛОСУТОЧНЫЙ ЭФИР 24/7';
-  const tagInfo = currentItem.badgeTag || 'ПРЕМЬЕРА';
-  tickerEl.textContent = `📢 В ЭФИРЕ: [${channel.shortName || channel.name}] ${currentItem.title} • ${currentItem.episode || ''} [${tagInfo}]  •  👉 ${nextInfo}  •  ⚡ СИНХРОН: СВЕРДЛОВСКАЯ ОБЛАСТЬ (ЕКБ • UTC+5)  •  🌙 ВЕЧЕРНИЙ ЭФИР: САГА О ВИНЛАНДЕ, АДСКИЙ БОСС, КИБЕРПАНК & БАМПЕРЫ 2Х2  •  💡 ГОРЯЧИЕ КЛАВИШИ: [F] ПОЛНЫЙ ЭКРАН • [1/2/3] СМЕНА ПОТОКА • [M] ЗВУК • ЖМИТЕ ЭМОДЗИ ДЛЯ РЕАКЦИИ`;
+// CRT Filter Application
+function applyCRT() {
+  const cabinet = $('tv-cabinet');
+  const crtText = $('crt-status-text');
+  const btnToggle = $('btn-toggle-crt');
+  const btnPlayer = $('btn-player-crt');
+
+  if (cabinet) {
+    if (state.crtEnabled) {
+      cabinet.classList.add('crt-mode');
+    } else {
+      cabinet.classList.remove('crt-mode');
+    }
+  }
+
+  if (crtText) crtText.textContent = state.crtEnabled ? "ЭЛТ: ВКЛ" : "ЭЛТ: ВЫКЛ";
+  if (btnToggle) {
+    if (state.crtEnabled) btnToggle.classList.add('active');
+    else btnToggle.classList.remove('active');
+  }
+  if (btnPlayer) {
+    if (state.crtEnabled) btnPlayer.classList.add('active');
+    else btnPlayer.classList.remove('active');
+  }
 }
 
-// Floating Live Emoji Reactions (Danmaku-lite)
-function spawnFloatingReaction(emoji) {
-  const container = $('reactions-stage');
-  if (!container) return;
+// Catch-Up TV Mode (Start over & Go Live)
+function initCatchUpButtons() {
+  const btnStartOver = $('btn-start-over');
+  const btnGoLive = $('btn-go-live');
 
-  const el = document.createElement('div');
-  el.className = 'floating-reaction';
-  el.textContent = emoji;
+  if (btnStartOver) {
+    btnStartOver.addEventListener('click', () => {
+      state.isCatchUpMode = true;
+      const hlsVideo = $('hls-player');
+      if (hlsVideo) hlsVideo.currentTime = 0;
+      if (state.ytPlayer && state.ytPlayer.seekTo) state.ytPlayer.seekTo(0, true);
 
-  // Random horizontal position
-  const randomLeft = 20 + Math.random() * 65;
-  el.style.left = `${randomLeft}%`;
+      btnStartOver.classList.add('hidden');
+      btnGoLive?.classList.remove('hidden');
+    });
+  }
 
-  container.appendChild(el);
-
-  setTimeout(() => {
-    if (el.parentNode) el.parentNode.removeChild(el);
-  }, 2300);
+  if (btnGoLive) {
+    btnGoLive.addEventListener('click', () => {
+      state.isCatchUpMode = false;
+      playCurrentChannel(false);
+      btnGoLive.classList.add('hidden');
+      btnStartOver?.classList.remove('hidden');
+    });
+  }
 }
 
-// Sleep Timer (Таймер сна)
+// Sleep Timer Handling
 function handleSleepTimerToggle() {
-  const steps = [0, 15, 30, 45, 60];
-  const currentIdx = steps.indexOf(state.sleepTimerMinutes);
-  const nextIdx = (currentIdx + 1) % steps.length;
-  state.sleepTimerMinutes = steps[nextIdx];
+  const modes = [0, 15, 30, 45, 60];
+  const curIdx = modes.indexOf(state.sleepTimerMinutes);
+  const nextIdx = (curIdx + 1) % modes.length;
+  state.sleepTimerMinutes = modes[nextIdx];
 
-  const btnText = $('sleep-timer-text');
-  const btn = $('btn-sleep-timer');
-
-  if (state.sleepTimerMinutes > 0) {
-    if (btnText) btnText.textContent = `Сон: ${state.sleepTimerMinutes}м`;
-    if (btn) btn.classList.add('active');
-    state.sleepTimerEndMs = Date.now() + (state.sleepTimerMinutes * 60 * 1000);
-  } else {
-    if (btnText) btnText.textContent = `Сон: Выкл`;
-    if (btn) btn.classList.remove('active');
+  if (state.sleepTimerMinutes === 0) {
     state.sleepTimerEndMs = 0;
+    text('sleep-timer-text', 'Сон: Выкл');
+    $('btn-sleep-timer')?.classList.remove('active');
+  } else {
+    state.sleepTimerEndMs = Date.now() + (state.sleepTimerMinutes * 60 * 1000);
+    text('sleep-timer-text', `Сон: ${state.sleepTimerMinutes}м`);
+    $('btn-sleep-timer')?.classList.add('active');
   }
 }
 
 function checkSleepTimerTick() {
-  if (state.sleepTimerMinutes > 0 && state.sleepTimerEndMs > 0) {
+  if (state.sleepTimerEndMs > 0) {
     const leftMs = state.sleepTimerEndMs - Date.now();
     if (leftMs <= 0) {
       state.sleepTimerMinutes = 0;
@@ -517,102 +647,81 @@ function checkSleepTimerTick() {
       text('sleep-timer-text', 'Сон: Выкл');
       $('btn-sleep-timer')?.classList.remove('active');
 
+      // Pause playback
       const hlsVideo = $('hls-player');
-      if (hlsVideo) {
-        hlsVideo.pause();
-        hlsVideo.classList.add('hidden');
-      }
-      const bumperScreen = $('bumper-screen');
-      if (bumperScreen) {
-        bumperScreen.classList.remove('hidden');
-        text('bumper-logo', 'yturokTV');
-        text('bumper-text', 'ТЕЛЕВИЗОР ВЫКЛЮЧЕН ПО ТАЙМЕРУ СНА 🌙\n\nСпокойной ночи! Эфир ждёт вас завтра.');
-      }
+      if (hlsVideo) hlsVideo.pause();
+      if (state.ytPlayer && state.ytPlayer.pauseVideo) state.ytPlayer.pauseVideo();
+      alert("🌙 Таймер сна: Эфир yturokTV приостановлен. Приятных снов!");
     } else {
-      const leftM = Math.ceil(leftMs / 60000);
-      text('sleep-timer-text', `Сон: ${leftM}м`);
+      const leftMin = Math.ceil(leftMs / 60000);
+      text('sleep-timer-text', `Сон: ${leftMin}м`);
     }
   }
 }
 
-// Catch-Up TV (Начать сначала / В эфир)
-function initCatchUpButtons() {
-  const btnStartOver = $('btn-start-over');
-  const btnGoLive = $('btn-go-live');
+// Live Viewer Floating Reactions
+function spawnFloatingReaction(emoji) {
+  const stage = $('reactions-stage');
+  if (!stage) return;
 
-  if (btnStartOver) {
-    btnStartOver.addEventListener('click', () => {
-      const hlsVideo = $('hls-player');
-      if (hlsVideo) {
-        state.isCatchUpMode = true;
-        try { hlsVideo.currentTime = 0; } catch (e) {}
-        btnStartOver.classList.add('hidden');
-        btnGoLive?.classList.remove('hidden');
-      }
-    });
-  }
+  const el = document.createElement('div');
+  el.className = 'floating-emoji';
+  el.textContent = emoji;
 
-  if (btnGoLive) {
-    btnGoLive.addEventListener('click', () => {
-      state.isCatchUpMode = false;
-      btnGoLive.classList.add('hidden');
-      btnStartOver?.classList.remove('hidden');
-      const channel = state.channels[state.currentChannelIndex];
-      if (channel) {
-        const { elapsed } = calculateBroadcastPosition(channel);
-        const hlsVideo = $('hls-player');
-        if (hlsVideo) {
-          try { hlsVideo.currentTime = elapsed; } catch (e) {}
-        }
-      }
-    });
-  }
+  const randomLeft = 15 + Math.random() * 70;
+  el.style.left = `${randomLeft}%`;
+
+  stage.appendChild(el);
+  setTimeout(() => el.remove(), 2600);
 }
 
-// Apply CRT state strictly without regressions
-function applyCRT() {
-  const tvCabinet = $('tv-cabinet');
-  const crtBtn = $('btn-toggle-crt');
-  const crtText = $('crt-status-text');
-
-  if (tvCabinet) {
-    if (state.crtEnabled) {
-      tvCabinet.classList.add('crt-mode');
-      if (crtBtn) crtBtn.classList.add('active');
-      if (crtText) crtText.textContent = "ЭЛТ: ВКЛ";
-    } else {
-      tvCabinet.classList.remove('crt-mode');
-      if (crtBtn) crtBtn.classList.remove('active');
-      if (crtText) crtText.textContent = "ЭЛТ: ВЫКЛ";
-    }
-  }
+// -----------------------------------------------------------------------------
+// Category Filtering Helpers
+// -----------------------------------------------------------------------------
+function getFilteredChannels(category = state.activeCategory) {
+  if (!category || category === 'all') return state.channels;
+  return state.channels.filter(ch => ch.category === category);
 }
 
-// Render Left Vertical Navigation Rail (3 Streams with icons & names)
+// Render Left Vertical Navigation Rail
 function renderVerticalChannelDock() {
   const dock = $('vertical-channel-dock');
   if (!dock) return;
   dock.innerHTML = '';
 
-  state.channels.forEach((ch, idx) => {
-    const isActive = idx === state.currentChannelIndex;
+  const channelsToRender = getFilteredChannels(state.activeCategory);
+  text('active-category-count', `${channelsToRender.length} ${channelsToRender.length === 1 ? 'канал' : 'каналов'}`);
+
+  channelsToRender.forEach(ch => {
+    const realIndex = state.channels.indexOf(ch);
+    const isActive = realIndex === state.currentChannelIndex;
     const btn = document.createElement('button');
     btn.className = `rail-channel-btn ${isActive ? 'active' : ''}`;
-    btn.title = `${ch.name}: ${ch.tagline || ''}`;
+    btn.title = `${ch.number} ${ch.name}: ${ch.tagline || ''}`;
     
-    const icon = ch.icon || (idx === 0 ? 'wb_sunny' : idx === 1 ? 'wb_twilight' : 'dark_mode');
+    const icon = ch.icon || 'tv';
     
     btn.innerHTML = `
-      <span class="material-symbols-outlined text-[20px] ${isActive ? 'text-white' : 'text-gray-400'}">${icon}</span>
-      <span class="text-[10px] font-black uppercase tracking-wider leading-tight">${ch.shortName || ch.name}</span>
-      <span class="text-[8px] font-mono ${isActive ? 'text-purple-200' : 'text-gray-500'} font-bold">${ch.number}</span>
+      <div class="flex items-center justify-center w-7 h-7 rounded-lg bg-black/40 flex-shrink-0">
+        <span class="material-symbols-outlined text-[17px] ${isActive ? 'text-white' : 'text-gray-400'}">${icon}</span>
+      </div>
+      <div class="flex flex-col min-w-0 flex-1">
+        <div class="flex items-center justify-between gap-1">
+          <span class="text-[11px] font-bold text-white truncate">${ch.shortName || ch.name}</span>
+          <span class="text-[9px] font-mono ${isActive ? 'text-purple-200' : 'text-gray-400'} font-bold flex-shrink-0">${ch.number}</span>
+        </div>
+        <span class="text-[9px] text-gray-400 truncate">${ch.badge || ch.categoryName}</span>
+      </div>
+      ${isActive ? '<span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse flex-shrink-0"></span>' : ''}
     `;
+
     btn.addEventListener('click', () => {
-      if (state.currentChannelIndex !== idx) {
-        state.currentChannelIndex = idx;
+      if (state.currentChannelIndex !== realIndex) {
+        state.currentChannelIndex = realIndex;
         playCurrentChannel(true);
       }
     });
+
     dock.appendChild(btn);
   });
 }
@@ -623,14 +732,18 @@ function renderInspectorGrid() {
   if (!container) return;
   container.innerHTML = '';
 
+  const activeChannel = state.channels[state.currentChannelIndex];
+  text('radar-channels-count', `${state.channels.length - 1} каналов`);
+
   state.channels.forEach((ch, idx) => {
-    if (idx === state.currentChannelIndex) return; // Hide active playing stream
+    if (idx === state.currentChannelIndex) return; // Hide current playing channel
+
     const { currentItem, progressPercent, nextItem } = calculateBroadcastPosition(ch);
 
     const card = document.createElement('div');
     card.className = "p-3 rounded-2xl bg-[#141520] hover:bg-[#1c1d2c] cursor-pointer transition flex flex-col gap-2 group border border-white/5 hover:border-purple-500/30 shadow-md";
     
-    const icon = ch.icon || (idx === 0 ? 'wb_sunny' : idx === 1 ? 'wb_twilight' : 'dark_mode');
+    const icon = ch.icon || 'tv';
     const isRepeat = currentItem.badgeTag && currentItem.badgeTag.includes("ПОВТОР");
     const tagStyle = isRepeat ? "bg-cyan-500/20 text-cyan-300" : "bg-emerald-500/20 text-emerald-300";
 
@@ -638,7 +751,7 @@ function renderInspectorGrid() {
       <div class="flex items-center justify-between text-[11px]">
         <div class="flex items-center gap-1.5 truncate">
           <span class="material-symbols-outlined text-[15px] text-purple-400">${icon}</span>
-          <span class="font-black text-white uppercase text-[11px] truncate tracking-wider">${ch.name}</span>
+          <span class="font-bold text-white uppercase text-[11px] truncate tracking-wider">${ch.number} ${ch.shortName || ch.name}</span>
         </div>
         <span class="text-[10px] text-gray-400 font-mono font-bold">${progressPercent}%</span>
       </div>
@@ -650,6 +763,7 @@ function renderInspectorGrid() {
             <span class="px-1.5 py-0.5 rounded text-[8px] font-bold ${tagStyle}">
               ${currentItem.badgeTag || "⭐ ПРЕМЬЕРА"}
             </span>
+            <span class="text-[9px] font-mono text-gray-400">${ch.categoryName}</span>
           </div>
           <div class="text-xs font-bold text-white truncate group-hover:text-purple-300 transition">
             ${currentItem.title}
@@ -679,7 +793,9 @@ function renderInspectorGrid() {
   });
 }
 
-// Redesigned Teleprogram (EPG) with Exact Timetable
+// -----------------------------------------------------------------------------
+// Redesigned Teleprogram (EPG) with Exact Timetable & Categories
+// -----------------------------------------------------------------------------
 function renderEPG() {
   const tabs = $('epg-tabs');
   const scheduleList = $('epg-schedule-list');
@@ -689,15 +805,22 @@ function renderEPG() {
     state.activeEpgChannelId = state.channels[state.currentChannelIndex]?.id || state.channels[0].id;
   }
 
-  // Render Stream Tabs
+  // Render Channel Tabs matching active EPG Category
   if (tabs) {
     tabs.innerHTML = '';
-    state.channels.forEach(ch => {
+    const epgChannels = getFilteredChannels(state.activeEpgCategory);
+
+    // If active channel not in filtered list, select first of filtered
+    if (!epgChannels.some(c => c.id === state.activeEpgChannelId) && epgChannels.length > 0) {
+      state.activeEpgChannelId = epgChannels[0].id;
+    }
+
+    epgChannels.forEach(ch => {
       const isTabActive = ch.id === state.activeEpgChannelId;
       const btn = document.createElement('button');
       btn.className = `m3-chip ${isTabActive ? 'active' : ''}`;
-      const icon = ch.icon || 'live_tv';
-      btn.innerHTML = `<span class="material-symbols-outlined text-[16px]">${icon}</span> <span class="font-bold">${ch.name}</span>`;
+      const icon = ch.icon || 'tv';
+      btn.innerHTML = `<span class="material-symbols-outlined text-[15px]">${icon}</span> <span class="font-bold">${ch.number} ${ch.shortName || ch.name}</span>`;
       btn.addEventListener('click', () => {
         state.activeEpgChannelId = ch.id;
         renderEPG();
@@ -711,7 +834,7 @@ function renderEPG() {
 
   const schedule = channel.schedule;
   if (!schedule || schedule.length === 0) {
-    scheduleList.innerHTML = `<div class="text-center py-12 text-gray-400 text-xs">В сетке этого потока пока нет передач.</div>`;
+    scheduleList.innerHTML = `<div class="text-center py-12 text-gray-400 text-xs">В сетке этого канала пока нет передач.</div>`;
     return;
   }
 
@@ -758,45 +881,52 @@ function renderEPG() {
             <span class="text-[11px] font-mono text-gray-400">${formatTime(dur)}</span>
           </div>
           <h4 class="font-bold text-xs text-white truncate mt-0.5">${item.title}</h4>
-          <p class="text-[11px] text-purple-300 truncate">${item.episode || ''}</p>
+          <p class="text-[10px] text-purple-300 truncate">${item.episode || item.description || ''}</p>
         </div>
       </div>
-      <button class="btn-tune-epg m3-chip ${isNowPlaying ? 'active' : ''} flex-shrink-0">
-        ${isNowPlaying ? 'Смотреть' : 'Включить'}
-      </button>
+      <div class="flex items-center gap-2 flex-shrink-0">
+        ${isNowPlaying ? `
+          <button class="m3-chip active text-[10px] py-1 px-3" id="epg-jump-btn">
+            Смотреть
+          </button>
+        ` : ''}
+      </div>
     `;
 
-    row.querySelector('.btn-tune-epg').addEventListener('click', () => {
-      const chIdx = state.channels.findIndex(c => c.id === channel.id);
-      if (chIdx !== -1) {
-        state.currentChannelIndex = chIdx;
-        playCurrentChannel(true);
-        $('modal-epg')?.classList.add('hidden');
-      }
-    });
+    if (isNowPlaying) {
+      row.querySelector('#epg-jump-btn')?.addEventListener('click', () => {
+        const realIdx = state.channels.indexOf(channel);
+        if (realIdx !== -1) {
+          state.currentChannelIndex = realIdx;
+          playCurrentChannel(true);
+          $('modal-epg')?.classList.add('hidden');
+        }
+      });
+    }
 
     scheduleList.appendChild(row);
     rollingStartSec += dur;
   }
 }
 
-// Render Admin Summary & Live Search
+// -----------------------------------------------------------------------------
+// Admin Modal & Ingestion
+// -----------------------------------------------------------------------------
 function renderAdminSummary() {
   const container = $('admin-channels-summary');
   if (!container) return;
   container.innerHTML = '';
 
   state.channels.forEach(ch => {
-    const totalSec = ch.schedule.reduce((s, x) => s + (x.duration || 1440), 0);
-    const hours = (totalSec / 3600).toFixed(1);
+    const durH = ch.schedule.reduce((s, it) => s + (it.duration || 1440), 0) / 3600;
     const { currentItem } = calculateBroadcastPosition(ch);
 
     const card = document.createElement('div');
-    card.className = "p-3 rounded-2xl bg-[#181926] flex flex-col gap-1.5";
+    card.className = "p-3 rounded-2xl bg-[#141520] border border-white/5 flex flex-col gap-1.5";
     card.innerHTML = `
       <div class="flex items-center justify-between">
-        <span class="font-bold text-white flex items-center gap-1.5">${getChannelLogo(ch)} ${ch.name}</span>
-        <span class="text-[10px] font-mono text-purple-300">${hours} ч. • ${ch.schedule.length} серий</span>
+        <span class="font-bold text-white text-xs">${ch.number} ${ch.name}</span>
+        <span class="font-mono text-[10px] text-purple-300">${ch.schedule.length} передач (~${durH.toFixed(0)}ч)</span>
       </div>
       <div class="text-[11px] text-gray-300 truncate">
         Сейчас: <strong class="text-white">${currentItem.title}</strong> (${currentItem.episode || ''})
@@ -806,7 +936,6 @@ function renderAdminSummary() {
   });
 }
 
-// Admin AniLibria Live Search
 async function searchAdminCatalog(query) {
   const container = $('admin-search-results');
   if (!container) return;
@@ -873,7 +1002,6 @@ async function searchAdminCatalog(query) {
   }
 }
 
-// Ingest Release into target Channel
 async function addReleaseToChannel(alias, titleRu, poster, chIdx) {
   try {
     const res = await fetch(`https://anilibria.top/api/v1/anime/releases/${alias}`);
@@ -919,11 +1047,13 @@ async function addReleaseToChannel(alias, titleRu, poster, chIdx) {
   }
 }
 
-// Setup Event Listeners
+// -----------------------------------------------------------------------------
+// Event Listeners & UI Handlers
+// -----------------------------------------------------------------------------
 function setupEventListeners() {
   const tvCabinet = $('tv-cabinet');
 
-  // FLUID FULLSCREEN & NORMAL AUTO-HIDE CONTROLS
+  // Fluid Fullscreen & Normal Auto-hide Controls
   function showPlayerControls() {
     if (tvCabinet) {
       tvCabinet.classList.add('show-controls');
@@ -931,7 +1061,6 @@ function setupEventListeners() {
     }
     if (state.mouseTimer) clearTimeout(state.mouseTimer);
 
-    // Hide controls and cursor after 2.5 seconds of stillness
     state.mouseTimer = setTimeout(() => {
       if (tvCabinet) {
         tvCabinet.classList.remove('show-controls');
@@ -940,7 +1069,6 @@ function setupEventListeners() {
     }, 2500);
   }
 
-  // Listen to mousemove on TV Cabinet
   if (tvCabinet) {
     tvCabinet.addEventListener('mousemove', showPlayerControls);
     tvCabinet.addEventListener('mouseenter', showPlayerControls);
@@ -953,7 +1081,6 @@ function setupEventListeners() {
     });
   }
 
-  // In native fullscreen, listen on document so cursor anywhere triggers controls
   document.addEventListener('mousemove', () => {
     if (document.fullscreenElement) {
       showPlayerControls();
@@ -965,14 +1092,42 @@ function setupEventListeners() {
     state.isTVStarted = true;
     state.isMuted = false;
     $('unmute-overlay')?.classList.add('hidden');
+    
     const hlsVideo = $('hls-player');
     if (hlsVideo) {
       hlsVideo.muted = false;
       hlsVideo.volume = state.volume / 100;
       if (hlsVideo.paused) hlsVideo.play().catch(() => {});
     }
+
+    if (state.ytPlayer && state.ytPlayer.unMute) {
+      state.ytPlayer.unMute();
+      state.ytPlayer.setVolume(state.volume);
+      state.ytPlayer.playVideo();
+    }
+
     applyVolume();
     playChannelSwitchAudio();
+  });
+
+  // Category Selector Tabs in Left Rail
+  document.querySelectorAll('#category-selector-tabs .m3-category-chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#category-selector-tabs .m3-category-chip').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      state.activeCategory = btn.dataset.cat || 'all';
+      renderVerticalChannelDock();
+    });
+  });
+
+  // Category Selector Tabs in EPG Modal
+  document.querySelectorAll('#epg-categories .m3-category-chip').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#epg-categories .m3-category-chip').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      state.activeEpgCategory = btn.dataset.epgCat || 'all';
+      renderEPG();
+    });
   });
 
   // Next / Prev Channel Buttons
@@ -1020,6 +1175,14 @@ function setupEventListeners() {
       hlsVideo.muted = state.isMuted;
       hlsVideo.volume = state.volume / 100;
     }
+
+    if (state.ytPlayer && state.ytPlayer.setVolume) {
+      if (state.isMuted) state.ytPlayer.mute();
+      else {
+        state.ytPlayer.unMute();
+        state.ytPlayer.setVolume(state.volume);
+      }
+    }
   }
 
   // CRT Screen Toggle with LocalStorage persistence
@@ -1032,7 +1195,7 @@ function setupEventListeners() {
   on('btn-toggle-crt', 'click', toggleCRT);
   on('btn-player-crt', 'click', toggleCRT);
 
-  // Fullscreen Cinema mode (Развернуть на весь экран)
+  // Fullscreen Cinema mode
   function toggleFullscreen() {
     const el = $('tv-cabinet');
     if (!el) return;
@@ -1053,10 +1216,14 @@ function setupEventListeners() {
       await syncAtomicTime();
       const channel = state.channels[state.currentChannelIndex];
       if (channel) {
-        const { elapsed } = calculateBroadcastPosition(channel);
-        const hlsVideo = $('hls-player');
-        if (hlsVideo && hlsVideo.duration && elapsed < hlsVideo.duration) {
-          try { hlsVideo.currentTime = elapsed; } catch(e) {}
+        const { currentItem, elapsed } = calculateBroadcastPosition(channel);
+        if (currentItem.type === 'youtube' || currentItem.youtubeId) {
+          if (state.ytPlayer && state.ytPlayer.seekTo) state.ytPlayer.seekTo(elapsed, true);
+        } else {
+          const hlsVideo = $('hls-player');
+          if (hlsVideo && hlsVideo.duration && elapsed < hlsVideo.duration) {
+            try { hlsVideo.currentTime = elapsed; } catch(e) {}
+          }
         }
       }
       setTimeout(() => {
@@ -1129,20 +1296,12 @@ function setupEventListeners() {
     } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
       state.currentChannelIndex = (state.currentChannelIndex - 1 + state.channels.length) % state.channels.length;
       playCurrentChannel(true);
-    } else if (['1', '2', '3'].includes(e.key)) {
+    } else if (['1', '2', '3', '4', '5', '6', '7', '8', '9'].includes(e.key)) {
       const targetIdx = parseInt(e.key, 10) - 1;
       if (targetIdx < state.channels.length) {
         state.currentChannelIndex = targetIdx;
         playCurrentChannel(true);
       }
-    } else if (e.key === '5') {
-      spawnFloatingReaction('🔥');
-    } else if (e.key === '6') {
-      spawnFloatingReaction('😂');
-    } else if (e.key === '7') {
-      spawnFloatingReaction('😱');
-    } else if (e.key === '8') {
-      spawnFloatingReaction('🍿');
     } else if (e.key.toLowerCase() === 'm') {
       toggleMute();
     } else if (e.key.toLowerCase() === 'f') {
@@ -1151,7 +1310,9 @@ function setupEventListeners() {
   });
 }
 
-// Master Periodic Loop: Clock Ticking, Sverdlovsk Sync, Sleep Timer & Stream Drift Correction
+// -----------------------------------------------------------------------------
+// Master Periodic Loop
+// -----------------------------------------------------------------------------
 function startMasterLoop() {
   tickClock();
 
@@ -1159,7 +1320,7 @@ function startMasterLoop() {
     tickClock();
     checkSleepTimerTick();
 
-    // Occasional ambient viewer reaction
+    // Occasional ambient reaction
     if (Math.random() < 0.05 && state.isTVStarted) {
       spawnFloatingReaction(['🔥', '🚀', '🍿', '😂'][Math.floor(Math.random() * 4)]);
     }
@@ -1174,20 +1335,32 @@ function startMasterLoop() {
         if (prog) prog.style.width = `${progressPercent}%`;
         text('broadcast-time-text', `${formatTime(elapsed)} / ${formatTime(currentItem.duration || 1400)}`);
 
-        // Stream Drift Auto-Correction (Snaps video to deterministic Sverdlovsk time unless Catch-Up mode is on)
-        const hlsVideo = $('hls-player');
-        if (!state.isCatchUpMode && hlsVideo && !hlsVideo.paused && currentItem.type !== 'bumper' && hlsVideo.duration) {
-          const drift = Math.abs(hlsVideo.currentTime - elapsed);
-          if (drift > 3 && elapsed < hlsVideo.duration) {
-            console.log(`[TV Sync] Correcting drift ${drift.toFixed(1)}s -> snapping to ${elapsed.toFixed(1)}s`);
-            try { hlsVideo.currentTime = elapsed; } catch (err) {}
+        // Stream Drift Auto-Correction
+        if (!state.isCatchUpMode) {
+          if (currentItem.type === 'youtube' || currentItem.youtubeId) {
+            if (state.ytPlayer && state.ytPlayer.getCurrentTime) {
+              try {
+                const cur = state.ytPlayer.getCurrentTime();
+                if (Math.abs(cur - elapsed) > 4 && elapsed < (currentItem.duration || 1400)) {
+                  state.ytPlayer.seekTo(elapsed, true);
+                }
+              } catch (e) {}
+            }
+          } else {
+            const hlsVideo = $('hls-player');
+            if (hlsVideo && !hlsVideo.paused && currentItem.type !== 'bumper' && hlsVideo.duration) {
+              const drift = Math.abs(hlsVideo.currentTime - elapsed);
+              if (drift > 3 && elapsed < hlsVideo.duration) {
+                try { hlsVideo.currentTime = elapsed; } catch (err) {}
+              }
+            }
           }
         }
       }
     }
   }, 1000);
 
-  // Periodic Atomic Time Sync every 60 seconds
+  // Periodic Atomic Time Sync every 60s
   setInterval(() => {
     syncAtomicTime().catch(() => {});
   }, 60000);
@@ -1195,7 +1368,6 @@ function startMasterLoop() {
 
 // Application Startup
 window.addEventListener('DOMContentLoaded', async () => {
-  // Restore CRT preference
   const savedCrt = localStorage.getItem('yturok_crt_enabled');
   if (savedCrt !== null) {
     state.crtEnabled = (savedCrt === 'true');
@@ -1214,7 +1386,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   updateAmbilight(initialChannel.color);
   applyCRT();
 
-  // Start background playback (muted initially for browser autoplay compliance)
+  // Start background playback (muted initially for browser autoplay policy)
   playCurrentChannel(false);
 
   // Background non-blocking sync

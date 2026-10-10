@@ -251,36 +251,72 @@ input[type="range"]::-webkit-slider-thumb:hover {
   transform: scale(1.3);
 }
 
-/* Left Navigation Rail Streams */
+/* Material 3 Category Filter Chips */
+.m3-category-chip {
+  background-color: var(--md-sys-color-surface-container);
+  border-radius: var(--shape-corner-full);
+  color: #94a3b8;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  gap: 4px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+  flex-shrink: 0;
+}
+
+.m3-category-chip:hover {
+  background-color: var(--md-sys-color-surface-container-high);
+  color: #ffffff;
+}
+
+.m3-category-chip.active {
+  background-color: var(--md-sys-color-primary-container);
+  color: var(--md-sys-color-on-primary-container);
+  border-color: rgba(208, 188, 255, 0.3);
+  box-shadow: 0 0 14px -3px rgba(208, 188, 255, 0.3);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Left Navigation Rail Channels */
 .rail-channel-btn {
   width: 100%;
-  height: 62px;
-  border-radius: 18px;
+  padding: 8px 10px;
+  border-radius: 14px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 2px;
+  gap: 8px;
   background-color: var(--md-sys-color-surface-container);
   color: #94a3b8;
   cursor: pointer;
   border: 1px solid rgba(255, 255, 255, 0.04);
   transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
   position: relative;
-  padding: 6px 4px;
+  text-align: left;
 }
 
 .rail-channel-btn:hover {
   background-color: var(--md-sys-color-surface-container-high);
   color: #ffffff;
-  transform: translateY(-1px);
+  transform: translateX(2px);
 }
 
 .rail-channel-btn.active {
   background-color: var(--md-sys-color-primary-container);
   color: #ffffff;
   border-color: rgba(208, 188, 255, 0.25);
-  box-shadow: 0 0 20px -3px var(--channel-glow);
+  box-shadow: 0 0 18px -3px var(--channel-glow);
 }
 
 /* 2x2 Retro Text Bumper */

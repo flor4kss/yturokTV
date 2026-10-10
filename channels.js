@@ -1,12 +1,14 @@
-// Недельная прогрессивная сетка телевещания yturokTV (7 дней уникального контента)
+// Полная 12-канальная мульти-категорийная сетка вещания yturokTV (4 категории • 24/7)
 export const DEFAULT_CHANNELS = [
   {
     "id": "yturok-morning",
     "number": "01",
     "streamId": "morning",
-    "name": "УТРЕННИЙ ЭФИР",
+    "category": "anime",
+    "categoryName": "Аниме",
+    "name": "yturokTV • УТРО",
     "shortName": "УТРО",
-    "tagline": "Мультики и лёгкое ТВ: Смешарики, Семья шпиона, Доктор Стоун, Одинокий рокер",
+    "tagline": "Мультики и лёгкое аниме: Семья шпиона, Смешарики, Доктор Стоун, Одинокий рокер",
     "icon": "wb_sunny",
     "logoSvg": "toonster",
     "badge": "МУЛЬТЫ & ТОП",
@@ -124,96 +126,6 @@ export const DEFAULT_CHANNELS = [
       },
       {
         "title": "Семья шпиона",
-        "episode": "Серия 1: Серия 1",
-        "duration": 1449,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9161/1/720/035988346d1cc4626f7126516a92d59a.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира меж..."
-      },
-      {
-        "title": "Семья шпиона",
-        "episode": "Серия 2: Серия 2",
-        "duration": 1450,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9161/2/720/d3088b1ee0b6cb108cf269e1bc51f1bc.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира меж..."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 6: Истории Ромашковой долины",
-        "duration": 420,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac24.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Доктор Стоун",
-        "episode": "Серия 1: Каменный мир",
-        "duration": 1446,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8398/1/720/cdd452f04705ec04e81e2d666693327e.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
-      },
-      {
-        "title": "Доктор Стоун",
-        "episode": "Серия 2: Король каменного мира",
-        "duration": 1446,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8398/2/720/3c16825d2b7b1530520d9bb968ff1720.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 7: Истории Ромашковой долины",
-        "duration": 420,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac25.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 8: Истории Ромашковой долины",
-        "duration": 1090,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac26.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 4: Истории Ромашковой долины",
-        "duration": 420,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac22.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 5: Истории Ромашковой долины",
-        "duration": 480,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac23.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Семья шпиона",
         "episode": "Серия 3: Серия 3",
         "duration": 1450,
         "type": "hls",
@@ -281,96 +193,6 @@ export const DEFAULT_CHANNELS = [
         "poster": "https://anilibria.top/storage/releases/posters/9293/pqI3PQ8v8c7tlFHuPjsSbAbHrbm8madK.jpg",
         "badgeTag": "⭐ ПРЕМЬЕРА",
         "description": "Забавная история об одинокой и до ужаса стеснительной школьнице Хитори Гото, которая, взяв в руки гитару, загорелась желанием создать в старшей школе ..."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 7: Истории Ромашковой долины",
-        "duration": 420,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac25.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 8: Истории Ромашковой долины",
-        "duration": 1090,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac26.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Семья шпиона",
-        "episode": "Серия 1: Серия 1",
-        "duration": 1449,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9161/1/720/035988346d1cc4626f7126516a92d59a.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира меж..."
-      },
-      {
-        "title": "Семья шпиона",
-        "episode": "Серия 2: Серия 2",
-        "duration": 1450,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9161/2/720/d3088b1ee0b6cb108cf269e1bc51f1bc.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира меж..."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 9: Истории Ромашковой долины",
-        "duration": 460,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac27.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Доктор Стоун",
-        "episode": "Серия 1: Каменный мир",
-        "duration": 1446,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8398/1/720/cdd452f04705ec04e81e2d666693327e.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
-      },
-      {
-        "title": "Доктор Стоун",
-        "episode": "Серия 2: Король каменного мира",
-        "duration": 1446,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8398/2/720/3c16825d2b7b1530520d9bb968ff1720.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 10: Истории Ромашковой долины",
-        "duration": 420,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac28.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 11: Истории Ромашковой долины",
-        "duration": 420,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac30.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
       },
       {
         "title": "Смешарики",
@@ -484,96 +306,6 @@ export const DEFAULT_CHANNELS = [
       },
       {
         "title": "Семья шпиона",
-        "episode": "Серия 3: Серия 3",
-        "duration": 1450,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9161/3/720/cc439da357051e55f535d79cde9db8b8.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира меж..."
-      },
-      {
-        "title": "Семья шпиона",
-        "episode": "Серия 4: Серия 4",
-        "duration": 1450,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9161/4/720/b222070504cb5717cf01276362ba1ebf.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира меж..."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 1: Истории Ромашковой долины",
-        "duration": 480,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac14.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Доктор Стоун",
-        "episode": "Серия 3: Оружие науки",
-        "duration": 1446,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8398/3/720/5953f8ede28f2ec0b4a40b166c915760.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
-      },
-      {
-        "title": "Доктор Стоун",
-        "episode": "Серия 4: Дымовой сигнал",
-        "duration": 1446,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8398/4/720/dd94d0f616dedc2d7c9b2d2a03777ca6.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 2: Истории Ромашковой долины",
-        "duration": 790,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac20.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 3: Истории Ромашковой долины",
-        "duration": 420,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac21.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 10: Истории Ромашковой долины",
-        "duration": 420,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac28.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 11: Истории Ромашковой долины",
-        "duration": 420,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac30.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Семья шпиона",
         "episode": "Серия 7: Серия 7",
         "duration": 1450,
         "type": "hls",
@@ -641,96 +373,6 @@ export const DEFAULT_CHANNELS = [
         "poster": "https://anilibria.top/storage/releases/posters/9293/pqI3PQ8v8c7tlFHuPjsSbAbHrbm8madK.jpg",
         "badgeTag": "⭐ ПРЕМЬЕРА",
         "description": "Забавная история об одинокой и до ужаса стеснительной школьнице Хитори Гото, которая, взяв в руки гитару, загорелась желанием создать в старшей школе ..."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 2: Истории Ромашковой долины",
-        "duration": 790,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac20.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 3: Истории Ромашковой долины",
-        "duration": 420,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac21.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Семья шпиона",
-        "episode": "Серия 5: Серия 5",
-        "duration": 1449,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9161/5/720/ad6d189109340dc01c6955ffff7fae3c.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира меж..."
-      },
-      {
-        "title": "Семья шпиона",
-        "episode": "Серия 6: Серия 6",
-        "duration": 1450,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9161/6/720/c56e76df52f1c0407ec02c9a8338f602.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира меж..."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 4: Истории Ромашковой долины",
-        "duration": 420,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac22.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Доктор Стоун",
-        "episode": "Серия 5: Начало Каменного Мира",
-        "duration": 1440,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8398/5/720/c0eecedeed04d2208255d1446e1ce38d.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
-      },
-      {
-        "title": "Доктор Стоун",
-        "episode": "Серия 6: Два народа каменного мира",
-        "duration": 1439,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8398/6/720/d822b09188518404f5b0392e7bda7502.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 5: Истории Ромашковой долины",
-        "duration": 480,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac23.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 6: Истории Ромашковой долины",
-        "duration": 420,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac24.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
       },
       {
         "title": "Смешарики",
@@ -844,96 +486,6 @@ export const DEFAULT_CHANNELS = [
       },
       {
         "title": "Семья шпиона",
-        "episode": "Серия 7: Серия 7",
-        "duration": 1450,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9161/7/720/803bc7a842c985ec1d7bbddff5d29317.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира меж..."
-      },
-      {
-        "title": "Семья шпиона",
-        "episode": "Серия 8: Серия 8",
-        "duration": 1449,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9161/8/720/38c2ffead92ee4fbef4cc3fadfd58367.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира меж..."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 7: Истории Ромашковой долины",
-        "duration": 420,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac25.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Доктор Стоун",
-        "episode": "Серия 7: Куда ушли два миллиона лет",
-        "duration": 1439,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8398/7/720/ce887151adb1f2e09721ed19f95210e6.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
-      },
-      {
-        "title": "Доктор Стоун",
-        "episode": "Серия 8: Каменный путь",
-        "duration": 1440,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8398/8/720/a73c5e26b26c44d67cd654261766abf9.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 8: Истории Ромашковой долины",
-        "duration": 1090,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac26.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 9: Истории Ромашковой долины",
-        "duration": 460,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac27.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 5: Истории Ромашковой долины",
-        "duration": 480,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac23.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 6: Истории Ромашковой долины",
-        "duration": 420,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac24.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Семья шпиона",
         "episode": "Серия 11: Серия 11",
         "duration": 1449,
         "type": "hls",
@@ -1024,96 +576,6 @@ export const DEFAULT_CHANNELS = [
       },
       {
         "title": "Семья шпиона",
-        "episode": "Серия 9: Серия 9",
-        "duration": 1450,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9161/9/720/72e5e1013de0df68649f57e017f1d005.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира меж..."
-      },
-      {
-        "title": "Семья шпиона",
-        "episode": "Серия 10: Серия 10",
-        "duration": 1450,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9161/10/720/c55d189df3479f35d9029ae8b99b66f9.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира меж..."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 10: Истории Ромашковой долины",
-        "duration": 420,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac28.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Доктор Стоун",
-        "episode": "Серия 9: Да будет свет науки",
-        "duration": 1446,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8398/9/720/362410933a363cd08586912add6e76ef.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
-      },
-      {
-        "title": "Доктор Стоун",
-        "episode": "Серия 10: Хрупкий союз",
-        "duration": 1446,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8398/10/720/09d72073f24688b4d037279d5d82c3f3.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 11: Истории Ромашковой долины",
-        "duration": 420,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac30.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 1: Истории Ромашковой долины",
-        "duration": 480,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac14.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 8: Истории Ромашковой долины",
-        "duration": 1090,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac26.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 9: Истории Ромашковой долины",
-        "duration": 460,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac27.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Семья шпиона",
         "episode": "Серия 1: Серия 1",
         "duration": 1449,
         "type": "hls",
@@ -1181,96 +643,6 @@ export const DEFAULT_CHANNELS = [
         "poster": "https://anilibria.top/storage/releases/posters/9293/pqI3PQ8v8c7tlFHuPjsSbAbHrbm8madK.jpg",
         "badgeTag": "⭐ ПРЕМЬЕРА",
         "description": "Забавная история об одинокой и до ужаса стеснительной школьнице Хитори Гото, которая, взяв в руки гитару, загорелась желанием создать в старшей школе ..."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 11: Истории Ромашковой долины",
-        "duration": 420,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac30.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 1: Истории Ромашковой долины",
-        "duration": 480,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac14.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Семья шпиона",
-        "episode": "Серия 11: Серия 11",
-        "duration": 1449,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9161/11/720/14feecd9f5aca68360945077480d90d5.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира меж..."
-      },
-      {
-        "title": "Семья шпиона",
-        "episode": "Серия 12: Серия 12",
-        "duration": 1450,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9161/12/720/259a37788ebefb0e573366672c7a8fbd.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Ллойд Форджер — профессиональный шпион под кодовым именем Сумрак получает особое задание от командования, целью которого является поддержание мира меж..."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 2: Истории Ромашковой долины",
-        "duration": 790,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac20.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Доктор Стоун",
-        "episode": "Серия 11: Ясный мир",
-        "duration": 1446,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8398/11/720/490fb9ea4f563444e216a7ed5431abfc.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
-      },
-      {
-        "title": "Доктор Стоун",
-        "episode": "Серия 12: Спина к спине",
-        "duration": 1446,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8398/12/720/dcecb593b1861fbde506acd851132bbd.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8398/F1wKA5OXKjB6gItpe1woI8Qj7DCTd5HX.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Вас ожидает фантастическое приключение, двух друзей которые пытаются возродить человечество после того, как несколько столетий назад все люди на земле..."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 3: Истории Ромашковой долины",
-        "duration": 420,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac21.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 4: Истории Ромашковой долины",
-        "duration": 420,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac22.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Приключения Кроша, Ёжика, Нюши, Бараша и Кар-Карыча."
       }
     ]
   },
@@ -1278,12 +650,14 @@ export const DEFAULT_CHANNELS = [
     "id": "yturok-day",
     "number": "02",
     "streamId": "day",
-    "name": "ДНЕВНОЙ ЭФИР",
+    "category": "anime",
+    "categoryName": "Аниме",
+    "name": "yturokTV • ДЕНЬ",
     "shortName": "ДЕНЬ",
-    "tagline": "Аниме-хиты и сёнэн: Клинок, рассекающий демонов, Магическая битва, Solo Leveling, Ванпанчмен",
+    "tagline": "Топовый сёнен: Клинок рассекающий демонов, Магическая битва, Solo Leveling, Ванпанчмен",
     "icon": "wb_twilight",
     "logoSvg": "animehit",
-    "badge": "АНИМЕ ХИТЫ",
+    "badge": "СЁНЕН ХИТ",
     "color": "#f43f5e",
     "schedule": [
       {
@@ -1365,46 +739,6 @@ export const DEFAULT_CHANNELS = [
         "poster": "https://anilibria.top/storage/releases/posters/1210/XssyhK2MH4H8S7A35bMJeuXbpFgbaW4X.jpg",
         "badgeTag": "⭐ ПРЕМЬЕРА",
         "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайт..."
-      },
-      {
-        "title": "Клинок, рассекающий демонов",
-        "episode": "Серия 1: Серия 1",
-        "duration": 1440,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8325/1/720/6345e24e3d20a19882e0a992f9f7d8d4.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
-      },
-      {
-        "title": "Клинок, рассекающий демонов",
-        "episode": "Серия 2: Учитель Саконджи Урокодаки",
-        "duration": 1440,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8325/2/720/189457294d11300596b717b7081bd365.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
-      },
-      {
-        "title": "Магическая битва",
-        "episode": "Серия 1: Серия 1",
-        "duration": 1435,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8789/1/720/6673036bb2bf535a5e149abe4ed52af3.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
-      },
-      {
-        "title": "Магическая битва",
-        "episode": "Серия 2: Серия 2",
-        "duration": 1435,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8789/2/720/2580e1bc9a9b85aebcc3d1b388e998a9.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
       },
       {
         "title": "Клинок, Рассекающий Демонов: Квартал Красных Фонарей",
@@ -1527,46 +861,6 @@ export const DEFAULT_CHANNELS = [
         "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайт..."
       },
       {
-        "title": "Клинок, рассекающий демонов",
-        "episode": "Серия 1: Серия 1",
-        "duration": 1440,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8325/1/720/6345e24e3d20a19882e0a992f9f7d8d4.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
-      },
-      {
-        "title": "Клинок, рассекающий демонов",
-        "episode": "Серия 2: Учитель Саконджи Урокодаки",
-        "duration": 1440,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8325/2/720/189457294d11300596b717b7081bd365.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
-      },
-      {
-        "title": "Магическая битва",
-        "episode": "Серия 1: Серия 1",
-        "duration": 1435,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8789/1/720/6673036bb2bf535a5e149abe4ed52af3.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
-      },
-      {
-        "title": "Магическая битва",
-        "episode": "Серия 2: Серия 2",
-        "duration": 1435,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8789/2/720/2580e1bc9a9b85aebcc3d1b388e998a9.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
-      },
-      {
         "title": "Клинок, Рассекающий Демонов: Квартал Красных Фонарей",
         "episode": "Серия 3: Серия 3",
         "duration": 1432,
@@ -1685,46 +979,6 @@ export const DEFAULT_CHANNELS = [
         "poster": "https://anilibria.top/storage/releases/posters/1210/XssyhK2MH4H8S7A35bMJeuXbpFgbaW4X.jpg",
         "badgeTag": "⭐ ПРЕМЬЕРА",
         "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайт..."
-      },
-      {
-        "title": "Клинок, рассекающий демонов",
-        "episode": "Серия 3: Сабито Макомо",
-        "duration": 1440,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8325/3/720/36ed7d31a112aeaefc2e9e249ed89b32.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
-      },
-      {
-        "title": "Клинок, рассекающий демонов",
-        "episode": "Серия 4: Финальный отбор",
-        "duration": 1440,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8325/4/720/b3dd9f7fe28032a42869fa89e5138f97.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
-      },
-      {
-        "title": "Магическая битва",
-        "episode": "Серия 3: Серия 3",
-        "duration": 1435,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8789/3/720/3fb53b7e8c96803d13ccc4b18ca8d748.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
-      },
-      {
-        "title": "Магическая битва",
-        "episode": "Серия 4: Серия 4",
-        "duration": 1435,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8789/4/720/7a43b7781730a5d5ae47d5b1b6bdd3fb.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
       },
       {
         "title": "Клинок, Рассекающий Демонов: Квартал Красных Фонарей",
@@ -1847,46 +1101,6 @@ export const DEFAULT_CHANNELS = [
         "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайт..."
       },
       {
-        "title": "Клинок, рассекающий демонов",
-        "episode": "Серия 5: Моя собственная сталь",
-        "duration": 1440,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8325/5/720/bda04ab7382ed51be5f08c9bdda59abf.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
-      },
-      {
-        "title": "Клинок, рассекающий демонов",
-        "episode": "Серия 6: Мечник, сопровождающий демона",
-        "duration": 1440,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8325/6/720/d7b2563a683771bd1f1e508f51856eae.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
-      },
-      {
-        "title": "Магическая битва",
-        "episode": "Серия 5: Серия 5",
-        "duration": 1435,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8789/5/720/fea53eece8f1dd9a43653eac0dc5784b.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
-      },
-      {
-        "title": "Магическая битва",
-        "episode": "Серия 6: Серия 6",
-        "duration": 1435,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8789/6/720/461931f046532de3589ea75b9a8c84a6.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
-      },
-      {
         "title": "Клинок, Рассекающий Демонов: Квартал Красных Фонарей",
         "episode": "Серия 7: Серия 7",
         "duration": 1432,
@@ -2005,46 +1219,6 @@ export const DEFAULT_CHANNELS = [
         "poster": "https://anilibria.top/storage/releases/posters/1210/XssyhK2MH4H8S7A35bMJeuXbpFgbaW4X.jpg",
         "badgeTag": "⭐ ПРЕМЬЕРА",
         "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайт..."
-      },
-      {
-        "title": "Клинок, рассекающий демонов",
-        "episode": "Серия 7: Кибутсуджи Мудзан",
-        "duration": 1440,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8325/7/720/e1ac01b4c2e731827ce6ee7397eed3ad.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
-      },
-      {
-        "title": "Клинок, рассекающий демонов",
-        "episode": "Серия 8: Запах чарующей крови",
-        "duration": 1440,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8325/8/720/78d21ee3029b366d156b2f4171d7751d.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
-      },
-      {
-        "title": "Магическая битва",
-        "episode": "Серия 7: Серия 7",
-        "duration": 1435,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8789/7/720/d6ba961d788304c02a363ba860513425.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
-      },
-      {
-        "title": "Магическая битва",
-        "episode": "Серия 8: Серия 8",
-        "duration": 1435,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8789/8/720/d7bc12466e72d3cab45eb74dd832fe7c.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
       },
       {
         "title": "Клинок, Рассекающий Демонов: Квартал Красных Фонарей",
@@ -2167,46 +1341,6 @@ export const DEFAULT_CHANNELS = [
         "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайт..."
       },
       {
-        "title": "Клинок, рассекающий демонов",
-        "episode": "Серия 9: Демон Тэмари и демон Стрелок",
-        "duration": 1440,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8325/9/720/4ed3761b273809556590ebb6f98328ee.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
-      },
-      {
-        "title": "Клинок, рассекающий демонов",
-        "episode": "Серия 10: Вместе навсегда",
-        "duration": 1440,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8325/10/720/40b01f1b8c0b9641ef29dd6ba6b6188c.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
-      },
-      {
-        "title": "Магическая битва",
-        "episode": "Серия 9: Серия 9",
-        "duration": 1435,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8789/9/720/8ca986a4ec53ff06b6d5ce2091027541.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
-      },
-      {
-        "title": "Магическая битва",
-        "episode": "Серия 10: Серия 10",
-        "duration": 1435,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8789/10/720/854fbad3131334eed8f6e066d1b6c11b.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
-      },
-      {
         "title": "Клинок, Рассекающий Демонов: Квартал Красных Фонарей",
         "episode": "Серия 11: Сколько бы раз я не перерождался",
         "duration": 1958,
@@ -2327,46 +1461,6 @@ export const DEFAULT_CHANNELS = [
         "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайт..."
       },
       {
-        "title": "Клинок, рассекающий демонов",
-        "episode": "Серия 11: Дом с Цузуми",
-        "duration": 1440,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8325/11/720/a8372a9eaeb811e630423a6540cedb7a.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
-      },
-      {
-        "title": "Клинок, рассекающий демонов",
-        "episode": "Серия 12: Кабан обнажает клыки, Зэницу засыпает",
-        "duration": 1441,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8325/12/720/342645986b6be18f7ec427dde58b1f14.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "С древних времён, люди боятся демонов. \r\nПосле смерти своего отца Танжиро пришлось самому заботиться о своей маме и братьях с сёстрами. Несмотря на тр..."
-      },
-      {
-        "title": "Магическая битва",
-        "episode": "Серия 11: Серия 11",
-        "duration": 1435,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8789/11/720/ca396ff76dffe38b375574d577073146.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
-      },
-      {
-        "title": "Магическая битва",
-        "episode": "Серия 12: Серия 12",
-        "duration": 1435,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8789/12/720/9378dd3bbe5fe4c4ba34aa1a3bec1853.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "В мире, где человек перестал быть самым опасным хищником, правят демоны. И пусть большинство смертных и не подозревают об их существовании - даже леге..."
-      },
-      {
         "title": "Клинок, Рассекающий Демонов: Квартал Красных Фонарей",
         "episode": "Серия 2: Серия 2",
         "duration": 1432,
@@ -2412,12 +1506,14 @@ export const DEFAULT_CHANNELS = [
     "id": "yturok-night",
     "number": "03",
     "streamId": "night",
-    "name": "ВЕЧЕРНИЙ ЭФИР",
-    "shortName": "ВЕЧЕР",
-    "tagline": "2х2 & Adult Swim 18+: Сага о Винланде, Адский босс, Киберпанк, Токийский гуль, Моб Психо, бамперы 2х2",
+    "category": "anime",
+    "categoryName": "Аниме",
+    "name": "yturokTV • ВЕЧЕР",
+    "shortName": "ВЕЧЕР 18+",
+    "tagline": "Тёмный эфир 18+: Сага о Винланде, Киберпанк, Адский босс, Токийский гуль, 2х2 бамперы",
     "icon": "dark_mode",
     "logoSvg": "cyber",
-    "badge": "2х2 & 18+",
+    "badge": "ВЕЧЕР 18+",
     "color": "#a855f7",
     "schedule": [
       {
@@ -2511,16 +1607,6 @@ export const DEFAULT_CHANNELS = [
         "description": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать..."
       },
       {
-        "title": "2х2: Кирпичный завод",
-        "episode": "Отбивка эфира",
-        "duration": 18,
-        "type": "bumper",
-        "bumperText": "2х2: КИРПИЧНЫЙ ЗАВОД\n\nВы смотрите 2х2. Не переключайтесь.",
-        "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
-        "badgeTag": "📺 2х2 БАМПЕР",
-        "description": "Культовая заставка 2х2"
-      },
-      {
         "title": "Моб Психо 100",
         "episode": "Серия 1: Серия 1",
         "duration": 1469,
@@ -2539,46 +1625,6 @@ export const DEFAULT_CHANNELS = [
         "poster": "https://anilibria.top/storage/releases/posters/2622/AeySGfVDvfc3xmhXuOMFQO7fgDUqEfJ8.jpg",
         "badgeTag": "⭐ ПРЕМЬЕРА",
         "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с р..."
-      },
-      {
-        "title": "Киберпанк: Бегущие по краю",
-        "episode": "Серия 9: Человечность",
-        "duration": 1600,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9307/9/720/c558f2ffb10a89fc04bd8aff6566c3e9.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность..."
-      },
-      {
-        "title": "Киберпанк: Бегущие по краю",
-        "episode": "Серия 10: Моя Луна Мой Мужчина",
-        "duration": 1696,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9307/10/720/267b693e8bfa0419083d0a9e49d86d7f.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность..."
-      },
-      {
-        "title": "Сага о Винланде",
-        "episode": "Серия 23: Серия 23",
-        "duration": 1484,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8424/23/720/aef4589ab39343f2a7eb484a6175216f.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8424/JvkbcD3sBTnc9gXxlMsb2ckjlufy3UnU.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Время господства викингов. Людей, которые известны своими варварскими обычаями и жестокими убийствами. Торфинн - сын одного из величайших викингов. Во..."
-      },
-      {
-        "title": "Сага о Винланде",
-        "episode": "Серия 24: Серия 24",
-        "duration": 1484,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8424/24/720/3984d3b5f2aaa1c0f4ff589cac887899.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8424/JvkbcD3sBTnc9gXxlMsb2ckjlufy3UnU.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Время господства викингов. Людей, которые известны своими варварскими обычаями и жестокими убийствами. Торфинн - сын одного из величайших викингов. Во..."
       },
       {
         "title": "2х2: Атомный лес",
@@ -2671,16 +1717,6 @@ export const DEFAULT_CHANNELS = [
         "description": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать..."
       },
       {
-        "title": "2х2: Подозрительная сова",
-        "episode": "Спец-блок 2х2",
-        "duration": 20,
-        "type": "bumper",
-        "bumperText": "2х2: ПОДОЗРИТЕЛЬНАЯ СОВА\n\n«Я сниму с тебя шкуру, как с дешёвого банана!»",
-        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
-        "badgeTag": "📺 2х2 БАМПЕР",
-        "description": "Фирменный блок 2х2"
-      },
-      {
         "title": "Моб Психо 100",
         "episode": "Серия 3: Серия 3",
         "duration": 1469,
@@ -2699,46 +1735,6 @@ export const DEFAULT_CHANNELS = [
         "poster": "https://anilibria.top/storage/releases/posters/2622/AeySGfVDvfc3xmhXuOMFQO7fgDUqEfJ8.jpg",
         "badgeTag": "⭐ ПРЕМЬЕРА",
         "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с р..."
-      },
-      {
-        "title": "Киберпанк: Бегущие по краю",
-        "episode": "Серия 1: Подвел Тебя",
-        "duration": 1536,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9307/1/720/585351ecd1ab4afbef42db505154e407.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность..."
-      },
-      {
-        "title": "Киберпанк: Бегущие по краю",
-        "episode": "Серия 2: Как Мальчишка",
-        "duration": 1534,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9307/2/720/80967bea66eafa4f14f9b2783c3cc7e8.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность..."
-      },
-      {
-        "title": "Сага о Винланде",
-        "episode": "Серия 1: Серия 1",
-        "duration": 1725,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8424/1/720/433eee92432a756a072ce3a99cdf7bd3.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8424/JvkbcD3sBTnc9gXxlMsb2ckjlufy3UnU.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Время господства викингов. Людей, которые известны своими варварскими обычаями и жестокими убийствами. Торфинн - сын одного из величайших викингов. Во..."
-      },
-      {
-        "title": "Сага о Винланде",
-        "episode": "Серия 2: Серия 2",
-        "duration": 1484,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8424/2/720/42c03d8bc5a75e052019c30c50d12874.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8424/JvkbcD3sBTnc9gXxlMsb2ckjlufy3UnU.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Время господства викингов. Людей, которые известны своими варварскими обычаями и жестокими убийствами. Торфинн - сын одного из величайших викингов. Во..."
       },
       {
         "title": "2х2: Кирпичный завод",
@@ -2831,16 +1827,6 @@ export const DEFAULT_CHANNELS = [
         "description": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать..."
       },
       {
-        "title": "2х2: Атомный лес",
-        "episode": "Ночной показ",
-        "duration": 20,
-        "type": "bumper",
-        "bumperText": "2х2: АТОМНЫЙ ЛЕС\n\nМутации, сатира и постапокалипсис на 2х2.",
-        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
-        "badgeTag": "📺 2х2 БАМПЕР",
-        "description": "Фирменный блок 2х2"
-      },
-      {
         "title": "Моб Психо 100",
         "episode": "Серия 5: Серия 5",
         "duration": 1469,
@@ -2859,46 +1845,6 @@ export const DEFAULT_CHANNELS = [
         "poster": "https://anilibria.top/storage/releases/posters/2622/AeySGfVDvfc3xmhXuOMFQO7fgDUqEfJ8.jpg",
         "badgeTag": "⭐ ПРЕМЬЕРА",
         "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с р..."
-      },
-      {
-        "title": "Киберпанк: Бегущие по краю",
-        "episode": "Серия 3: Гладкий Криминал",
-        "duration": 1542,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9307/3/720/510148db904101c21153514e0d2b7ff3.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность..."
-      },
-      {
-        "title": "Киберпанк: Бегущие по краю",
-        "episode": "Серия 4: Тебе Повезло",
-        "duration": 1534,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9307/4/720/1910585f5a24b0a910f3738b40caefa1.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность..."
-      },
-      {
-        "title": "Сага о Винланде",
-        "episode": "Серия 3: Серия 3",
-        "duration": 1484,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8424/3/720/9543c5e0308a42d8d2e819318b0f0650.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8424/JvkbcD3sBTnc9gXxlMsb2ckjlufy3UnU.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Время господства викингов. Людей, которые известны своими варварскими обычаями и жестокими убийствами. Торфинн - сын одного из величайших викингов. Во..."
-      },
-      {
-        "title": "Сага о Винланде",
-        "episode": "Серия 4: Серия 4",
-        "duration": 1484,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8424/4/720/25cde351ddbd26361222f69d06e1a612.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8424/JvkbcD3sBTnc9gXxlMsb2ckjlufy3UnU.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Время господства викингов. Людей, которые известны своими варварскими обычаями и жестокими убийствами. Торфинн - сын одного из величайших викингов. Во..."
       },
       {
         "title": "2х2: Подозрительная сова",
@@ -2991,16 +1937,6 @@ export const DEFAULT_CHANNELS = [
         "description": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать..."
       },
       {
-        "title": "2х2: Кирпичный завод",
-        "episode": "Отбивка эфира",
-        "duration": 18,
-        "type": "bumper",
-        "bumperText": "2х2: КИРПИЧНЫЙ ЗАВОД\n\nВы смотрите 2х2. Не переключайтесь.",
-        "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
-        "badgeTag": "📺 2х2 БАМПЕР",
-        "description": "Культовая заставка 2х2"
-      },
-      {
         "title": "Моб Психо 100",
         "episode": "Серия 7: Серия 7",
         "duration": 1469,
@@ -3019,46 +1955,6 @@ export const DEFAULT_CHANNELS = [
         "poster": "https://anilibria.top/storage/releases/posters/2622/AeySGfVDvfc3xmhXuOMFQO7fgDUqEfJ8.jpg",
         "badgeTag": "⭐ ПРЕМЬЕРА",
         "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с р..."
-      },
-      {
-        "title": "Киберпанк: Бегущие по краю",
-        "episode": "Серия 5: Все Смотрят На Меня",
-        "duration": 1492,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9307/5/720/ba6f83818599b2dc48d210f1126de549.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность..."
-      },
-      {
-        "title": "Киберпанк: Бегущие по краю",
-        "episode": "Серия 6: Девушка Огонь",
-        "duration": 1630,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9307/6/720/88bb72a724b2a19e208a4fb0368032ba.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность..."
-      },
-      {
-        "title": "Сага о Винланде",
-        "episode": "Серия 5: Серия 5",
-        "duration": 1484,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8424/5/720/8289f9e02a5fd462140db92edb0a6f0f.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8424/JvkbcD3sBTnc9gXxlMsb2ckjlufy3UnU.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Время господства викингов. Людей, которые известны своими варварскими обычаями и жестокими убийствами. Торфинн - сын одного из величайших викингов. Во..."
-      },
-      {
-        "title": "Сага о Винланде",
-        "episode": "Серия 6: Серия 6",
-        "duration": 1484,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8424/6/720/e3e8c20e5a93ee029e4d1dca1b280466.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8424/JvkbcD3sBTnc9gXxlMsb2ckjlufy3UnU.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Время господства викингов. Людей, которые известны своими варварскими обычаями и жестокими убийствами. Торфинн - сын одного из величайших викингов. Во..."
       },
       {
         "title": "2х2: Атомный лес",
@@ -3151,16 +2047,6 @@ export const DEFAULT_CHANNELS = [
         "description": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать..."
       },
       {
-        "title": "2х2: Подозрительная сова",
-        "episode": "Спец-блок 2х2",
-        "duration": 20,
-        "type": "bumper",
-        "bumperText": "2х2: ПОДОЗРИТЕЛЬНАЯ СОВА\n\n«Я сниму с тебя шкуру, как с дешёвого банана!»",
-        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
-        "badgeTag": "📺 2х2 БАМПЕР",
-        "description": "Фирменный блок 2х2"
-      },
-      {
         "title": "Моб Психо 100",
         "episode": "Серия 9: Серия 9",
         "duration": 1469,
@@ -3179,46 +2065,6 @@ export const DEFAULT_CHANNELS = [
         "poster": "https://anilibria.top/storage/releases/posters/2622/AeySGfVDvfc3xmhXuOMFQO7fgDUqEfJ8.jpg",
         "badgeTag": "⭐ ПРЕМЬЕРА",
         "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с р..."
-      },
-      {
-        "title": "Киберпанк: Бегущие по краю",
-        "episode": "Серия 7: Сильнее",
-        "duration": 1536,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9307/7/720/7d7a1600ea51b4fa60520420223bd91a.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность..."
-      },
-      {
-        "title": "Киберпанк: Бегущие по краю",
-        "episode": "Серия 8: Останься",
-        "duration": 1538,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9307/8/720/2ce1189d822e9792672d595a0fb0c791.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность..."
-      },
-      {
-        "title": "Сага о Винланде",
-        "episode": "Серия 7: Серия 7",
-        "duration": 1484,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8424/7/720/0d959b2d727f53826d2b755944084207.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8424/JvkbcD3sBTnc9gXxlMsb2ckjlufy3UnU.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Время господства викингов. Людей, которые известны своими варварскими обычаями и жестокими убийствами. Торфинн - сын одного из величайших викингов. Во..."
-      },
-      {
-        "title": "Сага о Винланде",
-        "episode": "Серия 8: Серия 8",
-        "duration": 1484,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8424/8/720/5c00715309fb9dd69bd6cd60e3edd9b5.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8424/JvkbcD3sBTnc9gXxlMsb2ckjlufy3UnU.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Время господства викингов. Людей, которые известны своими варварскими обычаями и жестокими убийствами. Торфинн - сын одного из величайших викингов. Во..."
       },
       {
         "title": "2х2: Кирпичный завод",
@@ -3311,16 +2157,6 @@ export const DEFAULT_CHANNELS = [
         "description": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать..."
       },
       {
-        "title": "2х2: Атомный лес",
-        "episode": "Ночной показ",
-        "duration": 20,
-        "type": "bumper",
-        "bumperText": "2х2: АТОМНЫЙ ЛЕС\n\nМутации, сатира и постапокалипсис на 2х2.",
-        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
-        "badgeTag": "📺 2х2 БАМПЕР",
-        "description": "Фирменный блок 2х2"
-      },
-      {
         "title": "Моб Психо 100",
         "episode": "Серия 11: Серия 11",
         "duration": 1469,
@@ -3339,46 +2175,6 @@ export const DEFAULT_CHANNELS = [
         "poster": "https://anilibria.top/storage/releases/posters/2622/AeySGfVDvfc3xmhXuOMFQO7fgDUqEfJ8.jpg",
         "badgeTag": "⭐ ПРЕМЬЕРА",
         "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с р..."
-      },
-      {
-        "title": "Киберпанк: Бегущие по краю",
-        "episode": "Серия 9: Человечность",
-        "duration": 1600,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9307/9/720/c558f2ffb10a89fc04bd8aff6566c3e9.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность..."
-      },
-      {
-        "title": "Киберпанк: Бегущие по краю",
-        "episode": "Серия 10: Моя Луна Мой Мужчина",
-        "duration": 1696,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9307/10/720/267b693e8bfa0419083d0a9e49d86d7f.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность..."
-      },
-      {
-        "title": "Сага о Винланде",
-        "episode": "Серия 9: Серия 9",
-        "duration": 1484,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8424/9/720/c13edc72bff7e865e2fa079b8f5d5c3d.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8424/JvkbcD3sBTnc9gXxlMsb2ckjlufy3UnU.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Время господства викингов. Людей, которые известны своими варварскими обычаями и жестокими убийствами. Торфинн - сын одного из величайших викингов. Во..."
-      },
-      {
-        "title": "Сага о Винланде",
-        "episode": "Серия 10: Серия 10",
-        "duration": 1484,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8424/10/720/f4f12e05d76d5d053d8f3a6ba0ee4408.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8424/JvkbcD3sBTnc9gXxlMsb2ckjlufy3UnU.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Время господства викингов. Людей, которые известны своими варварскими обычаями и жестокими убийствами. Торфинн - сын одного из величайших викингов. Во..."
       },
       {
         "title": "2х2: Подозрительная сова",
@@ -3471,16 +2267,6 @@ export const DEFAULT_CHANNELS = [
         "description": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать..."
       },
       {
-        "title": "2х2: Кирпичный завод",
-        "episode": "Отбивка эфира",
-        "duration": 18,
-        "type": "bumper",
-        "bumperText": "2х2: КИРПИЧНЫЙ ЗАВОД\n\nВы смотрите 2х2. Не переключайтесь.",
-        "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
-        "badgeTag": "📺 2х2 БАМПЕР",
-        "description": "Культовая заставка 2х2"
-      },
-      {
         "title": "Моб Психо 100",
         "episode": "Серия 1: Серия 1",
         "duration": 1469,
@@ -3499,46 +2285,4850 @@ export const DEFAULT_CHANNELS = [
         "poster": "https://anilibria.top/storage/releases/posters/2622/AeySGfVDvfc3xmhXuOMFQO7fgDUqEfJ8.jpg",
         "badgeTag": "⭐ ПРЕМЬЕРА",
         "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с р..."
+      }
+    ]
+  },
+  {
+    "id": "cartoons-247",
+    "number": "04",
+    "streamId": "cartoons",
+    "category": "cartoons",
+    "categoryName": "Мультфильмы",
+    "name": "МУЛЬТ-ТВ 24/7",
+    "shortName": "МУЛЬТ-ТВ",
+    "tagline": "Утро: Финес и Ферб, День: Гравити Фолз, Ночь 18+: Южный Парк и бамперы 2х2",
+    "icon": "auto_awesome",
+    "logoSvg": "toonster",
+    "badge": "МУЛЬТЫ 24/7",
+    "color": "#f59e0b",
+    "schedule": [
+      {
+        "title": "Смешарики",
+        "episode": "Смешарики: Новые приключения",
+        "duration": 480,
+        "type": "video",
+        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac14.mp4",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "☀️ УТРЕННИЙ БЛОК",
+        "description": "Приключения любимых круглых героев в Ромашковой долине."
       },
       {
-        "title": "Киберпанк: Бегущие по краю",
-        "episode": "Серия 1: Подвел Тебя",
-        "duration": 1536,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9307/1/720/585351ecd1ab4afbef42db505154e407.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность..."
+        "title": "Финес и Ферб",
+        "episode": "Летние каникулы и Перри Утконос",
+        "duration": 660,
+        "type": "youtube",
+        "youtubeId": "SmJz4QCQAms",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "☀️ УТРЕННИЙ БЛОК",
+        "description": "Финес и Ферб строят невероятные изобретения, пока Перри спасает мир от Фуфелшмертца."
       },
       {
-        "title": "Киберпанк: Бегущие по краю",
-        "episode": "Серия 2: Как Мальчишка",
-        "duration": 1534,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/9307/2/720/80967bea66eafa4f14f9b2783c3cc7e8.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность..."
+        "title": "Смешарики",
+        "episode": "Смешарики: Большие тайны",
+        "duration": 790,
+        "type": "video",
+        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac20.mp4",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🌤️ ДНЕВНОЙ БЛОК",
+        "description": "Философские и забавные истории от Кроша, Ёжика и Бараша."
       },
       {
-        "title": "Сага о Винланде",
-        "episode": "Серия 11: Серия 11",
-        "duration": 1484,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8424/11/720/e77ea0364a0050d317d0691ec210f8bf.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8424/JvkbcD3sBTnc9gXxlMsb2ckjlufy3UnU.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Время господства викингов. Людей, которые известны своими варварскими обычаями и жестокими убийствами. Торфинн - сын одного из величайших викингов. Во..."
+        "title": "Гравити Фолз",
+        "episode": "Тайны Хижины Чудес",
+        "duration": 720,
+        "type": "youtube",
+        "youtubeId": "SmJz4QCQAms",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🌤️ ДНЕВНОЙ БЛОК",
+        "description": "Диппер и Мэйбл исследуют паранормальные тайны загадочного городка Гравити Фолз."
       },
       {
-        "title": "Сага о Винланде",
-        "episode": "Серия 12: Серия 12",
-        "duration": 1484,
-        "type": "hls",
-        "url": "https://cache.libria.fun/videos/media/ts/8424/12/720/57c56031e1e3f03eb14be148ee611b0b.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
-        "poster": "https://anilibria.top/storage/releases/posters/8424/JvkbcD3sBTnc9gXxlMsb2ckjlufy3UnU.jpg",
-        "badgeTag": "🔁 ПОВТОР",
-        "description": "Время господства викингов. Людей, которые известны своими варварскими обычаями и жестокими убийствами. Торфинн - сын одного из величайших викингов. Во..."
+        "title": "Южный Парк (South Park)",
+        "episode": "Ночной показ: Лучшие моменты (18+)",
+        "duration": 900,
+        "type": "youtube",
+        "youtubeId": "kYviswHHFLQ",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🌙 ВЕЧЕРНИЙ БЛОК 18+",
+        "description": "Острая сатира, чёрный юмор и абсурдные приключения Стэна, Кайла, Картмана и Кенни."
+      },
+      {
+        "title": "2х2: Подозрительная сова",
+        "episode": "Спец-блок 2х2",
+        "duration": 20,
+        "type": "bumper",
+        "bumperText": "2х2: ПОДОЗРИТЕЛЬНАЯ СОВА\n\n«Я сниму с тебя шкуру, как с дешёвого банана!»",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "📺 2х2 БАМПЕР",
+        "description": "Фирменный блок 2х2"
+      },
+      {
+        "title": "2х2: Атомный лес",
+        "episode": "Ночной показ",
+        "duration": 20,
+        "type": "bumper",
+        "bumperText": "2х2: АТОМНЫЙ ЛЕС\n\nМутации, сатира и постапокалипсис на 2х2.",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "📺 2х2 БАМПЕР",
+        "description": "Фирменный блок 2х2"
+      },
+      {
+        "title": "Смешарики",
+        "episode": "Смешарики: Новые приключения",
+        "duration": 480,
+        "type": "video",
+        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac14.mp4",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "☀️ УТРЕННИЙ БЛОК",
+        "description": "Приключения любимых круглых героев в Ромашковой долине."
+      },
+      {
+        "title": "Финес и Ферб",
+        "episode": "Летние каникулы и Перри Утконос",
+        "duration": 660,
+        "type": "youtube",
+        "youtubeId": "SmJz4QCQAms",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "☀️ УТРЕННИЙ БЛОК",
+        "description": "Финес и Ферб строят невероятные изобретения, пока Перри спасает мир от Фуфелшмертца."
+      },
+      {
+        "title": "Смешарики",
+        "episode": "Смешарики: Большие тайны",
+        "duration": 790,
+        "type": "video",
+        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac20.mp4",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🌤️ ДНЕВНОЙ БЛОК",
+        "description": "Философские и забавные истории от Кроша, Ёжика и Бараша."
+      },
+      {
+        "title": "Гравити Фолз",
+        "episode": "Тайны Хижины Чудес",
+        "duration": 720,
+        "type": "youtube",
+        "youtubeId": "SmJz4QCQAms",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🌤️ ДНЕВНОЙ БЛОК",
+        "description": "Диппер и Мэйбл исследуют паранормальные тайны загадочного городка Гравити Фолз."
+      },
+      {
+        "title": "Южный Парк (South Park)",
+        "episode": "Ночной показ: Лучшие моменты (18+)",
+        "duration": 900,
+        "type": "youtube",
+        "youtubeId": "kYviswHHFLQ",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🌙 ВЕЧЕРНИЙ БЛОК 18+",
+        "description": "Острая сатира, чёрный юмор и абсурдные приключения Стэна, Кайла, Картмана и Кенни."
+      },
+      {
+        "title": "2х2: Подозрительная сова",
+        "episode": "Спец-блок 2х2",
+        "duration": 20,
+        "type": "bumper",
+        "bumperText": "2х2: ПОДОЗРИТЕЛЬНАЯ СОВА\n\n«Я сниму с тебя шкуру, как с дешёвого банана!»",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "📺 2х2 БАМПЕР",
+        "description": "Фирменный блок 2х2"
+      },
+      {
+        "title": "2х2: Атомный лес",
+        "episode": "Ночной показ",
+        "duration": 20,
+        "type": "bumper",
+        "bumperText": "2х2: АТОМНЫЙ ЛЕС\n\nМутации, сатира и постапокалипсис на 2х2.",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "📺 2х2 БАМПЕР",
+        "description": "Фирменный блок 2х2"
+      },
+      {
+        "title": "Смешарики",
+        "episode": "Смешарики: Новые приключения",
+        "duration": 480,
+        "type": "video",
+        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac14.mp4",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "☀️ УТРЕННИЙ БЛОК",
+        "description": "Приключения любимых круглых героев в Ромашковой долине."
+      },
+      {
+        "title": "Финес и Ферб",
+        "episode": "Летние каникулы и Перри Утконос",
+        "duration": 660,
+        "type": "youtube",
+        "youtubeId": "SmJz4QCQAms",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "☀️ УТРЕННИЙ БЛОК",
+        "description": "Финес и Ферб строят невероятные изобретения, пока Перри спасает мир от Фуфелшмертца."
+      },
+      {
+        "title": "Смешарики",
+        "episode": "Смешарики: Большие тайны",
+        "duration": 790,
+        "type": "video",
+        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac20.mp4",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🌤️ ДНЕВНОЙ БЛОК",
+        "description": "Философские и забавные истории от Кроша, Ёжика и Бараша."
+      },
+      {
+        "title": "Гравити Фолз",
+        "episode": "Тайны Хижины Чудес",
+        "duration": 720,
+        "type": "youtube",
+        "youtubeId": "SmJz4QCQAms",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🌤️ ДНЕВНОЙ БЛОК",
+        "description": "Диппер и Мэйбл исследуют паранормальные тайны загадочного городка Гравити Фолз."
+      },
+      {
+        "title": "Южный Парк (South Park)",
+        "episode": "Ночной показ: Лучшие моменты (18+)",
+        "duration": 900,
+        "type": "youtube",
+        "youtubeId": "kYviswHHFLQ",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🌙 ВЕЧЕРНИЙ БЛОК 18+",
+        "description": "Острая сатира, чёрный юмор и абсурдные приключения Стэна, Кайла, Картмана и Кенни."
+      },
+      {
+        "title": "2х2: Подозрительная сова",
+        "episode": "Спец-блок 2х2",
+        "duration": 20,
+        "type": "bumper",
+        "bumperText": "2х2: ПОДОЗРИТЕЛЬНАЯ СОВА\n\n«Я сниму с тебя шкуру, как с дешёвого банана!»",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "📺 2х2 БАМПЕР",
+        "description": "Фирменный блок 2х2"
+      },
+      {
+        "title": "2х2: Атомный лес",
+        "episode": "Ночной показ",
+        "duration": 20,
+        "type": "bumper",
+        "bumperText": "2х2: АТОМНЫЙ ЛЕС\n\nМутации, сатира и постапокалипсис на 2х2.",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "📺 2х2 БАМПЕР",
+        "description": "Фирменный блок 2х2"
+      },
+      {
+        "title": "Смешарики",
+        "episode": "Смешарики: Новые приключения",
+        "duration": 480,
+        "type": "video",
+        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac14.mp4",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "☀️ УТРЕННИЙ БЛОК",
+        "description": "Приключения любимых круглых героев в Ромашковой долине."
+      },
+      {
+        "title": "Финес и Ферб",
+        "episode": "Летние каникулы и Перри Утконос",
+        "duration": 660,
+        "type": "youtube",
+        "youtubeId": "SmJz4QCQAms",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "☀️ УТРЕННИЙ БЛОК",
+        "description": "Финес и Ферб строят невероятные изобретения, пока Перри спасает мир от Фуфелшмертца."
+      },
+      {
+        "title": "Смешарики",
+        "episode": "Смешарики: Большие тайны",
+        "duration": 790,
+        "type": "video",
+        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac20.mp4",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🌤️ ДНЕВНОЙ БЛОК",
+        "description": "Философские и забавные истории от Кроша, Ёжика и Бараша."
+      },
+      {
+        "title": "Гравити Фолз",
+        "episode": "Тайны Хижины Чудес",
+        "duration": 720,
+        "type": "youtube",
+        "youtubeId": "SmJz4QCQAms",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🌤️ ДНЕВНОЙ БЛОК",
+        "description": "Диппер и Мэйбл исследуют паранормальные тайны загадочного городка Гравити Фолз."
+      },
+      {
+        "title": "Южный Парк (South Park)",
+        "episode": "Ночной показ: Лучшие моменты (18+)",
+        "duration": 900,
+        "type": "youtube",
+        "youtubeId": "kYviswHHFLQ",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🌙 ВЕЧЕРНИЙ БЛОК 18+",
+        "description": "Острая сатира, чёрный юмор и абсурдные приключения Стэна, Кайла, Картмана и Кенни."
+      },
+      {
+        "title": "2х2: Подозрительная сова",
+        "episode": "Спец-блок 2х2",
+        "duration": 20,
+        "type": "bumper",
+        "bumperText": "2х2: ПОДОЗРИТЕЛЬНАЯ СОВА\n\n«Я сниму с тебя шкуру, как с дешёвого банана!»",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "📺 2х2 БАМПЕР",
+        "description": "Фирменный блок 2х2"
+      },
+      {
+        "title": "2х2: Атомный лес",
+        "episode": "Ночной показ",
+        "duration": 20,
+        "type": "bumper",
+        "bumperText": "2х2: АТОМНЫЙ ЛЕС\n\nМутации, сатира и постапокалипсис на 2х2.",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "📺 2х2 БАМПЕР",
+        "description": "Фирменный блок 2х2"
+      },
+      {
+        "title": "Смешарики",
+        "episode": "Смешарики: Новые приключения",
+        "duration": 480,
+        "type": "video",
+        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac14.mp4",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "☀️ УТРЕННИЙ БЛОК",
+        "description": "Приключения любимых круглых героев в Ромашковой долине."
+      },
+      {
+        "title": "Финес и Ферб",
+        "episode": "Летние каникулы и Перри Утконос",
+        "duration": 660,
+        "type": "youtube",
+        "youtubeId": "SmJz4QCQAms",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "☀️ УТРЕННИЙ БЛОК",
+        "description": "Финес и Ферб строят невероятные изобретения, пока Перри спасает мир от Фуфелшмертца."
+      },
+      {
+        "title": "Смешарики",
+        "episode": "Смешарики: Большие тайны",
+        "duration": 790,
+        "type": "video",
+        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac20.mp4",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🌤️ ДНЕВНОЙ БЛОК",
+        "description": "Философские и забавные истории от Кроша, Ёжика и Бараша."
+      },
+      {
+        "title": "Гравити Фолз",
+        "episode": "Тайны Хижины Чудес",
+        "duration": 720,
+        "type": "youtube",
+        "youtubeId": "SmJz4QCQAms",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🌤️ ДНЕВНОЙ БЛОК",
+        "description": "Диппер и Мэйбл исследуют паранормальные тайны загадочного городка Гравити Фолз."
+      },
+      {
+        "title": "Южный Парк (South Park)",
+        "episode": "Ночной показ: Лучшие моменты (18+)",
+        "duration": 900,
+        "type": "youtube",
+        "youtubeId": "kYviswHHFLQ",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🌙 ВЕЧЕРНИЙ БЛОК 18+",
+        "description": "Острая сатира, чёрный юмор и абсурдные приключения Стэна, Кайла, Картмана и Кенни."
+      },
+      {
+        "title": "2х2: Подозрительная сова",
+        "episode": "Спец-блок 2х2",
+        "duration": 20,
+        "type": "bumper",
+        "bumperText": "2х2: ПОДОЗРИТЕЛЬНАЯ СОВА\n\n«Я сниму с тебя шкуру, как с дешёвого банана!»",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "📺 2х2 БАМПЕР",
+        "description": "Фирменный блок 2х2"
+      },
+      {
+        "title": "2х2: Атомный лес",
+        "episode": "Ночной показ",
+        "duration": 20,
+        "type": "bumper",
+        "bumperText": "2х2: АТОМНЫЙ ЛЕС\n\nМутации, сатира и постапокалипсис на 2х2.",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "📺 2х2 БАМПЕР",
+        "description": "Фирменный блок 2х2"
+      },
+      {
+        "title": "Смешарики",
+        "episode": "Смешарики: Новые приключения",
+        "duration": 480,
+        "type": "video",
+        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac14.mp4",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "☀️ УТРЕННИЙ БЛОК",
+        "description": "Приключения любимых круглых героев в Ромашковой долине."
+      },
+      {
+        "title": "Финес и Ферб",
+        "episode": "Летние каникулы и Перри Утконос",
+        "duration": 660,
+        "type": "youtube",
+        "youtubeId": "SmJz4QCQAms",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "☀️ УТРЕННИЙ БЛОК",
+        "description": "Финес и Ферб строят невероятные изобретения, пока Перри спасает мир от Фуфелшмертца."
+      },
+      {
+        "title": "Смешарики",
+        "episode": "Смешарики: Большие тайны",
+        "duration": 790,
+        "type": "video",
+        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac20.mp4",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🌤️ ДНЕВНОЙ БЛОК",
+        "description": "Философские и забавные истории от Кроша, Ёжика и Бараша."
+      },
+      {
+        "title": "Гравити Фолз",
+        "episode": "Тайны Хижины Чудес",
+        "duration": 720,
+        "type": "youtube",
+        "youtubeId": "SmJz4QCQAms",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🌤️ ДНЕВНОЙ БЛОК",
+        "description": "Диппер и Мэйбл исследуют паранормальные тайны загадочного городка Гравити Фолз."
+      },
+      {
+        "title": "Южный Парк (South Park)",
+        "episode": "Ночной показ: Лучшие моменты (18+)",
+        "duration": 900,
+        "type": "youtube",
+        "youtubeId": "kYviswHHFLQ",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🌙 ВЕЧЕРНИЙ БЛОК 18+",
+        "description": "Острая сатира, чёрный юмор и абсурдные приключения Стэна, Кайла, Картмана и Кенни."
+      },
+      {
+        "title": "2х2: Подозрительная сова",
+        "episode": "Спец-блок 2х2",
+        "duration": 20,
+        "type": "bumper",
+        "bumperText": "2х2: ПОДОЗРИТЕЛЬНАЯ СОВА\n\n«Я сниму с тебя шкуру, как с дешёвого банана!»",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "📺 2х2 БАМПЕР",
+        "description": "Фирменный блок 2х2"
+      },
+      {
+        "title": "2х2: Атомный лес",
+        "episode": "Ночной показ",
+        "duration": 20,
+        "type": "bumper",
+        "bumperText": "2х2: АТОМНЫЙ ЛЕС\n\nМутации, сатира и постапокалипсис на 2х2.",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "📺 2х2 БАМПЕР",
+        "description": "Фирменный блок 2х2"
+      },
+      {
+        "title": "Смешарики",
+        "episode": "Смешарики: Новые приключения",
+        "duration": 480,
+        "type": "video",
+        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac14.mp4",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "☀️ УТРЕННИЙ БЛОК",
+        "description": "Приключения любимых круглых героев в Ромашковой долине."
+      },
+      {
+        "title": "Финес и Ферб",
+        "episode": "Летние каникулы и Перри Утконос",
+        "duration": 660,
+        "type": "youtube",
+        "youtubeId": "SmJz4QCQAms",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "☀️ УТРЕННИЙ БЛОК",
+        "description": "Финес и Ферб строят невероятные изобретения, пока Перри спасает мир от Фуфелшмертца."
+      },
+      {
+        "title": "Смешарики",
+        "episode": "Смешарики: Большие тайны",
+        "duration": 790,
+        "type": "video",
+        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac20.mp4",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🌤️ ДНЕВНОЙ БЛОК",
+        "description": "Философские и забавные истории от Кроша, Ёжика и Бараша."
+      },
+      {
+        "title": "Гравити Фолз",
+        "episode": "Тайны Хижины Чудес",
+        "duration": 720,
+        "type": "youtube",
+        "youtubeId": "SmJz4QCQAms",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🌤️ ДНЕВНОЙ БЛОК",
+        "description": "Диппер и Мэйбл исследуют паранормальные тайны загадочного городка Гравити Фолз."
+      },
+      {
+        "title": "Южный Парк (South Park)",
+        "episode": "Ночной показ: Лучшие моменты (18+)",
+        "duration": 900,
+        "type": "youtube",
+        "youtubeId": "kYviswHHFLQ",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🌙 ВЕЧЕРНИЙ БЛОК 18+",
+        "description": "Острая сатира, чёрный юмор и абсурдные приключения Стэна, Кайла, Картмана и Кенни."
+      },
+      {
+        "title": "2х2: Подозрительная сова",
+        "episode": "Спец-блок 2х2",
+        "duration": 20,
+        "type": "bumper",
+        "bumperText": "2х2: ПОДОЗРИТЕЛЬНАЯ СОВА\n\n«Я сниму с тебя шкуру, как с дешёвого банана!»",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "📺 2х2 БАМПЕР",
+        "description": "Фирменный блок 2х2"
+      },
+      {
+        "title": "2х2: Атомный лес",
+        "episode": "Ночной показ",
+        "duration": 20,
+        "type": "bumper",
+        "bumperText": "2х2: АТОМНЫЙ ЛЕС\n\nМутации, сатира и постапокалипсис на 2х2.",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "📺 2х2 БАМПЕР",
+        "description": "Фирменный блок 2х2"
+      },
+      {
+        "title": "Смешарики",
+        "episode": "Смешарики: Новые приключения",
+        "duration": 480,
+        "type": "video",
+        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac14.mp4",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "☀️ УТРЕННИЙ БЛОК",
+        "description": "Приключения любимых круглых героев в Ромашковой долине."
+      },
+      {
+        "title": "Финес и Ферб",
+        "episode": "Летние каникулы и Перри Утконос",
+        "duration": 660,
+        "type": "youtube",
+        "youtubeId": "SmJz4QCQAms",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "☀️ УТРЕННИЙ БЛОК",
+        "description": "Финес и Ферб строят невероятные изобретения, пока Перри спасает мир от Фуфелшмертца."
+      },
+      {
+        "title": "Смешарики",
+        "episode": "Смешарики: Большие тайны",
+        "duration": 790,
+        "type": "video",
+        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac20.mp4",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🌤️ ДНЕВНОЙ БЛОК",
+        "description": "Философские и забавные истории от Кроша, Ёжика и Бараша."
+      },
+      {
+        "title": "Гравити Фолз",
+        "episode": "Тайны Хижины Чудес",
+        "duration": 720,
+        "type": "youtube",
+        "youtubeId": "SmJz4QCQAms",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🌤️ ДНЕВНОЙ БЛОК",
+        "description": "Диппер и Мэйбл исследуют паранормальные тайны загадочного городка Гравити Фолз."
+      },
+      {
+        "title": "Южный Парк (South Park)",
+        "episode": "Ночной показ: Лучшие моменты (18+)",
+        "duration": 900,
+        "type": "youtube",
+        "youtubeId": "kYviswHHFLQ",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🌙 ВЕЧЕРНИЙ БЛОК 18+",
+        "description": "Острая сатира, чёрный юмор и абсурдные приключения Стэна, Кайла, Картмана и Кенни."
+      },
+      {
+        "title": "2х2: Подозрительная сова",
+        "episode": "Спец-блок 2х2",
+        "duration": 20,
+        "type": "bumper",
+        "bumperText": "2х2: ПОДОЗРИТЕЛЬНАЯ СОВА\n\n«Я сниму с тебя шкуру, как с дешёвого банана!»",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "📺 2х2 БАМПЕР",
+        "description": "Фирменный блок 2х2"
+      },
+      {
+        "title": "2х2: Атомный лес",
+        "episode": "Ночной показ",
+        "duration": 20,
+        "type": "bumper",
+        "bumperText": "2х2: АТОМНЫЙ ЛЕС\n\nМутации, сатира и постапокалипсис на 2х2.",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "📺 2х2 БАМПЕР",
+        "description": "Фирменный блок 2х2"
+      }
+    ]
+  },
+  {
+    "id": "minecrafters-mzlff",
+    "number": "05",
+    "streamId": "mzlff",
+    "category": "minecrafters",
+    "categoryName": "Майнкрафтеры",
+    "name": "НАРЕЗКИ МАЗЕЛОВА",
+    "shortName": "МАЗЕЛОВ",
+    "tagline": "mzlff TV: лучшие нарезки со стримов, фристайлы, рофлы и реакции Ильи Мазелова",
+    "icon": "sports_esports",
+    "logoSvg": "cyber",
+    "badge": "MZLFF TV",
+    "color": "#8b5cf6",
+    "schedule": [
+      {
+        "title": "Мазелов: Старые клипы и реакция",
+        "episode": "Смотрит подборку клипов mzlffcybersport",
+        "duration": 860,
+        "type": "youtube",
+        "youtubeId": "kOWtBVWu1qE",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Илья Мазелов смотрит ностальгические нарезки и угарные моменты со стримов."
+      },
+      {
+        "title": "Мазелов: Новый трек на стриме",
+        "episode": "Эксклюзивный отрывок и разбор",
+        "duration": 620,
+        "type": "youtube",
+        "youtubeId": "FaSWPTbrhw4",
+        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "mzlff показывает сниппет нового трека и делится бэкстейджем записи."
+      },
+      {
+        "title": "Мазелов: Главная тайна неба",
+        "episode": "Встречает и слушает новый релиз со зрителями",
+        "duration": 740,
+        "type": "youtube",
+        "youtubeId": "_gys4eOJyvw",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Премьера песни 'Главная тайна неба' в прямом эфире."
+      },
+      {
+        "title": "Мазелов: Старые клипы и реакция",
+        "episode": "Смотрит подборку клипов mzlffcybersport",
+        "duration": 860,
+        "type": "youtube",
+        "youtubeId": "kOWtBVWu1qE",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Илья Мазелов смотрит ностальгические нарезки и угарные моменты со стримов."
+      },
+      {
+        "title": "Мазелов: Новый трек на стриме",
+        "episode": "Эксклюзивный отрывок и разбор",
+        "duration": 620,
+        "type": "youtube",
+        "youtubeId": "FaSWPTbrhw4",
+        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "mzlff показывает сниппет нового трека и делится бэкстейджем записи."
+      },
+      {
+        "title": "Мазелов: Главная тайна неба",
+        "episode": "Встречает и слушает новый релиз со зрителями",
+        "duration": 740,
+        "type": "youtube",
+        "youtubeId": "_gys4eOJyvw",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Премьера песни 'Главная тайна неба' в прямом эфире."
+      },
+      {
+        "title": "Мазелов: Старые клипы и реакция",
+        "episode": "Смотрит подборку клипов mzlffcybersport",
+        "duration": 860,
+        "type": "youtube",
+        "youtubeId": "kOWtBVWu1qE",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Илья Мазелов смотрит ностальгические нарезки и угарные моменты со стримов."
+      },
+      {
+        "title": "Мазелов: Новый трек на стриме",
+        "episode": "Эксклюзивный отрывок и разбор",
+        "duration": 620,
+        "type": "youtube",
+        "youtubeId": "FaSWPTbrhw4",
+        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "mzlff показывает сниппет нового трека и делится бэкстейджем записи."
+      },
+      {
+        "title": "Мазелов: Главная тайна неба",
+        "episode": "Встречает и слушает новый релиз со зрителями",
+        "duration": 740,
+        "type": "youtube",
+        "youtubeId": "_gys4eOJyvw",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Премьера песни 'Главная тайна неба' в прямом эфире."
+      },
+      {
+        "title": "Мазелов: Старые клипы и реакция",
+        "episode": "Смотрит подборку клипов mzlffcybersport",
+        "duration": 860,
+        "type": "youtube",
+        "youtubeId": "kOWtBVWu1qE",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Илья Мазелов смотрит ностальгические нарезки и угарные моменты со стримов."
+      },
+      {
+        "title": "Мазелов: Новый трек на стриме",
+        "episode": "Эксклюзивный отрывок и разбор",
+        "duration": 620,
+        "type": "youtube",
+        "youtubeId": "FaSWPTbrhw4",
+        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "mzlff показывает сниппет нового трека и делится бэкстейджем записи."
+      },
+      {
+        "title": "Мазелов: Главная тайна неба",
+        "episode": "Встречает и слушает новый релиз со зрителями",
+        "duration": 740,
+        "type": "youtube",
+        "youtubeId": "_gys4eOJyvw",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Премьера песни 'Главная тайна неба' в прямом эфире."
+      },
+      {
+        "title": "Мазелов: Старые клипы и реакция",
+        "episode": "Смотрит подборку клипов mzlffcybersport",
+        "duration": 860,
+        "type": "youtube",
+        "youtubeId": "kOWtBVWu1qE",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Илья Мазелов смотрит ностальгические нарезки и угарные моменты со стримов."
+      },
+      {
+        "title": "Мазелов: Новый трек на стриме",
+        "episode": "Эксклюзивный отрывок и разбор",
+        "duration": 620,
+        "type": "youtube",
+        "youtubeId": "FaSWPTbrhw4",
+        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "mzlff показывает сниппет нового трека и делится бэкстейджем записи."
+      },
+      {
+        "title": "Мазелов: Главная тайна неба",
+        "episode": "Встречает и слушает новый релиз со зрителями",
+        "duration": 740,
+        "type": "youtube",
+        "youtubeId": "_gys4eOJyvw",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Премьера песни 'Главная тайна неба' в прямом эфире."
+      },
+      {
+        "title": "Мазелов: Старые клипы и реакция",
+        "episode": "Смотрит подборку клипов mzlffcybersport",
+        "duration": 860,
+        "type": "youtube",
+        "youtubeId": "kOWtBVWu1qE",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Илья Мазелов смотрит ностальгические нарезки и угарные моменты со стримов."
+      },
+      {
+        "title": "Мазелов: Новый трек на стриме",
+        "episode": "Эксклюзивный отрывок и разбор",
+        "duration": 620,
+        "type": "youtube",
+        "youtubeId": "FaSWPTbrhw4",
+        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "mzlff показывает сниппет нового трека и делится бэкстейджем записи."
+      },
+      {
+        "title": "Мазелов: Главная тайна неба",
+        "episode": "Встречает и слушает новый релиз со зрителями",
+        "duration": 740,
+        "type": "youtube",
+        "youtubeId": "_gys4eOJyvw",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Премьера песни 'Главная тайна неба' в прямом эфире."
+      },
+      {
+        "title": "Мазелов: Старые клипы и реакция",
+        "episode": "Смотрит подборку клипов mzlffcybersport",
+        "duration": 860,
+        "type": "youtube",
+        "youtubeId": "kOWtBVWu1qE",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Илья Мазелов смотрит ностальгические нарезки и угарные моменты со стримов."
+      },
+      {
+        "title": "Мазелов: Новый трек на стриме",
+        "episode": "Эксклюзивный отрывок и разбор",
+        "duration": 620,
+        "type": "youtube",
+        "youtubeId": "FaSWPTbrhw4",
+        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "mzlff показывает сниппет нового трека и делится бэкстейджем записи."
+      },
+      {
+        "title": "Мазелов: Главная тайна неба",
+        "episode": "Встречает и слушает новый релиз со зрителями",
+        "duration": 740,
+        "type": "youtube",
+        "youtubeId": "_gys4eOJyvw",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Премьера песни 'Главная тайна неба' в прямом эфире."
+      },
+      {
+        "title": "Мазелов: Старые клипы и реакция",
+        "episode": "Смотрит подборку клипов mzlffcybersport",
+        "duration": 860,
+        "type": "youtube",
+        "youtubeId": "kOWtBVWu1qE",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Илья Мазелов смотрит ностальгические нарезки и угарные моменты со стримов."
+      },
+      {
+        "title": "Мазелов: Новый трек на стриме",
+        "episode": "Эксклюзивный отрывок и разбор",
+        "duration": 620,
+        "type": "youtube",
+        "youtubeId": "FaSWPTbrhw4",
+        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "mzlff показывает сниппет нового трека и делится бэкстейджем записи."
+      },
+      {
+        "title": "Мазелов: Главная тайна неба",
+        "episode": "Встречает и слушает новый релиз со зрителями",
+        "duration": 740,
+        "type": "youtube",
+        "youtubeId": "_gys4eOJyvw",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Премьера песни 'Главная тайна неба' в прямом эфире."
+      },
+      {
+        "title": "Мазелов: Старые клипы и реакция",
+        "episode": "Смотрит подборку клипов mzlffcybersport",
+        "duration": 860,
+        "type": "youtube",
+        "youtubeId": "kOWtBVWu1qE",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Илья Мазелов смотрит ностальгические нарезки и угарные моменты со стримов."
+      },
+      {
+        "title": "Мазелов: Новый трек на стриме",
+        "episode": "Эксклюзивный отрывок и разбор",
+        "duration": 620,
+        "type": "youtube",
+        "youtubeId": "FaSWPTbrhw4",
+        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "mzlff показывает сниппет нового трека и делится бэкстейджем записи."
+      },
+      {
+        "title": "Мазелов: Главная тайна неба",
+        "episode": "Встречает и слушает новый релиз со зрителями",
+        "duration": 740,
+        "type": "youtube",
+        "youtubeId": "_gys4eOJyvw",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Премьера песни 'Главная тайна неба' в прямом эфире."
+      },
+      {
+        "title": "Мазелов: Старые клипы и реакция",
+        "episode": "Смотрит подборку клипов mzlffcybersport",
+        "duration": 860,
+        "type": "youtube",
+        "youtubeId": "kOWtBVWu1qE",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Илья Мазелов смотрит ностальгические нарезки и угарные моменты со стримов."
+      },
+      {
+        "title": "Мазелов: Новый трек на стриме",
+        "episode": "Эксклюзивный отрывок и разбор",
+        "duration": 620,
+        "type": "youtube",
+        "youtubeId": "FaSWPTbrhw4",
+        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "mzlff показывает сниппет нового трека и делится бэкстейджем записи."
+      },
+      {
+        "title": "Мазелов: Главная тайна неба",
+        "episode": "Встречает и слушает новый релиз со зрителями",
+        "duration": 740,
+        "type": "youtube",
+        "youtubeId": "_gys4eOJyvw",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Премьера песни 'Главная тайна неба' в прямом эфире."
+      },
+      {
+        "title": "Мазелов: Старые клипы и реакция",
+        "episode": "Смотрит подборку клипов mzlffcybersport",
+        "duration": 860,
+        "type": "youtube",
+        "youtubeId": "kOWtBVWu1qE",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Илья Мазелов смотрит ностальгические нарезки и угарные моменты со стримов."
+      },
+      {
+        "title": "Мазелов: Новый трек на стриме",
+        "episode": "Эксклюзивный отрывок и разбор",
+        "duration": 620,
+        "type": "youtube",
+        "youtubeId": "FaSWPTbrhw4",
+        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "mzlff показывает сниппет нового трека и делится бэкстейджем записи."
+      },
+      {
+        "title": "Мазелов: Главная тайна неба",
+        "episode": "Встречает и слушает новый релиз со зрителями",
+        "duration": 740,
+        "type": "youtube",
+        "youtubeId": "_gys4eOJyvw",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Премьера песни 'Главная тайна неба' в прямом эфире."
+      },
+      {
+        "title": "Мазелов: Старые клипы и реакция",
+        "episode": "Смотрит подборку клипов mzlffcybersport",
+        "duration": 860,
+        "type": "youtube",
+        "youtubeId": "kOWtBVWu1qE",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Илья Мазелов смотрит ностальгические нарезки и угарные моменты со стримов."
+      },
+      {
+        "title": "Мазелов: Новый трек на стриме",
+        "episode": "Эксклюзивный отрывок и разбор",
+        "duration": 620,
+        "type": "youtube",
+        "youtubeId": "FaSWPTbrhw4",
+        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "mzlff показывает сниппет нового трека и делится бэкстейджем записи."
+      },
+      {
+        "title": "Мазелов: Главная тайна неба",
+        "episode": "Встречает и слушает новый релиз со зрителями",
+        "duration": 740,
+        "type": "youtube",
+        "youtubeId": "_gys4eOJyvw",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Премьера песни 'Главная тайна неба' в прямом эфире."
+      }
+    ]
+  },
+  {
+    "id": "minecrafters-5opka",
+    "number": "06",
+    "streamId": "5opka",
+    "category": "minecrafters",
+    "categoryName": "Майнкрафтеры",
+    "name": "НАРЕЗКИ ПЯТЁРКИ",
+    "shortName": "ПЯТЁРКА",
+    "tagline": "5opka TV: нарезки Кирилла Баранова, сервер СП3, обзоры модов и концентрированный угар",
+    "icon": "smart_toy",
+    "logoSvg": "animehit",
+    "badge": "5OPKA TV",
+    "color": "#ef4444",
+    "schedule": [
+      {
+        "title": "Пятёрка: Первые уроки гимназии #СП3",
+        "episode": "Нарезка со стрима 5opka: СП3 школа",
+        "duration": 920,
+        "type": "youtube",
+        "youtubeId": "o67oACY0hDw",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Кирилл Баранов (Пятёрка) устраивает перформанс на сервере СП3."
+      },
+      {
+        "title": "Пятёрка: Головорезы. Третье пришествие",
+        "episode": "5opka, BAV, mazellovvv, OTURRO, Oster",
+        "duration": 580,
+        "type": "youtube",
+        "youtubeId": "OtfGTanVh2o",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Пятёрка и банда слушают легендарный трек 'Головорезы'."
+      },
+      {
+        "title": "Пятёрка: 100 фактов про Пятёрку",
+        "episode": "Реакция на документалку от подписчиков",
+        "duration": 1100,
+        "type": "youtube",
+        "youtubeId": "EenivcKVjRQ",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Кирилл комментирует факты о своей стримерской биографии."
+      },
+      {
+        "title": "Пятёрка: 5opka без контекста",
+        "episode": "Смешные моменты и отборные рофлы",
+        "duration": 780,
+        "type": "youtube",
+        "youtubeId": "-tzWd8YoYmI",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Концентрированный угар и мемные моменты со стримов Пятёрки."
+      },
+      {
+        "title": "Пятёрка: Первые уроки гимназии #СП3",
+        "episode": "Нарезка со стрима 5opka: СП3 школа",
+        "duration": 920,
+        "type": "youtube",
+        "youtubeId": "o67oACY0hDw",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Кирилл Баранов (Пятёрка) устраивает перформанс на сервере СП3."
+      },
+      {
+        "title": "Пятёрка: Головорезы. Третье пришествие",
+        "episode": "5opka, BAV, mazellovvv, OTURRO, Oster",
+        "duration": 580,
+        "type": "youtube",
+        "youtubeId": "OtfGTanVh2o",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Пятёрка и банда слушают легендарный трек 'Головорезы'."
+      },
+      {
+        "title": "Пятёрка: 100 фактов про Пятёрку",
+        "episode": "Реакция на документалку от подписчиков",
+        "duration": 1100,
+        "type": "youtube",
+        "youtubeId": "EenivcKVjRQ",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Кирилл комментирует факты о своей стримерской биографии."
+      },
+      {
+        "title": "Пятёрка: 5opka без контекста",
+        "episode": "Смешные моменты и отборные рофлы",
+        "duration": 780,
+        "type": "youtube",
+        "youtubeId": "-tzWd8YoYmI",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Концентрированный угар и мемные моменты со стримов Пятёрки."
+      },
+      {
+        "title": "Пятёрка: Первые уроки гимназии #СП3",
+        "episode": "Нарезка со стрима 5opka: СП3 школа",
+        "duration": 920,
+        "type": "youtube",
+        "youtubeId": "o67oACY0hDw",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Кирилл Баранов (Пятёрка) устраивает перформанс на сервере СП3."
+      },
+      {
+        "title": "Пятёрка: Головорезы. Третье пришествие",
+        "episode": "5opka, BAV, mazellovvv, OTURRO, Oster",
+        "duration": 580,
+        "type": "youtube",
+        "youtubeId": "OtfGTanVh2o",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Пятёрка и банда слушают легендарный трек 'Головорезы'."
+      },
+      {
+        "title": "Пятёрка: 100 фактов про Пятёрку",
+        "episode": "Реакция на документалку от подписчиков",
+        "duration": 1100,
+        "type": "youtube",
+        "youtubeId": "EenivcKVjRQ",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Кирилл комментирует факты о своей стримерской биографии."
+      },
+      {
+        "title": "Пятёрка: 5opka без контекста",
+        "episode": "Смешные моменты и отборные рофлы",
+        "duration": 780,
+        "type": "youtube",
+        "youtubeId": "-tzWd8YoYmI",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Концентрированный угар и мемные моменты со стримов Пятёрки."
+      },
+      {
+        "title": "Пятёрка: Первые уроки гимназии #СП3",
+        "episode": "Нарезка со стрима 5opka: СП3 школа",
+        "duration": 920,
+        "type": "youtube",
+        "youtubeId": "o67oACY0hDw",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Кирилл Баранов (Пятёрка) устраивает перформанс на сервере СП3."
+      },
+      {
+        "title": "Пятёрка: Головорезы. Третье пришествие",
+        "episode": "5opka, BAV, mazellovvv, OTURRO, Oster",
+        "duration": 580,
+        "type": "youtube",
+        "youtubeId": "OtfGTanVh2o",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Пятёрка и банда слушают легендарный трек 'Головорезы'."
+      },
+      {
+        "title": "Пятёрка: 100 фактов про Пятёрку",
+        "episode": "Реакция на документалку от подписчиков",
+        "duration": 1100,
+        "type": "youtube",
+        "youtubeId": "EenivcKVjRQ",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Кирилл комментирует факты о своей стримерской биографии."
+      },
+      {
+        "title": "Пятёрка: 5opka без контекста",
+        "episode": "Смешные моменты и отборные рофлы",
+        "duration": 780,
+        "type": "youtube",
+        "youtubeId": "-tzWd8YoYmI",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Концентрированный угар и мемные моменты со стримов Пятёрки."
+      },
+      {
+        "title": "Пятёрка: Первые уроки гимназии #СП3",
+        "episode": "Нарезка со стрима 5opka: СП3 школа",
+        "duration": 920,
+        "type": "youtube",
+        "youtubeId": "o67oACY0hDw",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Кирилл Баранов (Пятёрка) устраивает перформанс на сервере СП3."
+      },
+      {
+        "title": "Пятёрка: Головорезы. Третье пришествие",
+        "episode": "5opka, BAV, mazellovvv, OTURRO, Oster",
+        "duration": 580,
+        "type": "youtube",
+        "youtubeId": "OtfGTanVh2o",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Пятёрка и банда слушают легендарный трек 'Головорезы'."
+      },
+      {
+        "title": "Пятёрка: 100 фактов про Пятёрку",
+        "episode": "Реакция на документалку от подписчиков",
+        "duration": 1100,
+        "type": "youtube",
+        "youtubeId": "EenivcKVjRQ",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Кирилл комментирует факты о своей стримерской биографии."
+      },
+      {
+        "title": "Пятёрка: 5opka без контекста",
+        "episode": "Смешные моменты и отборные рофлы",
+        "duration": 780,
+        "type": "youtube",
+        "youtubeId": "-tzWd8YoYmI",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Концентрированный угар и мемные моменты со стримов Пятёрки."
+      },
+      {
+        "title": "Пятёрка: Первые уроки гимназии #СП3",
+        "episode": "Нарезка со стрима 5opka: СП3 школа",
+        "duration": 920,
+        "type": "youtube",
+        "youtubeId": "o67oACY0hDw",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Кирилл Баранов (Пятёрка) устраивает перформанс на сервере СП3."
+      },
+      {
+        "title": "Пятёрка: Головорезы. Третье пришествие",
+        "episode": "5opka, BAV, mazellovvv, OTURRO, Oster",
+        "duration": 580,
+        "type": "youtube",
+        "youtubeId": "OtfGTanVh2o",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Пятёрка и банда слушают легендарный трек 'Головорезы'."
+      },
+      {
+        "title": "Пятёрка: 100 фактов про Пятёрку",
+        "episode": "Реакция на документалку от подписчиков",
+        "duration": 1100,
+        "type": "youtube",
+        "youtubeId": "EenivcKVjRQ",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Кирилл комментирует факты о своей стримерской биографии."
+      },
+      {
+        "title": "Пятёрка: 5opka без контекста",
+        "episode": "Смешные моменты и отборные рофлы",
+        "duration": 780,
+        "type": "youtube",
+        "youtubeId": "-tzWd8YoYmI",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Концентрированный угар и мемные моменты со стримов Пятёрки."
+      },
+      {
+        "title": "Пятёрка: Первые уроки гимназии #СП3",
+        "episode": "Нарезка со стрима 5opka: СП3 школа",
+        "duration": 920,
+        "type": "youtube",
+        "youtubeId": "o67oACY0hDw",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Кирилл Баранов (Пятёрка) устраивает перформанс на сервере СП3."
+      },
+      {
+        "title": "Пятёрка: Головорезы. Третье пришествие",
+        "episode": "5opka, BAV, mazellovvv, OTURRO, Oster",
+        "duration": 580,
+        "type": "youtube",
+        "youtubeId": "OtfGTanVh2o",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Пятёрка и банда слушают легендарный трек 'Головорезы'."
+      },
+      {
+        "title": "Пятёрка: 100 фактов про Пятёрку",
+        "episode": "Реакция на документалку от подписчиков",
+        "duration": 1100,
+        "type": "youtube",
+        "youtubeId": "EenivcKVjRQ",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Кирилл комментирует факты о своей стримерской биографии."
+      },
+      {
+        "title": "Пятёрка: 5opka без контекста",
+        "episode": "Смешные моменты и отборные рофлы",
+        "duration": 780,
+        "type": "youtube",
+        "youtubeId": "-tzWd8YoYmI",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Концентрированный угар и мемные моменты со стримов Пятёрки."
+      },
+      {
+        "title": "Пятёрка: Первые уроки гимназии #СП3",
+        "episode": "Нарезка со стрима 5opka: СП3 школа",
+        "duration": 920,
+        "type": "youtube",
+        "youtubeId": "o67oACY0hDw",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Кирилл Баранов (Пятёрка) устраивает перформанс на сервере СП3."
+      },
+      {
+        "title": "Пятёрка: Головорезы. Третье пришествие",
+        "episode": "5opka, BAV, mazellovvv, OTURRO, Oster",
+        "duration": 580,
+        "type": "youtube",
+        "youtubeId": "OtfGTanVh2o",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Пятёрка и банда слушают легендарный трек 'Головорезы'."
+      },
+      {
+        "title": "Пятёрка: 100 фактов про Пятёрку",
+        "episode": "Реакция на документалку от подписчиков",
+        "duration": 1100,
+        "type": "youtube",
+        "youtubeId": "EenivcKVjRQ",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Кирилл комментирует факты о своей стримерской биографии."
+      },
+      {
+        "title": "Пятёрка: 5opka без контекста",
+        "episode": "Смешные моменты и отборные рофлы",
+        "duration": 780,
+        "type": "youtube",
+        "youtubeId": "-tzWd8YoYmI",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Концентрированный угар и мемные моменты со стримов Пятёрки."
+      },
+      {
+        "title": "Пятёрка: Первые уроки гимназии #СП3",
+        "episode": "Нарезка со стрима 5opka: СП3 школа",
+        "duration": 920,
+        "type": "youtube",
+        "youtubeId": "o67oACY0hDw",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Кирилл Баранов (Пятёрка) устраивает перформанс на сервере СП3."
+      },
+      {
+        "title": "Пятёрка: Головорезы. Третье пришествие",
+        "episode": "5opka, BAV, mazellovvv, OTURRO, Oster",
+        "duration": 580,
+        "type": "youtube",
+        "youtubeId": "OtfGTanVh2o",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Пятёрка и банда слушают легендарный трек 'Головорезы'."
+      },
+      {
+        "title": "Пятёрка: 100 фактов про Пятёрку",
+        "episode": "Реакция на документалку от подписчиков",
+        "duration": 1100,
+        "type": "youtube",
+        "youtubeId": "EenivcKVjRQ",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Кирилл комментирует факты о своей стримерской биографии."
+      },
+      {
+        "title": "Пятёрка: 5opka без контекста",
+        "episode": "Смешные моменты и отборные рофлы",
+        "duration": 780,
+        "type": "youtube",
+        "youtubeId": "-tzWd8YoYmI",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Концентрированный угар и мемные моменты со стримов Пятёрки."
+      },
+      {
+        "title": "Пятёрка: Первые уроки гимназии #СП3",
+        "episode": "Нарезка со стрима 5opka: СП3 школа",
+        "duration": 920,
+        "type": "youtube",
+        "youtubeId": "o67oACY0hDw",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Кирилл Баранов (Пятёрка) устраивает перформанс на сервере СП3."
+      },
+      {
+        "title": "Пятёрка: Головорезы. Третье пришествие",
+        "episode": "5opka, BAV, mazellovvv, OTURRO, Oster",
+        "duration": 580,
+        "type": "youtube",
+        "youtubeId": "OtfGTanVh2o",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Пятёрка и банда слушают легендарный трек 'Головорезы'."
+      },
+      {
+        "title": "Пятёрка: 100 фактов про Пятёрку",
+        "episode": "Реакция на документалку от подписчиков",
+        "duration": 1100,
+        "type": "youtube",
+        "youtubeId": "EenivcKVjRQ",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Кирилл комментирует факты о своей стримерской биографии."
+      },
+      {
+        "title": "Пятёрка: 5opka без контекста",
+        "episode": "Смешные моменты и отборные рофлы",
+        "duration": 780,
+        "type": "youtube",
+        "youtubeId": "-tzWd8YoYmI",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Концентрированный угар и мемные моменты со стримов Пятёрки."
+      }
+    ]
+  },
+  {
+    "id": "minecrafters-zakviel",
+    "number": "07",
+    "streamId": "zakviel",
+    "category": "minecrafters",
+    "categoryName": "Майнкрафтеры",
+    "name": "НАРЕЗКИ ЗАКВИЕЛЯ",
+    "shortName": "ЗАКВИЕЛЬ",
+    "tagline": "Zakviel TV: СП Vortex, прохождение Portal, моды Create Aeronautics и тирлисты",
+    "icon": "shield",
+    "logoSvg": "toonster",
+    "badge": "ZAKVIEL TV",
+    "color": "#3b82f6",
+    "schedule": [
+      {
+        "title": "Заквиель: Прохождение первого Portal",
+        "episode": "Заквиель впервые проходит Portal 1",
+        "duration": 1250,
+        "type": "youtube",
+        "youtubeId": "j7I1ASCnhSw",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Головоломки Aperture Science и реакция Заквиеля на GLaDOS."
+      },
+      {
+        "title": "Заквиель: Финал Portal 2",
+        "episode": "Главы 8, 9 и битва с Уитли",
+        "duration": 1180,
+        "type": "youtube",
+        "youtubeId": "EGAOiq0J9BY",
+        "poster": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Эпичный финал приключений в лабораториях Portal 2."
+      },
+      {
+        "title": "Заквиель: Ратуша в колонии Vortex",
+        "episode": "СП3/СП4: Новый склад и лор колонии",
+        "duration": 1050,
+        "type": "youtube",
+        "youtubeId": "XPa4oByRliU",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Масштабная стройка и развитие базы на сервере СП."
+      },
+      {
+        "title": "Заквиель: Create Aeronautics",
+        "episode": "Проектирование воздушного транспортника",
+        "duration": 940,
+        "type": "youtube",
+        "youtubeId": "FxtsOwykJo4",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Механизмы мода Create и первые полёты самодельного дирижабля."
+      },
+      {
+        "title": "Заквиель: Тирлист школьных предметов",
+        "episode": "Истории из жизни, походы к врачам",
+        "duration": 980,
+        "type": "youtube",
+        "youtubeId": "SlaVY1W6anI",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Разговорный стрим и классификация предметов по пользе."
+      },
+      {
+        "title": "Заквиель: Прохождение первого Portal",
+        "episode": "Заквиель впервые проходит Portal 1",
+        "duration": 1250,
+        "type": "youtube",
+        "youtubeId": "j7I1ASCnhSw",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Головоломки Aperture Science и реакция Заквиеля на GLaDOS."
+      },
+      {
+        "title": "Заквиель: Финал Portal 2",
+        "episode": "Главы 8, 9 и битва с Уитли",
+        "duration": 1180,
+        "type": "youtube",
+        "youtubeId": "EGAOiq0J9BY",
+        "poster": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Эпичный финал приключений в лабораториях Portal 2."
+      },
+      {
+        "title": "Заквиель: Ратуша в колонии Vortex",
+        "episode": "СП3/СП4: Новый склад и лор колонии",
+        "duration": 1050,
+        "type": "youtube",
+        "youtubeId": "XPa4oByRliU",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Масштабная стройка и развитие базы на сервере СП."
+      },
+      {
+        "title": "Заквиель: Create Aeronautics",
+        "episode": "Проектирование воздушного транспортника",
+        "duration": 940,
+        "type": "youtube",
+        "youtubeId": "FxtsOwykJo4",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Механизмы мода Create и первые полёты самодельного дирижабля."
+      },
+      {
+        "title": "Заквиель: Тирлист школьных предметов",
+        "episode": "Истории из жизни, походы к врачам",
+        "duration": 980,
+        "type": "youtube",
+        "youtubeId": "SlaVY1W6anI",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Разговорный стрим и классификация предметов по пользе."
+      },
+      {
+        "title": "Заквиель: Прохождение первого Portal",
+        "episode": "Заквиель впервые проходит Portal 1",
+        "duration": 1250,
+        "type": "youtube",
+        "youtubeId": "j7I1ASCnhSw",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Головоломки Aperture Science и реакция Заквиеля на GLaDOS."
+      },
+      {
+        "title": "Заквиель: Финал Portal 2",
+        "episode": "Главы 8, 9 и битва с Уитли",
+        "duration": 1180,
+        "type": "youtube",
+        "youtubeId": "EGAOiq0J9BY",
+        "poster": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Эпичный финал приключений в лабораториях Portal 2."
+      },
+      {
+        "title": "Заквиель: Ратуша в колонии Vortex",
+        "episode": "СП3/СП4: Новый склад и лор колонии",
+        "duration": 1050,
+        "type": "youtube",
+        "youtubeId": "XPa4oByRliU",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Масштабная стройка и развитие базы на сервере СП."
+      },
+      {
+        "title": "Заквиель: Create Aeronautics",
+        "episode": "Проектирование воздушного транспортника",
+        "duration": 940,
+        "type": "youtube",
+        "youtubeId": "FxtsOwykJo4",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Механизмы мода Create и первые полёты самодельного дирижабля."
+      },
+      {
+        "title": "Заквиель: Тирлист школьных предметов",
+        "episode": "Истории из жизни, походы к врачам",
+        "duration": 980,
+        "type": "youtube",
+        "youtubeId": "SlaVY1W6anI",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Разговорный стрим и классификация предметов по пользе."
+      },
+      {
+        "title": "Заквиель: Прохождение первого Portal",
+        "episode": "Заквиель впервые проходит Portal 1",
+        "duration": 1250,
+        "type": "youtube",
+        "youtubeId": "j7I1ASCnhSw",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Головоломки Aperture Science и реакция Заквиеля на GLaDOS."
+      },
+      {
+        "title": "Заквиель: Финал Portal 2",
+        "episode": "Главы 8, 9 и битва с Уитли",
+        "duration": 1180,
+        "type": "youtube",
+        "youtubeId": "EGAOiq0J9BY",
+        "poster": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Эпичный финал приключений в лабораториях Portal 2."
+      },
+      {
+        "title": "Заквиель: Ратуша в колонии Vortex",
+        "episode": "СП3/СП4: Новый склад и лор колонии",
+        "duration": 1050,
+        "type": "youtube",
+        "youtubeId": "XPa4oByRliU",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Масштабная стройка и развитие базы на сервере СП."
+      },
+      {
+        "title": "Заквиель: Create Aeronautics",
+        "episode": "Проектирование воздушного транспортника",
+        "duration": 940,
+        "type": "youtube",
+        "youtubeId": "FxtsOwykJo4",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Механизмы мода Create и первые полёты самодельного дирижабля."
+      },
+      {
+        "title": "Заквиель: Тирлист школьных предметов",
+        "episode": "Истории из жизни, походы к врачам",
+        "duration": 980,
+        "type": "youtube",
+        "youtubeId": "SlaVY1W6anI",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Разговорный стрим и классификация предметов по пользе."
+      },
+      {
+        "title": "Заквиель: Прохождение первого Portal",
+        "episode": "Заквиель впервые проходит Portal 1",
+        "duration": 1250,
+        "type": "youtube",
+        "youtubeId": "j7I1ASCnhSw",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Головоломки Aperture Science и реакция Заквиеля на GLaDOS."
+      },
+      {
+        "title": "Заквиель: Финал Portal 2",
+        "episode": "Главы 8, 9 и битва с Уитли",
+        "duration": 1180,
+        "type": "youtube",
+        "youtubeId": "EGAOiq0J9BY",
+        "poster": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Эпичный финал приключений в лабораториях Portal 2."
+      },
+      {
+        "title": "Заквиель: Ратуша в колонии Vortex",
+        "episode": "СП3/СП4: Новый склад и лор колонии",
+        "duration": 1050,
+        "type": "youtube",
+        "youtubeId": "XPa4oByRliU",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Масштабная стройка и развитие базы на сервере СП."
+      },
+      {
+        "title": "Заквиель: Create Aeronautics",
+        "episode": "Проектирование воздушного транспортника",
+        "duration": 940,
+        "type": "youtube",
+        "youtubeId": "FxtsOwykJo4",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Механизмы мода Create и первые полёты самодельного дирижабля."
+      },
+      {
+        "title": "Заквиель: Тирлист школьных предметов",
+        "episode": "Истории из жизни, походы к врачам",
+        "duration": 980,
+        "type": "youtube",
+        "youtubeId": "SlaVY1W6anI",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Разговорный стрим и классификация предметов по пользе."
+      },
+      {
+        "title": "Заквиель: Прохождение первого Portal",
+        "episode": "Заквиель впервые проходит Portal 1",
+        "duration": 1250,
+        "type": "youtube",
+        "youtubeId": "j7I1ASCnhSw",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Головоломки Aperture Science и реакция Заквиеля на GLaDOS."
+      },
+      {
+        "title": "Заквиель: Финал Portal 2",
+        "episode": "Главы 8, 9 и битва с Уитли",
+        "duration": 1180,
+        "type": "youtube",
+        "youtubeId": "EGAOiq0J9BY",
+        "poster": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Эпичный финал приключений в лабораториях Portal 2."
+      },
+      {
+        "title": "Заквиель: Ратуша в колонии Vortex",
+        "episode": "СП3/СП4: Новый склад и лор колонии",
+        "duration": 1050,
+        "type": "youtube",
+        "youtubeId": "XPa4oByRliU",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Масштабная стройка и развитие базы на сервере СП."
+      },
+      {
+        "title": "Заквиель: Create Aeronautics",
+        "episode": "Проектирование воздушного транспортника",
+        "duration": 940,
+        "type": "youtube",
+        "youtubeId": "FxtsOwykJo4",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Механизмы мода Create и первые полёты самодельного дирижабля."
+      },
+      {
+        "title": "Заквиель: Тирлист школьных предметов",
+        "episode": "Истории из жизни, походы к врачам",
+        "duration": 980,
+        "type": "youtube",
+        "youtubeId": "SlaVY1W6anI",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Разговорный стрим и классификация предметов по пользе."
+      },
+      {
+        "title": "Заквиель: Прохождение первого Portal",
+        "episode": "Заквиель впервые проходит Portal 1",
+        "duration": 1250,
+        "type": "youtube",
+        "youtubeId": "j7I1ASCnhSw",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Головоломки Aperture Science и реакция Заквиеля на GLaDOS."
+      },
+      {
+        "title": "Заквиель: Финал Portal 2",
+        "episode": "Главы 8, 9 и битва с Уитли",
+        "duration": 1180,
+        "type": "youtube",
+        "youtubeId": "EGAOiq0J9BY",
+        "poster": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Эпичный финал приключений в лабораториях Portal 2."
+      },
+      {
+        "title": "Заквиель: Ратуша в колонии Vortex",
+        "episode": "СП3/СП4: Новый склад и лор колонии",
+        "duration": 1050,
+        "type": "youtube",
+        "youtubeId": "XPa4oByRliU",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Масштабная стройка и развитие базы на сервере СП."
+      },
+      {
+        "title": "Заквиель: Create Aeronautics",
+        "episode": "Проектирование воздушного транспортника",
+        "duration": 940,
+        "type": "youtube",
+        "youtubeId": "FxtsOwykJo4",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Механизмы мода Create и первые полёты самодельного дирижабля."
+      },
+      {
+        "title": "Заквиель: Тирлист школьных предметов",
+        "episode": "Истории из жизни, походы к врачам",
+        "duration": 980,
+        "type": "youtube",
+        "youtubeId": "SlaVY1W6anI",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Разговорный стрим и классификация предметов по пользе."
+      },
+      {
+        "title": "Заквиель: Прохождение первого Portal",
+        "episode": "Заквиель впервые проходит Portal 1",
+        "duration": 1250,
+        "type": "youtube",
+        "youtubeId": "j7I1ASCnhSw",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Головоломки Aperture Science и реакция Заквиеля на GLaDOS."
+      },
+      {
+        "title": "Заквиель: Финал Portal 2",
+        "episode": "Главы 8, 9 и битва с Уитли",
+        "duration": 1180,
+        "type": "youtube",
+        "youtubeId": "EGAOiq0J9BY",
+        "poster": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Эпичный финал приключений в лабораториях Portal 2."
+      },
+      {
+        "title": "Заквиель: Ратуша в колонии Vortex",
+        "episode": "СП3/СП4: Новый склад и лор колонии",
+        "duration": 1050,
+        "type": "youtube",
+        "youtubeId": "XPa4oByRliU",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Масштабная стройка и развитие базы на сервере СП."
+      },
+      {
+        "title": "Заквиель: Create Aeronautics",
+        "episode": "Проектирование воздушного транспортника",
+        "duration": 940,
+        "type": "youtube",
+        "youtubeId": "FxtsOwykJo4",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Механизмы мода Create и первые полёты самодельного дирижабля."
+      },
+      {
+        "title": "Заквиель: Тирлист школьных предметов",
+        "episode": "Истории из жизни, походы к врачам",
+        "duration": 980,
+        "type": "youtube",
+        "youtubeId": "SlaVY1W6anI",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Разговорный стрим и классификация предметов по пользе."
+      }
+    ]
+  },
+  {
+    "id": "minecrafters-story",
+    "number": "08",
+    "streamId": "craft-story",
+    "category": "minecrafters",
+    "categoryName": "Майнкрафтеры",
+    "name": "СЮЖЕТНЫЙ МАЙНКРАФТ",
+    "shortName": "ЛЕТСПЛЕИ",
+    "tagline": "Лололошка (Голос Времени), Аид (Выживание бомжа в России), Демастер",
+    "icon": "construction",
+    "logoSvg": "cyber",
+    "badge": "СЮЖЕТ & ЛОР",
+    "color": "#10b981",
+    "schedule": [
+      {
+        "title": "Аид: Выживание бомжа в России #1",
+        "episode": "Заработали первые деньги в городе",
+        "duration": 1150,
+        "type": "youtube",
+        "youtubeId": "0I4ivtCfNO4",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
+        "description": "Аид (VyacheslavOO) начинает легендарный сериал выживания в суровом мегаполисе."
+      },
+      {
+        "title": "Лололошка: Голос Времени",
+        "episode": "Сюжетный сезон: Пробуждение во времени",
+        "duration": 1280,
+        "type": "youtube",
+        "youtubeId": "R_NsDmpu-Wc",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "MrLololoshka и кинематографичный сюжет в уникальном измерении."
+      },
+      {
+        "title": "Аид: Выживание бомжа в России #2",
+        "episode": "Первая работа и крыша над головой",
+        "duration": 1100,
+        "type": "youtube",
+        "youtubeId": "bMvToeye4YE",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
+        "description": "Продолжение приключений бомжа: поиск бутылок, новые знакомые и криминал."
+      },
+      {
+        "title": "Демастер: Обзор карты Аида Бомж",
+        "episode": "Настоящая карта и секреты локаций",
+        "duration": 950,
+        "type": "youtube",
+        "youtubeId": "2N3-BGjjosQ",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ ДЕМАСТЕР",
+        "description": "Demaster изучает культовую карту города из сериала Аида."
+      },
+      {
+        "title": "Выживание бомжа: Работа на ферме",
+        "episode": "Вошел в доверие местного Сеги",
+        "duration": 890,
+        "type": "youtube",
+        "youtubeId": "jQwCzLpHr0c",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
+        "description": "Сюжетные квесты и развитие в деревне."
+      },
+      {
+        "title": "Аид: Выживание бомжа в России #1",
+        "episode": "Заработали первые деньги в городе",
+        "duration": 1150,
+        "type": "youtube",
+        "youtubeId": "0I4ivtCfNO4",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
+        "description": "Аид (VyacheslavOO) начинает легендарный сериал выживания в суровом мегаполисе."
+      },
+      {
+        "title": "Лололошка: Голос Времени",
+        "episode": "Сюжетный сезон: Пробуждение во времени",
+        "duration": 1280,
+        "type": "youtube",
+        "youtubeId": "R_NsDmpu-Wc",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "MrLololoshka и кинематографичный сюжет в уникальном измерении."
+      },
+      {
+        "title": "Аид: Выживание бомжа в России #2",
+        "episode": "Первая работа и крыша над головой",
+        "duration": 1100,
+        "type": "youtube",
+        "youtubeId": "bMvToeye4YE",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
+        "description": "Продолжение приключений бомжа: поиск бутылок, новые знакомые и криминал."
+      },
+      {
+        "title": "Демастер: Обзор карты Аида Бомж",
+        "episode": "Настоящая карта и секреты локаций",
+        "duration": 950,
+        "type": "youtube",
+        "youtubeId": "2N3-BGjjosQ",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ ДЕМАСТЕР",
+        "description": "Demaster изучает культовую карту города из сериала Аида."
+      },
+      {
+        "title": "Выживание бомжа: Работа на ферме",
+        "episode": "Вошел в доверие местного Сеги",
+        "duration": 890,
+        "type": "youtube",
+        "youtubeId": "jQwCzLpHr0c",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
+        "description": "Сюжетные квесты и развитие в деревне."
+      },
+      {
+        "title": "Аид: Выживание бомжа в России #1",
+        "episode": "Заработали первые деньги в городе",
+        "duration": 1150,
+        "type": "youtube",
+        "youtubeId": "0I4ivtCfNO4",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
+        "description": "Аид (VyacheslavOO) начинает легендарный сериал выживания в суровом мегаполисе."
+      },
+      {
+        "title": "Лололошка: Голос Времени",
+        "episode": "Сюжетный сезон: Пробуждение во времени",
+        "duration": 1280,
+        "type": "youtube",
+        "youtubeId": "R_NsDmpu-Wc",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "MrLololoshka и кинематографичный сюжет в уникальном измерении."
+      },
+      {
+        "title": "Аид: Выживание бомжа в России #2",
+        "episode": "Первая работа и крыша над головой",
+        "duration": 1100,
+        "type": "youtube",
+        "youtubeId": "bMvToeye4YE",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
+        "description": "Продолжение приключений бомжа: поиск бутылок, новые знакомые и криминал."
+      },
+      {
+        "title": "Демастер: Обзор карты Аида Бомж",
+        "episode": "Настоящая карта и секреты локаций",
+        "duration": 950,
+        "type": "youtube",
+        "youtubeId": "2N3-BGjjosQ",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ ДЕМАСТЕР",
+        "description": "Demaster изучает культовую карту города из сериала Аида."
+      },
+      {
+        "title": "Выживание бомжа: Работа на ферме",
+        "episode": "Вошел в доверие местного Сеги",
+        "duration": 890,
+        "type": "youtube",
+        "youtubeId": "jQwCzLpHr0c",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
+        "description": "Сюжетные квесты и развитие в деревне."
+      },
+      {
+        "title": "Аид: Выживание бомжа в России #1",
+        "episode": "Заработали первые деньги в городе",
+        "duration": 1150,
+        "type": "youtube",
+        "youtubeId": "0I4ivtCfNO4",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
+        "description": "Аид (VyacheslavOO) начинает легендарный сериал выживания в суровом мегаполисе."
+      },
+      {
+        "title": "Лололошка: Голос Времени",
+        "episode": "Сюжетный сезон: Пробуждение во времени",
+        "duration": 1280,
+        "type": "youtube",
+        "youtubeId": "R_NsDmpu-Wc",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "MrLololoshka и кинематографичный сюжет в уникальном измерении."
+      },
+      {
+        "title": "Аид: Выживание бомжа в России #2",
+        "episode": "Первая работа и крыша над головой",
+        "duration": 1100,
+        "type": "youtube",
+        "youtubeId": "bMvToeye4YE",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
+        "description": "Продолжение приключений бомжа: поиск бутылок, новые знакомые и криминал."
+      },
+      {
+        "title": "Демастер: Обзор карты Аида Бомж",
+        "episode": "Настоящая карта и секреты локаций",
+        "duration": 950,
+        "type": "youtube",
+        "youtubeId": "2N3-BGjjosQ",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ ДЕМАСТЕР",
+        "description": "Demaster изучает культовую карту города из сериала Аида."
+      },
+      {
+        "title": "Выживание бомжа: Работа на ферме",
+        "episode": "Вошел в доверие местного Сеги",
+        "duration": 890,
+        "type": "youtube",
+        "youtubeId": "jQwCzLpHr0c",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
+        "description": "Сюжетные квесты и развитие в деревне."
+      },
+      {
+        "title": "Аид: Выживание бомжа в России #1",
+        "episode": "Заработали первые деньги в городе",
+        "duration": 1150,
+        "type": "youtube",
+        "youtubeId": "0I4ivtCfNO4",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
+        "description": "Аид (VyacheslavOO) начинает легендарный сериал выживания в суровом мегаполисе."
+      },
+      {
+        "title": "Лололошка: Голос Времени",
+        "episode": "Сюжетный сезон: Пробуждение во времени",
+        "duration": 1280,
+        "type": "youtube",
+        "youtubeId": "R_NsDmpu-Wc",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "MrLololoshka и кинематографичный сюжет в уникальном измерении."
+      },
+      {
+        "title": "Аид: Выживание бомжа в России #2",
+        "episode": "Первая работа и крыша над головой",
+        "duration": 1100,
+        "type": "youtube",
+        "youtubeId": "bMvToeye4YE",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
+        "description": "Продолжение приключений бомжа: поиск бутылок, новые знакомые и криминал."
+      },
+      {
+        "title": "Демастер: Обзор карты Аида Бомж",
+        "episode": "Настоящая карта и секреты локаций",
+        "duration": 950,
+        "type": "youtube",
+        "youtubeId": "2N3-BGjjosQ",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ ДЕМАСТЕР",
+        "description": "Demaster изучает культовую карту города из сериала Аида."
+      },
+      {
+        "title": "Выживание бомжа: Работа на ферме",
+        "episode": "Вошел в доверие местного Сеги",
+        "duration": 890,
+        "type": "youtube",
+        "youtubeId": "jQwCzLpHr0c",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
+        "description": "Сюжетные квесты и развитие в деревне."
+      },
+      {
+        "title": "Аид: Выживание бомжа в России #1",
+        "episode": "Заработали первые деньги в городе",
+        "duration": 1150,
+        "type": "youtube",
+        "youtubeId": "0I4ivtCfNO4",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
+        "description": "Аид (VyacheslavOO) начинает легендарный сериал выживания в суровом мегаполисе."
+      },
+      {
+        "title": "Лололошка: Голос Времени",
+        "episode": "Сюжетный сезон: Пробуждение во времени",
+        "duration": 1280,
+        "type": "youtube",
+        "youtubeId": "R_NsDmpu-Wc",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "MrLololoshka и кинематографичный сюжет в уникальном измерении."
+      },
+      {
+        "title": "Аид: Выживание бомжа в России #2",
+        "episode": "Первая работа и крыша над головой",
+        "duration": 1100,
+        "type": "youtube",
+        "youtubeId": "bMvToeye4YE",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
+        "description": "Продолжение приключений бомжа: поиск бутылок, новые знакомые и криминал."
+      },
+      {
+        "title": "Демастер: Обзор карты Аида Бомж",
+        "episode": "Настоящая карта и секреты локаций",
+        "duration": 950,
+        "type": "youtube",
+        "youtubeId": "2N3-BGjjosQ",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ ДЕМАСТЕР",
+        "description": "Demaster изучает культовую карту города из сериала Аида."
+      },
+      {
+        "title": "Выживание бомжа: Работа на ферме",
+        "episode": "Вошел в доверие местного Сеги",
+        "duration": 890,
+        "type": "youtube",
+        "youtubeId": "jQwCzLpHr0c",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
+        "description": "Сюжетные квесты и развитие в деревне."
+      },
+      {
+        "title": "Аид: Выживание бомжа в России #1",
+        "episode": "Заработали первые деньги в городе",
+        "duration": 1150,
+        "type": "youtube",
+        "youtubeId": "0I4ivtCfNO4",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
+        "description": "Аид (VyacheslavOO) начинает легендарный сериал выживания в суровом мегаполисе."
+      },
+      {
+        "title": "Лололошка: Голос Времени",
+        "episode": "Сюжетный сезон: Пробуждение во времени",
+        "duration": 1280,
+        "type": "youtube",
+        "youtubeId": "R_NsDmpu-Wc",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "MrLololoshka и кинематографичный сюжет в уникальном измерении."
+      },
+      {
+        "title": "Аид: Выживание бомжа в России #2",
+        "episode": "Первая работа и крыша над головой",
+        "duration": 1100,
+        "type": "youtube",
+        "youtubeId": "bMvToeye4YE",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
+        "description": "Продолжение приключений бомжа: поиск бутылок, новые знакомые и криминал."
+      },
+      {
+        "title": "Демастер: Обзор карты Аида Бомж",
+        "episode": "Настоящая карта и секреты локаций",
+        "duration": 950,
+        "type": "youtube",
+        "youtubeId": "2N3-BGjjosQ",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ ДЕМАСТЕР",
+        "description": "Demaster изучает культовую карту города из сериала Аида."
+      },
+      {
+        "title": "Выживание бомжа: Работа на ферме",
+        "episode": "Вошел в доверие местного Сеги",
+        "duration": 890,
+        "type": "youtube",
+        "youtubeId": "jQwCzLpHr0c",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
+        "description": "Сюжетные квесты и развитие в деревне."
+      },
+      {
+        "title": "Аид: Выживание бомжа в России #1",
+        "episode": "Заработали первые деньги в городе",
+        "duration": 1150,
+        "type": "youtube",
+        "youtubeId": "0I4ivtCfNO4",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
+        "description": "Аид (VyacheslavOO) начинает легендарный сериал выживания в суровом мегаполисе."
+      },
+      {
+        "title": "Лололошка: Голос Времени",
+        "episode": "Сюжетный сезон: Пробуждение во времени",
+        "duration": 1280,
+        "type": "youtube",
+        "youtubeId": "R_NsDmpu-Wc",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "MrLololoshka и кинематографичный сюжет в уникальном измерении."
+      },
+      {
+        "title": "Аид: Выживание бомжа в России #2",
+        "episode": "Первая работа и крыша над головой",
+        "duration": 1100,
+        "type": "youtube",
+        "youtubeId": "bMvToeye4YE",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
+        "description": "Продолжение приключений бомжа: поиск бутылок, новые знакомые и криминал."
+      },
+      {
+        "title": "Демастер: Обзор карты Аида Бомж",
+        "episode": "Настоящая карта и секреты локаций",
+        "duration": 950,
+        "type": "youtube",
+        "youtubeId": "2N3-BGjjosQ",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ ДЕМАСТЕР",
+        "description": "Demaster изучает культовую карту города из сериала Аида."
+      },
+      {
+        "title": "Выживание бомжа: Работа на ферме",
+        "episode": "Вошел в доверие местного Сеги",
+        "duration": 890,
+        "type": "youtube",
+        "youtubeId": "jQwCzLpHr0c",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
+        "description": "Сюжетные квесты и развитие в деревне."
+      }
+    ]
+  },
+  {
+    "id": "minecrafters-music",
+    "number": "09",
+    "streamId": "craft-music",
+    "category": "minecrafters",
+    "categoryName": "Майнкрафтеры",
+    "name": "МАЙНКРАФТ МУЗ-ТВ",
+    "shortName": "КРАФТ МУЗ",
+    "tagline": "Dambo Music клипы, W-Labs треки, Poppy Playtime, рэп Пятёрки и Заквиеля",
+    "icon": "queue_music",
+    "logoSvg": "toonster",
+    "badge": "DAMBO & W-LABS",
+    "color": "#06b6d4",
+    "schedule": [
+      {
+        "title": "Dambo Music: Начало (Клип)",
+        "episode": "Майнкрафт клип-анимация на русском",
+        "duration": 240,
+        "type": "youtube",
+        "youtubeId": "o9_mPzZvbVw",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Культовый трек и эпичная 3D анимация от Дамбо Music."
+      },
+      {
+        "title": "W-Labs: Experiment (Poppy Playtime)",
+        "episode": "Minecraft Animation клип",
+        "duration": 220,
+        "type": "youtube",
+        "youtubeId": "e-Zv947gpwU",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Атмосферный музыкальный клип по вселенной Poppy Playtime в мире кубов."
+      },
+      {
+        "title": "Dambo Music: Повелитель Драконов",
+        "episode": "Rainimator & Дамбо: Сага драконов",
+        "duration": 480,
+        "type": "youtube",
+        "youtubeId": "PmXK3-FFvY0",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Эпическая песня битвы с драконами Края."
+      },
+      {
+        "title": "W-Labs: Poppy Playtime in Minecraft",
+        "episode": "3D анимация и саундтрек",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "tKu7rKl_Xto",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Официальная анимационная визуализация от W-Labs Studio."
+      },
+      {
+        "title": "Dambo Music: Ещё один день",
+        "episode": "Whatever It Takes (Minecraft Parody)",
+        "duration": 230,
+        "type": "youtube",
+        "youtubeId": "ltmsMe96D9g",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Русскоязычный пародийный кавер на Imagine Dragons."
+      },
+      {
+        "title": "W-Labs: Art of Darkness (Bendy)",
+        "episode": "Minecraft Music Video",
+        "duration": 250,
+        "type": "youtube",
+        "youtubeId": "1HOhvrfrAoQ",
+        "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Чернильный кошмар в блочной стилистике."
+      },
+      {
+        "title": "Пятёрка: Крутой чел (Клип)",
+        "episode": "5opka & Друзья: Музыкальное видео",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "OtfGTanVh2o",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🎶 ПЯТЁРКА РЭП",
+        "description": "Классический рэп-бэнгер от Пятёрки."
+      },
+      {
+        "title": "Dambo Music: Начало (Клип)",
+        "episode": "Майнкрафт клип-анимация на русском",
+        "duration": 240,
+        "type": "youtube",
+        "youtubeId": "o9_mPzZvbVw",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Культовый трек и эпичная 3D анимация от Дамбо Music."
+      },
+      {
+        "title": "W-Labs: Experiment (Poppy Playtime)",
+        "episode": "Minecraft Animation клип",
+        "duration": 220,
+        "type": "youtube",
+        "youtubeId": "e-Zv947gpwU",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Атмосферный музыкальный клип по вселенной Poppy Playtime в мире кубов."
+      },
+      {
+        "title": "Dambo Music: Повелитель Драконов",
+        "episode": "Rainimator & Дамбо: Сага драконов",
+        "duration": 480,
+        "type": "youtube",
+        "youtubeId": "PmXK3-FFvY0",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Эпическая песня битвы с драконами Края."
+      },
+      {
+        "title": "W-Labs: Poppy Playtime in Minecraft",
+        "episode": "3D анимация и саундтрек",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "tKu7rKl_Xto",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Официальная анимационная визуализация от W-Labs Studio."
+      },
+      {
+        "title": "Dambo Music: Ещё один день",
+        "episode": "Whatever It Takes (Minecraft Parody)",
+        "duration": 230,
+        "type": "youtube",
+        "youtubeId": "ltmsMe96D9g",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Русскоязычный пародийный кавер на Imagine Dragons."
+      },
+      {
+        "title": "W-Labs: Art of Darkness (Bendy)",
+        "episode": "Minecraft Music Video",
+        "duration": 250,
+        "type": "youtube",
+        "youtubeId": "1HOhvrfrAoQ",
+        "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Чернильный кошмар в блочной стилистике."
+      },
+      {
+        "title": "Пятёрка: Крутой чел (Клип)",
+        "episode": "5opka & Друзья: Музыкальное видео",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "OtfGTanVh2o",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🎶 ПЯТЁРКА РЭП",
+        "description": "Классический рэп-бэнгер от Пятёрки."
+      },
+      {
+        "title": "Dambo Music: Начало (Клип)",
+        "episode": "Майнкрафт клип-анимация на русском",
+        "duration": 240,
+        "type": "youtube",
+        "youtubeId": "o9_mPzZvbVw",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Культовый трек и эпичная 3D анимация от Дамбо Music."
+      },
+      {
+        "title": "W-Labs: Experiment (Poppy Playtime)",
+        "episode": "Minecraft Animation клип",
+        "duration": 220,
+        "type": "youtube",
+        "youtubeId": "e-Zv947gpwU",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Атмосферный музыкальный клип по вселенной Poppy Playtime в мире кубов."
+      },
+      {
+        "title": "Dambo Music: Повелитель Драконов",
+        "episode": "Rainimator & Дамбо: Сага драконов",
+        "duration": 480,
+        "type": "youtube",
+        "youtubeId": "PmXK3-FFvY0",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Эпическая песня битвы с драконами Края."
+      },
+      {
+        "title": "W-Labs: Poppy Playtime in Minecraft",
+        "episode": "3D анимация и саундтрек",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "tKu7rKl_Xto",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Официальная анимационная визуализация от W-Labs Studio."
+      },
+      {
+        "title": "Dambo Music: Ещё один день",
+        "episode": "Whatever It Takes (Minecraft Parody)",
+        "duration": 230,
+        "type": "youtube",
+        "youtubeId": "ltmsMe96D9g",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Русскоязычный пародийный кавер на Imagine Dragons."
+      },
+      {
+        "title": "W-Labs: Art of Darkness (Bendy)",
+        "episode": "Minecraft Music Video",
+        "duration": 250,
+        "type": "youtube",
+        "youtubeId": "1HOhvrfrAoQ",
+        "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Чернильный кошмар в блочной стилистике."
+      },
+      {
+        "title": "Пятёрка: Крутой чел (Клип)",
+        "episode": "5opka & Друзья: Музыкальное видео",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "OtfGTanVh2o",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🎶 ПЯТЁРКА РЭП",
+        "description": "Классический рэп-бэнгер от Пятёрки."
+      },
+      {
+        "title": "Dambo Music: Начало (Клип)",
+        "episode": "Майнкрафт клип-анимация на русском",
+        "duration": 240,
+        "type": "youtube",
+        "youtubeId": "o9_mPzZvbVw",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Культовый трек и эпичная 3D анимация от Дамбо Music."
+      },
+      {
+        "title": "W-Labs: Experiment (Poppy Playtime)",
+        "episode": "Minecraft Animation клип",
+        "duration": 220,
+        "type": "youtube",
+        "youtubeId": "e-Zv947gpwU",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Атмосферный музыкальный клип по вселенной Poppy Playtime в мире кубов."
+      },
+      {
+        "title": "Dambo Music: Повелитель Драконов",
+        "episode": "Rainimator & Дамбо: Сага драконов",
+        "duration": 480,
+        "type": "youtube",
+        "youtubeId": "PmXK3-FFvY0",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Эпическая песня битвы с драконами Края."
+      },
+      {
+        "title": "W-Labs: Poppy Playtime in Minecraft",
+        "episode": "3D анимация и саундтрек",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "tKu7rKl_Xto",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Официальная анимационная визуализация от W-Labs Studio."
+      },
+      {
+        "title": "Dambo Music: Ещё один день",
+        "episode": "Whatever It Takes (Minecraft Parody)",
+        "duration": 230,
+        "type": "youtube",
+        "youtubeId": "ltmsMe96D9g",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Русскоязычный пародийный кавер на Imagine Dragons."
+      },
+      {
+        "title": "W-Labs: Art of Darkness (Bendy)",
+        "episode": "Minecraft Music Video",
+        "duration": 250,
+        "type": "youtube",
+        "youtubeId": "1HOhvrfrAoQ",
+        "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Чернильный кошмар в блочной стилистике."
+      },
+      {
+        "title": "Пятёрка: Крутой чел (Клип)",
+        "episode": "5opka & Друзья: Музыкальное видео",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "OtfGTanVh2o",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🎶 ПЯТЁРКА РЭП",
+        "description": "Классический рэп-бэнгер от Пятёрки."
+      },
+      {
+        "title": "Dambo Music: Начало (Клип)",
+        "episode": "Майнкрафт клип-анимация на русском",
+        "duration": 240,
+        "type": "youtube",
+        "youtubeId": "o9_mPzZvbVw",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Культовый трек и эпичная 3D анимация от Дамбо Music."
+      },
+      {
+        "title": "W-Labs: Experiment (Poppy Playtime)",
+        "episode": "Minecraft Animation клип",
+        "duration": 220,
+        "type": "youtube",
+        "youtubeId": "e-Zv947gpwU",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Атмосферный музыкальный клип по вселенной Poppy Playtime в мире кубов."
+      },
+      {
+        "title": "Dambo Music: Повелитель Драконов",
+        "episode": "Rainimator & Дамбо: Сага драконов",
+        "duration": 480,
+        "type": "youtube",
+        "youtubeId": "PmXK3-FFvY0",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Эпическая песня битвы с драконами Края."
+      },
+      {
+        "title": "W-Labs: Poppy Playtime in Minecraft",
+        "episode": "3D анимация и саундтрек",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "tKu7rKl_Xto",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Официальная анимационная визуализация от W-Labs Studio."
+      },
+      {
+        "title": "Dambo Music: Ещё один день",
+        "episode": "Whatever It Takes (Minecraft Parody)",
+        "duration": 230,
+        "type": "youtube",
+        "youtubeId": "ltmsMe96D9g",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Русскоязычный пародийный кавер на Imagine Dragons."
+      },
+      {
+        "title": "W-Labs: Art of Darkness (Bendy)",
+        "episode": "Minecraft Music Video",
+        "duration": 250,
+        "type": "youtube",
+        "youtubeId": "1HOhvrfrAoQ",
+        "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Чернильный кошмар в блочной стилистике."
+      },
+      {
+        "title": "Пятёрка: Крутой чел (Клип)",
+        "episode": "5opka & Друзья: Музыкальное видео",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "OtfGTanVh2o",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🎶 ПЯТЁРКА РЭП",
+        "description": "Классический рэп-бэнгер от Пятёрки."
+      },
+      {
+        "title": "Dambo Music: Начало (Клип)",
+        "episode": "Майнкрафт клип-анимация на русском",
+        "duration": 240,
+        "type": "youtube",
+        "youtubeId": "o9_mPzZvbVw",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Культовый трек и эпичная 3D анимация от Дамбо Music."
+      },
+      {
+        "title": "W-Labs: Experiment (Poppy Playtime)",
+        "episode": "Minecraft Animation клип",
+        "duration": 220,
+        "type": "youtube",
+        "youtubeId": "e-Zv947gpwU",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Атмосферный музыкальный клип по вселенной Poppy Playtime в мире кубов."
+      },
+      {
+        "title": "Dambo Music: Повелитель Драконов",
+        "episode": "Rainimator & Дамбо: Сага драконов",
+        "duration": 480,
+        "type": "youtube",
+        "youtubeId": "PmXK3-FFvY0",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Эпическая песня битвы с драконами Края."
+      },
+      {
+        "title": "W-Labs: Poppy Playtime in Minecraft",
+        "episode": "3D анимация и саундтрек",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "tKu7rKl_Xto",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Официальная анимационная визуализация от W-Labs Studio."
+      },
+      {
+        "title": "Dambo Music: Ещё один день",
+        "episode": "Whatever It Takes (Minecraft Parody)",
+        "duration": 230,
+        "type": "youtube",
+        "youtubeId": "ltmsMe96D9g",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Русскоязычный пародийный кавер на Imagine Dragons."
+      },
+      {
+        "title": "W-Labs: Art of Darkness (Bendy)",
+        "episode": "Minecraft Music Video",
+        "duration": 250,
+        "type": "youtube",
+        "youtubeId": "1HOhvrfrAoQ",
+        "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Чернильный кошмар в блочной стилистике."
+      },
+      {
+        "title": "Пятёрка: Крутой чел (Клип)",
+        "episode": "5opka & Друзья: Музыкальное видео",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "OtfGTanVh2o",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🎶 ПЯТЁРКА РЭП",
+        "description": "Классический рэп-бэнгер от Пятёрки."
+      },
+      {
+        "title": "Dambo Music: Начало (Клип)",
+        "episode": "Майнкрафт клип-анимация на русском",
+        "duration": 240,
+        "type": "youtube",
+        "youtubeId": "o9_mPzZvbVw",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Культовый трек и эпичная 3D анимация от Дамбо Music."
+      },
+      {
+        "title": "W-Labs: Experiment (Poppy Playtime)",
+        "episode": "Minecraft Animation клип",
+        "duration": 220,
+        "type": "youtube",
+        "youtubeId": "e-Zv947gpwU",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Атмосферный музыкальный клип по вселенной Poppy Playtime в мире кубов."
+      },
+      {
+        "title": "Dambo Music: Повелитель Драконов",
+        "episode": "Rainimator & Дамбо: Сага драконов",
+        "duration": 480,
+        "type": "youtube",
+        "youtubeId": "PmXK3-FFvY0",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Эпическая песня битвы с драконами Края."
+      },
+      {
+        "title": "W-Labs: Poppy Playtime in Minecraft",
+        "episode": "3D анимация и саундтрек",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "tKu7rKl_Xto",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Официальная анимационная визуализация от W-Labs Studio."
+      },
+      {
+        "title": "Dambo Music: Ещё один день",
+        "episode": "Whatever It Takes (Minecraft Parody)",
+        "duration": 230,
+        "type": "youtube",
+        "youtubeId": "ltmsMe96D9g",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Русскоязычный пародийный кавер на Imagine Dragons."
+      },
+      {
+        "title": "W-Labs: Art of Darkness (Bendy)",
+        "episode": "Minecraft Music Video",
+        "duration": 250,
+        "type": "youtube",
+        "youtubeId": "1HOhvrfrAoQ",
+        "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Чернильный кошмар в блочной стилистике."
+      },
+      {
+        "title": "Пятёрка: Крутой чел (Клип)",
+        "episode": "5opka & Друзья: Музыкальное видео",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "OtfGTanVh2o",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🎶 ПЯТЁРКА РЭП",
+        "description": "Классический рэп-бэнгер от Пятёрки."
+      },
+      {
+        "title": "Dambo Music: Начало (Клип)",
+        "episode": "Майнкрафт клип-анимация на русском",
+        "duration": 240,
+        "type": "youtube",
+        "youtubeId": "o9_mPzZvbVw",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Культовый трек и эпичная 3D анимация от Дамбо Music."
+      },
+      {
+        "title": "W-Labs: Experiment (Poppy Playtime)",
+        "episode": "Minecraft Animation клип",
+        "duration": 220,
+        "type": "youtube",
+        "youtubeId": "e-Zv947gpwU",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Атмосферный музыкальный клип по вселенной Poppy Playtime в мире кубов."
+      },
+      {
+        "title": "Dambo Music: Повелитель Драконов",
+        "episode": "Rainimator & Дамбо: Сага драконов",
+        "duration": 480,
+        "type": "youtube",
+        "youtubeId": "PmXK3-FFvY0",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Эпическая песня битвы с драконами Края."
+      },
+      {
+        "title": "W-Labs: Poppy Playtime in Minecraft",
+        "episode": "3D анимация и саундтрек",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "tKu7rKl_Xto",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Официальная анимационная визуализация от W-Labs Studio."
+      },
+      {
+        "title": "Dambo Music: Ещё один день",
+        "episode": "Whatever It Takes (Minecraft Parody)",
+        "duration": 230,
+        "type": "youtube",
+        "youtubeId": "ltmsMe96D9g",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Русскоязычный пародийный кавер на Imagine Dragons."
+      },
+      {
+        "title": "W-Labs: Art of Darkness (Bendy)",
+        "episode": "Minecraft Music Video",
+        "duration": 250,
+        "type": "youtube",
+        "youtubeId": "1HOhvrfrAoQ",
+        "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Чернильный кошмар в блочной стилистике."
+      },
+      {
+        "title": "Пятёрка: Крутой чел (Клип)",
+        "episode": "5opka & Друзья: Музыкальное видео",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "OtfGTanVh2o",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🎶 ПЯТЁРКА РЭП",
+        "description": "Классический рэп-бэнгер от Пятёрки."
+      },
+      {
+        "title": "Dambo Music: Начало (Клип)",
+        "episode": "Майнкрафт клип-анимация на русском",
+        "duration": 240,
+        "type": "youtube",
+        "youtubeId": "o9_mPzZvbVw",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Культовый трек и эпичная 3D анимация от Дамбо Music."
+      },
+      {
+        "title": "W-Labs: Experiment (Poppy Playtime)",
+        "episode": "Minecraft Animation клип",
+        "duration": 220,
+        "type": "youtube",
+        "youtubeId": "e-Zv947gpwU",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Атмосферный музыкальный клип по вселенной Poppy Playtime в мире кубов."
+      },
+      {
+        "title": "Dambo Music: Повелитель Драконов",
+        "episode": "Rainimator & Дамбо: Сага драконов",
+        "duration": 480,
+        "type": "youtube",
+        "youtubeId": "PmXK3-FFvY0",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Эпическая песня битвы с драконами Края."
+      },
+      {
+        "title": "W-Labs: Poppy Playtime in Minecraft",
+        "episode": "3D анимация и саундтрек",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "tKu7rKl_Xto",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Официальная анимационная визуализация от W-Labs Studio."
+      },
+      {
+        "title": "Dambo Music: Ещё один день",
+        "episode": "Whatever It Takes (Minecraft Parody)",
+        "duration": 230,
+        "type": "youtube",
+        "youtubeId": "ltmsMe96D9g",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Русскоязычный пародийный кавер на Imagine Dragons."
+      },
+      {
+        "title": "W-Labs: Art of Darkness (Bendy)",
+        "episode": "Minecraft Music Video",
+        "duration": 250,
+        "type": "youtube",
+        "youtubeId": "1HOhvrfrAoQ",
+        "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Чернильный кошмар в блочной стилистике."
+      },
+      {
+        "title": "Пятёрка: Крутой чел (Клип)",
+        "episode": "5opka & Друзья: Музыкальное видео",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "OtfGTanVh2o",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🎶 ПЯТЁРКА РЭП",
+        "description": "Классический рэп-бэнгер от Пятёрки."
+      },
+      {
+        "title": "Dambo Music: Начало (Клип)",
+        "episode": "Майнкрафт клип-анимация на русском",
+        "duration": 240,
+        "type": "youtube",
+        "youtubeId": "o9_mPzZvbVw",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Культовый трек и эпичная 3D анимация от Дамбо Music."
+      },
+      {
+        "title": "W-Labs: Experiment (Poppy Playtime)",
+        "episode": "Minecraft Animation клип",
+        "duration": 220,
+        "type": "youtube",
+        "youtubeId": "e-Zv947gpwU",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Атмосферный музыкальный клип по вселенной Poppy Playtime в мире кубов."
+      },
+      {
+        "title": "Dambo Music: Повелитель Драконов",
+        "episode": "Rainimator & Дамбо: Сага драконов",
+        "duration": 480,
+        "type": "youtube",
+        "youtubeId": "PmXK3-FFvY0",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Эпическая песня битвы с драконами Края."
+      },
+      {
+        "title": "W-Labs: Poppy Playtime in Minecraft",
+        "episode": "3D анимация и саундтрек",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "tKu7rKl_Xto",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Официальная анимационная визуализация от W-Labs Studio."
+      },
+      {
+        "title": "Dambo Music: Ещё один день",
+        "episode": "Whatever It Takes (Minecraft Parody)",
+        "duration": 230,
+        "type": "youtube",
+        "youtubeId": "ltmsMe96D9g",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Русскоязычный пародийный кавер на Imagine Dragons."
+      },
+      {
+        "title": "W-Labs: Art of Darkness (Bendy)",
+        "episode": "Minecraft Music Video",
+        "duration": 250,
+        "type": "youtube",
+        "youtubeId": "1HOhvrfrAoQ",
+        "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Чернильный кошмар в блочной стилистике."
+      },
+      {
+        "title": "Пятёрка: Крутой чел (Клип)",
+        "episode": "5opka & Друзья: Музыкальное видео",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "OtfGTanVh2o",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🎶 ПЯТЁРКА РЭП",
+        "description": "Классический рэп-бэнгер от Пятёрки."
+      },
+      {
+        "title": "Dambo Music: Начало (Клип)",
+        "episode": "Майнкрафт клип-анимация на русском",
+        "duration": 240,
+        "type": "youtube",
+        "youtubeId": "o9_mPzZvbVw",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Культовый трек и эпичная 3D анимация от Дамбо Music."
+      },
+      {
+        "title": "W-Labs: Experiment (Poppy Playtime)",
+        "episode": "Minecraft Animation клип",
+        "duration": 220,
+        "type": "youtube",
+        "youtubeId": "e-Zv947gpwU",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Атмосферный музыкальный клип по вселенной Poppy Playtime в мире кубов."
+      },
+      {
+        "title": "Dambo Music: Повелитель Драконов",
+        "episode": "Rainimator & Дамбо: Сага драконов",
+        "duration": 480,
+        "type": "youtube",
+        "youtubeId": "PmXK3-FFvY0",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Эпическая песня битвы с драконами Края."
+      },
+      {
+        "title": "W-Labs: Poppy Playtime in Minecraft",
+        "episode": "3D анимация и саундтрек",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "tKu7rKl_Xto",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Официальная анимационная визуализация от W-Labs Studio."
+      },
+      {
+        "title": "Dambo Music: Ещё один день",
+        "episode": "Whatever It Takes (Minecraft Parody)",
+        "duration": 230,
+        "type": "youtube",
+        "youtubeId": "ltmsMe96D9g",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Русскоязычный пародийный кавер на Imagine Dragons."
+      },
+      {
+        "title": "W-Labs: Art of Darkness (Bendy)",
+        "episode": "Minecraft Music Video",
+        "duration": 250,
+        "type": "youtube",
+        "youtubeId": "1HOhvrfrAoQ",
+        "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Чернильный кошмар в блочной стилистике."
+      },
+      {
+        "title": "Пятёрка: Крутой чел (Клип)",
+        "episode": "5opka & Друзья: Музыкальное видео",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "OtfGTanVh2o",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🎶 ПЯТЁРКА РЭП",
+        "description": "Классический рэп-бэнгер от Пятёрки."
+      },
+      {
+        "title": "Dambo Music: Начало (Клип)",
+        "episode": "Майнкрафт клип-анимация на русском",
+        "duration": 240,
+        "type": "youtube",
+        "youtubeId": "o9_mPzZvbVw",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Культовый трек и эпичная 3D анимация от Дамбо Music."
+      },
+      {
+        "title": "W-Labs: Experiment (Poppy Playtime)",
+        "episode": "Minecraft Animation клип",
+        "duration": 220,
+        "type": "youtube",
+        "youtubeId": "e-Zv947gpwU",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Атмосферный музыкальный клип по вселенной Poppy Playtime в мире кубов."
+      },
+      {
+        "title": "Dambo Music: Повелитель Драконов",
+        "episode": "Rainimator & Дамбо: Сага драконов",
+        "duration": 480,
+        "type": "youtube",
+        "youtubeId": "PmXK3-FFvY0",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Эпическая песня битвы с драконами Края."
+      },
+      {
+        "title": "W-Labs: Poppy Playtime in Minecraft",
+        "episode": "3D анимация и саундтрек",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "tKu7rKl_Xto",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Официальная анимационная визуализация от W-Labs Studio."
+      },
+      {
+        "title": "Dambo Music: Ещё один день",
+        "episode": "Whatever It Takes (Minecraft Parody)",
+        "duration": 230,
+        "type": "youtube",
+        "youtubeId": "ltmsMe96D9g",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 DAMBO MUSIC",
+        "description": "Русскоязычный пародийный кавер на Imagine Dragons."
+      },
+      {
+        "title": "W-Labs: Art of Darkness (Bendy)",
+        "episode": "Minecraft Music Video",
+        "duration": 250,
+        "type": "youtube",
+        "youtubeId": "1HOhvrfrAoQ",
+        "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
+        "badgeTag": "🎶 W-LABS",
+        "description": "Чернильный кошмар в блочной стилистике."
+      },
+      {
+        "title": "Пятёрка: Крутой чел (Клип)",
+        "episode": "5opka & Друзья: Музыкальное видео",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "OtfGTanVh2o",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🎶 ПЯТЁРКА РЭП",
+        "description": "Классический рэп-бэнгер от Пятёрки."
+      }
+    ]
+  },
+  {
+    "id": "minecrafters-yellowfire",
+    "number": "10",
+    "streamId": "yellowfire",
+    "category": "minecrafters",
+    "categoryName": "Майнкрафтеры",
+    "name": "ЛИГА КУБИЗМА",
+    "shortName": "YELLOW FIRE",
+    "tagline": "Песни Yellow Fire, официальный клип «Лига Кубизма», реакции и стрим-версии",
+    "icon": "local_fire_department",
+    "logoSvg": "2x2",
+    "badge": "YELLOW FIRE",
+    "color": "#f59e0b",
+    "schedule": [
+      {
+        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
+        "episode": "Главный гимн Майнкрафт-сообщества",
+        "duration": 215,
+        "type": "youtube",
+        "youtubeId": "DgKM-mkymkg",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
+      },
+      {
+        "title": "Заквиель смотрит: Лига Кубизма",
+        "episode": "Реакция стримера на клип Yellow Fire",
+        "duration": 420,
+        "type": "youtube",
+        "youtubeId": "prSJBMpbevw",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🔥 РЕАКЦИЯ",
+        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Stream Cut)",
+        "episode": "Лучшая нарезка и живой звук",
+        "duration": 360,
+        "type": "youtube",
+        "youtubeId": "tVcTnb9gg64",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Клип в окружении стримерских эмоций и чата."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
+        "episode": "Главный гимн Майнкрафт-сообщества",
+        "duration": 215,
+        "type": "youtube",
+        "youtubeId": "DgKM-mkymkg",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
+      },
+      {
+        "title": "Заквиель смотрит: Лига Кубизма",
+        "episode": "Реакция стримера на клип Yellow Fire",
+        "duration": 420,
+        "type": "youtube",
+        "youtubeId": "prSJBMpbevw",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🔥 РЕАКЦИЯ",
+        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Stream Cut)",
+        "episode": "Лучшая нарезка и живой звук",
+        "duration": 360,
+        "type": "youtube",
+        "youtubeId": "tVcTnb9gg64",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Клип в окружении стримерских эмоций и чата."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
+        "episode": "Главный гимн Майнкрафт-сообщества",
+        "duration": 215,
+        "type": "youtube",
+        "youtubeId": "DgKM-mkymkg",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
+      },
+      {
+        "title": "Заквиель смотрит: Лига Кубизма",
+        "episode": "Реакция стримера на клип Yellow Fire",
+        "duration": 420,
+        "type": "youtube",
+        "youtubeId": "prSJBMpbevw",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🔥 РЕАКЦИЯ",
+        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Stream Cut)",
+        "episode": "Лучшая нарезка и живой звук",
+        "duration": 360,
+        "type": "youtube",
+        "youtubeId": "tVcTnb9gg64",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Клип в окружении стримерских эмоций и чата."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
+        "episode": "Главный гимн Майнкрафт-сообщества",
+        "duration": 215,
+        "type": "youtube",
+        "youtubeId": "DgKM-mkymkg",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
+      },
+      {
+        "title": "Заквиель смотрит: Лига Кубизма",
+        "episode": "Реакция стримера на клип Yellow Fire",
+        "duration": 420,
+        "type": "youtube",
+        "youtubeId": "prSJBMpbevw",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🔥 РЕАКЦИЯ",
+        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Stream Cut)",
+        "episode": "Лучшая нарезка и живой звук",
+        "duration": 360,
+        "type": "youtube",
+        "youtubeId": "tVcTnb9gg64",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Клип в окружении стримерских эмоций и чата."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
+        "episode": "Главный гимн Майнкрафт-сообщества",
+        "duration": 215,
+        "type": "youtube",
+        "youtubeId": "DgKM-mkymkg",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
+      },
+      {
+        "title": "Заквиель смотрит: Лига Кубизма",
+        "episode": "Реакция стримера на клип Yellow Fire",
+        "duration": 420,
+        "type": "youtube",
+        "youtubeId": "prSJBMpbevw",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🔥 РЕАКЦИЯ",
+        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Stream Cut)",
+        "episode": "Лучшая нарезка и живой звук",
+        "duration": 360,
+        "type": "youtube",
+        "youtubeId": "tVcTnb9gg64",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Клип в окружении стримерских эмоций и чата."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
+        "episode": "Главный гимн Майнкрафт-сообщества",
+        "duration": 215,
+        "type": "youtube",
+        "youtubeId": "DgKM-mkymkg",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
+      },
+      {
+        "title": "Заквиель смотрит: Лига Кубизма",
+        "episode": "Реакция стримера на клип Yellow Fire",
+        "duration": 420,
+        "type": "youtube",
+        "youtubeId": "prSJBMpbevw",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🔥 РЕАКЦИЯ",
+        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Stream Cut)",
+        "episode": "Лучшая нарезка и живой звук",
+        "duration": 360,
+        "type": "youtube",
+        "youtubeId": "tVcTnb9gg64",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Клип в окружении стримерских эмоций и чата."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
+        "episode": "Главный гимн Майнкрафт-сообщества",
+        "duration": 215,
+        "type": "youtube",
+        "youtubeId": "DgKM-mkymkg",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
+      },
+      {
+        "title": "Заквиель смотрит: Лига Кубизма",
+        "episode": "Реакция стримера на клип Yellow Fire",
+        "duration": 420,
+        "type": "youtube",
+        "youtubeId": "prSJBMpbevw",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🔥 РЕАКЦИЯ",
+        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Stream Cut)",
+        "episode": "Лучшая нарезка и живой звук",
+        "duration": 360,
+        "type": "youtube",
+        "youtubeId": "tVcTnb9gg64",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Клип в окружении стримерских эмоций и чата."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
+        "episode": "Главный гимн Майнкрафт-сообщества",
+        "duration": 215,
+        "type": "youtube",
+        "youtubeId": "DgKM-mkymkg",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
+      },
+      {
+        "title": "Заквиель смотрит: Лига Кубизма",
+        "episode": "Реакция стримера на клип Yellow Fire",
+        "duration": 420,
+        "type": "youtube",
+        "youtubeId": "prSJBMpbevw",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🔥 РЕАКЦИЯ",
+        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Stream Cut)",
+        "episode": "Лучшая нарезка и живой звук",
+        "duration": 360,
+        "type": "youtube",
+        "youtubeId": "tVcTnb9gg64",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Клип в окружении стримерских эмоций и чата."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
+        "episode": "Главный гимн Майнкрафт-сообщества",
+        "duration": 215,
+        "type": "youtube",
+        "youtubeId": "DgKM-mkymkg",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
+      },
+      {
+        "title": "Заквиель смотрит: Лига Кубизма",
+        "episode": "Реакция стримера на клип Yellow Fire",
+        "duration": 420,
+        "type": "youtube",
+        "youtubeId": "prSJBMpbevw",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🔥 РЕАКЦИЯ",
+        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Stream Cut)",
+        "episode": "Лучшая нарезка и живой звук",
+        "duration": 360,
+        "type": "youtube",
+        "youtubeId": "tVcTnb9gg64",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Клип в окружении стримерских эмоций и чата."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
+        "episode": "Главный гимн Майнкрафт-сообщества",
+        "duration": 215,
+        "type": "youtube",
+        "youtubeId": "DgKM-mkymkg",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
+      },
+      {
+        "title": "Заквиель смотрит: Лига Кубизма",
+        "episode": "Реакция стримера на клип Yellow Fire",
+        "duration": 420,
+        "type": "youtube",
+        "youtubeId": "prSJBMpbevw",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🔥 РЕАКЦИЯ",
+        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Stream Cut)",
+        "episode": "Лучшая нарезка и живой звук",
+        "duration": 360,
+        "type": "youtube",
+        "youtubeId": "tVcTnb9gg64",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Клип в окружении стримерских эмоций и чата."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
+        "episode": "Главный гимн Майнкрафт-сообщества",
+        "duration": 215,
+        "type": "youtube",
+        "youtubeId": "DgKM-mkymkg",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
+      },
+      {
+        "title": "Заквиель смотрит: Лига Кубизма",
+        "episode": "Реакция стримера на клип Yellow Fire",
+        "duration": 420,
+        "type": "youtube",
+        "youtubeId": "prSJBMpbevw",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🔥 РЕАКЦИЯ",
+        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Stream Cut)",
+        "episode": "Лучшая нарезка и живой звук",
+        "duration": 360,
+        "type": "youtube",
+        "youtubeId": "tVcTnb9gg64",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Клип в окружении стримерских эмоций и чата."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
+        "episode": "Главный гимн Майнкрафт-сообщества",
+        "duration": 215,
+        "type": "youtube",
+        "youtubeId": "DgKM-mkymkg",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
+      },
+      {
+        "title": "Заквиель смотрит: Лига Кубизма",
+        "episode": "Реакция стримера на клип Yellow Fire",
+        "duration": 420,
+        "type": "youtube",
+        "youtubeId": "prSJBMpbevw",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🔥 РЕАКЦИЯ",
+        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Stream Cut)",
+        "episode": "Лучшая нарезка и живой звук",
+        "duration": 360,
+        "type": "youtube",
+        "youtubeId": "tVcTnb9gg64",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Клип в окружении стримерских эмоций и чата."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
+        "episode": "Главный гимн Майнкрафт-сообщества",
+        "duration": 215,
+        "type": "youtube",
+        "youtubeId": "DgKM-mkymkg",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
+      },
+      {
+        "title": "Заквиель смотрит: Лига Кубизма",
+        "episode": "Реакция стримера на клип Yellow Fire",
+        "duration": 420,
+        "type": "youtube",
+        "youtubeId": "prSJBMpbevw",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🔥 РЕАКЦИЯ",
+        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Stream Cut)",
+        "episode": "Лучшая нарезка и живой звук",
+        "duration": 360,
+        "type": "youtube",
+        "youtubeId": "tVcTnb9gg64",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Клип в окружении стримерских эмоций и чата."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
+        "episode": "Главный гимн Майнкрафт-сообщества",
+        "duration": 215,
+        "type": "youtube",
+        "youtubeId": "DgKM-mkymkg",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
+      },
+      {
+        "title": "Заквиель смотрит: Лига Кубизма",
+        "episode": "Реакция стримера на клип Yellow Fire",
+        "duration": 420,
+        "type": "youtube",
+        "youtubeId": "prSJBMpbevw",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🔥 РЕАКЦИЯ",
+        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
+      },
+      {
+        "title": "Yellow Fire: Лига Кубизма (Stream Cut)",
+        "episode": "Лучшая нарезка и живой звук",
+        "duration": 360,
+        "type": "youtube",
+        "youtubeId": "tVcTnb9gg64",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🔥 ЛИГА КУБИЗМА",
+        "description": "Клип в окружении стримерских эмоций и чата."
+      }
+    ]
+  },
+  {
+    "id": "music-russian-rap",
+    "number": "11",
+    "streamId": "rap",
+    "category": "music",
+    "categoryName": "Музыка",
+    "name": "РУССКИЙ РЭП (РЭП-ТВ)",
+    "shortName": "РЭП-ТВ",
+    "tagline": "Слава КПСС (Гнойный, Валентин Дядька), Букер (Booker), клипы и баттлы",
+    "icon": "headphones",
+    "logoSvg": "animehit",
+    "badge": "СЛАВА & БУКЕР",
+    "color": "#ec4899",
+    "schedule": [
+      {
+        "title": "Слава КПСС: Кайфоград (Клип 2024)",
+        "episode": "Summer Music Video 2024",
+        "duration": 220,
+        "type": "youtube",
+        "youtubeId": "tY-r09eLqcM",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎤 СЛАВА КПСС",
+        "description": "Солнечный и ироничный видеоклип Вячеслава Машнова."
+      },
+      {
+        "title": "Букер (BOOKER): Чапстикс (Клип)",
+        "episode": "Официальный музыкальный клип",
+        "duration": 195,
+        "type": "youtube",
+        "youtubeId": "4QbNci72QDo",
+        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Мощный флоу и клип от Фёдора Букера."
+      },
+      {
+        "title": "Слава КПСС: Mike Killer (Клип)",
+        "episode": "Премьера трека и видео 2022",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "Hso21LNVNqE",
+        "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+        "badgeTag": "🎤 СЛАВА КПСС",
+        "description": "Брутальный сингл Гнойного с аутентичной подачей."
+      },
+      {
+        "title": "Букер (BOOKER): Синий/Трезв",
+        "episode": "Концептуальное видео",
+        "duration": 230,
+        "type": "youtube",
+        "youtubeId": "UlO7mOx8ErQ",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Исповедь и фирменный ритм Букера."
+      },
+      {
+        "title": "Букер (BOOKER): Пора завязывать",
+        "episode": "Премьера официального видео",
+        "duration": 205,
+        "type": "youtube",
+        "youtubeId": "ZRFiYctLNtM",
+        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Один из знаковых треков в сольной дискографии артиста."
+      },
+      {
+        "title": "Букер (BOOKER): Подняться",
+        "episode": "Энергичный видеоклип",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "7qCfwBJCfNI",
+        "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Мотивационный бэнгер с глубоким смыслом."
+      },
+      {
+        "title": "Слава КПСС: Кайфоград (Клип 2024)",
+        "episode": "Summer Music Video 2024",
+        "duration": 220,
+        "type": "youtube",
+        "youtubeId": "tY-r09eLqcM",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎤 СЛАВА КПСС",
+        "description": "Солнечный и ироничный видеоклип Вячеслава Машнова."
+      },
+      {
+        "title": "Букер (BOOKER): Чапстикс (Клип)",
+        "episode": "Официальный музыкальный клип",
+        "duration": 195,
+        "type": "youtube",
+        "youtubeId": "4QbNci72QDo",
+        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Мощный флоу и клип от Фёдора Букера."
+      },
+      {
+        "title": "Слава КПСС: Mike Killer (Клип)",
+        "episode": "Премьера трека и видео 2022",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "Hso21LNVNqE",
+        "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+        "badgeTag": "🎤 СЛАВА КПСС",
+        "description": "Брутальный сингл Гнойного с аутентичной подачей."
+      },
+      {
+        "title": "Букер (BOOKER): Синий/Трезв",
+        "episode": "Концептуальное видео",
+        "duration": 230,
+        "type": "youtube",
+        "youtubeId": "UlO7mOx8ErQ",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Исповедь и фирменный ритм Букера."
+      },
+      {
+        "title": "Букер (BOOKER): Пора завязывать",
+        "episode": "Премьера официального видео",
+        "duration": 205,
+        "type": "youtube",
+        "youtubeId": "ZRFiYctLNtM",
+        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Один из знаковых треков в сольной дискографии артиста."
+      },
+      {
+        "title": "Букер (BOOKER): Подняться",
+        "episode": "Энергичный видеоклип",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "7qCfwBJCfNI",
+        "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Мотивационный бэнгер с глубоким смыслом."
+      },
+      {
+        "title": "Слава КПСС: Кайфоград (Клип 2024)",
+        "episode": "Summer Music Video 2024",
+        "duration": 220,
+        "type": "youtube",
+        "youtubeId": "tY-r09eLqcM",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎤 СЛАВА КПСС",
+        "description": "Солнечный и ироничный видеоклип Вячеслава Машнова."
+      },
+      {
+        "title": "Букер (BOOKER): Чапстикс (Клип)",
+        "episode": "Официальный музыкальный клип",
+        "duration": 195,
+        "type": "youtube",
+        "youtubeId": "4QbNci72QDo",
+        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Мощный флоу и клип от Фёдора Букера."
+      },
+      {
+        "title": "Слава КПСС: Mike Killer (Клип)",
+        "episode": "Премьера трека и видео 2022",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "Hso21LNVNqE",
+        "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+        "badgeTag": "🎤 СЛАВА КПСС",
+        "description": "Брутальный сингл Гнойного с аутентичной подачей."
+      },
+      {
+        "title": "Букер (BOOKER): Синий/Трезв",
+        "episode": "Концептуальное видео",
+        "duration": 230,
+        "type": "youtube",
+        "youtubeId": "UlO7mOx8ErQ",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Исповедь и фирменный ритм Букера."
+      },
+      {
+        "title": "Букер (BOOKER): Пора завязывать",
+        "episode": "Премьера официального видео",
+        "duration": 205,
+        "type": "youtube",
+        "youtubeId": "ZRFiYctLNtM",
+        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Один из знаковых треков в сольной дискографии артиста."
+      },
+      {
+        "title": "Букер (BOOKER): Подняться",
+        "episode": "Энергичный видеоклип",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "7qCfwBJCfNI",
+        "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Мотивационный бэнгер с глубоким смыслом."
+      },
+      {
+        "title": "Слава КПСС: Кайфоград (Клип 2024)",
+        "episode": "Summer Music Video 2024",
+        "duration": 220,
+        "type": "youtube",
+        "youtubeId": "tY-r09eLqcM",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎤 СЛАВА КПСС",
+        "description": "Солнечный и ироничный видеоклип Вячеслава Машнова."
+      },
+      {
+        "title": "Букер (BOOKER): Чапстикс (Клип)",
+        "episode": "Официальный музыкальный клип",
+        "duration": 195,
+        "type": "youtube",
+        "youtubeId": "4QbNci72QDo",
+        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Мощный флоу и клип от Фёдора Букера."
+      },
+      {
+        "title": "Слава КПСС: Mike Killer (Клип)",
+        "episode": "Премьера трека и видео 2022",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "Hso21LNVNqE",
+        "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+        "badgeTag": "🎤 СЛАВА КПСС",
+        "description": "Брутальный сингл Гнойного с аутентичной подачей."
+      },
+      {
+        "title": "Букер (BOOKER): Синий/Трезв",
+        "episode": "Концептуальное видео",
+        "duration": 230,
+        "type": "youtube",
+        "youtubeId": "UlO7mOx8ErQ",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Исповедь и фирменный ритм Букера."
+      },
+      {
+        "title": "Букер (BOOKER): Пора завязывать",
+        "episode": "Премьера официального видео",
+        "duration": 205,
+        "type": "youtube",
+        "youtubeId": "ZRFiYctLNtM",
+        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Один из знаковых треков в сольной дискографии артиста."
+      },
+      {
+        "title": "Букер (BOOKER): Подняться",
+        "episode": "Энергичный видеоклип",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "7qCfwBJCfNI",
+        "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Мотивационный бэнгер с глубоким смыслом."
+      },
+      {
+        "title": "Слава КПСС: Кайфоград (Клип 2024)",
+        "episode": "Summer Music Video 2024",
+        "duration": 220,
+        "type": "youtube",
+        "youtubeId": "tY-r09eLqcM",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎤 СЛАВА КПСС",
+        "description": "Солнечный и ироничный видеоклип Вячеслава Машнова."
+      },
+      {
+        "title": "Букер (BOOKER): Чапстикс (Клип)",
+        "episode": "Официальный музыкальный клип",
+        "duration": 195,
+        "type": "youtube",
+        "youtubeId": "4QbNci72QDo",
+        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Мощный флоу и клип от Фёдора Букера."
+      },
+      {
+        "title": "Слава КПСС: Mike Killer (Клип)",
+        "episode": "Премьера трека и видео 2022",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "Hso21LNVNqE",
+        "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+        "badgeTag": "🎤 СЛАВА КПСС",
+        "description": "Брутальный сингл Гнойного с аутентичной подачей."
+      },
+      {
+        "title": "Букер (BOOKER): Синий/Трезв",
+        "episode": "Концептуальное видео",
+        "duration": 230,
+        "type": "youtube",
+        "youtubeId": "UlO7mOx8ErQ",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Исповедь и фирменный ритм Букера."
+      },
+      {
+        "title": "Букер (BOOKER): Пора завязывать",
+        "episode": "Премьера официального видео",
+        "duration": 205,
+        "type": "youtube",
+        "youtubeId": "ZRFiYctLNtM",
+        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Один из знаковых треков в сольной дискографии артиста."
+      },
+      {
+        "title": "Букер (BOOKER): Подняться",
+        "episode": "Энергичный видеоклип",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "7qCfwBJCfNI",
+        "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Мотивационный бэнгер с глубоким смыслом."
+      },
+      {
+        "title": "Слава КПСС: Кайфоград (Клип 2024)",
+        "episode": "Summer Music Video 2024",
+        "duration": 220,
+        "type": "youtube",
+        "youtubeId": "tY-r09eLqcM",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎤 СЛАВА КПСС",
+        "description": "Солнечный и ироничный видеоклип Вячеслава Машнова."
+      },
+      {
+        "title": "Букер (BOOKER): Чапстикс (Клип)",
+        "episode": "Официальный музыкальный клип",
+        "duration": 195,
+        "type": "youtube",
+        "youtubeId": "4QbNci72QDo",
+        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Мощный флоу и клип от Фёдора Букера."
+      },
+      {
+        "title": "Слава КПСС: Mike Killer (Клип)",
+        "episode": "Премьера трека и видео 2022",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "Hso21LNVNqE",
+        "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+        "badgeTag": "🎤 СЛАВА КПСС",
+        "description": "Брутальный сингл Гнойного с аутентичной подачей."
+      },
+      {
+        "title": "Букер (BOOKER): Синий/Трезв",
+        "episode": "Концептуальное видео",
+        "duration": 230,
+        "type": "youtube",
+        "youtubeId": "UlO7mOx8ErQ",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Исповедь и фирменный ритм Букера."
+      },
+      {
+        "title": "Букер (BOOKER): Пора завязывать",
+        "episode": "Премьера официального видео",
+        "duration": 205,
+        "type": "youtube",
+        "youtubeId": "ZRFiYctLNtM",
+        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Один из знаковых треков в сольной дискографии артиста."
+      },
+      {
+        "title": "Букер (BOOKER): Подняться",
+        "episode": "Энергичный видеоклип",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "7qCfwBJCfNI",
+        "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Мотивационный бэнгер с глубоким смыслом."
+      },
+      {
+        "title": "Слава КПСС: Кайфоград (Клип 2024)",
+        "episode": "Summer Music Video 2024",
+        "duration": 220,
+        "type": "youtube",
+        "youtubeId": "tY-r09eLqcM",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎤 СЛАВА КПСС",
+        "description": "Солнечный и ироничный видеоклип Вячеслава Машнова."
+      },
+      {
+        "title": "Букер (BOOKER): Чапстикс (Клип)",
+        "episode": "Официальный музыкальный клип",
+        "duration": 195,
+        "type": "youtube",
+        "youtubeId": "4QbNci72QDo",
+        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Мощный флоу и клип от Фёдора Букера."
+      },
+      {
+        "title": "Слава КПСС: Mike Killer (Клип)",
+        "episode": "Премьера трека и видео 2022",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "Hso21LNVNqE",
+        "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+        "badgeTag": "🎤 СЛАВА КПСС",
+        "description": "Брутальный сингл Гнойного с аутентичной подачей."
+      },
+      {
+        "title": "Букер (BOOKER): Синий/Трезв",
+        "episode": "Концептуальное видео",
+        "duration": 230,
+        "type": "youtube",
+        "youtubeId": "UlO7mOx8ErQ",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Исповедь и фирменный ритм Букера."
+      },
+      {
+        "title": "Букер (BOOKER): Пора завязывать",
+        "episode": "Премьера официального видео",
+        "duration": 205,
+        "type": "youtube",
+        "youtubeId": "ZRFiYctLNtM",
+        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Один из знаковых треков в сольной дискографии артиста."
+      },
+      {
+        "title": "Букер (BOOKER): Подняться",
+        "episode": "Энергичный видеоклип",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "7qCfwBJCfNI",
+        "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Мотивационный бэнгер с глубоким смыслом."
+      },
+      {
+        "title": "Слава КПСС: Кайфоград (Клип 2024)",
+        "episode": "Summer Music Video 2024",
+        "duration": 220,
+        "type": "youtube",
+        "youtubeId": "tY-r09eLqcM",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎤 СЛАВА КПСС",
+        "description": "Солнечный и ироничный видеоклип Вячеслава Машнова."
+      },
+      {
+        "title": "Букер (BOOKER): Чапстикс (Клип)",
+        "episode": "Официальный музыкальный клип",
+        "duration": 195,
+        "type": "youtube",
+        "youtubeId": "4QbNci72QDo",
+        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Мощный флоу и клип от Фёдора Букера."
+      },
+      {
+        "title": "Слава КПСС: Mike Killer (Клип)",
+        "episode": "Премьера трека и видео 2022",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "Hso21LNVNqE",
+        "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+        "badgeTag": "🎤 СЛАВА КПСС",
+        "description": "Брутальный сингл Гнойного с аутентичной подачей."
+      },
+      {
+        "title": "Букер (BOOKER): Синий/Трезв",
+        "episode": "Концептуальное видео",
+        "duration": 230,
+        "type": "youtube",
+        "youtubeId": "UlO7mOx8ErQ",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Исповедь и фирменный ритм Букера."
+      },
+      {
+        "title": "Букер (BOOKER): Пора завязывать",
+        "episode": "Премьера официального видео",
+        "duration": 205,
+        "type": "youtube",
+        "youtubeId": "ZRFiYctLNtM",
+        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Один из знаковых треков в сольной дискографии артиста."
+      },
+      {
+        "title": "Букер (BOOKER): Подняться",
+        "episode": "Энергичный видеоклип",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "7qCfwBJCfNI",
+        "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Мотивационный бэнгер с глубоким смыслом."
+      },
+      {
+        "title": "Слава КПСС: Кайфоград (Клип 2024)",
+        "episode": "Summer Music Video 2024",
+        "duration": 220,
+        "type": "youtube",
+        "youtubeId": "tY-r09eLqcM",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎤 СЛАВА КПСС",
+        "description": "Солнечный и ироничный видеоклип Вячеслава Машнова."
+      },
+      {
+        "title": "Букер (BOOKER): Чапстикс (Клип)",
+        "episode": "Официальный музыкальный клип",
+        "duration": 195,
+        "type": "youtube",
+        "youtubeId": "4QbNci72QDo",
+        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Мощный флоу и клип от Фёдора Букера."
+      },
+      {
+        "title": "Слава КПСС: Mike Killer (Клип)",
+        "episode": "Премьера трека и видео 2022",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "Hso21LNVNqE",
+        "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+        "badgeTag": "🎤 СЛАВА КПСС",
+        "description": "Брутальный сингл Гнойного с аутентичной подачей."
+      },
+      {
+        "title": "Букер (BOOKER): Синий/Трезв",
+        "episode": "Концептуальное видео",
+        "duration": 230,
+        "type": "youtube",
+        "youtubeId": "UlO7mOx8ErQ",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Исповедь и фирменный ритм Букера."
+      },
+      {
+        "title": "Букер (BOOKER): Пора завязывать",
+        "episode": "Премьера официального видео",
+        "duration": 205,
+        "type": "youtube",
+        "youtubeId": "ZRFiYctLNtM",
+        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Один из знаковых треков в сольной дискографии артиста."
+      },
+      {
+        "title": "Букер (BOOKER): Подняться",
+        "episode": "Энергичный видеоклип",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "7qCfwBJCfNI",
+        "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Мотивационный бэнгер с глубоким смыслом."
+      },
+      {
+        "title": "Слава КПСС: Кайфоград (Клип 2024)",
+        "episode": "Summer Music Video 2024",
+        "duration": 220,
+        "type": "youtube",
+        "youtubeId": "tY-r09eLqcM",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎤 СЛАВА КПСС",
+        "description": "Солнечный и ироничный видеоклип Вячеслава Машнова."
+      },
+      {
+        "title": "Букер (BOOKER): Чапстикс (Клип)",
+        "episode": "Официальный музыкальный клип",
+        "duration": 195,
+        "type": "youtube",
+        "youtubeId": "4QbNci72QDo",
+        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Мощный флоу и клип от Фёдора Букера."
+      },
+      {
+        "title": "Слава КПСС: Mike Killer (Клип)",
+        "episode": "Премьера трека и видео 2022",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "Hso21LNVNqE",
+        "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+        "badgeTag": "🎤 СЛАВА КПСС",
+        "description": "Брутальный сингл Гнойного с аутентичной подачей."
+      },
+      {
+        "title": "Букер (BOOKER): Синий/Трезв",
+        "episode": "Концептуальное видео",
+        "duration": 230,
+        "type": "youtube",
+        "youtubeId": "UlO7mOx8ErQ",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Исповедь и фирменный ритм Букера."
+      },
+      {
+        "title": "Букер (BOOKER): Пора завязывать",
+        "episode": "Премьера официального видео",
+        "duration": 205,
+        "type": "youtube",
+        "youtubeId": "ZRFiYctLNtM",
+        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Один из знаковых треков в сольной дискографии артиста."
+      },
+      {
+        "title": "Букер (BOOKER): Подняться",
+        "episode": "Энергичный видеоклип",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "7qCfwBJCfNI",
+        "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Мотивационный бэнгер с глубоким смыслом."
+      },
+      {
+        "title": "Слава КПСС: Кайфоград (Клип 2024)",
+        "episode": "Summer Music Video 2024",
+        "duration": 220,
+        "type": "youtube",
+        "youtubeId": "tY-r09eLqcM",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎤 СЛАВА КПСС",
+        "description": "Солнечный и ироничный видеоклип Вячеслава Машнова."
+      },
+      {
+        "title": "Букер (BOOKER): Чапстикс (Клип)",
+        "episode": "Официальный музыкальный клип",
+        "duration": 195,
+        "type": "youtube",
+        "youtubeId": "4QbNci72QDo",
+        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Мощный флоу и клип от Фёдора Букера."
+      },
+      {
+        "title": "Слава КПСС: Mike Killer (Клип)",
+        "episode": "Премьера трека и видео 2022",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "Hso21LNVNqE",
+        "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+        "badgeTag": "🎤 СЛАВА КПСС",
+        "description": "Брутальный сингл Гнойного с аутентичной подачей."
+      },
+      {
+        "title": "Букер (BOOKER): Синий/Трезв",
+        "episode": "Концептуальное видео",
+        "duration": 230,
+        "type": "youtube",
+        "youtubeId": "UlO7mOx8ErQ",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Исповедь и фирменный ритм Букера."
+      },
+      {
+        "title": "Букер (BOOKER): Пора завязывать",
+        "episode": "Премьера официального видео",
+        "duration": 205,
+        "type": "youtube",
+        "youtubeId": "ZRFiYctLNtM",
+        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Один из знаковых треков в сольной дискографии артиста."
+      },
+      {
+        "title": "Букер (BOOKER): Подняться",
+        "episode": "Энергичный видеоклип",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "7qCfwBJCfNI",
+        "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Мотивационный бэнгер с глубоким смыслом."
+      },
+      {
+        "title": "Слава КПСС: Кайфоград (Клип 2024)",
+        "episode": "Summer Music Video 2024",
+        "duration": 220,
+        "type": "youtube",
+        "youtubeId": "tY-r09eLqcM",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎤 СЛАВА КПСС",
+        "description": "Солнечный и ироничный видеоклип Вячеслава Машнова."
+      },
+      {
+        "title": "Букер (BOOKER): Чапстикс (Клип)",
+        "episode": "Официальный музыкальный клип",
+        "duration": 195,
+        "type": "youtube",
+        "youtubeId": "4QbNci72QDo",
+        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Мощный флоу и клип от Фёдора Букера."
+      },
+      {
+        "title": "Слава КПСС: Mike Killer (Клип)",
+        "episode": "Премьера трека и видео 2022",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "Hso21LNVNqE",
+        "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+        "badgeTag": "🎤 СЛАВА КПСС",
+        "description": "Брутальный сингл Гнойного с аутентичной подачей."
+      },
+      {
+        "title": "Букер (BOOKER): Синий/Трезв",
+        "episode": "Концептуальное видео",
+        "duration": 230,
+        "type": "youtube",
+        "youtubeId": "UlO7mOx8ErQ",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Исповедь и фирменный ритм Букера."
+      },
+      {
+        "title": "Букер (BOOKER): Пора завязывать",
+        "episode": "Премьера официального видео",
+        "duration": 205,
+        "type": "youtube",
+        "youtubeId": "ZRFiYctLNtM",
+        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Один из знаковых треков в сольной дискографии артиста."
+      },
+      {
+        "title": "Букер (BOOKER): Подняться",
+        "episode": "Энергичный видеоклип",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "7qCfwBJCfNI",
+        "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+        "badgeTag": "🎤 BOOKER",
+        "description": "Мотивационный бэнгер с глубоким смыслом."
+      }
+    ]
+  },
+  {
+    "id": "music-kids",
+    "number": "12",
+    "streamId": "kids-music",
+    "category": "music",
+    "categoryName": "Музыка",
+    "name": "ДЕТСКОЕ МУЗ-ТВ",
+    "shortName": "ДЕТИ МУЗ",
+    "tagline": "Смешарики («От винта!»), Фиксипелки («Помогатор»), Синий Трактор («По полям»)",
+    "icon": "child_care",
+    "logoSvg": "toonster",
+    "badge": "ДЕТСКИЕ ХИТЫ",
+    "color": "#14b8a6",
+    "schedule": [
+      {
+        "title": "Смешарики: От винта! (Песня-Клип)",
+        "episode": "Легендарный хит Пина и Кроша",
+        "duration": 165,
+        "type": "youtube",
+        "youtubeId": "O6YzU00oack",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🎈 KIDS HITS",
+        "description": "«От винта!» — главный рок-н-ролльный хит вселенной Смешариков."
+      },
+      {
+        "title": "Фиксики: ДНК и Фиксипелки",
+        "episode": "Новая серия и познавательные песни",
+        "duration": 360,
+        "type": "youtube",
+        "youtubeId": "bRdv1xfDWrM",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🎈 ФИКСИКИ",
+        "description": "Симка и Нолик поют любимые фиксипелки и изучают устройство мира."
+      },
+      {
+        "title": "Синий Трактор: По полям",
+        "episode": "Песенка про зверей и трактор",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "b4N40D72P80",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎈 СИНИЙ ТРАКТОР",
+        "description": "«По полям, по полям, синий трактор едет к нам...» Самый популярный детский трек."
+      },
+      {
+        "title": "Фиксики: Помогатор (Фиксипелки)",
+        "episode": "Детский танцевальный хит",
+        "duration": 180,
+        "type": "youtube",
+        "youtubeId": "p5_28lQe7cM",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🎈 ФИКСИКИ",
+        "description": "«А кто такие фиксики — большой, большой секрет!»"
+      },
+      {
+        "title": "Смешарики: Круглая песня",
+        "episode": "Песня о дружбе и Ромашковой долине",
+        "duration": 150,
+        "type": "youtube",
+        "youtubeId": "F01Vp_9gM3c",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🎈 СМЕШАРИКИ",
+        "description": "Добродушная песенка всех круглых друзей."
+      },
+      {
+        "title": "Смешарики: От винта! (Песня-Клип)",
+        "episode": "Легендарный хит Пина и Кроша",
+        "duration": 165,
+        "type": "youtube",
+        "youtubeId": "O6YzU00oack",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🎈 KIDS HITS",
+        "description": "«От винта!» — главный рок-н-ролльный хит вселенной Смешариков."
+      },
+      {
+        "title": "Фиксики: ДНК и Фиксипелки",
+        "episode": "Новая серия и познавательные песни",
+        "duration": 360,
+        "type": "youtube",
+        "youtubeId": "bRdv1xfDWrM",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🎈 ФИКСИКИ",
+        "description": "Симка и Нолик поют любимые фиксипелки и изучают устройство мира."
+      },
+      {
+        "title": "Синий Трактор: По полям",
+        "episode": "Песенка про зверей и трактор",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "b4N40D72P80",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎈 СИНИЙ ТРАКТОР",
+        "description": "«По полям, по полям, синий трактор едет к нам...» Самый популярный детский трек."
+      },
+      {
+        "title": "Фиксики: Помогатор (Фиксипелки)",
+        "episode": "Детский танцевальный хит",
+        "duration": 180,
+        "type": "youtube",
+        "youtubeId": "p5_28lQe7cM",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🎈 ФИКСИКИ",
+        "description": "«А кто такие фиксики — большой, большой секрет!»"
+      },
+      {
+        "title": "Смешарики: Круглая песня",
+        "episode": "Песня о дружбе и Ромашковой долине",
+        "duration": 150,
+        "type": "youtube",
+        "youtubeId": "F01Vp_9gM3c",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🎈 СМЕШАРИКИ",
+        "description": "Добродушная песенка всех круглых друзей."
+      },
+      {
+        "title": "Смешарики: От винта! (Песня-Клип)",
+        "episode": "Легендарный хит Пина и Кроша",
+        "duration": 165,
+        "type": "youtube",
+        "youtubeId": "O6YzU00oack",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🎈 KIDS HITS",
+        "description": "«От винта!» — главный рок-н-ролльный хит вселенной Смешариков."
+      },
+      {
+        "title": "Фиксики: ДНК и Фиксипелки",
+        "episode": "Новая серия и познавательные песни",
+        "duration": 360,
+        "type": "youtube",
+        "youtubeId": "bRdv1xfDWrM",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🎈 ФИКСИКИ",
+        "description": "Симка и Нолик поют любимые фиксипелки и изучают устройство мира."
+      },
+      {
+        "title": "Синий Трактор: По полям",
+        "episode": "Песенка про зверей и трактор",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "b4N40D72P80",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎈 СИНИЙ ТРАКТОР",
+        "description": "«По полям, по полям, синий трактор едет к нам...» Самый популярный детский трек."
+      },
+      {
+        "title": "Фиксики: Помогатор (Фиксипелки)",
+        "episode": "Детский танцевальный хит",
+        "duration": 180,
+        "type": "youtube",
+        "youtubeId": "p5_28lQe7cM",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🎈 ФИКСИКИ",
+        "description": "«А кто такие фиксики — большой, большой секрет!»"
+      },
+      {
+        "title": "Смешарики: Круглая песня",
+        "episode": "Песня о дружбе и Ромашковой долине",
+        "duration": 150,
+        "type": "youtube",
+        "youtubeId": "F01Vp_9gM3c",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🎈 СМЕШАРИКИ",
+        "description": "Добродушная песенка всех круглых друзей."
+      },
+      {
+        "title": "Смешарики: От винта! (Песня-Клип)",
+        "episode": "Легендарный хит Пина и Кроша",
+        "duration": 165,
+        "type": "youtube",
+        "youtubeId": "O6YzU00oack",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🎈 KIDS HITS",
+        "description": "«От винта!» — главный рок-н-ролльный хит вселенной Смешариков."
+      },
+      {
+        "title": "Фиксики: ДНК и Фиксипелки",
+        "episode": "Новая серия и познавательные песни",
+        "duration": 360,
+        "type": "youtube",
+        "youtubeId": "bRdv1xfDWrM",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🎈 ФИКСИКИ",
+        "description": "Симка и Нолик поют любимые фиксипелки и изучают устройство мира."
+      },
+      {
+        "title": "Синий Трактор: По полям",
+        "episode": "Песенка про зверей и трактор",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "b4N40D72P80",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎈 СИНИЙ ТРАКТОР",
+        "description": "«По полям, по полям, синий трактор едет к нам...» Самый популярный детский трек."
+      },
+      {
+        "title": "Фиксики: Помогатор (Фиксипелки)",
+        "episode": "Детский танцевальный хит",
+        "duration": 180,
+        "type": "youtube",
+        "youtubeId": "p5_28lQe7cM",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🎈 ФИКСИКИ",
+        "description": "«А кто такие фиксики — большой, большой секрет!»"
+      },
+      {
+        "title": "Смешарики: Круглая песня",
+        "episode": "Песня о дружбе и Ромашковой долине",
+        "duration": 150,
+        "type": "youtube",
+        "youtubeId": "F01Vp_9gM3c",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🎈 СМЕШАРИКИ",
+        "description": "Добродушная песенка всех круглых друзей."
+      },
+      {
+        "title": "Смешарики: От винта! (Песня-Клип)",
+        "episode": "Легендарный хит Пина и Кроша",
+        "duration": 165,
+        "type": "youtube",
+        "youtubeId": "O6YzU00oack",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🎈 KIDS HITS",
+        "description": "«От винта!» — главный рок-н-ролльный хит вселенной Смешариков."
+      },
+      {
+        "title": "Фиксики: ДНК и Фиксипелки",
+        "episode": "Новая серия и познавательные песни",
+        "duration": 360,
+        "type": "youtube",
+        "youtubeId": "bRdv1xfDWrM",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🎈 ФИКСИКИ",
+        "description": "Симка и Нолик поют любимые фиксипелки и изучают устройство мира."
+      },
+      {
+        "title": "Синий Трактор: По полям",
+        "episode": "Песенка про зверей и трактор",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "b4N40D72P80",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎈 СИНИЙ ТРАКТОР",
+        "description": "«По полям, по полям, синий трактор едет к нам...» Самый популярный детский трек."
+      },
+      {
+        "title": "Фиксики: Помогатор (Фиксипелки)",
+        "episode": "Детский танцевальный хит",
+        "duration": 180,
+        "type": "youtube",
+        "youtubeId": "p5_28lQe7cM",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🎈 ФИКСИКИ",
+        "description": "«А кто такие фиксики — большой, большой секрет!»"
+      },
+      {
+        "title": "Смешарики: Круглая песня",
+        "episode": "Песня о дружбе и Ромашковой долине",
+        "duration": 150,
+        "type": "youtube",
+        "youtubeId": "F01Vp_9gM3c",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🎈 СМЕШАРИКИ",
+        "description": "Добродушная песенка всех круглых друзей."
+      },
+      {
+        "title": "Смешарики: От винта! (Песня-Клип)",
+        "episode": "Легендарный хит Пина и Кроша",
+        "duration": 165,
+        "type": "youtube",
+        "youtubeId": "O6YzU00oack",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🎈 KIDS HITS",
+        "description": "«От винта!» — главный рок-н-ролльный хит вселенной Смешариков."
+      },
+      {
+        "title": "Фиксики: ДНК и Фиксипелки",
+        "episode": "Новая серия и познавательные песни",
+        "duration": 360,
+        "type": "youtube",
+        "youtubeId": "bRdv1xfDWrM",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🎈 ФИКСИКИ",
+        "description": "Симка и Нолик поют любимые фиксипелки и изучают устройство мира."
+      },
+      {
+        "title": "Синий Трактор: По полям",
+        "episode": "Песенка про зверей и трактор",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "b4N40D72P80",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎈 СИНИЙ ТРАКТОР",
+        "description": "«По полям, по полям, синий трактор едет к нам...» Самый популярный детский трек."
+      },
+      {
+        "title": "Фиксики: Помогатор (Фиксипелки)",
+        "episode": "Детский танцевальный хит",
+        "duration": 180,
+        "type": "youtube",
+        "youtubeId": "p5_28lQe7cM",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🎈 ФИКСИКИ",
+        "description": "«А кто такие фиксики — большой, большой секрет!»"
+      },
+      {
+        "title": "Смешарики: Круглая песня",
+        "episode": "Песня о дружбе и Ромашковой долине",
+        "duration": 150,
+        "type": "youtube",
+        "youtubeId": "F01Vp_9gM3c",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🎈 СМЕШАРИКИ",
+        "description": "Добродушная песенка всех круглых друзей."
+      },
+      {
+        "title": "Смешарики: От винта! (Песня-Клип)",
+        "episode": "Легендарный хит Пина и Кроша",
+        "duration": 165,
+        "type": "youtube",
+        "youtubeId": "O6YzU00oack",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🎈 KIDS HITS",
+        "description": "«От винта!» — главный рок-н-ролльный хит вселенной Смешариков."
+      },
+      {
+        "title": "Фиксики: ДНК и Фиксипелки",
+        "episode": "Новая серия и познавательные песни",
+        "duration": 360,
+        "type": "youtube",
+        "youtubeId": "bRdv1xfDWrM",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🎈 ФИКСИКИ",
+        "description": "Симка и Нолик поют любимые фиксипелки и изучают устройство мира."
+      },
+      {
+        "title": "Синий Трактор: По полям",
+        "episode": "Песенка про зверей и трактор",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "b4N40D72P80",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎈 СИНИЙ ТРАКТОР",
+        "description": "«По полям, по полям, синий трактор едет к нам...» Самый популярный детский трек."
+      },
+      {
+        "title": "Фиксики: Помогатор (Фиксипелки)",
+        "episode": "Детский танцевальный хит",
+        "duration": 180,
+        "type": "youtube",
+        "youtubeId": "p5_28lQe7cM",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🎈 ФИКСИКИ",
+        "description": "«А кто такие фиксики — большой, большой секрет!»"
+      },
+      {
+        "title": "Смешарики: Круглая песня",
+        "episode": "Песня о дружбе и Ромашковой долине",
+        "duration": 150,
+        "type": "youtube",
+        "youtubeId": "F01Vp_9gM3c",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🎈 СМЕШАРИКИ",
+        "description": "Добродушная песенка всех круглых друзей."
+      },
+      {
+        "title": "Смешарики: От винта! (Песня-Клип)",
+        "episode": "Легендарный хит Пина и Кроша",
+        "duration": 165,
+        "type": "youtube",
+        "youtubeId": "O6YzU00oack",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🎈 KIDS HITS",
+        "description": "«От винта!» — главный рок-н-ролльный хит вселенной Смешариков."
+      },
+      {
+        "title": "Фиксики: ДНК и Фиксипелки",
+        "episode": "Новая серия и познавательные песни",
+        "duration": 360,
+        "type": "youtube",
+        "youtubeId": "bRdv1xfDWrM",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🎈 ФИКСИКИ",
+        "description": "Симка и Нолик поют любимые фиксипелки и изучают устройство мира."
+      },
+      {
+        "title": "Синий Трактор: По полям",
+        "episode": "Песенка про зверей и трактор",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "b4N40D72P80",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎈 СИНИЙ ТРАКТОР",
+        "description": "«По полям, по полям, синий трактор едет к нам...» Самый популярный детский трек."
+      },
+      {
+        "title": "Фиксики: Помогатор (Фиксипелки)",
+        "episode": "Детский танцевальный хит",
+        "duration": 180,
+        "type": "youtube",
+        "youtubeId": "p5_28lQe7cM",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🎈 ФИКСИКИ",
+        "description": "«А кто такие фиксики — большой, большой секрет!»"
+      },
+      {
+        "title": "Смешарики: Круглая песня",
+        "episode": "Песня о дружбе и Ромашковой долине",
+        "duration": 150,
+        "type": "youtube",
+        "youtubeId": "F01Vp_9gM3c",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🎈 СМЕШАРИКИ",
+        "description": "Добродушная песенка всех круглых друзей."
+      },
+      {
+        "title": "Смешарики: От винта! (Песня-Клип)",
+        "episode": "Легендарный хит Пина и Кроша",
+        "duration": 165,
+        "type": "youtube",
+        "youtubeId": "O6YzU00oack",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🎈 KIDS HITS",
+        "description": "«От винта!» — главный рок-н-ролльный хит вселенной Смешариков."
+      },
+      {
+        "title": "Фиксики: ДНК и Фиксипелки",
+        "episode": "Новая серия и познавательные песни",
+        "duration": 360,
+        "type": "youtube",
+        "youtubeId": "bRdv1xfDWrM",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🎈 ФИКСИКИ",
+        "description": "Симка и Нолик поют любимые фиксипелки и изучают устройство мира."
+      },
+      {
+        "title": "Синий Трактор: По полям",
+        "episode": "Песенка про зверей и трактор",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "b4N40D72P80",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎈 СИНИЙ ТРАКТОР",
+        "description": "«По полям, по полям, синий трактор едет к нам...» Самый популярный детский трек."
+      },
+      {
+        "title": "Фиксики: Помогатор (Фиксипелки)",
+        "episode": "Детский танцевальный хит",
+        "duration": 180,
+        "type": "youtube",
+        "youtubeId": "p5_28lQe7cM",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🎈 ФИКСИКИ",
+        "description": "«А кто такие фиксики — большой, большой секрет!»"
+      },
+      {
+        "title": "Смешарики: Круглая песня",
+        "episode": "Песня о дружбе и Ромашковой долине",
+        "duration": 150,
+        "type": "youtube",
+        "youtubeId": "F01Vp_9gM3c",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🎈 СМЕШАРИКИ",
+        "description": "Добродушная песенка всех круглых друзей."
+      },
+      {
+        "title": "Смешарики: От винта! (Песня-Клип)",
+        "episode": "Легендарный хит Пина и Кроша",
+        "duration": 165,
+        "type": "youtube",
+        "youtubeId": "O6YzU00oack",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🎈 KIDS HITS",
+        "description": "«От винта!» — главный рок-н-ролльный хит вселенной Смешариков."
+      },
+      {
+        "title": "Фиксики: ДНК и Фиксипелки",
+        "episode": "Новая серия и познавательные песни",
+        "duration": 360,
+        "type": "youtube",
+        "youtubeId": "bRdv1xfDWrM",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🎈 ФИКСИКИ",
+        "description": "Симка и Нолик поют любимые фиксипелки и изучают устройство мира."
+      },
+      {
+        "title": "Синий Трактор: По полям",
+        "episode": "Песенка про зверей и трактор",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "b4N40D72P80",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎈 СИНИЙ ТРАКТОР",
+        "description": "«По полям, по полям, синий трактор едет к нам...» Самый популярный детский трек."
+      },
+      {
+        "title": "Фиксики: Помогатор (Фиксипелки)",
+        "episode": "Детский танцевальный хит",
+        "duration": 180,
+        "type": "youtube",
+        "youtubeId": "p5_28lQe7cM",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🎈 ФИКСИКИ",
+        "description": "«А кто такие фиксики — большой, большой секрет!»"
+      },
+      {
+        "title": "Смешарики: Круглая песня",
+        "episode": "Песня о дружбе и Ромашковой долине",
+        "duration": 150,
+        "type": "youtube",
+        "youtubeId": "F01Vp_9gM3c",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🎈 СМЕШАРИКИ",
+        "description": "Добродушная песенка всех круглых друзей."
+      },
+      {
+        "title": "Смешарики: От винта! (Песня-Клип)",
+        "episode": "Легендарный хит Пина и Кроша",
+        "duration": 165,
+        "type": "youtube",
+        "youtubeId": "O6YzU00oack",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🎈 KIDS HITS",
+        "description": "«От винта!» — главный рок-н-ролльный хит вселенной Смешариков."
+      },
+      {
+        "title": "Фиксики: ДНК и Фиксипелки",
+        "episode": "Новая серия и познавательные песни",
+        "duration": 360,
+        "type": "youtube",
+        "youtubeId": "bRdv1xfDWrM",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🎈 ФИКСИКИ",
+        "description": "Симка и Нолик поют любимые фиксипелки и изучают устройство мира."
+      },
+      {
+        "title": "Синий Трактор: По полям",
+        "episode": "Песенка про зверей и трактор",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "b4N40D72P80",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎈 СИНИЙ ТРАКТОР",
+        "description": "«По полям, по полям, синий трактор едет к нам...» Самый популярный детский трек."
+      },
+      {
+        "title": "Фиксики: Помогатор (Фиксипелки)",
+        "episode": "Детский танцевальный хит",
+        "duration": 180,
+        "type": "youtube",
+        "youtubeId": "p5_28lQe7cM",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🎈 ФИКСИКИ",
+        "description": "«А кто такие фиксики — большой, большой секрет!»"
+      },
+      {
+        "title": "Смешарики: Круглая песня",
+        "episode": "Песня о дружбе и Ромашковой долине",
+        "duration": 150,
+        "type": "youtube",
+        "youtubeId": "F01Vp_9gM3c",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🎈 СМЕШАРИКИ",
+        "description": "Добродушная песенка всех круглых друзей."
+      },
+      {
+        "title": "Смешарики: От винта! (Песня-Клип)",
+        "episode": "Легендарный хит Пина и Кроша",
+        "duration": 165,
+        "type": "youtube",
+        "youtubeId": "O6YzU00oack",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🎈 KIDS HITS",
+        "description": "«От винта!» — главный рок-н-ролльный хит вселенной Смешариков."
+      },
+      {
+        "title": "Фиксики: ДНК и Фиксипелки",
+        "episode": "Новая серия и познавательные песни",
+        "duration": 360,
+        "type": "youtube",
+        "youtubeId": "bRdv1xfDWrM",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🎈 ФИКСИКИ",
+        "description": "Симка и Нолик поют любимые фиксипелки и изучают устройство мира."
+      },
+      {
+        "title": "Синий Трактор: По полям",
+        "episode": "Песенка про зверей и трактор",
+        "duration": 210,
+        "type": "youtube",
+        "youtubeId": "b4N40D72P80",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎈 СИНИЙ ТРАКТОР",
+        "description": "«По полям, по полям, синий трактор едет к нам...» Самый популярный детский трек."
+      },
+      {
+        "title": "Фиксики: Помогатор (Фиксипелки)",
+        "episode": "Детский танцевальный хит",
+        "duration": 180,
+        "type": "youtube",
+        "youtubeId": "p5_28lQe7cM",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🎈 ФИКСИКИ",
+        "description": "«А кто такие фиксики — большой, большой секрет!»"
+      },
+      {
+        "title": "Смешарики: Круглая песня",
+        "episode": "Песня о дружбе и Ромашковой долине",
+        "duration": 150,
+        "type": "youtube",
+        "youtubeId": "F01Vp_9gM3c",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "badgeTag": "🎈 СМЕШАРИКИ",
+        "description": "Добродушная песенка всех круглых друзей."
       }
     ]
   }
