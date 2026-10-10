@@ -234,17 +234,25 @@ function playCurrentChannel(withGlitch = true) {
 
     if (isNewUrl || !hlsVideo.src || hlsVideo.src !== currentItem.url) {
       hlsVideo.src = currentItem.url;
-      hlsVideo.currentTime = elapsed;
-      hlsVideo.muted = state.isMuted;
+      hlsVideo.muted = state.isTVStarted ? state.isMuted : true;
       hlsVideo.volume = state.volume / 100;
-      if (state.isTVStarted) {
-        hlsVideo.play().catch(e => console.log("Play waiting:", e));
+
+      const applySeek = () => {
+        if (elapsed > 0 && hlsVideo.duration && elapsed < hlsVideo.duration) {
+          try { hlsVideo.currentTime = elapsed; } catch (e) {}
+        }
+      };
+      hlsVideo.addEventListener('loadedmetadata', applySeek, { once: true });
+      if (hlsVideo.readyState >= 1) {
+        applySeek();
       }
+
+      hlsVideo.play().catch(e => console.log("Play waiting interaction:", e));
     } else {
       if (Math.abs(hlsVideo.currentTime - elapsed) > 3) {
-        hlsVideo.currentTime = elapsed;
+        try { hlsVideo.currentTime = elapsed; } catch (e) {}
       }
-      if (hlsVideo.paused && state.isTVStarted) {
+      if (hlsVideo.paused) {
         hlsVideo.play().catch(() => {});
       }
     }
@@ -277,12 +285,12 @@ function playCurrentChannel(withGlitch = true) {
         hls.attachMedia(hlsVideo);
 
         hls.on(Hls.Events.MANIFEST_PARSED, () => {
-          hlsVideo.currentTime = elapsed;
-          hlsVideo.muted = state.isMuted;
+          try {
+            if (elapsed > 0) hlsVideo.currentTime = elapsed;
+          } catch (e) {}
+          hlsVideo.muted = state.isTVStarted ? state.isMuted : true;
           hlsVideo.volume = state.volume / 100;
-          if (state.isTVStarted) {
-            hlsVideo.play().catch(e => console.log("Play waiting:", e));
-          }
+          hlsVideo.play().catch(e => console.log("HLS play waiting interaction:", e));
         });
 
         hls.on(Hls.Events.ERROR, (event, data) => {
@@ -819,12 +827,18 @@ function setupEventListeners() {
     }
   });
 
-  // Unmute / First start screen
+  // Unmute / Sound activate click
   document.getElementById('unmute-overlay').addEventListener('click', () => {
     state.isTVStarted = true;
     state.isMuted = false;
     document.getElementById('unmute-overlay').classList.add('hidden');
-    playCurrentChannel(true);
+    const hlsVideo = document.getElementById('hls-player');
+    hlsVideo.muted = false;
+    hlsVideo.volume = state.volume / 100;
+    if (hlsVideo.paused) {
+      hlsVideo.play().catch(() => {});
+    }
+    playChannelSwitchAudio();
   });
 
   // Next / Prev Channel Buttons
@@ -1051,4 +1065,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   const { currentItem, elapsed, nextItem, progressPercent } = calculateBroadcastPosition(initialChannel);
   updateChannelInfoDOM(initialChannel, currentItem, elapsed, nextItem, progressPercent);
   updateAmbilight(initialChannel.color);
+
+  // Auto-start playback in background (muted until user clicks)
+  playCurrentChannel(false);
 });
