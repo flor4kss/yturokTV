@@ -1,4 +1,4 @@
-// Полная 12-канальная мульти-категорийная сетка вещания yturokTV (4 категории • 24/7)
+// Полная 12-канальная сетка вещания yturokTV (100% Direct Streams • Без YouTube • 24/7)
 export const DEFAULT_CHANNELS = [
   {
     "id": "yturok-morning",
@@ -654,11 +654,11 @@ export const DEFAULT_CHANNELS = [
     "categoryName": "Аниме",
     "name": "yturokTV • ДЕНЬ",
     "shortName": "ДЕНЬ",
-    "tagline": "Топовый сёнен: Клинок рассекающий демонов, Магическая битва, Solo Leveling, Ванпанчмен",
-    "icon": "wb_twilight",
-    "logoSvg": "animehit",
+    "tagline": "Сёнэн и блокбастеры: Магическая битва, Клинок, Дандадан, Доктор Стоун",
+    "icon": "flare",
+    "logoSvg": "fire",
     "badge": "СЁНЕН ХИТ",
-    "color": "#f43f5e",
+    "color": "#f97316",
     "schedule": [
       {
         "title": "Клинок, рассекающий демонов",
@@ -1508,11 +1508,11 @@ export const DEFAULT_CHANNELS = [
     "streamId": "night",
     "category": "anime",
     "categoryName": "Аниме",
-    "name": "yturokTV • ВЕЧЕР",
+    "name": "yturokTV • ВЕЧЕР 18+",
     "shortName": "ВЕЧЕР 18+",
-    "tagline": "Тёмный эфир 18+: Сага о Винланде, Киберпанк, Адский босс, Токийский гуль, 2х2 бамперы",
+    "tagline": "Взрослые тайтлы: Киберпанк, Человек-бензопила, Атака титанов + бамперы 2х2",
     "icon": "dark_mode",
-    "logoSvg": "cyber",
+    "logoSvg": "skull",
     "badge": "ВЕЧЕР 18+",
     "color": "#a855f7",
     "schedule": [
@@ -2291,16 +2291,16 @@ export const DEFAULT_CHANNELS = [
   {
     "id": "cartoons-247",
     "number": "04",
-    "streamId": "cartoons",
+    "streamId": "mult-tv",
     "category": "cartoons",
     "categoryName": "Мультфильмы",
     "name": "МУЛЬТ-ТВ 24/7",
     "shortName": "МУЛЬТ-ТВ",
-    "tagline": "Смешарики, Лунтик, Фиксики и культовые ночные бамперы 2х2",
+    "tagline": "Золотая коллекция: Смешарики, Лунтик, Фиксики и культовые заставки 2x2",
     "icon": "auto_awesome",
     "logoSvg": "toonster",
     "badge": "МУЛЬТЫ 24/7",
-    "color": "#f59e0b",
+    "color": "#38bdf8",
     "schedule": [
       {
         "title": "Смешарики",
@@ -3110,409 +3110,493 @@ export const DEFAULT_CHANNELS = [
     "streamId": "mzlff",
     "category": "minecrafters",
     "categoryName": "Майнкрафтеры",
-    "name": "НАРЕЗКИ МАЗЕЛОВА",
+    "name": "МАЗЕЛОВ",
     "shortName": "МАЗЕЛОВ",
-    "tagline": "mzlff TV: лучшие нарезки со стримов, фристайлы, рофлы и реакции Ильи Мазелова",
+    "tagline": "mzlff TV: Космические клипы, фристайлы, анимации и хайлайты",
     "icon": "sports_esports",
     "logoSvg": "cyber",
     "badge": "MZLFF TV",
     "color": "#8b5cf6",
     "schedule": [
       {
-        "title": "Мазелов: Старые клипы и реакция",
-        "episode": "Смотрит подборку клипов mzlffcybersport",
-        "duration": 860,
+        "title": "Mazellov in space: Космический трип",
+        "episode": "Фристайл и анимация mzlff",
+        "duration": 360,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "kOWtBVWu1qE",
-        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
-        "badgeTag": "🟣 MZLFF TV",
-        "description": "Илья Мазелов смотрит ностальгические нарезки и угарные моменты со стримов."
-      },
-      {
-        "title": "Мазелов: Новый трек на стриме",
-        "episode": "Эксклюзивный отрывок и разбор",
-        "duration": 620,
-        "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "FaSWPTbrhw4",
-        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
-        "badgeTag": "🟣 MZLFF TV",
-        "description": "mzlff показывает сниппет нового трека и делится бэкстейджем записи."
-      },
-      {
-        "title": "Мазелов: Главная тайна неба",
-        "episode": "Встречает и слушает новый релиз со зрителями",
-        "duration": 740,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "_gys4eOJyvw",
+        "url": "https://archive.org/download/youtube-_wzY3s7_Gt4/_wzY3s7_Gt4.mp4",
         "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
         "badgeTag": "🟣 MZLFF TV",
-        "description": "Премьера песни 'Главная тайна неба' в прямом эфире."
+        "description": "Илья Мазелов в космическом визуале со своим фирменным флоу."
       },
       {
-        "title": "Мазелов: Старые клипы и реакция",
-        "episode": "Смотрит подборку клипов mzlffcybersport",
-        "duration": 860,
+        "title": "Мазелов: Уличное пианино & Театр",
+        "episode": "Артистический перформанс",
+        "duration": 420,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "kOWtBVWu1qE",
-        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
-        "badgeTag": "🟣 MZLFF TV",
-        "description": "Илья Мазелов смотрит ностальгические нарезки и угарные моменты со стримов."
-      },
-      {
-        "title": "Мазелов: Новый трек на стриме",
-        "episode": "Эксклюзивный отрывок и разбор",
-        "duration": 620,
-        "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "FaSWPTbrhw4",
+        "url": "https://archive.org/download/youtube-MZLFf_JaPNM/MZLFf_JaPNM.mp4",
         "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
         "badgeTag": "🟣 MZLFF TV",
-        "description": "mzlff показывает сниппет нового трека и делится бэкстейджем записи."
+        "description": "Импровизация и музыкальный отрывок по дороге в театр."
       },
       {
-        "title": "Мазелов: Главная тайна неба",
-        "episode": "Встречает и слушает новый релиз со зрителями",
-        "duration": 740,
+        "title": "Dambo Music: Начало (Begin Again)",
+        "episode": "Minecraft Original Song Animation",
+        "duration": 240,
         "type": "video",
         "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "_gys4eOJyvw",
-        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
-        "badgeTag": "🟣 MZLFF TV",
-        "description": "Премьера песни 'Главная тайна неба' в прямом эфире."
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
       },
       {
-        "title": "Мазелов: Старые клипы и реакция",
-        "episode": "Смотрит подборку клипов mzlffcybersport",
-        "duration": 860,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "kOWtBVWu1qE",
-        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
-        "badgeTag": "🟣 MZLFF TV",
-        "description": "Илья Мазелов смотрит ностальгические нарезки и угарные моменты со стримов."
-      },
-      {
-        "title": "Мазелов: Новый трек на стриме",
-        "episode": "Эксклюзивный отрывок и разбор",
-        "duration": 620,
+        "title": "Monster School: The Floor is Lava",
+        "episode": "Minecraft Animation HD",
+        "duration": 310,
         "type": "video",
         "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "FaSWPTbrhw4",
-        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
-        "badgeTag": "🟣 MZLFF TV",
-        "description": "mzlff показывает сниппет нового трека и делится бэкстейджем записи."
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ АНИМАЦИЯ",
+        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
       },
       {
-        "title": "Мазелов: Главная тайна неба",
-        "episode": "Встречает и слушает новый релиз со зрителями",
-        "duration": 740,
+        "title": "Mazellov in space: Космический трип",
+        "episode": "Фристайл и анимация mzlff",
+        "duration": 360,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "_gys4eOJyvw",
+        "url": "https://archive.org/download/youtube-_wzY3s7_Gt4/_wzY3s7_Gt4.mp4",
         "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
         "badgeTag": "🟣 MZLFF TV",
-        "description": "Премьера песни 'Главная тайна неба' в прямом эфире."
+        "description": "Илья Мазелов в космическом визуале со своим фирменным флоу."
       },
       {
-        "title": "Мазелов: Старые клипы и реакция",
-        "episode": "Смотрит подборку клипов mzlffcybersport",
-        "duration": 860,
+        "title": "Мазелов: Уличное пианино & Театр",
+        "episode": "Артистический перформанс",
+        "duration": 420,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-MZLFf_JaPNM/MZLFf_JaPNM.mp4",
+        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Импровизация и музыкальный отрывок по дороге в театр."
+      },
+      {
+        "title": "Dambo Music: Начало (Begin Again)",
+        "episode": "Minecraft Original Song Animation",
+        "duration": 240,
         "type": "video",
         "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "kOWtBVWu1qE",
-        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
-        "badgeTag": "🟣 MZLFF TV",
-        "description": "Илья Мазелов смотрит ностальгические нарезки и угарные моменты со стримов."
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
       },
       {
-        "title": "Мазелов: Новый трек на стриме",
-        "episode": "Эксклюзивный отрывок и разбор",
-        "duration": 620,
+        "title": "Monster School: The Floor is Lava",
+        "episode": "Minecraft Animation HD",
+        "duration": 310,
         "type": "video",
         "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "FaSWPTbrhw4",
-        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
-        "badgeTag": "🟣 MZLFF TV",
-        "description": "mzlff показывает сниппет нового трека и делится бэкстейджем записи."
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ АНИМАЦИЯ",
+        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
       },
       {
-        "title": "Мазелов: Главная тайна неба",
-        "episode": "Встречает и слушает новый релиз со зрителями",
-        "duration": 740,
+        "title": "Mazellov in space: Космический трип",
+        "episode": "Фристайл и анимация mzlff",
+        "duration": 360,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "_gys4eOJyvw",
+        "url": "https://archive.org/download/youtube-_wzY3s7_Gt4/_wzY3s7_Gt4.mp4",
         "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
         "badgeTag": "🟣 MZLFF TV",
-        "description": "Премьера песни 'Главная тайна неба' в прямом эфире."
+        "description": "Илья Мазелов в космическом визуале со своим фирменным флоу."
       },
       {
-        "title": "Мазелов: Старые клипы и реакция",
-        "episode": "Смотрит подборку клипов mzlffcybersport",
-        "duration": 860,
+        "title": "Мазелов: Уличное пианино & Театр",
+        "episode": "Артистический перформанс",
+        "duration": 420,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-MZLFf_JaPNM/MZLFf_JaPNM.mp4",
+        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Импровизация и музыкальный отрывок по дороге в театр."
+      },
+      {
+        "title": "Dambo Music: Начало (Begin Again)",
+        "episode": "Minecraft Original Song Animation",
+        "duration": 240,
         "type": "video",
         "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "kOWtBVWu1qE",
-        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
-        "badgeTag": "🟣 MZLFF TV",
-        "description": "Илья Мазелов смотрит ностальгические нарезки и угарные моменты со стримов."
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
       },
       {
-        "title": "Мазелов: Новый трек на стриме",
-        "episode": "Эксклюзивный отрывок и разбор",
-        "duration": 620,
+        "title": "Monster School: The Floor is Lava",
+        "episode": "Minecraft Animation HD",
+        "duration": 310,
         "type": "video",
         "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "FaSWPTbrhw4",
-        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
-        "badgeTag": "🟣 MZLFF TV",
-        "description": "mzlff показывает сниппет нового трека и делится бэкстейджем записи."
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ АНИМАЦИЯ",
+        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
       },
       {
-        "title": "Мазелов: Главная тайна неба",
-        "episode": "Встречает и слушает новый релиз со зрителями",
-        "duration": 740,
+        "title": "Mazellov in space: Космический трип",
+        "episode": "Фристайл и анимация mzlff",
+        "duration": 360,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "_gys4eOJyvw",
+        "url": "https://archive.org/download/youtube-_wzY3s7_Gt4/_wzY3s7_Gt4.mp4",
         "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
         "badgeTag": "🟣 MZLFF TV",
-        "description": "Премьера песни 'Главная тайна неба' в прямом эфире."
+        "description": "Илья Мазелов в космическом визуале со своим фирменным флоу."
       },
       {
-        "title": "Мазелов: Старые клипы и реакция",
-        "episode": "Смотрит подборку клипов mzlffcybersport",
-        "duration": 860,
+        "title": "Мазелов: Уличное пианино & Театр",
+        "episode": "Артистический перформанс",
+        "duration": 420,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-MZLFf_JaPNM/MZLFf_JaPNM.mp4",
+        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Импровизация и музыкальный отрывок по дороге в театр."
+      },
+      {
+        "title": "Dambo Music: Начало (Begin Again)",
+        "episode": "Minecraft Original Song Animation",
+        "duration": 240,
         "type": "video",
         "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "kOWtBVWu1qE",
-        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
-        "badgeTag": "🟣 MZLFF TV",
-        "description": "Илья Мазелов смотрит ностальгические нарезки и угарные моменты со стримов."
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
       },
       {
-        "title": "Мазелов: Новый трек на стриме",
-        "episode": "Эксклюзивный отрывок и разбор",
-        "duration": 620,
+        "title": "Monster School: The Floor is Lava",
+        "episode": "Minecraft Animation HD",
+        "duration": 310,
         "type": "video",
         "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "FaSWPTbrhw4",
-        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
-        "badgeTag": "🟣 MZLFF TV",
-        "description": "mzlff показывает сниппет нового трека и делится бэкстейджем записи."
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ АНИМАЦИЯ",
+        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
       },
       {
-        "title": "Мазелов: Главная тайна неба",
-        "episode": "Встречает и слушает новый релиз со зрителями",
-        "duration": 740,
+        "title": "Mazellov in space: Космический трип",
+        "episode": "Фристайл и анимация mzlff",
+        "duration": 360,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "_gys4eOJyvw",
+        "url": "https://archive.org/download/youtube-_wzY3s7_Gt4/_wzY3s7_Gt4.mp4",
         "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
         "badgeTag": "🟣 MZLFF TV",
-        "description": "Премьера песни 'Главная тайна неба' в прямом эфире."
+        "description": "Илья Мазелов в космическом визуале со своим фирменным флоу."
       },
       {
-        "title": "Мазелов: Старые клипы и реакция",
-        "episode": "Смотрит подборку клипов mzlffcybersport",
-        "duration": 860,
+        "title": "Мазелов: Уличное пианино & Театр",
+        "episode": "Артистический перформанс",
+        "duration": 420,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-MZLFf_JaPNM/MZLFf_JaPNM.mp4",
+        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Импровизация и музыкальный отрывок по дороге в театр."
+      },
+      {
+        "title": "Dambo Music: Начало (Begin Again)",
+        "episode": "Minecraft Original Song Animation",
+        "duration": 240,
         "type": "video",
         "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "kOWtBVWu1qE",
-        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
-        "badgeTag": "🟣 MZLFF TV",
-        "description": "Илья Мазелов смотрит ностальгические нарезки и угарные моменты со стримов."
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
       },
       {
-        "title": "Мазелов: Новый трек на стриме",
-        "episode": "Эксклюзивный отрывок и разбор",
-        "duration": 620,
+        "title": "Monster School: The Floor is Lava",
+        "episode": "Minecraft Animation HD",
+        "duration": 310,
         "type": "video",
         "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "FaSWPTbrhw4",
-        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
-        "badgeTag": "🟣 MZLFF TV",
-        "description": "mzlff показывает сниппет нового трека и делится бэкстейджем записи."
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ АНИМАЦИЯ",
+        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
       },
       {
-        "title": "Мазелов: Главная тайна неба",
-        "episode": "Встречает и слушает новый релиз со зрителями",
-        "duration": 740,
+        "title": "Mazellov in space: Космический трип",
+        "episode": "Фристайл и анимация mzlff",
+        "duration": 360,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "_gys4eOJyvw",
+        "url": "https://archive.org/download/youtube-_wzY3s7_Gt4/_wzY3s7_Gt4.mp4",
         "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
         "badgeTag": "🟣 MZLFF TV",
-        "description": "Премьера песни 'Главная тайна неба' в прямом эфире."
+        "description": "Илья Мазелов в космическом визуале со своим фирменным флоу."
       },
       {
-        "title": "Мазелов: Старые клипы и реакция",
-        "episode": "Смотрит подборку клипов mzlffcybersport",
-        "duration": 860,
+        "title": "Мазелов: Уличное пианино & Театр",
+        "episode": "Артистический перформанс",
+        "duration": 420,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-MZLFf_JaPNM/MZLFf_JaPNM.mp4",
+        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Импровизация и музыкальный отрывок по дороге в театр."
+      },
+      {
+        "title": "Dambo Music: Начало (Begin Again)",
+        "episode": "Minecraft Original Song Animation",
+        "duration": 240,
         "type": "video",
         "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "kOWtBVWu1qE",
-        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
-        "badgeTag": "🟣 MZLFF TV",
-        "description": "Илья Мазелов смотрит ностальгические нарезки и угарные моменты со стримов."
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
       },
       {
-        "title": "Мазелов: Новый трек на стриме",
-        "episode": "Эксклюзивный отрывок и разбор",
-        "duration": 620,
+        "title": "Monster School: The Floor is Lava",
+        "episode": "Minecraft Animation HD",
+        "duration": 310,
         "type": "video",
         "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "FaSWPTbrhw4",
-        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
-        "badgeTag": "🟣 MZLFF TV",
-        "description": "mzlff показывает сниппет нового трека и делится бэкстейджем записи."
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ АНИМАЦИЯ",
+        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
       },
       {
-        "title": "Мазелов: Главная тайна неба",
-        "episode": "Встречает и слушает новый релиз со зрителями",
-        "duration": 740,
+        "title": "Mazellov in space: Космический трип",
+        "episode": "Фристайл и анимация mzlff",
+        "duration": 360,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "_gys4eOJyvw",
+        "url": "https://archive.org/download/youtube-_wzY3s7_Gt4/_wzY3s7_Gt4.mp4",
         "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
         "badgeTag": "🟣 MZLFF TV",
-        "description": "Премьера песни 'Главная тайна неба' в прямом эфире."
+        "description": "Илья Мазелов в космическом визуале со своим фирменным флоу."
       },
       {
-        "title": "Мазелов: Старые клипы и реакция",
-        "episode": "Смотрит подборку клипов mzlffcybersport",
-        "duration": 860,
+        "title": "Мазелов: Уличное пианино & Театр",
+        "episode": "Артистический перформанс",
+        "duration": 420,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-MZLFf_JaPNM/MZLFf_JaPNM.mp4",
+        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Импровизация и музыкальный отрывок по дороге в театр."
+      },
+      {
+        "title": "Dambo Music: Начало (Begin Again)",
+        "episode": "Minecraft Original Song Animation",
+        "duration": 240,
         "type": "video",
         "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "kOWtBVWu1qE",
-        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
-        "badgeTag": "🟣 MZLFF TV",
-        "description": "Илья Мазелов смотрит ностальгические нарезки и угарные моменты со стримов."
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
       },
       {
-        "title": "Мазелов: Новый трек на стриме",
-        "episode": "Эксклюзивный отрывок и разбор",
-        "duration": 620,
+        "title": "Monster School: The Floor is Lava",
+        "episode": "Minecraft Animation HD",
+        "duration": 310,
         "type": "video",
         "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "FaSWPTbrhw4",
-        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
-        "badgeTag": "🟣 MZLFF TV",
-        "description": "mzlff показывает сниппет нового трека и делится бэкстейджем записи."
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ АНИМАЦИЯ",
+        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
       },
       {
-        "title": "Мазелов: Главная тайна неба",
-        "episode": "Встречает и слушает новый релиз со зрителями",
-        "duration": 740,
+        "title": "Mazellov in space: Космический трип",
+        "episode": "Фристайл и анимация mzlff",
+        "duration": 360,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "_gys4eOJyvw",
+        "url": "https://archive.org/download/youtube-_wzY3s7_Gt4/_wzY3s7_Gt4.mp4",
         "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
         "badgeTag": "🟣 MZLFF TV",
-        "description": "Премьера песни 'Главная тайна неба' в прямом эфире."
+        "description": "Илья Мазелов в космическом визуале со своим фирменным флоу."
       },
       {
-        "title": "Мазелов: Старые клипы и реакция",
-        "episode": "Смотрит подборку клипов mzlffcybersport",
-        "duration": 860,
+        "title": "Мазелов: Уличное пианино & Театр",
+        "episode": "Артистический перформанс",
+        "duration": 420,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-MZLFf_JaPNM/MZLFf_JaPNM.mp4",
+        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Импровизация и музыкальный отрывок по дороге в театр."
+      },
+      {
+        "title": "Dambo Music: Начало (Begin Again)",
+        "episode": "Minecraft Original Song Animation",
+        "duration": 240,
         "type": "video",
         "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "kOWtBVWu1qE",
-        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
-        "badgeTag": "🟣 MZLFF TV",
-        "description": "Илья Мазелов смотрит ностальгические нарезки и угарные моменты со стримов."
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
       },
       {
-        "title": "Мазелов: Новый трек на стриме",
-        "episode": "Эксклюзивный отрывок и разбор",
-        "duration": 620,
+        "title": "Monster School: The Floor is Lava",
+        "episode": "Minecraft Animation HD",
+        "duration": 310,
         "type": "video",
         "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "FaSWPTbrhw4",
-        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
-        "badgeTag": "🟣 MZLFF TV",
-        "description": "mzlff показывает сниппет нового трека и делится бэкстейджем записи."
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ АНИМАЦИЯ",
+        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
       },
       {
-        "title": "Мазелов: Главная тайна неба",
-        "episode": "Встречает и слушает новый релиз со зрителями",
-        "duration": 740,
+        "title": "Mazellov in space: Космический трип",
+        "episode": "Фристайл и анимация mzlff",
+        "duration": 360,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "_gys4eOJyvw",
+        "url": "https://archive.org/download/youtube-_wzY3s7_Gt4/_wzY3s7_Gt4.mp4",
         "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
         "badgeTag": "🟣 MZLFF TV",
-        "description": "Премьера песни 'Главная тайна неба' в прямом эфире."
+        "description": "Илья Мазелов в космическом визуале со своим фирменным флоу."
       },
       {
-        "title": "Мазелов: Старые клипы и реакция",
-        "episode": "Смотрит подборку клипов mzlffcybersport",
-        "duration": 860,
+        "title": "Мазелов: Уличное пианино & Театр",
+        "episode": "Артистический перформанс",
+        "duration": 420,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-MZLFf_JaPNM/MZLFf_JaPNM.mp4",
+        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Импровизация и музыкальный отрывок по дороге в театр."
+      },
+      {
+        "title": "Dambo Music: Начало (Begin Again)",
+        "episode": "Minecraft Original Song Animation",
+        "duration": 240,
         "type": "video",
         "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "kOWtBVWu1qE",
-        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
-        "badgeTag": "🟣 MZLFF TV",
-        "description": "Илья Мазелов смотрит ностальгические нарезки и угарные моменты со стримов."
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
       },
       {
-        "title": "Мазелов: Новый трек на стриме",
-        "episode": "Эксклюзивный отрывок и разбор",
-        "duration": 620,
+        "title": "Monster School: The Floor is Lava",
+        "episode": "Minecraft Animation HD",
+        "duration": 310,
         "type": "video",
         "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "FaSWPTbrhw4",
-        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
-        "badgeTag": "🟣 MZLFF TV",
-        "description": "mzlff показывает сниппет нового трека и делится бэкстейджем записи."
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ АНИМАЦИЯ",
+        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
       },
       {
-        "title": "Мазелов: Главная тайна неба",
-        "episode": "Встречает и слушает новый релиз со зрителями",
-        "duration": 740,
+        "title": "Mazellov in space: Космический трип",
+        "episode": "Фристайл и анимация mzlff",
+        "duration": 360,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "_gys4eOJyvw",
+        "url": "https://archive.org/download/youtube-_wzY3s7_Gt4/_wzY3s7_Gt4.mp4",
         "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
         "badgeTag": "🟣 MZLFF TV",
-        "description": "Премьера песни 'Главная тайна неба' в прямом эфире."
+        "description": "Илья Мазелов в космическом визуале со своим фирменным флоу."
       },
       {
-        "title": "Мазелов: Старые клипы и реакция",
-        "episode": "Смотрит подборку клипов mzlffcybersport",
-        "duration": 860,
+        "title": "Мазелов: Уличное пианино & Театр",
+        "episode": "Артистический перформанс",
+        "duration": 420,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-MZLFf_JaPNM/MZLFf_JaPNM.mp4",
+        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Импровизация и музыкальный отрывок по дороге в театр."
+      },
+      {
+        "title": "Dambo Music: Начало (Begin Again)",
+        "episode": "Minecraft Original Song Animation",
+        "duration": 240,
         "type": "video",
         "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "kOWtBVWu1qE",
-        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
-        "badgeTag": "🟣 MZLFF TV",
-        "description": "Илья Мазелов смотрит ностальгические нарезки и угарные моменты со стримов."
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
       },
       {
-        "title": "Мазелов: Новый трек на стриме",
-        "episode": "Эксклюзивный отрывок и разбор",
-        "duration": 620,
+        "title": "Monster School: The Floor is Lava",
+        "episode": "Minecraft Animation HD",
+        "duration": 310,
         "type": "video",
         "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "FaSWPTbrhw4",
-        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
-        "badgeTag": "🟣 MZLFF TV",
-        "description": "mzlff показывает сниппет нового трека и делится бэкстейджем записи."
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ АНИМАЦИЯ",
+        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
       },
       {
-        "title": "Мазелов: Главная тайна неба",
-        "episode": "Встречает и слушает новый релиз со зрителями",
-        "duration": 740,
+        "title": "Mazellov in space: Космический трип",
+        "episode": "Фристайл и анимация mzlff",
+        "duration": 360,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "_gys4eOJyvw",
+        "url": "https://archive.org/download/youtube-_wzY3s7_Gt4/_wzY3s7_Gt4.mp4",
         "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
         "badgeTag": "🟣 MZLFF TV",
-        "description": "Премьера песни 'Главная тайна неба' в прямом эфире."
+        "description": "Илья Мазелов в космическом визуале со своим фирменным флоу."
+      },
+      {
+        "title": "Мазелов: Уличное пианино & Театр",
+        "episode": "Артистический перформанс",
+        "duration": 420,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-MZLFf_JaPNM/MZLFf_JaPNM.mp4",
+        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Импровизация и музыкальный отрывок по дороге в театр."
+      },
+      {
+        "title": "Dambo Music: Начало (Begin Again)",
+        "episode": "Minecraft Original Song Animation",
+        "duration": 240,
+        "type": "video",
+        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
+      },
+      {
+        "title": "Monster School: The Floor is Lava",
+        "episode": "Minecraft Animation HD",
+        "duration": 310,
+        "type": "video",
+        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ АНИМАЦИЯ",
+        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
+      },
+      {
+        "title": "Mazellov in space: Космический трип",
+        "episode": "Фристайл и анимация mzlff",
+        "duration": 360,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-_wzY3s7_Gt4/_wzY3s7_Gt4.mp4",
+        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Илья Мазелов в космическом визуале со своим фирменным флоу."
+      },
+      {
+        "title": "Мазелов: Уличное пианино & Театр",
+        "episode": "Артистический перформанс",
+        "duration": 420,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-MZLFf_JaPNM/MZLFf_JaPNM.mp4",
+        "poster": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=600",
+        "badgeTag": "🟣 MZLFF TV",
+        "description": "Импровизация и музыкальный отрывок по дороге в театр."
+      },
+      {
+        "title": "Dambo Music: Начало (Begin Again)",
+        "episode": "Minecraft Original Song Animation",
+        "duration": 240,
+        "type": "video",
+        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
+      },
+      {
+        "title": "Monster School: The Floor is Lava",
+        "episode": "Minecraft Animation HD",
+        "duration": 310,
+        "type": "video",
+        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ АНИМАЦИЯ",
+        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
       }
     ]
   },
@@ -3522,453 +3606,493 @@ export const DEFAULT_CHANNELS = [
     "streamId": "5opka",
     "category": "minecrafters",
     "categoryName": "Майнкрафтеры",
-    "name": "НАРЕЗКИ ПЯТЁРКИ",
+    "name": "ПЯТЁРКА",
     "shortName": "ПЯТЁРКА",
-    "tagline": "5opka TV: нарезки Кирилла Баранова, сервер СП3, обзоры модов и концентрированный угар",
-    "icon": "smart_toy",
-    "logoSvg": "animehit",
+    "tagline": "5opka TV: Аниме-опенинги, Ledstorm выживание, ниндзя-моменты и рофлы",
+    "icon": "theater_comedy",
+    "logoSvg": "fire",
     "badge": "5OPKA TV",
     "color": "#ef4444",
     "schedule": [
       {
-        "title": "Пятёрка: Первые уроки гимназии #СП3",
-        "episode": "Нарезка со стрима 5opka: СП3 школа",
-        "duration": 920,
+        "title": "Пятёрка поет начало аниме 0_0",
+        "episode": "Эпичное караоке и кринж-моменты",
+        "duration": 480,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "o67oACY0hDw",
+        "url": "https://archive.org/download/youtube-wYX8DyiqHc4/%D0%9F%D1%8F%D1%82%D1%91%D1%80%D0%BA%D0%B0%20%D0%BF%D0%BE%D0%B5%D1%82%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE%20%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5%200_0.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Кирилл Баранов (Пятёрка) устраивает перформанс на сервере СП3."
+        "description": "Кирилл Баранов исполняет культовые аниме-опенинги в своем фирменном стиле."
       },
       {
-        "title": "Пятёрка: Головорезы. Третье пришествие",
-        "episode": "5opka, BAV, mazellovvv, OTURRO, Oster",
-        "duration": 580,
+        "title": "Пятёрка: Ледяной шторм в Майнкрафте",
+        "episode": "Ledstorm выживание",
+        "duration": 750,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "OtfGTanVh2o",
-        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
-        "badgeTag": "🔴 5OPKA TV",
-        "description": "Пятёрка и банда слушают легендарный трек 'Головорезы'."
-      },
-      {
-        "title": "Пятёрка: 100 фактов про Пятёрку",
-        "episode": "Реакция на документалку от подписчиков",
-        "duration": 1100,
-        "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "EenivcKVjRQ",
+        "url": "https://archive.org/download/youtube-kadP7m19Iis/%D0%9B%D0%B5%D0%B4%D1%8F%D0%BD%D0%BE%D0%B9%20%D1%88%D1%82%D0%BE%D1%80%D0%BC%20%D0%B2%20%D0%BC%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82%D0%B5%20%20Ledstorm.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Кирилл комментирует факты о своей стримерской биографии."
+        "description": "Суровое арктическое выживание и угарные баги сборки Ledstorm."
       },
       {
-        "title": "Пятёрка: 5opka без контекста",
-        "episode": "Смешные моменты и отборные рофлы",
-        "duration": 780,
+        "title": "Пятёрка стал ниндзя 0_0",
+        "episode": "Ninja Bolognese",
+        "duration": 620,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "-tzWd8YoYmI",
+        "url": "https://archive.org/download/youtube-p-z15wyFdUs/%D0%9F%D1%8F%D1%82%D0%B5%D1%80%D0%BA%D0%B0%20%D1%81%D1%82%D0%B0%D0%BB%20%D0%BD%D0%B8%D0%BD%D0%B4%D0%B7%D1%8F%200_0%20%20Ninja%20Bolognese.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Концентрированный угар и мемные моменты со стримов Пятёрки."
+        "description": "Пятёрка осваивает техники шиноби и паркура."
       },
       {
-        "title": "Пятёрка: Первые уроки гимназии #СП3",
-        "episode": "Нарезка со стрима 5opka: СП3 школа",
-        "duration": 920,
+        "title": "Пятёрка смеётся под музыччку!!",
+        "episode": "Отборные рофлы и смех",
+        "duration": 350,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "o67oACY0hDw",
+        "url": "https://archive.org/download/youtube-XU7vBH06cM0/%D0%BF%D1%8F%D1%82%D0%B5%D1%80%D0%BA%D0%B0%20%D1%81%D0%BC%D0%B5%D1%91%D1%82%D1%81%D1%8F%20%D0%BF%D0%BE%D0%B4%20%D0%BC%D1%83%D0%B7%D1%8B%D1%87%D1%87%D0%BA%D1%83%21%21.ia.mp4",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Заразительный смех Пятёрки под бодрые ремиксы."
+      },
+      {
+        "title": "Пятёрка поет начало аниме 0_0",
+        "episode": "Эпичное караоке и кринж-моменты",
+        "duration": 480,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-wYX8DyiqHc4/%D0%9F%D1%8F%D1%82%D1%91%D1%80%D0%BA%D0%B0%20%D0%BF%D0%BE%D0%B5%D1%82%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE%20%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5%200_0.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Кирилл Баранов (Пятёрка) устраивает перформанс на сервере СП3."
+        "description": "Кирилл Баранов исполняет культовые аниме-опенинги в своем фирменном стиле."
       },
       {
-        "title": "Пятёрка: Головорезы. Третье пришествие",
-        "episode": "5opka, BAV, mazellovvv, OTURRO, Oster",
-        "duration": 580,
+        "title": "Пятёрка: Ледяной шторм в Майнкрафте",
+        "episode": "Ledstorm выживание",
+        "duration": 750,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "OtfGTanVh2o",
-        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
-        "badgeTag": "🔴 5OPKA TV",
-        "description": "Пятёрка и банда слушают легендарный трек 'Головорезы'."
-      },
-      {
-        "title": "Пятёрка: 100 фактов про Пятёрку",
-        "episode": "Реакция на документалку от подписчиков",
-        "duration": 1100,
-        "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "EenivcKVjRQ",
+        "url": "https://archive.org/download/youtube-kadP7m19Iis/%D0%9B%D0%B5%D0%B4%D1%8F%D0%BD%D0%BE%D0%B9%20%D1%88%D1%82%D0%BE%D1%80%D0%BC%20%D0%B2%20%D0%BC%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82%D0%B5%20%20Ledstorm.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Кирилл комментирует факты о своей стримерской биографии."
+        "description": "Суровое арктическое выживание и угарные баги сборки Ledstorm."
       },
       {
-        "title": "Пятёрка: 5opka без контекста",
-        "episode": "Смешные моменты и отборные рофлы",
-        "duration": 780,
+        "title": "Пятёрка стал ниндзя 0_0",
+        "episode": "Ninja Bolognese",
+        "duration": 620,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "-tzWd8YoYmI",
+        "url": "https://archive.org/download/youtube-p-z15wyFdUs/%D0%9F%D1%8F%D1%82%D0%B5%D1%80%D0%BA%D0%B0%20%D1%81%D1%82%D0%B0%D0%BB%20%D0%BD%D0%B8%D0%BD%D0%B4%D0%B7%D1%8F%200_0%20%20Ninja%20Bolognese.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Концентрированный угар и мемные моменты со стримов Пятёрки."
+        "description": "Пятёрка осваивает техники шиноби и паркура."
       },
       {
-        "title": "Пятёрка: Первые уроки гимназии #СП3",
-        "episode": "Нарезка со стрима 5opka: СП3 школа",
-        "duration": 920,
+        "title": "Пятёрка смеётся под музыччку!!",
+        "episode": "Отборные рофлы и смех",
+        "duration": 350,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "o67oACY0hDw",
+        "url": "https://archive.org/download/youtube-XU7vBH06cM0/%D0%BF%D1%8F%D1%82%D0%B5%D1%80%D0%BA%D0%B0%20%D1%81%D0%BC%D0%B5%D1%91%D1%82%D1%81%D1%8F%20%D0%BF%D0%BE%D0%B4%20%D0%BC%D1%83%D0%B7%D1%8B%D1%87%D1%87%D0%BA%D1%83%21%21.ia.mp4",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Заразительный смех Пятёрки под бодрые ремиксы."
+      },
+      {
+        "title": "Пятёрка поет начало аниме 0_0",
+        "episode": "Эпичное караоке и кринж-моменты",
+        "duration": 480,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-wYX8DyiqHc4/%D0%9F%D1%8F%D1%82%D1%91%D1%80%D0%BA%D0%B0%20%D0%BF%D0%BE%D0%B5%D1%82%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE%20%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5%200_0.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Кирилл Баранов (Пятёрка) устраивает перформанс на сервере СП3."
+        "description": "Кирилл Баранов исполняет культовые аниме-опенинги в своем фирменном стиле."
       },
       {
-        "title": "Пятёрка: Головорезы. Третье пришествие",
-        "episode": "5opka, BAV, mazellovvv, OTURRO, Oster",
-        "duration": 580,
+        "title": "Пятёрка: Ледяной шторм в Майнкрафте",
+        "episode": "Ledstorm выживание",
+        "duration": 750,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "OtfGTanVh2o",
-        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
-        "badgeTag": "🔴 5OPKA TV",
-        "description": "Пятёрка и банда слушают легендарный трек 'Головорезы'."
-      },
-      {
-        "title": "Пятёрка: 100 фактов про Пятёрку",
-        "episode": "Реакция на документалку от подписчиков",
-        "duration": 1100,
-        "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "EenivcKVjRQ",
+        "url": "https://archive.org/download/youtube-kadP7m19Iis/%D0%9B%D0%B5%D0%B4%D1%8F%D0%BD%D0%BE%D0%B9%20%D1%88%D1%82%D0%BE%D1%80%D0%BC%20%D0%B2%20%D0%BC%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82%D0%B5%20%20Ledstorm.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Кирилл комментирует факты о своей стримерской биографии."
+        "description": "Суровое арктическое выживание и угарные баги сборки Ledstorm."
       },
       {
-        "title": "Пятёрка: 5opka без контекста",
-        "episode": "Смешные моменты и отборные рофлы",
-        "duration": 780,
+        "title": "Пятёрка стал ниндзя 0_0",
+        "episode": "Ninja Bolognese",
+        "duration": 620,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "-tzWd8YoYmI",
+        "url": "https://archive.org/download/youtube-p-z15wyFdUs/%D0%9F%D1%8F%D1%82%D0%B5%D1%80%D0%BA%D0%B0%20%D1%81%D1%82%D0%B0%D0%BB%20%D0%BD%D0%B8%D0%BD%D0%B4%D0%B7%D1%8F%200_0%20%20Ninja%20Bolognese.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Концентрированный угар и мемные моменты со стримов Пятёрки."
+        "description": "Пятёрка осваивает техники шиноби и паркура."
       },
       {
-        "title": "Пятёрка: Первые уроки гимназии #СП3",
-        "episode": "Нарезка со стрима 5opka: СП3 школа",
-        "duration": 920,
+        "title": "Пятёрка смеётся под музыччку!!",
+        "episode": "Отборные рофлы и смех",
+        "duration": 350,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "o67oACY0hDw",
+        "url": "https://archive.org/download/youtube-XU7vBH06cM0/%D0%BF%D1%8F%D1%82%D0%B5%D1%80%D0%BA%D0%B0%20%D1%81%D0%BC%D0%B5%D1%91%D1%82%D1%81%D1%8F%20%D0%BF%D0%BE%D0%B4%20%D0%BC%D1%83%D0%B7%D1%8B%D1%87%D1%87%D0%BA%D1%83%21%21.ia.mp4",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Заразительный смех Пятёрки под бодрые ремиксы."
+      },
+      {
+        "title": "Пятёрка поет начало аниме 0_0",
+        "episode": "Эпичное караоке и кринж-моменты",
+        "duration": 480,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-wYX8DyiqHc4/%D0%9F%D1%8F%D1%82%D1%91%D1%80%D0%BA%D0%B0%20%D0%BF%D0%BE%D0%B5%D1%82%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE%20%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5%200_0.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Кирилл Баранов (Пятёрка) устраивает перформанс на сервере СП3."
+        "description": "Кирилл Баранов исполняет культовые аниме-опенинги в своем фирменном стиле."
       },
       {
-        "title": "Пятёрка: Головорезы. Третье пришествие",
-        "episode": "5opka, BAV, mazellovvv, OTURRO, Oster",
-        "duration": 580,
+        "title": "Пятёрка: Ледяной шторм в Майнкрафте",
+        "episode": "Ledstorm выживание",
+        "duration": 750,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "OtfGTanVh2o",
-        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
-        "badgeTag": "🔴 5OPKA TV",
-        "description": "Пятёрка и банда слушают легендарный трек 'Головорезы'."
-      },
-      {
-        "title": "Пятёрка: 100 фактов про Пятёрку",
-        "episode": "Реакция на документалку от подписчиков",
-        "duration": 1100,
-        "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "EenivcKVjRQ",
+        "url": "https://archive.org/download/youtube-kadP7m19Iis/%D0%9B%D0%B5%D0%B4%D1%8F%D0%BD%D0%BE%D0%B9%20%D1%88%D1%82%D0%BE%D1%80%D0%BC%20%D0%B2%20%D0%BC%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82%D0%B5%20%20Ledstorm.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Кирилл комментирует факты о своей стримерской биографии."
+        "description": "Суровое арктическое выживание и угарные баги сборки Ledstorm."
       },
       {
-        "title": "Пятёрка: 5opka без контекста",
-        "episode": "Смешные моменты и отборные рофлы",
-        "duration": 780,
+        "title": "Пятёрка стал ниндзя 0_0",
+        "episode": "Ninja Bolognese",
+        "duration": 620,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "-tzWd8YoYmI",
+        "url": "https://archive.org/download/youtube-p-z15wyFdUs/%D0%9F%D1%8F%D1%82%D0%B5%D1%80%D0%BA%D0%B0%20%D1%81%D1%82%D0%B0%D0%BB%20%D0%BD%D0%B8%D0%BD%D0%B4%D0%B7%D1%8F%200_0%20%20Ninja%20Bolognese.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Концентрированный угар и мемные моменты со стримов Пятёрки."
+        "description": "Пятёрка осваивает техники шиноби и паркура."
       },
       {
-        "title": "Пятёрка: Первые уроки гимназии #СП3",
-        "episode": "Нарезка со стрима 5opka: СП3 школа",
-        "duration": 920,
+        "title": "Пятёрка смеётся под музыччку!!",
+        "episode": "Отборные рофлы и смех",
+        "duration": 350,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "o67oACY0hDw",
+        "url": "https://archive.org/download/youtube-XU7vBH06cM0/%D0%BF%D1%8F%D1%82%D0%B5%D1%80%D0%BA%D0%B0%20%D1%81%D0%BC%D0%B5%D1%91%D1%82%D1%81%D1%8F%20%D0%BF%D0%BE%D0%B4%20%D0%BC%D1%83%D0%B7%D1%8B%D1%87%D1%87%D0%BA%D1%83%21%21.ia.mp4",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Заразительный смех Пятёрки под бодрые ремиксы."
+      },
+      {
+        "title": "Пятёрка поет начало аниме 0_0",
+        "episode": "Эпичное караоке и кринж-моменты",
+        "duration": 480,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-wYX8DyiqHc4/%D0%9F%D1%8F%D1%82%D1%91%D1%80%D0%BA%D0%B0%20%D0%BF%D0%BE%D0%B5%D1%82%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE%20%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5%200_0.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Кирилл Баранов (Пятёрка) устраивает перформанс на сервере СП3."
+        "description": "Кирилл Баранов исполняет культовые аниме-опенинги в своем фирменном стиле."
       },
       {
-        "title": "Пятёрка: Головорезы. Третье пришествие",
-        "episode": "5opka, BAV, mazellovvv, OTURRO, Oster",
-        "duration": 580,
+        "title": "Пятёрка: Ледяной шторм в Майнкрафте",
+        "episode": "Ledstorm выживание",
+        "duration": 750,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "OtfGTanVh2o",
-        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
-        "badgeTag": "🔴 5OPKA TV",
-        "description": "Пятёрка и банда слушают легендарный трек 'Головорезы'."
-      },
-      {
-        "title": "Пятёрка: 100 фактов про Пятёрку",
-        "episode": "Реакция на документалку от подписчиков",
-        "duration": 1100,
-        "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "EenivcKVjRQ",
+        "url": "https://archive.org/download/youtube-kadP7m19Iis/%D0%9B%D0%B5%D0%B4%D1%8F%D0%BD%D0%BE%D0%B9%20%D1%88%D1%82%D0%BE%D1%80%D0%BC%20%D0%B2%20%D0%BC%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82%D0%B5%20%20Ledstorm.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Кирилл комментирует факты о своей стримерской биографии."
+        "description": "Суровое арктическое выживание и угарные баги сборки Ledstorm."
       },
       {
-        "title": "Пятёрка: 5opka без контекста",
-        "episode": "Смешные моменты и отборные рофлы",
-        "duration": 780,
+        "title": "Пятёрка стал ниндзя 0_0",
+        "episode": "Ninja Bolognese",
+        "duration": 620,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "-tzWd8YoYmI",
+        "url": "https://archive.org/download/youtube-p-z15wyFdUs/%D0%9F%D1%8F%D1%82%D0%B5%D1%80%D0%BA%D0%B0%20%D1%81%D1%82%D0%B0%D0%BB%20%D0%BD%D0%B8%D0%BD%D0%B4%D0%B7%D1%8F%200_0%20%20Ninja%20Bolognese.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Концентрированный угар и мемные моменты со стримов Пятёрки."
+        "description": "Пятёрка осваивает техники шиноби и паркура."
       },
       {
-        "title": "Пятёрка: Первые уроки гимназии #СП3",
-        "episode": "Нарезка со стрима 5opka: СП3 школа",
-        "duration": 920,
+        "title": "Пятёрка смеётся под музыччку!!",
+        "episode": "Отборные рофлы и смех",
+        "duration": 350,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "o67oACY0hDw",
+        "url": "https://archive.org/download/youtube-XU7vBH06cM0/%D0%BF%D1%8F%D1%82%D0%B5%D1%80%D0%BA%D0%B0%20%D1%81%D0%BC%D0%B5%D1%91%D1%82%D1%81%D1%8F%20%D0%BF%D0%BE%D0%B4%20%D0%BC%D1%83%D0%B7%D1%8B%D1%87%D1%87%D0%BA%D1%83%21%21.ia.mp4",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Заразительный смех Пятёрки под бодрые ремиксы."
+      },
+      {
+        "title": "Пятёрка поет начало аниме 0_0",
+        "episode": "Эпичное караоке и кринж-моменты",
+        "duration": 480,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-wYX8DyiqHc4/%D0%9F%D1%8F%D1%82%D1%91%D1%80%D0%BA%D0%B0%20%D0%BF%D0%BE%D0%B5%D1%82%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE%20%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5%200_0.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Кирилл Баранов (Пятёрка) устраивает перформанс на сервере СП3."
+        "description": "Кирилл Баранов исполняет культовые аниме-опенинги в своем фирменном стиле."
       },
       {
-        "title": "Пятёрка: Головорезы. Третье пришествие",
-        "episode": "5opka, BAV, mazellovvv, OTURRO, Oster",
-        "duration": 580,
+        "title": "Пятёрка: Ледяной шторм в Майнкрафте",
+        "episode": "Ledstorm выживание",
+        "duration": 750,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "OtfGTanVh2o",
-        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
-        "badgeTag": "🔴 5OPKA TV",
-        "description": "Пятёрка и банда слушают легендарный трек 'Головорезы'."
-      },
-      {
-        "title": "Пятёрка: 100 фактов про Пятёрку",
-        "episode": "Реакция на документалку от подписчиков",
-        "duration": 1100,
-        "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "EenivcKVjRQ",
+        "url": "https://archive.org/download/youtube-kadP7m19Iis/%D0%9B%D0%B5%D0%B4%D1%8F%D0%BD%D0%BE%D0%B9%20%D1%88%D1%82%D0%BE%D1%80%D0%BC%20%D0%B2%20%D0%BC%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82%D0%B5%20%20Ledstorm.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Кирилл комментирует факты о своей стримерской биографии."
+        "description": "Суровое арктическое выживание и угарные баги сборки Ledstorm."
       },
       {
-        "title": "Пятёрка: 5opka без контекста",
-        "episode": "Смешные моменты и отборные рофлы",
-        "duration": 780,
+        "title": "Пятёрка стал ниндзя 0_0",
+        "episode": "Ninja Bolognese",
+        "duration": 620,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "-tzWd8YoYmI",
+        "url": "https://archive.org/download/youtube-p-z15wyFdUs/%D0%9F%D1%8F%D1%82%D0%B5%D1%80%D0%BA%D0%B0%20%D1%81%D1%82%D0%B0%D0%BB%20%D0%BD%D0%B8%D0%BD%D0%B4%D0%B7%D1%8F%200_0%20%20Ninja%20Bolognese.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Концентрированный угар и мемные моменты со стримов Пятёрки."
+        "description": "Пятёрка осваивает техники шиноби и паркура."
       },
       {
-        "title": "Пятёрка: Первые уроки гимназии #СП3",
-        "episode": "Нарезка со стрима 5opka: СП3 школа",
-        "duration": 920,
+        "title": "Пятёрка смеётся под музыччку!!",
+        "episode": "Отборные рофлы и смех",
+        "duration": 350,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "o67oACY0hDw",
+        "url": "https://archive.org/download/youtube-XU7vBH06cM0/%D0%BF%D1%8F%D1%82%D0%B5%D1%80%D0%BA%D0%B0%20%D1%81%D0%BC%D0%B5%D1%91%D1%82%D1%81%D1%8F%20%D0%BF%D0%BE%D0%B4%20%D0%BC%D1%83%D0%B7%D1%8B%D1%87%D1%87%D0%BA%D1%83%21%21.ia.mp4",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Заразительный смех Пятёрки под бодрые ремиксы."
+      },
+      {
+        "title": "Пятёрка поет начало аниме 0_0",
+        "episode": "Эпичное караоке и кринж-моменты",
+        "duration": 480,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-wYX8DyiqHc4/%D0%9F%D1%8F%D1%82%D1%91%D1%80%D0%BA%D0%B0%20%D0%BF%D0%BE%D0%B5%D1%82%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE%20%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5%200_0.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Кирилл Баранов (Пятёрка) устраивает перформанс на сервере СП3."
+        "description": "Кирилл Баранов исполняет культовые аниме-опенинги в своем фирменном стиле."
       },
       {
-        "title": "Пятёрка: Головорезы. Третье пришествие",
-        "episode": "5opka, BAV, mazellovvv, OTURRO, Oster",
-        "duration": 580,
+        "title": "Пятёрка: Ледяной шторм в Майнкрафте",
+        "episode": "Ledstorm выживание",
+        "duration": 750,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "OtfGTanVh2o",
-        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
-        "badgeTag": "🔴 5OPKA TV",
-        "description": "Пятёрка и банда слушают легендарный трек 'Головорезы'."
-      },
-      {
-        "title": "Пятёрка: 100 фактов про Пятёрку",
-        "episode": "Реакция на документалку от подписчиков",
-        "duration": 1100,
-        "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "EenivcKVjRQ",
+        "url": "https://archive.org/download/youtube-kadP7m19Iis/%D0%9B%D0%B5%D0%B4%D1%8F%D0%BD%D0%BE%D0%B9%20%D1%88%D1%82%D0%BE%D1%80%D0%BC%20%D0%B2%20%D0%BC%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82%D0%B5%20%20Ledstorm.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Кирилл комментирует факты о своей стримерской биографии."
+        "description": "Суровое арктическое выживание и угарные баги сборки Ledstorm."
       },
       {
-        "title": "Пятёрка: 5opka без контекста",
-        "episode": "Смешные моменты и отборные рофлы",
-        "duration": 780,
+        "title": "Пятёрка стал ниндзя 0_0",
+        "episode": "Ninja Bolognese",
+        "duration": 620,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "-tzWd8YoYmI",
+        "url": "https://archive.org/download/youtube-p-z15wyFdUs/%D0%9F%D1%8F%D1%82%D0%B5%D1%80%D0%BA%D0%B0%20%D1%81%D1%82%D0%B0%D0%BB%20%D0%BD%D0%B8%D0%BD%D0%B4%D0%B7%D1%8F%200_0%20%20Ninja%20Bolognese.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Концентрированный угар и мемные моменты со стримов Пятёрки."
+        "description": "Пятёрка осваивает техники шиноби и паркура."
       },
       {
-        "title": "Пятёрка: Первые уроки гимназии #СП3",
-        "episode": "Нарезка со стрима 5opka: СП3 школа",
-        "duration": 920,
+        "title": "Пятёрка смеётся под музыччку!!",
+        "episode": "Отборные рофлы и смех",
+        "duration": 350,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "o67oACY0hDw",
+        "url": "https://archive.org/download/youtube-XU7vBH06cM0/%D0%BF%D1%8F%D1%82%D0%B5%D1%80%D0%BA%D0%B0%20%D1%81%D0%BC%D0%B5%D1%91%D1%82%D1%81%D1%8F%20%D0%BF%D0%BE%D0%B4%20%D0%BC%D1%83%D0%B7%D1%8B%D1%87%D1%87%D0%BA%D1%83%21%21.ia.mp4",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Заразительный смех Пятёрки под бодрые ремиксы."
+      },
+      {
+        "title": "Пятёрка поет начало аниме 0_0",
+        "episode": "Эпичное караоке и кринж-моменты",
+        "duration": 480,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-wYX8DyiqHc4/%D0%9F%D1%8F%D1%82%D1%91%D1%80%D0%BA%D0%B0%20%D0%BF%D0%BE%D0%B5%D1%82%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE%20%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5%200_0.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Кирилл Баранов (Пятёрка) устраивает перформанс на сервере СП3."
+        "description": "Кирилл Баранов исполняет культовые аниме-опенинги в своем фирменном стиле."
       },
       {
-        "title": "Пятёрка: Головорезы. Третье пришествие",
-        "episode": "5opka, BAV, mazellovvv, OTURRO, Oster",
-        "duration": 580,
+        "title": "Пятёрка: Ледяной шторм в Майнкрафте",
+        "episode": "Ledstorm выживание",
+        "duration": 750,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "OtfGTanVh2o",
-        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
-        "badgeTag": "🔴 5OPKA TV",
-        "description": "Пятёрка и банда слушают легендарный трек 'Головорезы'."
-      },
-      {
-        "title": "Пятёрка: 100 фактов про Пятёрку",
-        "episode": "Реакция на документалку от подписчиков",
-        "duration": 1100,
-        "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "EenivcKVjRQ",
+        "url": "https://archive.org/download/youtube-kadP7m19Iis/%D0%9B%D0%B5%D0%B4%D1%8F%D0%BD%D0%BE%D0%B9%20%D1%88%D1%82%D0%BE%D1%80%D0%BC%20%D0%B2%20%D0%BC%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82%D0%B5%20%20Ledstorm.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Кирилл комментирует факты о своей стримерской биографии."
+        "description": "Суровое арктическое выживание и угарные баги сборки Ledstorm."
       },
       {
-        "title": "Пятёрка: 5opka без контекста",
-        "episode": "Смешные моменты и отборные рофлы",
-        "duration": 780,
+        "title": "Пятёрка стал ниндзя 0_0",
+        "episode": "Ninja Bolognese",
+        "duration": 620,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "-tzWd8YoYmI",
+        "url": "https://archive.org/download/youtube-p-z15wyFdUs/%D0%9F%D1%8F%D1%82%D0%B5%D1%80%D0%BA%D0%B0%20%D1%81%D1%82%D0%B0%D0%BB%20%D0%BD%D0%B8%D0%BD%D0%B4%D0%B7%D1%8F%200_0%20%20Ninja%20Bolognese.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Концентрированный угар и мемные моменты со стримов Пятёрки."
+        "description": "Пятёрка осваивает техники шиноби и паркура."
       },
       {
-        "title": "Пятёрка: Первые уроки гимназии #СП3",
-        "episode": "Нарезка со стрима 5opka: СП3 школа",
-        "duration": 920,
+        "title": "Пятёрка смеётся под музыччку!!",
+        "episode": "Отборные рофлы и смех",
+        "duration": 350,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "o67oACY0hDw",
+        "url": "https://archive.org/download/youtube-XU7vBH06cM0/%D0%BF%D1%8F%D1%82%D0%B5%D1%80%D0%BA%D0%B0%20%D1%81%D0%BC%D0%B5%D1%91%D1%82%D1%81%D1%8F%20%D0%BF%D0%BE%D0%B4%20%D0%BC%D1%83%D0%B7%D1%8B%D1%87%D1%87%D0%BA%D1%83%21%21.ia.mp4",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Заразительный смех Пятёрки под бодрые ремиксы."
+      },
+      {
+        "title": "Пятёрка поет начало аниме 0_0",
+        "episode": "Эпичное караоке и кринж-моменты",
+        "duration": 480,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-wYX8DyiqHc4/%D0%9F%D1%8F%D1%82%D1%91%D1%80%D0%BA%D0%B0%20%D0%BF%D0%BE%D0%B5%D1%82%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE%20%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5%200_0.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Кирилл Баранов (Пятёрка) устраивает перформанс на сервере СП3."
+        "description": "Кирилл Баранов исполняет культовые аниме-опенинги в своем фирменном стиле."
       },
       {
-        "title": "Пятёрка: Головорезы. Третье пришествие",
-        "episode": "5opka, BAV, mazellovvv, OTURRO, Oster",
-        "duration": 580,
+        "title": "Пятёрка: Ледяной шторм в Майнкрафте",
+        "episode": "Ledstorm выживание",
+        "duration": 750,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "OtfGTanVh2o",
-        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
-        "badgeTag": "🔴 5OPKA TV",
-        "description": "Пятёрка и банда слушают легендарный трек 'Головорезы'."
-      },
-      {
-        "title": "Пятёрка: 100 фактов про Пятёрку",
-        "episode": "Реакция на документалку от подписчиков",
-        "duration": 1100,
-        "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "EenivcKVjRQ",
+        "url": "https://archive.org/download/youtube-kadP7m19Iis/%D0%9B%D0%B5%D0%B4%D1%8F%D0%BD%D0%BE%D0%B9%20%D1%88%D1%82%D0%BE%D1%80%D0%BC%20%D0%B2%20%D0%BC%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82%D0%B5%20%20Ledstorm.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Кирилл комментирует факты о своей стримерской биографии."
+        "description": "Суровое арктическое выживание и угарные баги сборки Ledstorm."
       },
       {
-        "title": "Пятёрка: 5opka без контекста",
-        "episode": "Смешные моменты и отборные рофлы",
-        "duration": 780,
+        "title": "Пятёрка стал ниндзя 0_0",
+        "episode": "Ninja Bolognese",
+        "duration": 620,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "-tzWd8YoYmI",
+        "url": "https://archive.org/download/youtube-p-z15wyFdUs/%D0%9F%D1%8F%D1%82%D0%B5%D1%80%D0%BA%D0%B0%20%D1%81%D1%82%D0%B0%D0%BB%20%D0%BD%D0%B8%D0%BD%D0%B4%D0%B7%D1%8F%200_0%20%20Ninja%20Bolognese.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Концентрированный угар и мемные моменты со стримов Пятёрки."
+        "description": "Пятёрка осваивает техники шиноби и паркура."
       },
       {
-        "title": "Пятёрка: Первые уроки гимназии #СП3",
-        "episode": "Нарезка со стрима 5opka: СП3 школа",
-        "duration": 920,
+        "title": "Пятёрка смеётся под музыччку!!",
+        "episode": "Отборные рофлы и смех",
+        "duration": 350,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "o67oACY0hDw",
+        "url": "https://archive.org/download/youtube-XU7vBH06cM0/%D0%BF%D1%8F%D1%82%D0%B5%D1%80%D0%BA%D0%B0%20%D1%81%D0%BC%D0%B5%D1%91%D1%82%D1%81%D1%8F%20%D0%BF%D0%BE%D0%B4%20%D0%BC%D1%83%D0%B7%D1%8B%D1%87%D1%87%D0%BA%D1%83%21%21.ia.mp4",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Заразительный смех Пятёрки под бодрые ремиксы."
+      },
+      {
+        "title": "Пятёрка поет начало аниме 0_0",
+        "episode": "Эпичное караоке и кринж-моменты",
+        "duration": 480,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-wYX8DyiqHc4/%D0%9F%D1%8F%D1%82%D1%91%D1%80%D0%BA%D0%B0%20%D0%BF%D0%BE%D0%B5%D1%82%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE%20%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5%200_0.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Кирилл Баранов (Пятёрка) устраивает перформанс на сервере СП3."
+        "description": "Кирилл Баранов исполняет культовые аниме-опенинги в своем фирменном стиле."
       },
       {
-        "title": "Пятёрка: Головорезы. Третье пришествие",
-        "episode": "5opka, BAV, mazellovvv, OTURRO, Oster",
-        "duration": 580,
+        "title": "Пятёрка: Ледяной шторм в Майнкрафте",
+        "episode": "Ledstorm выживание",
+        "duration": 750,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "OtfGTanVh2o",
-        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
-        "badgeTag": "🔴 5OPKA TV",
-        "description": "Пятёрка и банда слушают легендарный трек 'Головорезы'."
-      },
-      {
-        "title": "Пятёрка: 100 фактов про Пятёрку",
-        "episode": "Реакция на документалку от подписчиков",
-        "duration": 1100,
-        "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "EenivcKVjRQ",
+        "url": "https://archive.org/download/youtube-kadP7m19Iis/%D0%9B%D0%B5%D0%B4%D1%8F%D0%BD%D0%BE%D0%B9%20%D1%88%D1%82%D0%BE%D1%80%D0%BC%20%D0%B2%20%D0%BC%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82%D0%B5%20%20Ledstorm.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Кирилл комментирует факты о своей стримерской биографии."
+        "description": "Суровое арктическое выживание и угарные баги сборки Ledstorm."
       },
       {
-        "title": "Пятёрка: 5opka без контекста",
-        "episode": "Смешные моменты и отборные рофлы",
-        "duration": 780,
+        "title": "Пятёрка стал ниндзя 0_0",
+        "episode": "Ninja Bolognese",
+        "duration": 620,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "-tzWd8YoYmI",
+        "url": "https://archive.org/download/youtube-p-z15wyFdUs/%D0%9F%D1%8F%D1%82%D0%B5%D1%80%D0%BA%D0%B0%20%D1%81%D1%82%D0%B0%D0%BB%20%D0%BD%D0%B8%D0%BD%D0%B4%D0%B7%D1%8F%200_0%20%20Ninja%20Bolognese.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
         "badgeTag": "🔴 5OPKA TV",
-        "description": "Концентрированный угар и мемные моменты со стримов Пятёрки."
+        "description": "Пятёрка осваивает техники шиноби и паркура."
+      },
+      {
+        "title": "Пятёрка смеётся под музыччку!!",
+        "episode": "Отборные рофлы и смех",
+        "duration": 350,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-XU7vBH06cM0/%D0%BF%D1%8F%D1%82%D0%B5%D1%80%D0%BA%D0%B0%20%D1%81%D0%BC%D0%B5%D1%91%D1%82%D1%81%D1%8F%20%D0%BF%D0%BE%D0%B4%20%D0%BC%D1%83%D0%B7%D1%8B%D1%87%D1%87%D0%BA%D1%83%21%21.ia.mp4",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Заразительный смех Пятёрки под бодрые ремиксы."
+      },
+      {
+        "title": "Пятёрка поет начало аниме 0_0",
+        "episode": "Эпичное караоке и кринж-моменты",
+        "duration": 480,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-wYX8DyiqHc4/%D0%9F%D1%8F%D1%82%D1%91%D1%80%D0%BA%D0%B0%20%D0%BF%D0%BE%D0%B5%D1%82%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE%20%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5%200_0.ia.mp4",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Кирилл Баранов исполняет культовые аниме-опенинги в своем фирменном стиле."
+      },
+      {
+        "title": "Пятёрка: Ледяной шторм в Майнкрафте",
+        "episode": "Ledstorm выживание",
+        "duration": 750,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-kadP7m19Iis/%D0%9B%D0%B5%D0%B4%D1%8F%D0%BD%D0%BE%D0%B9%20%D1%88%D1%82%D0%BE%D1%80%D0%BC%20%D0%B2%20%D0%BC%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82%D0%B5%20%20Ledstorm.ia.mp4",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Суровое арктическое выживание и угарные баги сборки Ledstorm."
+      },
+      {
+        "title": "Пятёрка стал ниндзя 0_0",
+        "episode": "Ninja Bolognese",
+        "duration": 620,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-p-z15wyFdUs/%D0%9F%D1%8F%D1%82%D0%B5%D1%80%D0%BA%D0%B0%20%D1%81%D1%82%D0%B0%D0%BB%20%D0%BD%D0%B8%D0%BD%D0%B4%D0%B7%D1%8F%200_0%20%20Ninja%20Bolognese.ia.mp4",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Пятёрка осваивает техники шиноби и паркура."
+      },
+      {
+        "title": "Пятёрка смеётся под музыччку!!",
+        "episode": "Отборные рофлы и смех",
+        "duration": 350,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-XU7vBH06cM0/%D0%BF%D1%8F%D1%82%D0%B5%D1%80%D0%BA%D0%B0%20%D1%81%D0%BC%D0%B5%D1%91%D1%82%D1%81%D1%8F%20%D0%BF%D0%BE%D0%B4%20%D0%BC%D1%83%D0%B7%D1%8B%D1%87%D1%87%D0%BA%D1%83%21%21.ia.mp4",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Заразительный смех Пятёрки под бодрые ремиксы."
+      },
+      {
+        "title": "Пятёрка поет начало аниме 0_0",
+        "episode": "Эпичное караоке и кринж-моменты",
+        "duration": 480,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-wYX8DyiqHc4/%D0%9F%D1%8F%D1%82%D1%91%D1%80%D0%BA%D0%B0%20%D0%BF%D0%BE%D0%B5%D1%82%20%D0%BD%D0%B0%D1%87%D0%B0%D0%BB%D0%BE%20%D0%B0%D0%BD%D0%B8%D0%BC%D0%B5%200_0.ia.mp4",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Кирилл Баранов исполняет культовые аниме-опенинги в своем фирменном стиле."
+      },
+      {
+        "title": "Пятёрка: Ледяной шторм в Майнкрафте",
+        "episode": "Ledstorm выживание",
+        "duration": 750,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-kadP7m19Iis/%D0%9B%D0%B5%D0%B4%D1%8F%D0%BD%D0%BE%D0%B9%20%D1%88%D1%82%D0%BE%D1%80%D0%BC%20%D0%B2%20%D0%BC%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82%D0%B5%20%20Ledstorm.ia.mp4",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Суровое арктическое выживание и угарные баги сборки Ledstorm."
+      },
+      {
+        "title": "Пятёрка стал ниндзя 0_0",
+        "episode": "Ninja Bolognese",
+        "duration": 620,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-p-z15wyFdUs/%D0%9F%D1%8F%D1%82%D0%B5%D1%80%D0%BA%D0%B0%20%D1%81%D1%82%D0%B0%D0%BB%20%D0%BD%D0%B8%D0%BD%D0%B4%D0%B7%D1%8F%200_0%20%20Ninja%20Bolognese.ia.mp4",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Пятёрка осваивает техники шиноби и паркура."
+      },
+      {
+        "title": "Пятёрка смеётся под музыччку!!",
+        "episode": "Отборные рофлы и смех",
+        "duration": 350,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-XU7vBH06cM0/%D0%BF%D1%8F%D1%82%D0%B5%D1%80%D0%BA%D0%B0%20%D1%81%D0%BC%D0%B5%D1%91%D1%82%D1%81%D1%8F%20%D0%BF%D0%BE%D0%B4%20%D0%BC%D1%83%D0%B7%D1%8B%D1%87%D1%87%D0%BA%D1%83%21%21.ia.mp4",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🔴 5OPKA TV",
+        "description": "Заразительный смех Пятёрки под бодрые ремиксы."
       }
     ]
   },
@@ -3978,11 +4102,11 @@ export const DEFAULT_CHANNELS = [
     "streamId": "zakviel",
     "category": "minecrafters",
     "categoryName": "Майнкрафтеры",
-    "name": "НАРЕЗКИ ЗАКВИЕЛЯ",
+    "name": "ЗАКВИЕЛЬ",
     "shortName": "ЗАКВИЕЛЬ",
-    "tagline": "Zakviel TV: СП Vortex, выживание Craft To Exile, моды и хайлайты",
+    "tagline": "Zakviel TV: Сборка Craft To Exile, Майншилд, 3 хантера и 900IQ тактики",
     "icon": "shield",
-    "logoSvg": "toonster",
+    "logoSvg": "cyber",
     "badge": "ZAKVIEL TV",
     "color": "#3b82f6",
     "schedule": [
@@ -3997,24 +4121,34 @@ export const DEFAULT_CHANNELS = [
         "description": "Заквиель исследует мир RPG сборки Craft To Exile, прокачивает скиллы и крафтит лут."
       },
       {
-        "title": "Заквиель: Прохождение Portal 2",
-        "episode": "Главы 8, 9 и битва с Уитли",
-        "duration": 1180,
+        "title": "Заквиель: 3 Хантера против Спидраннера!",
+        "episode": "Minecraft Челлендж на выживание",
+        "duration": 3600,
         "type": "video",
-        "url": "https://archive.org/download/zakviel_09.11.20_14.01/09.11.20_14.01.mp4",
+        "url": "https://archive.org/download/zakviel_13.02.21_14.31/13.02.21_14.31.mp4",
         "poster": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600",
         "badgeTag": "🔵 ZAKVIEL TV",
-        "description": "Эпичный финал приключений в лабораториях Portal 2."
+        "description": "Охота в Нижнем мире и битвы с охотниками в реальном времени."
       },
       {
-        "title": "Заквиель: Ратуша в колонии Vortex",
-        "episode": "СП3/СП4: Новый склад и лор колонии",
-        "duration": 1050,
+        "title": "Заквиель: Майншилд с утра",
+        "episode": "Сабафон на сервере Майншилд",
+        "duration": 4200,
         "type": "video",
-        "url": "https://archive.org/download/zakviel_09.11.20_14.01/09.11.20_14.01.mp4",
+        "url": "https://archive.org/download/zakviel_30.08.21/zakviel_30.08.21.mp4",
         "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
         "badgeTag": "🔵 ZAKVIEL TV",
-        "description": "Масштабная стройка и развитие базы на сервере СП."
+        "description": "Утренний стрим с сервера Майншилд: торговля, проекты и общение."
+      },
+      {
+        "title": "Заквиель: 900IQ Стример! Ответка Дрима",
+        "episode": "Сборочка модов и Наруто",
+        "duration": 3800,
+        "type": "video",
+        "url": "https://archive.org/download/zakviel_23.12.20_13.14/23.12.20_13.14.mp4",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Тактические фишки, реакция на хайлайты и прохождение с модами."
       },
       {
         "title": "Заквиель: Сборка Craft To Exile",
@@ -4027,24 +4161,34 @@ export const DEFAULT_CHANNELS = [
         "description": "Заквиель исследует мир RPG сборки Craft To Exile, прокачивает скиллы и крафтит лут."
       },
       {
-        "title": "Заквиель: Прохождение Portal 2",
-        "episode": "Главы 8, 9 и битва с Уитли",
-        "duration": 1180,
+        "title": "Заквиель: 3 Хантера против Спидраннера!",
+        "episode": "Minecraft Челлендж на выживание",
+        "duration": 3600,
         "type": "video",
-        "url": "https://archive.org/download/zakviel_09.11.20_14.01/09.11.20_14.01.mp4",
+        "url": "https://archive.org/download/zakviel_13.02.21_14.31/13.02.21_14.31.mp4",
         "poster": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600",
         "badgeTag": "🔵 ZAKVIEL TV",
-        "description": "Эпичный финал приключений в лабораториях Portal 2."
+        "description": "Охота в Нижнем мире и битвы с охотниками в реальном времени."
       },
       {
-        "title": "Заквиель: Ратуша в колонии Vortex",
-        "episode": "СП3/СП4: Новый склад и лор колонии",
-        "duration": 1050,
+        "title": "Заквиель: Майншилд с утра",
+        "episode": "Сабафон на сервере Майншилд",
+        "duration": 4200,
         "type": "video",
-        "url": "https://archive.org/download/zakviel_09.11.20_14.01/09.11.20_14.01.mp4",
+        "url": "https://archive.org/download/zakviel_30.08.21/zakviel_30.08.21.mp4",
         "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
         "badgeTag": "🔵 ZAKVIEL TV",
-        "description": "Масштабная стройка и развитие базы на сервере СП."
+        "description": "Утренний стрим с сервера Майншилд: торговля, проекты и общение."
+      },
+      {
+        "title": "Заквиель: 900IQ Стример! Ответка Дрима",
+        "episode": "Сборочка модов и Наруто",
+        "duration": 3800,
+        "type": "video",
+        "url": "https://archive.org/download/zakviel_23.12.20_13.14/23.12.20_13.14.mp4",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Тактические фишки, реакция на хайлайты и прохождение с модами."
       },
       {
         "title": "Заквиель: Сборка Craft To Exile",
@@ -4057,24 +4201,34 @@ export const DEFAULT_CHANNELS = [
         "description": "Заквиель исследует мир RPG сборки Craft To Exile, прокачивает скиллы и крафтит лут."
       },
       {
-        "title": "Заквиель: Прохождение Portal 2",
-        "episode": "Главы 8, 9 и битва с Уитли",
-        "duration": 1180,
+        "title": "Заквиель: 3 Хантера против Спидраннера!",
+        "episode": "Minecraft Челлендж на выживание",
+        "duration": 3600,
         "type": "video",
-        "url": "https://archive.org/download/zakviel_09.11.20_14.01/09.11.20_14.01.mp4",
+        "url": "https://archive.org/download/zakviel_13.02.21_14.31/13.02.21_14.31.mp4",
         "poster": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600",
         "badgeTag": "🔵 ZAKVIEL TV",
-        "description": "Эпичный финал приключений в лабораториях Portal 2."
+        "description": "Охота в Нижнем мире и битвы с охотниками в реальном времени."
       },
       {
-        "title": "Заквиель: Ратуша в колонии Vortex",
-        "episode": "СП3/СП4: Новый склад и лор колонии",
-        "duration": 1050,
+        "title": "Заквиель: Майншилд с утра",
+        "episode": "Сабафон на сервере Майншилд",
+        "duration": 4200,
         "type": "video",
-        "url": "https://archive.org/download/zakviel_09.11.20_14.01/09.11.20_14.01.mp4",
+        "url": "https://archive.org/download/zakviel_30.08.21/zakviel_30.08.21.mp4",
         "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
         "badgeTag": "🔵 ZAKVIEL TV",
-        "description": "Масштабная стройка и развитие базы на сервере СП."
+        "description": "Утренний стрим с сервера Майншилд: торговля, проекты и общение."
+      },
+      {
+        "title": "Заквиель: 900IQ Стример! Ответка Дрима",
+        "episode": "Сборочка модов и Наруто",
+        "duration": 3800,
+        "type": "video",
+        "url": "https://archive.org/download/zakviel_23.12.20_13.14/23.12.20_13.14.mp4",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Тактические фишки, реакция на хайлайты и прохождение с модами."
       },
       {
         "title": "Заквиель: Сборка Craft To Exile",
@@ -4087,24 +4241,34 @@ export const DEFAULT_CHANNELS = [
         "description": "Заквиель исследует мир RPG сборки Craft To Exile, прокачивает скиллы и крафтит лут."
       },
       {
-        "title": "Заквиель: Прохождение Portal 2",
-        "episode": "Главы 8, 9 и битва с Уитли",
-        "duration": 1180,
+        "title": "Заквиель: 3 Хантера против Спидраннера!",
+        "episode": "Minecraft Челлендж на выживание",
+        "duration": 3600,
         "type": "video",
-        "url": "https://archive.org/download/zakviel_09.11.20_14.01/09.11.20_14.01.mp4",
+        "url": "https://archive.org/download/zakviel_13.02.21_14.31/13.02.21_14.31.mp4",
         "poster": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600",
         "badgeTag": "🔵 ZAKVIEL TV",
-        "description": "Эпичный финал приключений в лабораториях Portal 2."
+        "description": "Охота в Нижнем мире и битвы с охотниками в реальном времени."
       },
       {
-        "title": "Заквиель: Ратуша в колонии Vortex",
-        "episode": "СП3/СП4: Новый склад и лор колонии",
-        "duration": 1050,
+        "title": "Заквиель: Майншилд с утра",
+        "episode": "Сабафон на сервере Майншилд",
+        "duration": 4200,
         "type": "video",
-        "url": "https://archive.org/download/zakviel_09.11.20_14.01/09.11.20_14.01.mp4",
+        "url": "https://archive.org/download/zakviel_30.08.21/zakviel_30.08.21.mp4",
         "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
         "badgeTag": "🔵 ZAKVIEL TV",
-        "description": "Масштабная стройка и развитие базы на сервере СП."
+        "description": "Утренний стрим с сервера Майншилд: торговля, проекты и общение."
+      },
+      {
+        "title": "Заквиель: 900IQ Стример! Ответка Дрима",
+        "episode": "Сборочка модов и Наруто",
+        "duration": 3800,
+        "type": "video",
+        "url": "https://archive.org/download/zakviel_23.12.20_13.14/23.12.20_13.14.mp4",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Тактические фишки, реакция на хайлайты и прохождение с модами."
       },
       {
         "title": "Заквиель: Сборка Craft To Exile",
@@ -4117,24 +4281,34 @@ export const DEFAULT_CHANNELS = [
         "description": "Заквиель исследует мир RPG сборки Craft To Exile, прокачивает скиллы и крафтит лут."
       },
       {
-        "title": "Заквиель: Прохождение Portal 2",
-        "episode": "Главы 8, 9 и битва с Уитли",
-        "duration": 1180,
+        "title": "Заквиель: 3 Хантера против Спидраннера!",
+        "episode": "Minecraft Челлендж на выживание",
+        "duration": 3600,
         "type": "video",
-        "url": "https://archive.org/download/zakviel_09.11.20_14.01/09.11.20_14.01.mp4",
+        "url": "https://archive.org/download/zakviel_13.02.21_14.31/13.02.21_14.31.mp4",
         "poster": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600",
         "badgeTag": "🔵 ZAKVIEL TV",
-        "description": "Эпичный финал приключений в лабораториях Portal 2."
+        "description": "Охота в Нижнем мире и битвы с охотниками в реальном времени."
       },
       {
-        "title": "Заквиель: Ратуша в колонии Vortex",
-        "episode": "СП3/СП4: Новый склад и лор колонии",
-        "duration": 1050,
+        "title": "Заквиель: Майншилд с утра",
+        "episode": "Сабафон на сервере Майншилд",
+        "duration": 4200,
         "type": "video",
-        "url": "https://archive.org/download/zakviel_09.11.20_14.01/09.11.20_14.01.mp4",
+        "url": "https://archive.org/download/zakviel_30.08.21/zakviel_30.08.21.mp4",
         "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
         "badgeTag": "🔵 ZAKVIEL TV",
-        "description": "Масштабная стройка и развитие базы на сервере СП."
+        "description": "Утренний стрим с сервера Майншилд: торговля, проекты и общение."
+      },
+      {
+        "title": "Заквиель: 900IQ Стример! Ответка Дрима",
+        "episode": "Сборочка модов и Наруто",
+        "duration": 3800,
+        "type": "video",
+        "url": "https://archive.org/download/zakviel_23.12.20_13.14/23.12.20_13.14.mp4",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Тактические фишки, реакция на хайлайты и прохождение с модами."
       },
       {
         "title": "Заквиель: Сборка Craft To Exile",
@@ -4147,24 +4321,34 @@ export const DEFAULT_CHANNELS = [
         "description": "Заквиель исследует мир RPG сборки Craft To Exile, прокачивает скиллы и крафтит лут."
       },
       {
-        "title": "Заквиель: Прохождение Portal 2",
-        "episode": "Главы 8, 9 и битва с Уитли",
-        "duration": 1180,
+        "title": "Заквиель: 3 Хантера против Спидраннера!",
+        "episode": "Minecraft Челлендж на выживание",
+        "duration": 3600,
         "type": "video",
-        "url": "https://archive.org/download/zakviel_09.11.20_14.01/09.11.20_14.01.mp4",
+        "url": "https://archive.org/download/zakviel_13.02.21_14.31/13.02.21_14.31.mp4",
         "poster": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600",
         "badgeTag": "🔵 ZAKVIEL TV",
-        "description": "Эпичный финал приключений в лабораториях Portal 2."
+        "description": "Охота в Нижнем мире и битвы с охотниками в реальном времени."
       },
       {
-        "title": "Заквиель: Ратуша в колонии Vortex",
-        "episode": "СП3/СП4: Новый склад и лор колонии",
-        "duration": 1050,
+        "title": "Заквиель: Майншилд с утра",
+        "episode": "Сабафон на сервере Майншилд",
+        "duration": 4200,
         "type": "video",
-        "url": "https://archive.org/download/zakviel_09.11.20_14.01/09.11.20_14.01.mp4",
+        "url": "https://archive.org/download/zakviel_30.08.21/zakviel_30.08.21.mp4",
         "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
         "badgeTag": "🔵 ZAKVIEL TV",
-        "description": "Масштабная стройка и развитие базы на сервере СП."
+        "description": "Утренний стрим с сервера Майншилд: торговля, проекты и общение."
+      },
+      {
+        "title": "Заквиель: 900IQ Стример! Ответка Дрима",
+        "episode": "Сборочка модов и Наруто",
+        "duration": 3800,
+        "type": "video",
+        "url": "https://archive.org/download/zakviel_23.12.20_13.14/23.12.20_13.14.mp4",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Тактические фишки, реакция на хайлайты и прохождение с модами."
       },
       {
         "title": "Заквиель: Сборка Craft To Exile",
@@ -4177,24 +4361,34 @@ export const DEFAULT_CHANNELS = [
         "description": "Заквиель исследует мир RPG сборки Craft To Exile, прокачивает скиллы и крафтит лут."
       },
       {
-        "title": "Заквиель: Прохождение Portal 2",
-        "episode": "Главы 8, 9 и битва с Уитли",
-        "duration": 1180,
+        "title": "Заквиель: 3 Хантера против Спидраннера!",
+        "episode": "Minecraft Челлендж на выживание",
+        "duration": 3600,
         "type": "video",
-        "url": "https://archive.org/download/zakviel_09.11.20_14.01/09.11.20_14.01.mp4",
+        "url": "https://archive.org/download/zakviel_13.02.21_14.31/13.02.21_14.31.mp4",
         "poster": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600",
         "badgeTag": "🔵 ZAKVIEL TV",
-        "description": "Эпичный финал приключений в лабораториях Portal 2."
+        "description": "Охота в Нижнем мире и битвы с охотниками в реальном времени."
       },
       {
-        "title": "Заквиель: Ратуша в колонии Vortex",
-        "episode": "СП3/СП4: Новый склад и лор колонии",
-        "duration": 1050,
+        "title": "Заквиель: Майншилд с утра",
+        "episode": "Сабафон на сервере Майншилд",
+        "duration": 4200,
         "type": "video",
-        "url": "https://archive.org/download/zakviel_09.11.20_14.01/09.11.20_14.01.mp4",
+        "url": "https://archive.org/download/zakviel_30.08.21/zakviel_30.08.21.mp4",
         "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
         "badgeTag": "🔵 ZAKVIEL TV",
-        "description": "Масштабная стройка и развитие базы на сервере СП."
+        "description": "Утренний стрим с сервера Майншилд: торговля, проекты и общение."
+      },
+      {
+        "title": "Заквиель: 900IQ Стример! Ответка Дрима",
+        "episode": "Сборочка модов и Наруто",
+        "duration": 3800,
+        "type": "video",
+        "url": "https://archive.org/download/zakviel_23.12.20_13.14/23.12.20_13.14.mp4",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Тактические фишки, реакция на хайлайты и прохождение с модами."
       },
       {
         "title": "Заквиель: Сборка Craft To Exile",
@@ -4207,360 +4401,470 @@ export const DEFAULT_CHANNELS = [
         "description": "Заквиель исследует мир RPG сборки Craft To Exile, прокачивает скиллы и крафтит лут."
       },
       {
-        "title": "Заквиель: Прохождение Portal 2",
-        "episode": "Главы 8, 9 и битва с Уитли",
-        "duration": 1180,
+        "title": "Заквиель: 3 Хантера против Спидраннера!",
+        "episode": "Minecraft Челлендж на выживание",
+        "duration": 3600,
         "type": "video",
-        "url": "https://archive.org/download/zakviel_09.11.20_14.01/09.11.20_14.01.mp4",
+        "url": "https://archive.org/download/zakviel_13.02.21_14.31/13.02.21_14.31.mp4",
         "poster": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600",
         "badgeTag": "🔵 ZAKVIEL TV",
-        "description": "Эпичный финал приключений в лабораториях Portal 2."
+        "description": "Охота в Нижнем мире и битвы с охотниками в реальном времени."
       },
       {
-        "title": "Заквиель: Ратуша в колонии Vortex",
-        "episode": "СП3/СП4: Новый склад и лор колонии",
-        "duration": 1050,
+        "title": "Заквиель: Майншилд с утра",
+        "episode": "Сабафон на сервере Майншилд",
+        "duration": 4200,
         "type": "video",
-        "url": "https://archive.org/download/zakviel_09.11.20_14.01/09.11.20_14.01.mp4",
+        "url": "https://archive.org/download/zakviel_30.08.21/zakviel_30.08.21.mp4",
         "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
         "badgeTag": "🔵 ZAKVIEL TV",
-        "description": "Масштабная стройка и развитие базы на сервере СП."
+        "description": "Утренний стрим с сервера Майншилд: торговля, проекты и общение."
+      },
+      {
+        "title": "Заквиель: 900IQ Стример! Ответка Дрима",
+        "episode": "Сборочка модов и Наруто",
+        "duration": 3800,
+        "type": "video",
+        "url": "https://archive.org/download/zakviel_23.12.20_13.14/23.12.20_13.14.mp4",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "🔵 ZAKVIEL TV",
+        "description": "Тактические фишки, реакция на хайлайты и прохождение с модами."
       }
     ]
   },
   {
     "id": "minecrafters-story",
     "number": "08",
-    "streamId": "craft-story",
+    "streamId": "story",
     "category": "minecrafters",
     "categoryName": "Майнкрафтеры",
-    "name": "СЮЖЕТНЫЙ МАЙНКРАФТ",
+    "name": "ЛЕТСПЛЕИ",
     "shortName": "ЛЕТСПЛЕИ",
-    "tagline": "Лололошка (Игра Бога), Аид (Выживание бомжа), Школа Монстров",
-    "icon": "construction",
+    "tagline": "Сюжетный Майнкрафт: Лололошка (Игра Бога, Деревенька) и Аид (Сервер-реликт, BedWars)",
+    "icon": "handyman",
     "logoSvg": "cyber",
     "badge": "СЮЖЕТ & ЛОР",
     "color": "#10b981",
     "schedule": [
       {
-        "title": "Лололошка: Игра Бога",
-        "episode": "Серия 1: Начало истории • Сюжетный летсплей",
+        "title": "Лололошка: Игра Бога #1",
+        "episode": "Серия 1: НАЧАЛО ИСТОРИИ • Сюжетный летсплей",
         "duration": 1800,
         "type": "video",
         "url": "https://archive.org/download/lp.-1-o_202408/Lp.%20%D0%98%D0%B3%D1%80%D0%B0%20%D0%91%D0%BE%D0%B3%D0%B0%20%231%20%D0%9D%D0%90%D0%A7%D0%90%D0%9B%D0%9E%20%D0%98%D0%A1%D0%A2%D0%9E%D0%A0%D0%98%D0%98%20%E2%80%A2%20%D0%9C%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
         "badgeTag": "⛏️ ЛОЛОЛОШКА",
-        "description": "MrLololoshka в новом кинематографичном сезоне 'Игра Бога'."
+        "description": "MrLololoshka начинает масштабный сезон сюжетного летсплея Игра Бога."
       },
       {
-        "title": "Monster School: The Floor is Lava",
-        "episode": "Minecraft Animation HD",
-        "duration": 310,
+        "title": "Лололошка: Весёлые похождения • Деревенька",
+        "episode": "Классический ламповый летсплей",
+        "duration": 1200,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
+        "url": "https://archive.org/download/fb3yuf3ygf3gf3y-1080p/y2mate.com%20-%20Lp%D0%92%D0%B5%D1%81%D1%91%D0%BB%D1%8B%D0%B5%20%D0%BF%D0%BE%D1%85%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5%D0%94%D0%B5%D1%80%D0%B5%D0%B2%D0%B5%D0%BD%D1%8C%D0%BA%D0%B0_1080p.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "⛏️ АНИМАЦИЯ",
-        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "Приключения Ромы Фильченкова в деревне жителей."
       },
       {
-        "title": "Аид: Выживание бомжа в России #1",
-        "episode": "Заработали первые деньги в городе",
-        "duration": 1150,
+        "title": "Лололошка: Весёлые похождения • Строим дом",
+        "episode": "Строительство базы и добыча ресурсов",
+        "duration": 1350,
         "type": "video",
-        "url": "https://archive.org/download/lp.-1-o_202408/Lp.%20%D0%98%D0%B3%D1%80%D0%B0%20%D0%91%D0%BE%D0%B3%D0%B0%20%231%20%D0%9D%D0%90%D0%A7%D0%90%D0%9B%D0%9E%20%D0%98%D0%A1%D0%A2%D0%9E%D0%A0%D0%98%D0%98%20%E2%80%A2%20%D0%9C%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82.ia.mp4",
+        "url": "https://archive.org/download/fny3f3873-lp-1080p/y2mate.com%20-%20Lp%D0%92%D0%B5%D1%81%D1%91%D0%BB%D1%8B%D0%B5%20%D0%BF%D0%BE%D1%85%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F%D0%A1%D1%82%D1%80%D0%BE%D0%B5%D0%BC%20%D0%B4%D0%BE%D0%BC_1080p.ia.mp4",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "Постройка уютного дома и обустройство фермы."
+      },
+      {
+        "title": "Аид: Самый старый сервер Майнкрафт в мире!",
+        "episode": "Исследование древних построек",
+        "duration": 1400,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-HgGj0HGd0HQ/HgGj0HGd0HQ.mp4",
         "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
-        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
-        "description": "Аид начинает легендарный сериал выживания в суровом мегаполисе."
+        "badgeTag": "⛏️ АИД",
+        "description": "Вячеслав Аид исследует легендарный старейший сервер и находит забытые реликвии."
       },
       {
-        "title": "Monster School: The Floor is Lava",
-        "episode": "Minecraft Animation HD",
-        "duration": 310,
+        "title": "Аид: BedWars на Cristalix",
+        "episode": "Наглая девочка !!! • Раунд 3",
+        "duration": 950,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "⛏️ АНИМАЦИЯ",
-        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
+        "url": "https://archive.org/download/youtube-JpLHxxsQS4I/JpLHxxsQS4I.mp4",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "⛏️ АИД",
+        "description": "Динамичная битва на кроватях и эпичный камбэк команды Аида."
       },
       {
-        "title": "Лололошка: Игра Бога",
-        "episode": "Серия 1: Начало истории • Сюжетный летсплей",
+        "title": "Лололошка: Bed Wars #23 Сломал 3 кровати",
+        "episode": "Рука-молот и затащенный раунд",
+        "duration": 980,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-1hODESvxTsU/1hODESvxTsU.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "Стремительный раш и разгром вражеских команд на Bed Wars."
+      },
+      {
+        "title": "Лололошка: Bed Wars #25 Юбилейный выпуск",
+        "episode": "Угадайте кто вернулся?!",
+        "duration": 1100,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-zuUfxyr1_4o/zuUfxyr1_4o.mp4",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "Юбилейная серия Bed Wars с интересными тактиками и весельем."
+      },
+      {
+        "title": "Лололошка: Игра Бога #1",
+        "episode": "Серия 1: НАЧАЛО ИСТОРИИ • Сюжетный летсплей",
         "duration": 1800,
         "type": "video",
         "url": "https://archive.org/download/lp.-1-o_202408/Lp.%20%D0%98%D0%B3%D1%80%D0%B0%20%D0%91%D0%BE%D0%B3%D0%B0%20%231%20%D0%9D%D0%90%D0%A7%D0%90%D0%9B%D0%9E%20%D0%98%D0%A1%D0%A2%D0%9E%D0%A0%D0%98%D0%98%20%E2%80%A2%20%D0%9C%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
         "badgeTag": "⛏️ ЛОЛОЛОШКА",
-        "description": "MrLololoshka в новом кинематографичном сезоне 'Игра Бога'."
+        "description": "MrLololoshka начинает масштабный сезон сюжетного летсплея Игра Бога."
       },
       {
-        "title": "Monster School: The Floor is Lava",
-        "episode": "Minecraft Animation HD",
-        "duration": 310,
+        "title": "Лололошка: Весёлые похождения • Деревенька",
+        "episode": "Классический ламповый летсплей",
+        "duration": 1200,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
+        "url": "https://archive.org/download/fb3yuf3ygf3gf3y-1080p/y2mate.com%20-%20Lp%D0%92%D0%B5%D1%81%D1%91%D0%BB%D1%8B%D0%B5%20%D0%BF%D0%BE%D1%85%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5%D0%94%D0%B5%D1%80%D0%B5%D0%B2%D0%B5%D0%BD%D1%8C%D0%BA%D0%B0_1080p.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "⛏️ АНИМАЦИЯ",
-        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "Приключения Ромы Фильченкова в деревне жителей."
       },
       {
-        "title": "Аид: Выживание бомжа в России #1",
-        "episode": "Заработали первые деньги в городе",
-        "duration": 1150,
+        "title": "Лололошка: Весёлые похождения • Строим дом",
+        "episode": "Строительство базы и добыча ресурсов",
+        "duration": 1350,
         "type": "video",
-        "url": "https://archive.org/download/lp.-1-o_202408/Lp.%20%D0%98%D0%B3%D1%80%D0%B0%20%D0%91%D0%BE%D0%B3%D0%B0%20%231%20%D0%9D%D0%90%D0%A7%D0%90%D0%9B%D0%9E%20%D0%98%D0%A1%D0%A2%D0%9E%D0%A0%D0%98%D0%98%20%E2%80%A2%20%D0%9C%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82.ia.mp4",
+        "url": "https://archive.org/download/fny3f3873-lp-1080p/y2mate.com%20-%20Lp%D0%92%D0%B5%D1%81%D1%91%D0%BB%D1%8B%D0%B5%20%D0%BF%D0%BE%D1%85%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F%D0%A1%D1%82%D1%80%D0%BE%D0%B5%D0%BC%20%D0%B4%D0%BE%D0%BC_1080p.ia.mp4",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "Постройка уютного дома и обустройство фермы."
+      },
+      {
+        "title": "Аид: Самый старый сервер Майнкрафт в мире!",
+        "episode": "Исследование древних построек",
+        "duration": 1400,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-HgGj0HGd0HQ/HgGj0HGd0HQ.mp4",
         "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
-        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
-        "description": "Аид начинает легендарный сериал выживания в суровом мегаполисе."
+        "badgeTag": "⛏️ АИД",
+        "description": "Вячеслав Аид исследует легендарный старейший сервер и находит забытые реликвии."
       },
       {
-        "title": "Monster School: The Floor is Lava",
-        "episode": "Minecraft Animation HD",
-        "duration": 310,
+        "title": "Аид: BedWars на Cristalix",
+        "episode": "Наглая девочка !!! • Раунд 3",
+        "duration": 950,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "⛏️ АНИМАЦИЯ",
-        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
+        "url": "https://archive.org/download/youtube-JpLHxxsQS4I/JpLHxxsQS4I.mp4",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "⛏️ АИД",
+        "description": "Динамичная битва на кроватях и эпичный камбэк команды Аида."
       },
       {
-        "title": "Лололошка: Игра Бога",
-        "episode": "Серия 1: Начало истории • Сюжетный летсплей",
+        "title": "Лололошка: Bed Wars #23 Сломал 3 кровати",
+        "episode": "Рука-молот и затащенный раунд",
+        "duration": 980,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-1hODESvxTsU/1hODESvxTsU.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "Стремительный раш и разгром вражеских команд на Bed Wars."
+      },
+      {
+        "title": "Лололошка: Bed Wars #25 Юбилейный выпуск",
+        "episode": "Угадайте кто вернулся?!",
+        "duration": 1100,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-zuUfxyr1_4o/zuUfxyr1_4o.mp4",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "Юбилейная серия Bed Wars с интересными тактиками и весельем."
+      },
+      {
+        "title": "Лололошка: Игра Бога #1",
+        "episode": "Серия 1: НАЧАЛО ИСТОРИИ • Сюжетный летсплей",
         "duration": 1800,
         "type": "video",
         "url": "https://archive.org/download/lp.-1-o_202408/Lp.%20%D0%98%D0%B3%D1%80%D0%B0%20%D0%91%D0%BE%D0%B3%D0%B0%20%231%20%D0%9D%D0%90%D0%A7%D0%90%D0%9B%D0%9E%20%D0%98%D0%A1%D0%A2%D0%9E%D0%A0%D0%98%D0%98%20%E2%80%A2%20%D0%9C%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
         "badgeTag": "⛏️ ЛОЛОЛОШКА",
-        "description": "MrLololoshka в новом кинематографичном сезоне 'Игра Бога'."
+        "description": "MrLololoshka начинает масштабный сезон сюжетного летсплея Игра Бога."
       },
       {
-        "title": "Monster School: The Floor is Lava",
-        "episode": "Minecraft Animation HD",
-        "duration": 310,
+        "title": "Лололошка: Весёлые похождения • Деревенька",
+        "episode": "Классический ламповый летсплей",
+        "duration": 1200,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
+        "url": "https://archive.org/download/fb3yuf3ygf3gf3y-1080p/y2mate.com%20-%20Lp%D0%92%D0%B5%D1%81%D1%91%D0%BB%D1%8B%D0%B5%20%D0%BF%D0%BE%D1%85%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5%D0%94%D0%B5%D1%80%D0%B5%D0%B2%D0%B5%D0%BD%D1%8C%D0%BA%D0%B0_1080p.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "⛏️ АНИМАЦИЯ",
-        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "Приключения Ромы Фильченкова в деревне жителей."
       },
       {
-        "title": "Аид: Выживание бомжа в России #1",
-        "episode": "Заработали первые деньги в городе",
-        "duration": 1150,
+        "title": "Лололошка: Весёлые похождения • Строим дом",
+        "episode": "Строительство базы и добыча ресурсов",
+        "duration": 1350,
         "type": "video",
-        "url": "https://archive.org/download/lp.-1-o_202408/Lp.%20%D0%98%D0%B3%D1%80%D0%B0%20%D0%91%D0%BE%D0%B3%D0%B0%20%231%20%D0%9D%D0%90%D0%A7%D0%90%D0%9B%D0%9E%20%D0%98%D0%A1%D0%A2%D0%9E%D0%A0%D0%98%D0%98%20%E2%80%A2%20%D0%9C%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82.ia.mp4",
+        "url": "https://archive.org/download/fny3f3873-lp-1080p/y2mate.com%20-%20Lp%D0%92%D0%B5%D1%81%D1%91%D0%BB%D1%8B%D0%B5%20%D0%BF%D0%BE%D1%85%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F%D0%A1%D1%82%D1%80%D0%BE%D0%B5%D0%BC%20%D0%B4%D0%BE%D0%BC_1080p.ia.mp4",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "Постройка уютного дома и обустройство фермы."
+      },
+      {
+        "title": "Аид: Самый старый сервер Майнкрафт в мире!",
+        "episode": "Исследование древних построек",
+        "duration": 1400,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-HgGj0HGd0HQ/HgGj0HGd0HQ.mp4",
         "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
-        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
-        "description": "Аид начинает легендарный сериал выживания в суровом мегаполисе."
+        "badgeTag": "⛏️ АИД",
+        "description": "Вячеслав Аид исследует легендарный старейший сервер и находит забытые реликвии."
       },
       {
-        "title": "Monster School: The Floor is Lava",
-        "episode": "Minecraft Animation HD",
-        "duration": 310,
+        "title": "Аид: BedWars на Cristalix",
+        "episode": "Наглая девочка !!! • Раунд 3",
+        "duration": 950,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "⛏️ АНИМАЦИЯ",
-        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
+        "url": "https://archive.org/download/youtube-JpLHxxsQS4I/JpLHxxsQS4I.mp4",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "⛏️ АИД",
+        "description": "Динамичная битва на кроватях и эпичный камбэк команды Аида."
       },
       {
-        "title": "Лололошка: Игра Бога",
-        "episode": "Серия 1: Начало истории • Сюжетный летсплей",
+        "title": "Лололошка: Bed Wars #23 Сломал 3 кровати",
+        "episode": "Рука-молот и затащенный раунд",
+        "duration": 980,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-1hODESvxTsU/1hODESvxTsU.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "Стремительный раш и разгром вражеских команд на Bed Wars."
+      },
+      {
+        "title": "Лололошка: Bed Wars #25 Юбилейный выпуск",
+        "episode": "Угадайте кто вернулся?!",
+        "duration": 1100,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-zuUfxyr1_4o/zuUfxyr1_4o.mp4",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "Юбилейная серия Bed Wars с интересными тактиками и весельем."
+      },
+      {
+        "title": "Лололошка: Игра Бога #1",
+        "episode": "Серия 1: НАЧАЛО ИСТОРИИ • Сюжетный летсплей",
         "duration": 1800,
         "type": "video",
         "url": "https://archive.org/download/lp.-1-o_202408/Lp.%20%D0%98%D0%B3%D1%80%D0%B0%20%D0%91%D0%BE%D0%B3%D0%B0%20%231%20%D0%9D%D0%90%D0%A7%D0%90%D0%9B%D0%9E%20%D0%98%D0%A1%D0%A2%D0%9E%D0%A0%D0%98%D0%98%20%E2%80%A2%20%D0%9C%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
         "badgeTag": "⛏️ ЛОЛОЛОШКА",
-        "description": "MrLololoshka в новом кинематографичном сезоне 'Игра Бога'."
+        "description": "MrLololoshka начинает масштабный сезон сюжетного летсплея Игра Бога."
       },
       {
-        "title": "Monster School: The Floor is Lava",
-        "episode": "Minecraft Animation HD",
-        "duration": 310,
+        "title": "Лололошка: Весёлые похождения • Деревенька",
+        "episode": "Классический ламповый летсплей",
+        "duration": 1200,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
+        "url": "https://archive.org/download/fb3yuf3ygf3gf3y-1080p/y2mate.com%20-%20Lp%D0%92%D0%B5%D1%81%D1%91%D0%BB%D1%8B%D0%B5%20%D0%BF%D0%BE%D1%85%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5%D0%94%D0%B5%D1%80%D0%B5%D0%B2%D0%B5%D0%BD%D1%8C%D0%BA%D0%B0_1080p.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "⛏️ АНИМАЦИЯ",
-        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "Приключения Ромы Фильченкова в деревне жителей."
       },
       {
-        "title": "Аид: Выживание бомжа в России #1",
-        "episode": "Заработали первые деньги в городе",
-        "duration": 1150,
+        "title": "Лололошка: Весёлые похождения • Строим дом",
+        "episode": "Строительство базы и добыча ресурсов",
+        "duration": 1350,
         "type": "video",
-        "url": "https://archive.org/download/lp.-1-o_202408/Lp.%20%D0%98%D0%B3%D1%80%D0%B0%20%D0%91%D0%BE%D0%B3%D0%B0%20%231%20%D0%9D%D0%90%D0%A7%D0%90%D0%9B%D0%9E%20%D0%98%D0%A1%D0%A2%D0%9E%D0%A0%D0%98%D0%98%20%E2%80%A2%20%D0%9C%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82.ia.mp4",
+        "url": "https://archive.org/download/fny3f3873-lp-1080p/y2mate.com%20-%20Lp%D0%92%D0%B5%D1%81%D1%91%D0%BB%D1%8B%D0%B5%20%D0%BF%D0%BE%D1%85%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F%D0%A1%D1%82%D1%80%D0%BE%D0%B5%D0%BC%20%D0%B4%D0%BE%D0%BC_1080p.ia.mp4",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "Постройка уютного дома и обустройство фермы."
+      },
+      {
+        "title": "Аид: Самый старый сервер Майнкрафт в мире!",
+        "episode": "Исследование древних построек",
+        "duration": 1400,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-HgGj0HGd0HQ/HgGj0HGd0HQ.mp4",
         "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
-        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
-        "description": "Аид начинает легендарный сериал выживания в суровом мегаполисе."
+        "badgeTag": "⛏️ АИД",
+        "description": "Вячеслав Аид исследует легендарный старейший сервер и находит забытые реликвии."
       },
       {
-        "title": "Monster School: The Floor is Lava",
-        "episode": "Minecraft Animation HD",
-        "duration": 310,
+        "title": "Аид: BedWars на Cristalix",
+        "episode": "Наглая девочка !!! • Раунд 3",
+        "duration": 950,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "⛏️ АНИМАЦИЯ",
-        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
+        "url": "https://archive.org/download/youtube-JpLHxxsQS4I/JpLHxxsQS4I.mp4",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "⛏️ АИД",
+        "description": "Динамичная битва на кроватях и эпичный камбэк команды Аида."
       },
       {
-        "title": "Лололошка: Игра Бога",
-        "episode": "Серия 1: Начало истории • Сюжетный летсплей",
+        "title": "Лололошка: Bed Wars #23 Сломал 3 кровати",
+        "episode": "Рука-молот и затащенный раунд",
+        "duration": 980,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-1hODESvxTsU/1hODESvxTsU.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "Стремительный раш и разгром вражеских команд на Bed Wars."
+      },
+      {
+        "title": "Лололошка: Bed Wars #25 Юбилейный выпуск",
+        "episode": "Угадайте кто вернулся?!",
+        "duration": 1100,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-zuUfxyr1_4o/zuUfxyr1_4o.mp4",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "Юбилейная серия Bed Wars с интересными тактиками и весельем."
+      },
+      {
+        "title": "Лололошка: Игра Бога #1",
+        "episode": "Серия 1: НАЧАЛО ИСТОРИИ • Сюжетный летсплей",
         "duration": 1800,
         "type": "video",
         "url": "https://archive.org/download/lp.-1-o_202408/Lp.%20%D0%98%D0%B3%D1%80%D0%B0%20%D0%91%D0%BE%D0%B3%D0%B0%20%231%20%D0%9D%D0%90%D0%A7%D0%90%D0%9B%D0%9E%20%D0%98%D0%A1%D0%A2%D0%9E%D0%A0%D0%98%D0%98%20%E2%80%A2%20%D0%9C%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
         "badgeTag": "⛏️ ЛОЛОЛОШКА",
-        "description": "MrLololoshka в новом кинематографичном сезоне 'Игра Бога'."
+        "description": "MrLololoshka начинает масштабный сезон сюжетного летсплея Игра Бога."
       },
       {
-        "title": "Monster School: The Floor is Lava",
-        "episode": "Minecraft Animation HD",
-        "duration": 310,
+        "title": "Лололошка: Весёлые похождения • Деревенька",
+        "episode": "Классический ламповый летсплей",
+        "duration": 1200,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
+        "url": "https://archive.org/download/fb3yuf3ygf3gf3y-1080p/y2mate.com%20-%20Lp%D0%92%D0%B5%D1%81%D1%91%D0%BB%D1%8B%D0%B5%20%D0%BF%D0%BE%D1%85%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5%D0%94%D0%B5%D1%80%D0%B5%D0%B2%D0%B5%D0%BD%D1%8C%D0%BA%D0%B0_1080p.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "⛏️ АНИМАЦИЯ",
-        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "Приключения Ромы Фильченкова в деревне жителей."
       },
       {
-        "title": "Аид: Выживание бомжа в России #1",
-        "episode": "Заработали первые деньги в городе",
-        "duration": 1150,
+        "title": "Лололошка: Весёлые похождения • Строим дом",
+        "episode": "Строительство базы и добыча ресурсов",
+        "duration": 1350,
         "type": "video",
-        "url": "https://archive.org/download/lp.-1-o_202408/Lp.%20%D0%98%D0%B3%D1%80%D0%B0%20%D0%91%D0%BE%D0%B3%D0%B0%20%231%20%D0%9D%D0%90%D0%A7%D0%90%D0%9B%D0%9E%20%D0%98%D0%A1%D0%A2%D0%9E%D0%A0%D0%98%D0%98%20%E2%80%A2%20%D0%9C%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82.ia.mp4",
+        "url": "https://archive.org/download/fny3f3873-lp-1080p/y2mate.com%20-%20Lp%D0%92%D0%B5%D1%81%D1%91%D0%BB%D1%8B%D0%B5%20%D0%BF%D0%BE%D1%85%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F%D0%A1%D1%82%D1%80%D0%BE%D0%B5%D0%BC%20%D0%B4%D0%BE%D0%BC_1080p.ia.mp4",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "Постройка уютного дома и обустройство фермы."
+      },
+      {
+        "title": "Аид: Самый старый сервер Майнкрафт в мире!",
+        "episode": "Исследование древних построек",
+        "duration": 1400,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-HgGj0HGd0HQ/HgGj0HGd0HQ.mp4",
         "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
-        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
-        "description": "Аид начинает легендарный сериал выживания в суровом мегаполисе."
+        "badgeTag": "⛏️ АИД",
+        "description": "Вячеслав Аид исследует легендарный старейший сервер и находит забытые реликвии."
       },
       {
-        "title": "Monster School: The Floor is Lava",
-        "episode": "Minecraft Animation HD",
-        "duration": 310,
+        "title": "Аид: BedWars на Cristalix",
+        "episode": "Наглая девочка !!! • Раунд 3",
+        "duration": 950,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "⛏️ АНИМАЦИЯ",
-        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
+        "url": "https://archive.org/download/youtube-JpLHxxsQS4I/JpLHxxsQS4I.mp4",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "⛏️ АИД",
+        "description": "Динамичная битва на кроватях и эпичный камбэк команды Аида."
       },
       {
-        "title": "Лололошка: Игра Бога",
-        "episode": "Серия 1: Начало истории • Сюжетный летсплей",
+        "title": "Лололошка: Bed Wars #23 Сломал 3 кровати",
+        "episode": "Рука-молот и затащенный раунд",
+        "duration": 980,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-1hODESvxTsU/1hODESvxTsU.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "Стремительный раш и разгром вражеских команд на Bed Wars."
+      },
+      {
+        "title": "Лололошка: Bed Wars #25 Юбилейный выпуск",
+        "episode": "Угадайте кто вернулся?!",
+        "duration": 1100,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-zuUfxyr1_4o/zuUfxyr1_4o.mp4",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "Юбилейная серия Bed Wars с интересными тактиками и весельем."
+      },
+      {
+        "title": "Лололошка: Игра Бога #1",
+        "episode": "Серия 1: НАЧАЛО ИСТОРИИ • Сюжетный летсплей",
         "duration": 1800,
         "type": "video",
         "url": "https://archive.org/download/lp.-1-o_202408/Lp.%20%D0%98%D0%B3%D1%80%D0%B0%20%D0%91%D0%BE%D0%B3%D0%B0%20%231%20%D0%9D%D0%90%D0%A7%D0%90%D0%9B%D0%9E%20%D0%98%D0%A1%D0%A2%D0%9E%D0%A0%D0%98%D0%98%20%E2%80%A2%20%D0%9C%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
         "badgeTag": "⛏️ ЛОЛОЛОШКА",
-        "description": "MrLololoshka в новом кинематографичном сезоне 'Игра Бога'."
+        "description": "MrLololoshka начинает масштабный сезон сюжетного летсплея Игра Бога."
       },
       {
-        "title": "Monster School: The Floor is Lava",
-        "episode": "Minecraft Animation HD",
-        "duration": 310,
+        "title": "Лололошка: Весёлые похождения • Деревенька",
+        "episode": "Классический ламповый летсплей",
+        "duration": 1200,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
+        "url": "https://archive.org/download/fb3yuf3ygf3gf3y-1080p/y2mate.com%20-%20Lp%D0%92%D0%B5%D1%81%D1%91%D0%BB%D1%8B%D0%B5%20%D0%BF%D0%BE%D1%85%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5%D0%94%D0%B5%D1%80%D0%B5%D0%B2%D0%B5%D0%BD%D1%8C%D0%BA%D0%B0_1080p.ia.mp4",
         "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "⛏️ АНИМАЦИЯ",
-        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "Приключения Ромы Фильченкова в деревне жителей."
       },
       {
-        "title": "Аид: Выживание бомжа в России #1",
-        "episode": "Заработали первые деньги в городе",
-        "duration": 1150,
+        "title": "Лололошка: Весёлые похождения • Строим дом",
+        "episode": "Строительство базы и добыча ресурсов",
+        "duration": 1350,
         "type": "video",
-        "url": "https://archive.org/download/lp.-1-o_202408/Lp.%20%D0%98%D0%B3%D1%80%D0%B0%20%D0%91%D0%BE%D0%B3%D0%B0%20%231%20%D0%9D%D0%90%D0%A7%D0%90%D0%9B%D0%9E%20%D0%98%D0%A1%D0%A2%D0%9E%D0%A0%D0%98%D0%98%20%E2%80%A2%20%D0%9C%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82.ia.mp4",
+        "url": "https://archive.org/download/fny3f3873-lp-1080p/y2mate.com%20-%20Lp%D0%92%D0%B5%D1%81%D1%91%D0%BB%D1%8B%D0%B5%20%D0%BF%D0%BE%D1%85%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D1%8F%D0%A1%D1%82%D1%80%D0%BE%D0%B5%D0%BC%20%D0%B4%D0%BE%D0%BC_1080p.ia.mp4",
+        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
+        "badgeTag": "⛏️ ЛОЛОЛОШКА",
+        "description": "Постройка уютного дома и обустройство фермы."
+      },
+      {
+        "title": "Аид: Самый старый сервер Майнкрафт в мире!",
+        "episode": "Исследование древних построек",
+        "duration": 1400,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-HgGj0HGd0HQ/HgGj0HGd0HQ.mp4",
         "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
-        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
-        "description": "Аид начинает легендарный сериал выживания в суровом мегаполисе."
+        "badgeTag": "⛏️ АИД",
+        "description": "Вячеслав Аид исследует легендарный старейший сервер и находит забытые реликвии."
       },
       {
-        "title": "Monster School: The Floor is Lava",
-        "episode": "Minecraft Animation HD",
-        "duration": 310,
+        "title": "Аид: BedWars на Cristalix",
+        "episode": "Наглая девочка !!! • Раунд 3",
+        "duration": 950,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "⛏️ АНИМАЦИЯ",
-        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
+        "url": "https://archive.org/download/youtube-JpLHxxsQS4I/JpLHxxsQS4I.mp4",
+        "poster": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600",
+        "badgeTag": "⛏️ АИД",
+        "description": "Динамичная битва на кроватях и эпичный камбэк команды Аида."
       },
       {
-        "title": "Лололошка: Игра Бога",
-        "episode": "Серия 1: Начало истории • Сюжетный летсплей",
-        "duration": 1800,
+        "title": "Лололошка: Bed Wars #23 Сломал 3 кровати",
+        "episode": "Рука-молот и затащенный раунд",
+        "duration": 980,
         "type": "video",
-        "url": "https://archive.org/download/lp.-1-o_202408/Lp.%20%D0%98%D0%B3%D1%80%D0%B0%20%D0%91%D0%BE%D0%B3%D0%B0%20%231%20%D0%9D%D0%90%D0%A7%D0%90%D0%9B%D0%9E%20%D0%98%D0%A1%D0%A2%D0%9E%D0%A0%D0%98%D0%98%20%E2%80%A2%20%D0%9C%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82.ia.mp4",
+        "url": "https://archive.org/download/youtube-1hODESvxTsU/1hODESvxTsU.mp4",
         "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
         "badgeTag": "⛏️ ЛОЛОЛОШКА",
-        "description": "MrLololoshka в новом кинематографичном сезоне 'Игра Бога'."
+        "description": "Стремительный раш и разгром вражеских команд на Bed Wars."
       },
       {
-        "title": "Monster School: The Floor is Lava",
-        "episode": "Minecraft Animation HD",
-        "duration": 310,
+        "title": "Лололошка: Bed Wars #25 Юбилейный выпуск",
+        "episode": "Угадайте кто вернулся?!",
+        "duration": 1100,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "⛏️ АНИМАЦИЯ",
-        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
-      },
-      {
-        "title": "Аид: Выживание бомжа в России #1",
-        "episode": "Заработали первые деньги в городе",
-        "duration": 1150,
-        "type": "video",
-        "url": "https://archive.org/download/lp.-1-o_202408/Lp.%20%D0%98%D0%B3%D1%80%D0%B0%20%D0%91%D0%BE%D0%B3%D0%B0%20%231%20%D0%9D%D0%90%D0%A7%D0%90%D0%9B%D0%9E%20%D0%98%D0%A1%D0%A2%D0%9E%D0%A0%D0%98%D0%98%20%E2%80%A2%20%D0%9C%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82.ia.mp4",
-        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
-        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
-        "description": "Аид начинает легендарный сериал выживания в суровом мегаполисе."
-      },
-      {
-        "title": "Monster School: The Floor is Lava",
-        "episode": "Minecraft Animation HD",
-        "duration": 310,
-        "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "⛏️ АНИМАЦИЯ",
-        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
-      },
-      {
-        "title": "Лололошка: Игра Бога",
-        "episode": "Серия 1: Начало истории • Сюжетный летсплей",
-        "duration": 1800,
-        "type": "video",
-        "url": "https://archive.org/download/lp.-1-o_202408/Lp.%20%D0%98%D0%B3%D1%80%D0%B0%20%D0%91%D0%BE%D0%B3%D0%B0%20%231%20%D0%9D%D0%90%D0%A7%D0%90%D0%9B%D0%9E%20%D0%98%D0%A1%D0%A2%D0%9E%D0%A0%D0%98%D0%98%20%E2%80%A2%20%D0%9C%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82.ia.mp4",
-        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "url": "https://archive.org/download/youtube-zuUfxyr1_4o/zuUfxyr1_4o.mp4",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
         "badgeTag": "⛏️ ЛОЛОЛОШКА",
-        "description": "MrLololoshka в новом кинематографичном сезоне 'Игра Бога'."
-      },
-      {
-        "title": "Monster School: The Floor is Lava",
-        "episode": "Minecraft Animation HD",
-        "duration": 310,
-        "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "⛏️ АНИМАЦИЯ",
-        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
-      },
-      {
-        "title": "Аид: Выживание бомжа в России #1",
-        "episode": "Заработали первые деньги в городе",
-        "duration": 1150,
-        "type": "video",
-        "url": "https://archive.org/download/lp.-1-o_202408/Lp.%20%D0%98%D0%B3%D1%80%D0%B0%20%D0%91%D0%BE%D0%B3%D0%B0%20%231%20%D0%9D%D0%90%D0%A7%D0%90%D0%9B%D0%9E%20%D0%98%D0%A1%D0%A2%D0%9E%D0%A0%D0%98%D0%98%20%E2%80%A2%20%D0%9C%D0%B0%D0%B9%D0%BD%D0%BA%D1%80%D0%B0%D1%84%D1%82.ia.mp4",
-        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
-        "badgeTag": "⛏️ ЛЕТСПЛЕЙ",
-        "description": "Аид начинает легендарный сериал выживания в суровом мегаполисе."
-      },
-      {
-        "title": "Monster School: The Floor is Lava",
-        "episode": "Minecraft Animation HD",
-        "duration": 310,
-        "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "⛏️ АНИМАЦИЯ",
-        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
+        "description": "Юбилейная серия Bed Wars с интересными тактиками и весельем."
       }
     ]
   },
@@ -4570,13 +4874,13 @@ export const DEFAULT_CHANNELS = [
     "streamId": "craft-music",
     "category": "minecrafters",
     "categoryName": "Майнкрафтеры",
-    "name": "МАЙНКРАФТ МУЗ-ТВ",
+    "name": "КРАФТ МУЗ",
     "shortName": "КРАФТ МУЗ",
-    "tagline": "Dambo Music (Begin Again), Rainimator марафон, Monster School музыка",
+    "tagline": "Minecraft Муз-ТВ: Dambo Music, Rainimator часовые марафоны, Monster School",
     "icon": "queue_music",
-    "logoSvg": "toonster",
+    "logoSvg": "music",
     "badge": "DAMBO & W-LABS",
-    "color": "#06b6d4",
+    "color": "#ec4899",
     "schedule": [
       {
         "title": "Dambo Music: Начало (Begin Again)",
@@ -4589,54 +4893,14 @@ export const DEFAULT_CHANNELS = [
         "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
       },
       {
-        "title": "Monster School: The Floor is Lava",
-        "episode": "Minecraft Animation HD",
-        "duration": 310,
+        "title": "A Chicken's Life: Minecraft Parody",
+        "episode": "Музыкальная анимация Майнкрафт",
+        "duration": 260,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "⛏️ АНИМАЦИЯ",
-        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
-      },
-      {
-        "title": "Rainimator: Minecraft Songs Marathon",
-        "episode": "Все песни и битвы • Часть 1-5",
-        "duration": 3600,
-        "type": "video",
-        "url": "https://archive.org/download/youtube-yp7EQwqsTb4/yp7EQwqsTb4.mp4",
-        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
-        "badgeTag": "🎶 МАРАФОН",
-        "description": "Полный часовой концерт всех песен и батальных сцен вселенной Rainimator."
-      },
-      {
-        "title": "Dambo Music: Начало (Begin Again)",
-        "episode": "Minecraft Original Song Animation",
-        "duration": 240,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "url": "https://archive.org/download/youtube-ySSfhASMzDY/ySSfhASMzDY.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
         "badgeTag": "🎶 КЛИП",
-        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
-      },
-      {
-        "title": "Monster School: The Floor is Lava",
-        "episode": "Minecraft Animation HD",
-        "duration": 310,
-        "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "⛏️ АНИМАЦИЯ",
-        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
-      },
-      {
-        "title": "Dambo Music: Начало (Begin Again)",
-        "episode": "Minecraft Original Song Animation",
-        "duration": 240,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
-        "badgeTag": "🎶 КЛИП",
-        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
+        "description": "Смешная и зажигательная анимация про жизнь курицы в мире блоков."
       },
       {
         "title": "Monster School: The Floor is Lava",
@@ -4669,24 +4933,14 @@ export const DEFAULT_CHANNELS = [
         "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
       },
       {
-        "title": "Monster School: The Floor is Lava",
-        "episode": "Minecraft Animation HD",
-        "duration": 310,
+        "title": "A Chicken's Life: Minecraft Parody",
+        "episode": "Музыкальная анимация Майнкрафт",
+        "duration": 260,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "⛏️ АНИМАЦИЯ",
-        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
-      },
-      {
-        "title": "Dambo Music: Начало (Begin Again)",
-        "episode": "Minecraft Original Song Animation",
-        "duration": 240,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "url": "https://archive.org/download/youtube-ySSfhASMzDY/ySSfhASMzDY.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
         "badgeTag": "🎶 КЛИП",
-        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
+        "description": "Смешная и зажигательная анимация про жизнь курицы в мире блоков."
       },
       {
         "title": "Monster School: The Floor is Lava",
@@ -4719,24 +4973,14 @@ export const DEFAULT_CHANNELS = [
         "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
       },
       {
-        "title": "Monster School: The Floor is Lava",
-        "episode": "Minecraft Animation HD",
-        "duration": 310,
+        "title": "A Chicken's Life: Minecraft Parody",
+        "episode": "Музыкальная анимация Майнкрафт",
+        "duration": 260,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "⛏️ АНИМАЦИЯ",
-        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
-      },
-      {
-        "title": "Dambo Music: Начало (Begin Again)",
-        "episode": "Minecraft Original Song Animation",
-        "duration": 240,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "url": "https://archive.org/download/youtube-ySSfhASMzDY/ySSfhASMzDY.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
         "badgeTag": "🎶 КЛИП",
-        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
+        "description": "Смешная и зажигательная анимация про жизнь курицы в мире блоков."
       },
       {
         "title": "Monster School: The Floor is Lava",
@@ -4769,24 +5013,14 @@ export const DEFAULT_CHANNELS = [
         "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
       },
       {
-        "title": "Monster School: The Floor is Lava",
-        "episode": "Minecraft Animation HD",
-        "duration": 310,
+        "title": "A Chicken's Life: Minecraft Parody",
+        "episode": "Музыкальная анимация Майнкрафт",
+        "duration": 260,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "⛏️ АНИМАЦИЯ",
-        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
-      },
-      {
-        "title": "Dambo Music: Начало (Begin Again)",
-        "episode": "Minecraft Original Song Animation",
-        "duration": 240,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "url": "https://archive.org/download/youtube-ySSfhASMzDY/ySSfhASMzDY.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
         "badgeTag": "🎶 КЛИП",
-        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
+        "description": "Смешная и зажигательная анимация про жизнь курицы в мире блоков."
       },
       {
         "title": "Monster School: The Floor is Lava",
@@ -4819,24 +5053,14 @@ export const DEFAULT_CHANNELS = [
         "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
       },
       {
-        "title": "Monster School: The Floor is Lava",
-        "episode": "Minecraft Animation HD",
-        "duration": 310,
+        "title": "A Chicken's Life: Minecraft Parody",
+        "episode": "Музыкальная анимация Майнкрафт",
+        "duration": 260,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "⛏️ АНИМАЦИЯ",
-        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
-      },
-      {
-        "title": "Dambo Music: Начало (Begin Again)",
-        "episode": "Minecraft Original Song Animation",
-        "duration": 240,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "url": "https://archive.org/download/youtube-ySSfhASMzDY/ySSfhASMzDY.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
         "badgeTag": "🎶 КЛИП",
-        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
+        "description": "Смешная и зажигательная анимация про жизнь курицы в мире блоков."
       },
       {
         "title": "Monster School: The Floor is Lava",
@@ -4869,24 +5093,14 @@ export const DEFAULT_CHANNELS = [
         "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
       },
       {
-        "title": "Monster School: The Floor is Lava",
-        "episode": "Minecraft Animation HD",
-        "duration": 310,
+        "title": "A Chicken's Life: Minecraft Parody",
+        "episode": "Музыкальная анимация Майнкрафт",
+        "duration": 260,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "⛏️ АНИМАЦИЯ",
-        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
-      },
-      {
-        "title": "Dambo Music: Начало (Begin Again)",
-        "episode": "Minecraft Original Song Animation",
-        "duration": 240,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "url": "https://archive.org/download/youtube-ySSfhASMzDY/ySSfhASMzDY.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
         "badgeTag": "🎶 КЛИП",
-        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
+        "description": "Смешная и зажигательная анимация про жизнь курицы в мире блоков."
       },
       {
         "title": "Monster School: The Floor is Lava",
@@ -4919,24 +5133,14 @@ export const DEFAULT_CHANNELS = [
         "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
       },
       {
-        "title": "Monster School: The Floor is Lava",
-        "episode": "Minecraft Animation HD",
-        "duration": 310,
+        "title": "A Chicken's Life: Minecraft Parody",
+        "episode": "Музыкальная анимация Майнкрафт",
+        "duration": 260,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "⛏️ АНИМАЦИЯ",
-        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
-      },
-      {
-        "title": "Dambo Music: Начало (Begin Again)",
-        "episode": "Minecraft Original Song Animation",
-        "duration": 240,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "url": "https://archive.org/download/youtube-ySSfhASMzDY/ySSfhASMzDY.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
         "badgeTag": "🎶 КЛИП",
-        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
+        "description": "Смешная и зажигательная анимация про жизнь курицы в мире блоков."
       },
       {
         "title": "Monster School: The Floor is Lava",
@@ -4969,6 +5173,16 @@ export const DEFAULT_CHANNELS = [
         "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
       },
       {
+        "title": "A Chicken's Life: Minecraft Parody",
+        "episode": "Музыкальная анимация Майнкрафт",
+        "duration": 260,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-ySSfhASMzDY/ySSfhASMzDY.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Смешная и зажигательная анимация про жизнь курицы в мире блоков."
+      },
+      {
         "title": "Monster School: The Floor is Lava",
         "episode": "Minecraft Animation HD",
         "duration": 310,
@@ -4977,6 +5191,16 @@ export const DEFAULT_CHANNELS = [
         "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
         "badgeTag": "⛏️ АНИМАЦИЯ",
         "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
+      },
+      {
+        "title": "Rainimator: Minecraft Songs Marathon",
+        "episode": "Все песни и битвы • Часть 1-5",
+        "duration": 3600,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-yp7EQwqsTb4/yp7EQwqsTb4.mp4",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎶 МАРАФОН",
+        "description": "Полный часовой концерт всех песен и батальных сцен вселенной Rainimator."
       }
     ]
   },
@@ -4986,321 +5210,333 @@ export const DEFAULT_CHANNELS = [
     "streamId": "yellowfire",
     "category": "minecrafters",
     "categoryName": "Майнкрафтеры",
-    "name": "ЛИГА КУБИЗМА",
+    "name": "YELLOW FIRE",
     "shortName": "YELLOW FIRE",
-    "tagline": "Песни Yellow Fire, официальный клип «Лига Кубизма», реакции и стрим-версии",
+    "tagline": "Лига Кубизма: Концерты Rainimator, Begin Again, анимации и легенды сообщества",
     "icon": "local_fire_department",
-    "logoSvg": "2x2",
+    "logoSvg": "fire",
     "badge": "YELLOW FIRE",
-    "color": "#f59e0b",
+    "color": "#eab308",
     "schedule": [
       {
-        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
-        "episode": "Главный гимн Майнкрафт-сообщества",
-        "duration": 215,
+        "title": "Rainimator: Minecraft Songs Marathon",
+        "episode": "Все песни и битвы • Часть 1-5",
+        "duration": 3600,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-yp7EQwqsTb4/yp7EQwqsTb4.mp4",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎶 МАРАФОН",
+        "description": "Полный часовой концерт всех песен и батальных сцен вселенной Rainimator."
+      },
+      {
+        "title": "Dambo Music: Начало (Begin Again)",
+        "episode": "Minecraft Original Song Animation",
+        "duration": 240,
         "type": "video",
         "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "DgKM-mkymkg",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "🔥 ЛИГА КУБИЗМА",
-        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
       },
       {
-        "title": "Заквиель смотрит: Лига Кубизма",
-        "episode": "Реакция стримера на клип Yellow Fire",
-        "duration": 420,
+        "title": "A Chicken's Life: Minecraft Parody",
+        "episode": "Музыкальная анимация Майнкрафт",
+        "duration": 260,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-ySSfhASMzDY/ySSfhASMzDY.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Смешная и зажигательная анимация про жизнь курицы в мире блоков."
+      },
+      {
+        "title": "Monster School: The Floor is Lava",
+        "episode": "Minecraft Animation HD",
+        "duration": 310,
         "type": "video",
         "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "prSJBMpbevw",
-        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
-        "badgeTag": "🔥 РЕАКЦИЯ",
-        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ АНИМАЦИЯ",
+        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
       },
       {
-        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
-        "episode": "Главный гимн Майнкрафт-сообщества",
-        "duration": 215,
+        "title": "Rainimator: Minecraft Songs Marathon",
+        "episode": "Все песни и битвы • Часть 1-5",
+        "duration": 3600,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-yp7EQwqsTb4/yp7EQwqsTb4.mp4",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎶 МАРАФОН",
+        "description": "Полный часовой концерт всех песен и батальных сцен вселенной Rainimator."
+      },
+      {
+        "title": "Dambo Music: Начало (Begin Again)",
+        "episode": "Minecraft Original Song Animation",
+        "duration": 240,
         "type": "video",
         "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "DgKM-mkymkg",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "🔥 ЛИГА КУБИЗМА",
-        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
       },
       {
-        "title": "Заквиель смотрит: Лига Кубизма",
-        "episode": "Реакция стримера на клип Yellow Fire",
-        "duration": 420,
+        "title": "A Chicken's Life: Minecraft Parody",
+        "episode": "Музыкальная анимация Майнкрафт",
+        "duration": 260,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-ySSfhASMzDY/ySSfhASMzDY.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Смешная и зажигательная анимация про жизнь курицы в мире блоков."
+      },
+      {
+        "title": "Monster School: The Floor is Lava",
+        "episode": "Minecraft Animation HD",
+        "duration": 310,
         "type": "video",
         "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "prSJBMpbevw",
-        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
-        "badgeTag": "🔥 РЕАКЦИЯ",
-        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ АНИМАЦИЯ",
+        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
       },
       {
-        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
-        "episode": "Главный гимн Майнкрафт-сообщества",
-        "duration": 215,
+        "title": "Rainimator: Minecraft Songs Marathon",
+        "episode": "Все песни и битвы • Часть 1-5",
+        "duration": 3600,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-yp7EQwqsTb4/yp7EQwqsTb4.mp4",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎶 МАРАФОН",
+        "description": "Полный часовой концерт всех песен и батальных сцен вселенной Rainimator."
+      },
+      {
+        "title": "Dambo Music: Начало (Begin Again)",
+        "episode": "Minecraft Original Song Animation",
+        "duration": 240,
         "type": "video",
         "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "DgKM-mkymkg",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "🔥 ЛИГА КУБИЗМА",
-        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
       },
       {
-        "title": "Заквиель смотрит: Лига Кубизма",
-        "episode": "Реакция стримера на клип Yellow Fire",
-        "duration": 420,
+        "title": "A Chicken's Life: Minecraft Parody",
+        "episode": "Музыкальная анимация Майнкрафт",
+        "duration": 260,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-ySSfhASMzDY/ySSfhASMzDY.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Смешная и зажигательная анимация про жизнь курицы в мире блоков."
+      },
+      {
+        "title": "Monster School: The Floor is Lava",
+        "episode": "Minecraft Animation HD",
+        "duration": 310,
         "type": "video",
         "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "prSJBMpbevw",
-        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
-        "badgeTag": "🔥 РЕАКЦИЯ",
-        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ АНИМАЦИЯ",
+        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
       },
       {
-        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
-        "episode": "Главный гимн Майнкрафт-сообщества",
-        "duration": 215,
+        "title": "Rainimator: Minecraft Songs Marathon",
+        "episode": "Все песни и битвы • Часть 1-5",
+        "duration": 3600,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-yp7EQwqsTb4/yp7EQwqsTb4.mp4",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎶 МАРАФОН",
+        "description": "Полный часовой концерт всех песен и батальных сцен вселенной Rainimator."
+      },
+      {
+        "title": "Dambo Music: Начало (Begin Again)",
+        "episode": "Minecraft Original Song Animation",
+        "duration": 240,
         "type": "video",
         "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "DgKM-mkymkg",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "🔥 ЛИГА КУБИЗМА",
-        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
       },
       {
-        "title": "Заквиель смотрит: Лига Кубизма",
-        "episode": "Реакция стримера на клип Yellow Fire",
-        "duration": 420,
+        "title": "A Chicken's Life: Minecraft Parody",
+        "episode": "Музыкальная анимация Майнкрафт",
+        "duration": 260,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-ySSfhASMzDY/ySSfhASMzDY.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Смешная и зажигательная анимация про жизнь курицы в мире блоков."
+      },
+      {
+        "title": "Monster School: The Floor is Lava",
+        "episode": "Minecraft Animation HD",
+        "duration": 310,
         "type": "video",
         "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "prSJBMpbevw",
-        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
-        "badgeTag": "🔥 РЕАКЦИЯ",
-        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ АНИМАЦИЯ",
+        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
       },
       {
-        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
-        "episode": "Главный гимн Майнкрафт-сообщества",
-        "duration": 215,
+        "title": "Rainimator: Minecraft Songs Marathon",
+        "episode": "Все песни и битвы • Часть 1-5",
+        "duration": 3600,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-yp7EQwqsTb4/yp7EQwqsTb4.mp4",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎶 МАРАФОН",
+        "description": "Полный часовой концерт всех песен и батальных сцен вселенной Rainimator."
+      },
+      {
+        "title": "Dambo Music: Начало (Begin Again)",
+        "episode": "Minecraft Original Song Animation",
+        "duration": 240,
         "type": "video",
         "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "DgKM-mkymkg",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "🔥 ЛИГА КУБИЗМА",
-        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
       },
       {
-        "title": "Заквиель смотрит: Лига Кубизма",
-        "episode": "Реакция стримера на клип Yellow Fire",
-        "duration": 420,
+        "title": "A Chicken's Life: Minecraft Parody",
+        "episode": "Музыкальная анимация Майнкрафт",
+        "duration": 260,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-ySSfhASMzDY/ySSfhASMzDY.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Смешная и зажигательная анимация про жизнь курицы в мире блоков."
+      },
+      {
+        "title": "Monster School: The Floor is Lava",
+        "episode": "Minecraft Animation HD",
+        "duration": 310,
         "type": "video",
         "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "prSJBMpbevw",
-        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
-        "badgeTag": "🔥 РЕАКЦИЯ",
-        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ АНИМАЦИЯ",
+        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
       },
       {
-        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
-        "episode": "Главный гимн Майнкрафт-сообщества",
-        "duration": 215,
+        "title": "Rainimator: Minecraft Songs Marathon",
+        "episode": "Все песни и битвы • Часть 1-5",
+        "duration": 3600,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-yp7EQwqsTb4/yp7EQwqsTb4.mp4",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎶 МАРАФОН",
+        "description": "Полный часовой концерт всех песен и батальных сцен вселенной Rainimator."
+      },
+      {
+        "title": "Dambo Music: Начало (Begin Again)",
+        "episode": "Minecraft Original Song Animation",
+        "duration": 240,
         "type": "video",
         "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "DgKM-mkymkg",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "🔥 ЛИГА КУБИЗМА",
-        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
       },
       {
-        "title": "Заквиель смотрит: Лига Кубизма",
-        "episode": "Реакция стримера на клип Yellow Fire",
-        "duration": 420,
+        "title": "A Chicken's Life: Minecraft Parody",
+        "episode": "Музыкальная анимация Майнкрафт",
+        "duration": 260,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-ySSfhASMzDY/ySSfhASMzDY.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Смешная и зажигательная анимация про жизнь курицы в мире блоков."
+      },
+      {
+        "title": "Monster School: The Floor is Lava",
+        "episode": "Minecraft Animation HD",
+        "duration": 310,
         "type": "video",
         "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "prSJBMpbevw",
-        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
-        "badgeTag": "🔥 РЕАКЦИЯ",
-        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ АНИМАЦИЯ",
+        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
       },
       {
-        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
-        "episode": "Главный гимн Майнкрафт-сообщества",
-        "duration": 215,
+        "title": "Rainimator: Minecraft Songs Marathon",
+        "episode": "Все песни и битвы • Часть 1-5",
+        "duration": 3600,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-yp7EQwqsTb4/yp7EQwqsTb4.mp4",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎶 МАРАФОН",
+        "description": "Полный часовой концерт всех песен и батальных сцен вселенной Rainimator."
+      },
+      {
+        "title": "Dambo Music: Начало (Begin Again)",
+        "episode": "Minecraft Original Song Animation",
+        "duration": 240,
         "type": "video",
         "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "DgKM-mkymkg",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "🔥 ЛИГА КУБИЗМА",
-        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
       },
       {
-        "title": "Заквиель смотрит: Лига Кубизма",
-        "episode": "Реакция стримера на клип Yellow Fire",
-        "duration": 420,
+        "title": "A Chicken's Life: Minecraft Parody",
+        "episode": "Музыкальная анимация Майнкрафт",
+        "duration": 260,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-ySSfhASMzDY/ySSfhASMzDY.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Смешная и зажигательная анимация про жизнь курицы в мире блоков."
+      },
+      {
+        "title": "Monster School: The Floor is Lava",
+        "episode": "Minecraft Animation HD",
+        "duration": 310,
         "type": "video",
         "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "prSJBMpbevw",
-        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
-        "badgeTag": "🔥 РЕАКЦИЯ",
-        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "badgeTag": "⛏️ АНИМАЦИЯ",
+        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
       },
       {
-        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
-        "episode": "Главный гимн Майнкрафт-сообщества",
-        "duration": 215,
+        "title": "Rainimator: Minecraft Songs Marathon",
+        "episode": "Все песни и битвы • Часть 1-5",
+        "duration": 3600,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-yp7EQwqsTb4/yp7EQwqsTb4.mp4",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "badgeTag": "🎶 МАРАФОН",
+        "description": "Полный часовой концерт всех песен и батальных сцен вселенной Rainimator."
+      },
+      {
+        "title": "Dambo Music: Начало (Begin Again)",
+        "episode": "Minecraft Original Song Animation",
+        "duration": 240,
         "type": "video",
         "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "DgKM-mkymkg",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "🔥 ЛИГА КУБИЗМА",
-        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Культовый музыкальный клип и эпическая анимация Дамбо Music & Rainimator."
       },
       {
-        "title": "Заквиель смотрит: Лига Кубизма",
-        "episode": "Реакция стримера на клип Yellow Fire",
-        "duration": 420,
+        "title": "A Chicken's Life: Minecraft Parody",
+        "episode": "Музыкальная анимация Майнкрафт",
+        "duration": 260,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-ySSfhASMzDY/ySSfhASMzDY.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "🎶 КЛИП",
+        "description": "Смешная и зажигательная анимация про жизнь курицы в мире блоков."
+      },
+      {
+        "title": "Monster School: The Floor is Lava",
+        "episode": "Minecraft Animation HD",
+        "duration": 310,
         "type": "video",
         "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "prSJBMpbevw",
-        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
-        "badgeTag": "🔥 РЕАКЦИЯ",
-        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
-      },
-      {
-        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
-        "episode": "Главный гимн Майнкрафт-сообщества",
-        "duration": 215,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "DgKM-mkymkg",
         "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "🔥 ЛИГА КУБИЗМА",
-        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
-      },
-      {
-        "title": "Заквиель смотрит: Лига Кубизма",
-        "episode": "Реакция стримера на клип Yellow Fire",
-        "duration": 420,
-        "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "prSJBMpbevw",
-        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
-        "badgeTag": "🔥 РЕАКЦИЯ",
-        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
-      },
-      {
-        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
-        "episode": "Главный гимн Майнкрафт-сообщества",
-        "duration": 215,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "DgKM-mkymkg",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "🔥 ЛИГА КУБИЗМА",
-        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
-      },
-      {
-        "title": "Заквиель смотрит: Лига Кубизма",
-        "episode": "Реакция стримера на клип Yellow Fire",
-        "duration": 420,
-        "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "prSJBMpbevw",
-        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
-        "badgeTag": "🔥 РЕАКЦИЯ",
-        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
-      },
-      {
-        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
-        "episode": "Главный гимн Майнкрафт-сообщества",
-        "duration": 215,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "DgKM-mkymkg",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "🔥 ЛИГА КУБИЗМА",
-        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
-      },
-      {
-        "title": "Заквиель смотрит: Лига Кубизма",
-        "episode": "Реакция стримера на клип Yellow Fire",
-        "duration": 420,
-        "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "prSJBMpbevw",
-        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
-        "badgeTag": "🔥 РЕАКЦИЯ",
-        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
-      },
-      {
-        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
-        "episode": "Главный гимн Майнкрафт-сообщества",
-        "duration": 215,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "DgKM-mkymkg",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "🔥 ЛИГА КУБИЗМА",
-        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
-      },
-      {
-        "title": "Заквиель смотрит: Лига Кубизма",
-        "episode": "Реакция стримера на клип Yellow Fire",
-        "duration": 420,
-        "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "prSJBMpbevw",
-        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
-        "badgeTag": "🔥 РЕАКЦИЯ",
-        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
-      },
-      {
-        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
-        "episode": "Главный гимн Майнкрафт-сообщества",
-        "duration": 215,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "DgKM-mkymkg",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "🔥 ЛИГА КУБИЗМА",
-        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
-      },
-      {
-        "title": "Заквиель смотрит: Лига Кубизма",
-        "episode": "Реакция стримера на клип Yellow Fire",
-        "duration": 420,
-        "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "prSJBMpbevw",
-        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
-        "badgeTag": "🔥 РЕАКЦИЯ",
-        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
-      },
-      {
-        "title": "Yellow Fire: Лига Кубизма (Официальный клип)",
-        "episode": "Главный гимн Майнкрафт-сообщества",
-        "duration": 215,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "DgKM-mkymkg",
-        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
-        "badgeTag": "🔥 ЛИГА КУБИЗМА",
-        "description": "Официальный клип Yellow Fire, ставший легендой ру-Майнкрафта."
-      },
-      {
-        "title": "Заквиель смотрит: Лига Кубизма",
-        "episode": "Реакция стримера на клип Yellow Fire",
-        "duration": 420,
-        "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "prSJBMpbevw",
-        "poster": "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600",
-        "badgeTag": "🔥 РЕАКЦИЯ",
-        "description": "Заквиель в прямом эфире оценивает трек и анимацию Лиги Кубизма."
+        "badgeTag": "⛏️ АНИМАЦИЯ",
+        "description": "Приключения зомби, крипера, скелета и эндермена в Школе Монстров."
       }
     ]
   },
@@ -5310,465 +5546,329 @@ export const DEFAULT_CHANNELS = [
     "streamId": "rap",
     "category": "music",
     "categoryName": "Музыка",
-    "name": "РУССКИЙ РЭП (РЭП-ТВ)",
+    "name": "РЭП-ТВ",
     "shortName": "РЭП-ТВ",
-    "tagline": "Слава КПСС (Гнойный, Валентин Дядька), Букер (Booker), клипы и баттлы",
+    "tagline": "Русский Рэп: Oxxxymiron vs Слава КПСС (Versus Battle), стримы и клипы",
     "icon": "headphones",
-    "logoSvg": "animehit",
-    "badge": "СЛАВА & БУКЕР",
-    "color": "#ec4899",
+    "logoSvg": "music",
+    "badge": "СЛАВА КПСС",
+    "color": "#f43f5e",
     "schedule": [
       {
-        "title": "Слава КПСС: Кайфоград (Клип 2024)",
-        "episode": "Summer Music Video 2024",
-        "duration": 220,
+        "title": "Рэп-батл Oxxxymiron VS Слава КПСС (Гнойный)",
+        "episode": "Versus Slovospb • Полная версия 1080p",
+        "duration": 3780,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "tY-r09eLqcM",
+        "url": "https://archive.org/download/oxxxymiron-vs-versus-slovospb-av-1-1080p/%D0%A0%D1%8D%D0%BF-%D0%B1%D0%B0%D1%82%D0%BB%20Oxxxymiron%20VS%20%D0%A1%D0%BB%D0%B0%D0%B2%D0%B0%20%D0%9A%D0%9F%D0%A1%D0%A1_%D0%93%D0%BD%D0%BE%D0%B9%D0%BD%D1%8B%D0%B9%20_versus%20slovospb%20%D0%9F%D1%80%D0%B5%D0%BC%D1%8C%D0%B5%D1%80%D0%B0_%20%D0%9F%D0%BE%D0%BB%D0%BD%D0%B0%D1%8F%20%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F_AV1%201080p.mp4",
         "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
-        "badgeTag": "🎤 СЛАВА КПСС",
-        "description": "Солнечный и ироничный видеоклип Вячеслава Машнова."
+        "badgeTag": "🎤 ВЕРСУС БАТТЛ",
+        "description": "Легендарное историческое противостояние Оксимирона и Гнойного (Славы КПСС)."
       },
       {
-        "title": "Букер (BOOKER): Чапстикс (Клип)",
-        "episode": "Официальный музыкальный клип",
-        "duration": 195,
+        "title": "Слава КПСС: Я нашёл Артёма Графа!",
+        "episode": "Большой стрим Славы КПСС и разборки",
+        "duration": 4500,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "4QbNci72QDo",
-        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
-        "badgeTag": "🎤 BOOKER",
-        "description": "Мощный флоу и клип от Фёдора Букера."
-      },
-      {
-        "title": "Слава КПСС: Mike Killer (Клип)",
-        "episode": "Премьера трека и видео 2022",
-        "duration": 210,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "Hso21LNVNqE",
+        "url": "https://archive.org/download/youtube-yfsG0uzXT20/%D0%A1%D0%9B%D0%90%D0%92%D0%90%20%D0%9A%D0%9F%D0%A1%D0%A1%20-%20%D0%AF%20%D0%9D%D0%90%D0%A8%D0%95%D0%9B%20%D0%90%D0%A0%D0%A2%D0%95%D0%9C%D0%90%20%D0%93%D0%A0%D0%90%D0%A4%D0%90%20%21%21%21%20%28%D0%A1%D0%A2%D0%A0%D0%98%D0%9C%29%20%2820240108%29%20-%20yfsG0uzXT20.mp4",
         "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
         "badgeTag": "🎤 СЛАВА КПСС",
-        "description": "Брутальный сингл Гнойного с аутентичной подачей."
+        "description": "Вячеслав Машнов общается со зрителями, слушает биты и выдает панчи."
       },
       {
-        "title": "Слава КПСС: Кайфоград (Клип 2024)",
-        "episode": "Summer Music Video 2024",
-        "duration": 220,
+        "title": "Рэп-батл Oxxxymiron VS Слава КПСС (Гнойный)",
+        "episode": "Versus Slovospb • Полная версия 1080p",
+        "duration": 3780,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "tY-r09eLqcM",
+        "url": "https://archive.org/download/oxxxymiron-vs-versus-slovospb-av-1-1080p/%D0%A0%D1%8D%D0%BF-%D0%B1%D0%B0%D1%82%D0%BB%20Oxxxymiron%20VS%20%D0%A1%D0%BB%D0%B0%D0%B2%D0%B0%20%D0%9A%D0%9F%D0%A1%D0%A1_%D0%93%D0%BD%D0%BE%D0%B9%D0%BD%D1%8B%D0%B9%20_versus%20slovospb%20%D0%9F%D1%80%D0%B5%D0%BC%D1%8C%D0%B5%D1%80%D0%B0_%20%D0%9F%D0%BE%D0%BB%D0%BD%D0%B0%D1%8F%20%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F_AV1%201080p.mp4",
         "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
-        "badgeTag": "🎤 СЛАВА КПСС",
-        "description": "Солнечный и ироничный видеоклип Вячеслава Машнова."
+        "badgeTag": "🎤 ВЕРСУС БАТТЛ",
+        "description": "Легендарное историческое противостояние Оксимирона и Гнойного (Славы КПСС)."
       },
       {
-        "title": "Букер (BOOKER): Чапстикс (Клип)",
-        "episode": "Официальный музыкальный клип",
-        "duration": 195,
+        "title": "Слава КПСС: Я нашёл Артёма Графа!",
+        "episode": "Большой стрим Славы КПСС и разборки",
+        "duration": 4500,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "4QbNci72QDo",
-        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
-        "badgeTag": "🎤 BOOKER",
-        "description": "Мощный флоу и клип от Фёдора Букера."
-      },
-      {
-        "title": "Слава КПСС: Mike Killer (Клип)",
-        "episode": "Премьера трека и видео 2022",
-        "duration": 210,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "Hso21LNVNqE",
+        "url": "https://archive.org/download/youtube-yfsG0uzXT20/%D0%A1%D0%9B%D0%90%D0%92%D0%90%20%D0%9A%D0%9F%D0%A1%D0%A1%20-%20%D0%AF%20%D0%9D%D0%90%D0%A8%D0%95%D0%9B%20%D0%90%D0%A0%D0%A2%D0%95%D0%9C%D0%90%20%D0%93%D0%A0%D0%90%D0%A4%D0%90%20%21%21%21%20%28%D0%A1%D0%A2%D0%A0%D0%98%D0%9C%29%20%2820240108%29%20-%20yfsG0uzXT20.mp4",
         "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
         "badgeTag": "🎤 СЛАВА КПСС",
-        "description": "Брутальный сингл Гнойного с аутентичной подачей."
+        "description": "Вячеслав Машнов общается со зрителями, слушает биты и выдает панчи."
       },
       {
-        "title": "Слава КПСС: Кайфоград (Клип 2024)",
-        "episode": "Summer Music Video 2024",
-        "duration": 220,
+        "title": "Рэп-батл Oxxxymiron VS Слава КПСС (Гнойный)",
+        "episode": "Versus Slovospb • Полная версия 1080p",
+        "duration": 3780,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "tY-r09eLqcM",
+        "url": "https://archive.org/download/oxxxymiron-vs-versus-slovospb-av-1-1080p/%D0%A0%D1%8D%D0%BF-%D0%B1%D0%B0%D1%82%D0%BB%20Oxxxymiron%20VS%20%D0%A1%D0%BB%D0%B0%D0%B2%D0%B0%20%D0%9A%D0%9F%D0%A1%D0%A1_%D0%93%D0%BD%D0%BE%D0%B9%D0%BD%D1%8B%D0%B9%20_versus%20slovospb%20%D0%9F%D1%80%D0%B5%D0%BC%D1%8C%D0%B5%D1%80%D0%B0_%20%D0%9F%D0%BE%D0%BB%D0%BD%D0%B0%D1%8F%20%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F_AV1%201080p.mp4",
         "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
-        "badgeTag": "🎤 СЛАВА КПСС",
-        "description": "Солнечный и ироничный видеоклип Вячеслава Машнова."
+        "badgeTag": "🎤 ВЕРСУС БАТТЛ",
+        "description": "Легендарное историческое противостояние Оксимирона и Гнойного (Славы КПСС)."
       },
       {
-        "title": "Букер (BOOKER): Чапстикс (Клип)",
-        "episode": "Официальный музыкальный клип",
-        "duration": 195,
+        "title": "Слава КПСС: Я нашёл Артёма Графа!",
+        "episode": "Большой стрим Славы КПСС и разборки",
+        "duration": 4500,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "4QbNci72QDo",
-        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
-        "badgeTag": "🎤 BOOKER",
-        "description": "Мощный флоу и клип от Фёдора Букера."
-      },
-      {
-        "title": "Слава КПСС: Mike Killer (Клип)",
-        "episode": "Премьера трека и видео 2022",
-        "duration": 210,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "Hso21LNVNqE",
+        "url": "https://archive.org/download/youtube-yfsG0uzXT20/%D0%A1%D0%9B%D0%90%D0%92%D0%90%20%D0%9A%D0%9F%D0%A1%D0%A1%20-%20%D0%AF%20%D0%9D%D0%90%D0%A8%D0%95%D0%9B%20%D0%90%D0%A0%D0%A2%D0%95%D0%9C%D0%90%20%D0%93%D0%A0%D0%90%D0%A4%D0%90%20%21%21%21%20%28%D0%A1%D0%A2%D0%A0%D0%98%D0%9C%29%20%2820240108%29%20-%20yfsG0uzXT20.mp4",
         "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
         "badgeTag": "🎤 СЛАВА КПСС",
-        "description": "Брутальный сингл Гнойного с аутентичной подачей."
+        "description": "Вячеслав Машнов общается со зрителями, слушает биты и выдает панчи."
       },
       {
-        "title": "Слава КПСС: Кайфоград (Клип 2024)",
-        "episode": "Summer Music Video 2024",
-        "duration": 220,
+        "title": "Рэп-батл Oxxxymiron VS Слава КПСС (Гнойный)",
+        "episode": "Versus Slovospb • Полная версия 1080p",
+        "duration": 3780,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "tY-r09eLqcM",
+        "url": "https://archive.org/download/oxxxymiron-vs-versus-slovospb-av-1-1080p/%D0%A0%D1%8D%D0%BF-%D0%B1%D0%B0%D1%82%D0%BB%20Oxxxymiron%20VS%20%D0%A1%D0%BB%D0%B0%D0%B2%D0%B0%20%D0%9A%D0%9F%D0%A1%D0%A1_%D0%93%D0%BD%D0%BE%D0%B9%D0%BD%D1%8B%D0%B9%20_versus%20slovospb%20%D0%9F%D1%80%D0%B5%D0%BC%D1%8C%D0%B5%D1%80%D0%B0_%20%D0%9F%D0%BE%D0%BB%D0%BD%D0%B0%D1%8F%20%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F_AV1%201080p.mp4",
         "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
-        "badgeTag": "🎤 СЛАВА КПСС",
-        "description": "Солнечный и ироничный видеоклип Вячеслава Машнова."
+        "badgeTag": "🎤 ВЕРСУС БАТТЛ",
+        "description": "Легендарное историческое противостояние Оксимирона и Гнойного (Славы КПСС)."
       },
       {
-        "title": "Букер (BOOKER): Чапстикс (Клип)",
-        "episode": "Официальный музыкальный клип",
-        "duration": 195,
+        "title": "Слава КПСС: Я нашёл Артёма Графа!",
+        "episode": "Большой стрим Славы КПСС и разборки",
+        "duration": 4500,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "4QbNci72QDo",
-        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
-        "badgeTag": "🎤 BOOKER",
-        "description": "Мощный флоу и клип от Фёдора Букера."
-      },
-      {
-        "title": "Слава КПСС: Mike Killer (Клип)",
-        "episode": "Премьера трека и видео 2022",
-        "duration": 210,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "Hso21LNVNqE",
+        "url": "https://archive.org/download/youtube-yfsG0uzXT20/%D0%A1%D0%9B%D0%90%D0%92%D0%90%20%D0%9A%D0%9F%D0%A1%D0%A1%20-%20%D0%AF%20%D0%9D%D0%90%D0%A8%D0%95%D0%9B%20%D0%90%D0%A0%D0%A2%D0%95%D0%9C%D0%90%20%D0%93%D0%A0%D0%90%D0%A4%D0%90%20%21%21%21%20%28%D0%A1%D0%A2%D0%A0%D0%98%D0%9C%29%20%2820240108%29%20-%20yfsG0uzXT20.mp4",
         "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
         "badgeTag": "🎤 СЛАВА КПСС",
-        "description": "Брутальный сингл Гнойного с аутентичной подачей."
+        "description": "Вячеслав Машнов общается со зрителями, слушает биты и выдает панчи."
       },
       {
-        "title": "Слава КПСС: Кайфоград (Клип 2024)",
-        "episode": "Summer Music Video 2024",
-        "duration": 220,
+        "title": "Рэп-батл Oxxxymiron VS Слава КПСС (Гнойный)",
+        "episode": "Versus Slovospb • Полная версия 1080p",
+        "duration": 3780,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "tY-r09eLqcM",
+        "url": "https://archive.org/download/oxxxymiron-vs-versus-slovospb-av-1-1080p/%D0%A0%D1%8D%D0%BF-%D0%B1%D0%B0%D1%82%D0%BB%20Oxxxymiron%20VS%20%D0%A1%D0%BB%D0%B0%D0%B2%D0%B0%20%D0%9A%D0%9F%D0%A1%D0%A1_%D0%93%D0%BD%D0%BE%D0%B9%D0%BD%D1%8B%D0%B9%20_versus%20slovospb%20%D0%9F%D1%80%D0%B5%D0%BC%D1%8C%D0%B5%D1%80%D0%B0_%20%D0%9F%D0%BE%D0%BB%D0%BD%D0%B0%D1%8F%20%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F_AV1%201080p.mp4",
         "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
-        "badgeTag": "🎤 СЛАВА КПСС",
-        "description": "Солнечный и ироничный видеоклип Вячеслава Машнова."
+        "badgeTag": "🎤 ВЕРСУС БАТТЛ",
+        "description": "Легендарное историческое противостояние Оксимирона и Гнойного (Славы КПСС)."
       },
       {
-        "title": "Букер (BOOKER): Чапстикс (Клип)",
-        "episode": "Официальный музыкальный клип",
-        "duration": 195,
+        "title": "Слава КПСС: Я нашёл Артёма Графа!",
+        "episode": "Большой стрим Славы КПСС и разборки",
+        "duration": 4500,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "4QbNci72QDo",
-        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
-        "badgeTag": "🎤 BOOKER",
-        "description": "Мощный флоу и клип от Фёдора Букера."
-      },
-      {
-        "title": "Слава КПСС: Mike Killer (Клип)",
-        "episode": "Премьера трека и видео 2022",
-        "duration": 210,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "Hso21LNVNqE",
+        "url": "https://archive.org/download/youtube-yfsG0uzXT20/%D0%A1%D0%9B%D0%90%D0%92%D0%90%20%D0%9A%D0%9F%D0%A1%D0%A1%20-%20%D0%AF%20%D0%9D%D0%90%D0%A8%D0%95%D0%9B%20%D0%90%D0%A0%D0%A2%D0%95%D0%9C%D0%90%20%D0%93%D0%A0%D0%90%D0%A4%D0%90%20%21%21%21%20%28%D0%A1%D0%A2%D0%A0%D0%98%D0%9C%29%20%2820240108%29%20-%20yfsG0uzXT20.mp4",
         "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
         "badgeTag": "🎤 СЛАВА КПСС",
-        "description": "Брутальный сингл Гнойного с аутентичной подачей."
+        "description": "Вячеслав Машнов общается со зрителями, слушает биты и выдает панчи."
       },
       {
-        "title": "Слава КПСС: Кайфоград (Клип 2024)",
-        "episode": "Summer Music Video 2024",
-        "duration": 220,
+        "title": "Рэп-батл Oxxxymiron VS Слава КПСС (Гнойный)",
+        "episode": "Versus Slovospb • Полная версия 1080p",
+        "duration": 3780,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "tY-r09eLqcM",
+        "url": "https://archive.org/download/oxxxymiron-vs-versus-slovospb-av-1-1080p/%D0%A0%D1%8D%D0%BF-%D0%B1%D0%B0%D1%82%D0%BB%20Oxxxymiron%20VS%20%D0%A1%D0%BB%D0%B0%D0%B2%D0%B0%20%D0%9A%D0%9F%D0%A1%D0%A1_%D0%93%D0%BD%D0%BE%D0%B9%D0%BD%D1%8B%D0%B9%20_versus%20slovospb%20%D0%9F%D1%80%D0%B5%D0%BC%D1%8C%D0%B5%D1%80%D0%B0_%20%D0%9F%D0%BE%D0%BB%D0%BD%D0%B0%D1%8F%20%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F_AV1%201080p.mp4",
         "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
-        "badgeTag": "🎤 СЛАВА КПСС",
-        "description": "Солнечный и ироничный видеоклип Вячеслава Машнова."
+        "badgeTag": "🎤 ВЕРСУС БАТТЛ",
+        "description": "Легендарное историческое противостояние Оксимирона и Гнойного (Славы КПСС)."
       },
       {
-        "title": "Букер (BOOKER): Чапстикс (Клип)",
-        "episode": "Официальный музыкальный клип",
-        "duration": 195,
+        "title": "Слава КПСС: Я нашёл Артёма Графа!",
+        "episode": "Большой стрим Славы КПСС и разборки",
+        "duration": 4500,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "4QbNci72QDo",
-        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
-        "badgeTag": "🎤 BOOKER",
-        "description": "Мощный флоу и клип от Фёдора Букера."
-      },
-      {
-        "title": "Слава КПСС: Mike Killer (Клип)",
-        "episode": "Премьера трека и видео 2022",
-        "duration": 210,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "Hso21LNVNqE",
+        "url": "https://archive.org/download/youtube-yfsG0uzXT20/%D0%A1%D0%9B%D0%90%D0%92%D0%90%20%D0%9A%D0%9F%D0%A1%D0%A1%20-%20%D0%AF%20%D0%9D%D0%90%D0%A8%D0%95%D0%9B%20%D0%90%D0%A0%D0%A2%D0%95%D0%9C%D0%90%20%D0%93%D0%A0%D0%90%D0%A4%D0%90%20%21%21%21%20%28%D0%A1%D0%A2%D0%A0%D0%98%D0%9C%29%20%2820240108%29%20-%20yfsG0uzXT20.mp4",
         "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
         "badgeTag": "🎤 СЛАВА КПСС",
-        "description": "Брутальный сингл Гнойного с аутентичной подачей."
+        "description": "Вячеслав Машнов общается со зрителями, слушает биты и выдает панчи."
       },
       {
-        "title": "Слава КПСС: Кайфоград (Клип 2024)",
-        "episode": "Summer Music Video 2024",
-        "duration": 220,
+        "title": "Рэп-батл Oxxxymiron VS Слава КПСС (Гнойный)",
+        "episode": "Versus Slovospb • Полная версия 1080p",
+        "duration": 3780,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "tY-r09eLqcM",
+        "url": "https://archive.org/download/oxxxymiron-vs-versus-slovospb-av-1-1080p/%D0%A0%D1%8D%D0%BF-%D0%B1%D0%B0%D1%82%D0%BB%20Oxxxymiron%20VS%20%D0%A1%D0%BB%D0%B0%D0%B2%D0%B0%20%D0%9A%D0%9F%D0%A1%D0%A1_%D0%93%D0%BD%D0%BE%D0%B9%D0%BD%D1%8B%D0%B9%20_versus%20slovospb%20%D0%9F%D1%80%D0%B5%D0%BC%D1%8C%D0%B5%D1%80%D0%B0_%20%D0%9F%D0%BE%D0%BB%D0%BD%D0%B0%D1%8F%20%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F_AV1%201080p.mp4",
         "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
-        "badgeTag": "🎤 СЛАВА КПСС",
-        "description": "Солнечный и ироничный видеоклип Вячеслава Машнова."
+        "badgeTag": "🎤 ВЕРСУС БАТТЛ",
+        "description": "Легендарное историческое противостояние Оксимирона и Гнойного (Славы КПСС)."
       },
       {
-        "title": "Букер (BOOKER): Чапстикс (Клип)",
-        "episode": "Официальный музыкальный клип",
-        "duration": 195,
+        "title": "Слава КПСС: Я нашёл Артёма Графа!",
+        "episode": "Большой стрим Славы КПСС и разборки",
+        "duration": 4500,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "4QbNci72QDo",
-        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
-        "badgeTag": "🎤 BOOKER",
-        "description": "Мощный флоу и клип от Фёдора Букера."
-      },
-      {
-        "title": "Слава КПСС: Mike Killer (Клип)",
-        "episode": "Премьера трека и видео 2022",
-        "duration": 210,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "Hso21LNVNqE",
+        "url": "https://archive.org/download/youtube-yfsG0uzXT20/%D0%A1%D0%9B%D0%90%D0%92%D0%90%20%D0%9A%D0%9F%D0%A1%D0%A1%20-%20%D0%AF%20%D0%9D%D0%90%D0%A8%D0%95%D0%9B%20%D0%90%D0%A0%D0%A2%D0%95%D0%9C%D0%90%20%D0%93%D0%A0%D0%90%D0%A4%D0%90%20%21%21%21%20%28%D0%A1%D0%A2%D0%A0%D0%98%D0%9C%29%20%2820240108%29%20-%20yfsG0uzXT20.mp4",
         "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
         "badgeTag": "🎤 СЛАВА КПСС",
-        "description": "Брутальный сингл Гнойного с аутентичной подачей."
+        "description": "Вячеслав Машнов общается со зрителями, слушает биты и выдает панчи."
       },
       {
-        "title": "Слава КПСС: Кайфоград (Клип 2024)",
-        "episode": "Summer Music Video 2024",
-        "duration": 220,
+        "title": "Рэп-батл Oxxxymiron VS Слава КПСС (Гнойный)",
+        "episode": "Versus Slovospb • Полная версия 1080p",
+        "duration": 3780,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "tY-r09eLqcM",
+        "url": "https://archive.org/download/oxxxymiron-vs-versus-slovospb-av-1-1080p/%D0%A0%D1%8D%D0%BF-%D0%B1%D0%B0%D1%82%D0%BB%20Oxxxymiron%20VS%20%D0%A1%D0%BB%D0%B0%D0%B2%D0%B0%20%D0%9A%D0%9F%D0%A1%D0%A1_%D0%93%D0%BD%D0%BE%D0%B9%D0%BD%D1%8B%D0%B9%20_versus%20slovospb%20%D0%9F%D1%80%D0%B5%D0%BC%D1%8C%D0%B5%D1%80%D0%B0_%20%D0%9F%D0%BE%D0%BB%D0%BD%D0%B0%D1%8F%20%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F_AV1%201080p.mp4",
         "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
-        "badgeTag": "🎤 СЛАВА КПСС",
-        "description": "Солнечный и ироничный видеоклип Вячеслава Машнова."
+        "badgeTag": "🎤 ВЕРСУС БАТТЛ",
+        "description": "Легендарное историческое противостояние Оксимирона и Гнойного (Славы КПСС)."
       },
       {
-        "title": "Букер (BOOKER): Чапстикс (Клип)",
-        "episode": "Официальный музыкальный клип",
-        "duration": 195,
+        "title": "Слава КПСС: Я нашёл Артёма Графа!",
+        "episode": "Большой стрим Славы КПСС и разборки",
+        "duration": 4500,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "4QbNci72QDo",
-        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
-        "badgeTag": "🎤 BOOKER",
-        "description": "Мощный флоу и клип от Фёдора Букера."
-      },
-      {
-        "title": "Слава КПСС: Mike Killer (Клип)",
-        "episode": "Премьера трека и видео 2022",
-        "duration": 210,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "Hso21LNVNqE",
+        "url": "https://archive.org/download/youtube-yfsG0uzXT20/%D0%A1%D0%9B%D0%90%D0%92%D0%90%20%D0%9A%D0%9F%D0%A1%D0%A1%20-%20%D0%AF%20%D0%9D%D0%90%D0%A8%D0%95%D0%9B%20%D0%90%D0%A0%D0%A2%D0%95%D0%9C%D0%90%20%D0%93%D0%A0%D0%90%D0%A4%D0%90%20%21%21%21%20%28%D0%A1%D0%A2%D0%A0%D0%98%D0%9C%29%20%2820240108%29%20-%20yfsG0uzXT20.mp4",
         "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
         "badgeTag": "🎤 СЛАВА КПСС",
-        "description": "Брутальный сингл Гнойного с аутентичной подачей."
+        "description": "Вячеслав Машнов общается со зрителями, слушает биты и выдает панчи."
       },
       {
-        "title": "Слава КПСС: Кайфоград (Клип 2024)",
-        "episode": "Summer Music Video 2024",
-        "duration": 220,
+        "title": "Рэп-батл Oxxxymiron VS Слава КПСС (Гнойный)",
+        "episode": "Versus Slovospb • Полная версия 1080p",
+        "duration": 3780,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "tY-r09eLqcM",
+        "url": "https://archive.org/download/oxxxymiron-vs-versus-slovospb-av-1-1080p/%D0%A0%D1%8D%D0%BF-%D0%B1%D0%B0%D1%82%D0%BB%20Oxxxymiron%20VS%20%D0%A1%D0%BB%D0%B0%D0%B2%D0%B0%20%D0%9A%D0%9F%D0%A1%D0%A1_%D0%93%D0%BD%D0%BE%D0%B9%D0%BD%D1%8B%D0%B9%20_versus%20slovospb%20%D0%9F%D1%80%D0%B5%D0%BC%D1%8C%D0%B5%D1%80%D0%B0_%20%D0%9F%D0%BE%D0%BB%D0%BD%D0%B0%D1%8F%20%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F_AV1%201080p.mp4",
         "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
-        "badgeTag": "🎤 СЛАВА КПСС",
-        "description": "Солнечный и ироничный видеоклип Вячеслава Машнова."
+        "badgeTag": "🎤 ВЕРСУС БАТТЛ",
+        "description": "Легендарное историческое противостояние Оксимирона и Гнойного (Славы КПСС)."
       },
       {
-        "title": "Букер (BOOKER): Чапстикс (Клип)",
-        "episode": "Официальный музыкальный клип",
-        "duration": 195,
+        "title": "Слава КПСС: Я нашёл Артёма Графа!",
+        "episode": "Большой стрим Славы КПСС и разборки",
+        "duration": 4500,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "4QbNci72QDo",
-        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
-        "badgeTag": "🎤 BOOKER",
-        "description": "Мощный флоу и клип от Фёдора Букера."
-      },
-      {
-        "title": "Слава КПСС: Mike Killer (Клип)",
-        "episode": "Премьера трека и видео 2022",
-        "duration": 210,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "Hso21LNVNqE",
+        "url": "https://archive.org/download/youtube-yfsG0uzXT20/%D0%A1%D0%9B%D0%90%D0%92%D0%90%20%D0%9A%D0%9F%D0%A1%D0%A1%20-%20%D0%AF%20%D0%9D%D0%90%D0%A8%D0%95%D0%9B%20%D0%90%D0%A0%D0%A2%D0%95%D0%9C%D0%90%20%D0%93%D0%A0%D0%90%D0%A4%D0%90%20%21%21%21%20%28%D0%A1%D0%A2%D0%A0%D0%98%D0%9C%29%20%2820240108%29%20-%20yfsG0uzXT20.mp4",
         "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
         "badgeTag": "🎤 СЛАВА КПСС",
-        "description": "Брутальный сингл Гнойного с аутентичной подачей."
+        "description": "Вячеслав Машнов общается со зрителями, слушает биты и выдает панчи."
       },
       {
-        "title": "Слава КПСС: Кайфоград (Клип 2024)",
-        "episode": "Summer Music Video 2024",
-        "duration": 220,
+        "title": "Рэп-батл Oxxxymiron VS Слава КПСС (Гнойный)",
+        "episode": "Versus Slovospb • Полная версия 1080p",
+        "duration": 3780,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "tY-r09eLqcM",
+        "url": "https://archive.org/download/oxxxymiron-vs-versus-slovospb-av-1-1080p/%D0%A0%D1%8D%D0%BF-%D0%B1%D0%B0%D1%82%D0%BB%20Oxxxymiron%20VS%20%D0%A1%D0%BB%D0%B0%D0%B2%D0%B0%20%D0%9A%D0%9F%D0%A1%D0%A1_%D0%93%D0%BD%D0%BE%D0%B9%D0%BD%D1%8B%D0%B9%20_versus%20slovospb%20%D0%9F%D1%80%D0%B5%D0%BC%D1%8C%D0%B5%D1%80%D0%B0_%20%D0%9F%D0%BE%D0%BB%D0%BD%D0%B0%D1%8F%20%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F_AV1%201080p.mp4",
         "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
-        "badgeTag": "🎤 СЛАВА КПСС",
-        "description": "Солнечный и ироничный видеоклип Вячеслава Машнова."
+        "badgeTag": "🎤 ВЕРСУС БАТТЛ",
+        "description": "Легендарное историческое противостояние Оксимирона и Гнойного (Славы КПСС)."
       },
       {
-        "title": "Букер (BOOKER): Чапстикс (Клип)",
-        "episode": "Официальный музыкальный клип",
-        "duration": 195,
+        "title": "Слава КПСС: Я нашёл Артёма Графа!",
+        "episode": "Большой стрим Славы КПСС и разборки",
+        "duration": 4500,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "4QbNci72QDo",
-        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
-        "badgeTag": "🎤 BOOKER",
-        "description": "Мощный флоу и клип от Фёдора Букера."
-      },
-      {
-        "title": "Слава КПСС: Mike Killer (Клип)",
-        "episode": "Премьера трека и видео 2022",
-        "duration": 210,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "Hso21LNVNqE",
+        "url": "https://archive.org/download/youtube-yfsG0uzXT20/%D0%A1%D0%9B%D0%90%D0%92%D0%90%20%D0%9A%D0%9F%D0%A1%D0%A1%20-%20%D0%AF%20%D0%9D%D0%90%D0%A8%D0%95%D0%9B%20%D0%90%D0%A0%D0%A2%D0%95%D0%9C%D0%90%20%D0%93%D0%A0%D0%90%D0%A4%D0%90%20%21%21%21%20%28%D0%A1%D0%A2%D0%A0%D0%98%D0%9C%29%20%2820240108%29%20-%20yfsG0uzXT20.mp4",
         "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
         "badgeTag": "🎤 СЛАВА КПСС",
-        "description": "Брутальный сингл Гнойного с аутентичной подачей."
+        "description": "Вячеслав Машнов общается со зрителями, слушает биты и выдает панчи."
       },
       {
-        "title": "Слава КПСС: Кайфоград (Клип 2024)",
-        "episode": "Summer Music Video 2024",
-        "duration": 220,
+        "title": "Рэп-батл Oxxxymiron VS Слава КПСС (Гнойный)",
+        "episode": "Versus Slovospb • Полная версия 1080p",
+        "duration": 3780,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "tY-r09eLqcM",
+        "url": "https://archive.org/download/oxxxymiron-vs-versus-slovospb-av-1-1080p/%D0%A0%D1%8D%D0%BF-%D0%B1%D0%B0%D1%82%D0%BB%20Oxxxymiron%20VS%20%D0%A1%D0%BB%D0%B0%D0%B2%D0%B0%20%D0%9A%D0%9F%D0%A1%D0%A1_%D0%93%D0%BD%D0%BE%D0%B9%D0%BD%D1%8B%D0%B9%20_versus%20slovospb%20%D0%9F%D1%80%D0%B5%D0%BC%D1%8C%D0%B5%D1%80%D0%B0_%20%D0%9F%D0%BE%D0%BB%D0%BD%D0%B0%D1%8F%20%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F_AV1%201080p.mp4",
         "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
-        "badgeTag": "🎤 СЛАВА КПСС",
-        "description": "Солнечный и ироничный видеоклип Вячеслава Машнова."
+        "badgeTag": "🎤 ВЕРСУС БАТТЛ",
+        "description": "Легендарное историческое противостояние Оксимирона и Гнойного (Славы КПСС)."
       },
       {
-        "title": "Букер (BOOKER): Чапстикс (Клип)",
-        "episode": "Официальный музыкальный клип",
-        "duration": 195,
+        "title": "Слава КПСС: Я нашёл Артёма Графа!",
+        "episode": "Большой стрим Славы КПСС и разборки",
+        "duration": 4500,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "4QbNci72QDo",
-        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
-        "badgeTag": "🎤 BOOKER",
-        "description": "Мощный флоу и клип от Фёдора Букера."
-      },
-      {
-        "title": "Слава КПСС: Mike Killer (Клип)",
-        "episode": "Премьера трека и видео 2022",
-        "duration": 210,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "Hso21LNVNqE",
+        "url": "https://archive.org/download/youtube-yfsG0uzXT20/%D0%A1%D0%9B%D0%90%D0%92%D0%90%20%D0%9A%D0%9F%D0%A1%D0%A1%20-%20%D0%AF%20%D0%9D%D0%90%D0%A8%D0%95%D0%9B%20%D0%90%D0%A0%D0%A2%D0%95%D0%9C%D0%90%20%D0%93%D0%A0%D0%90%D0%A4%D0%90%20%21%21%21%20%28%D0%A1%D0%A2%D0%A0%D0%98%D0%9C%29%20%2820240108%29%20-%20yfsG0uzXT20.mp4",
         "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
         "badgeTag": "🎤 СЛАВА КПСС",
-        "description": "Брутальный сингл Гнойного с аутентичной подачей."
+        "description": "Вячеслав Машнов общается со зрителями, слушает биты и выдает панчи."
       },
       {
-        "title": "Слава КПСС: Кайфоград (Клип 2024)",
-        "episode": "Summer Music Video 2024",
-        "duration": 220,
+        "title": "Рэп-батл Oxxxymiron VS Слава КПСС (Гнойный)",
+        "episode": "Versus Slovospb • Полная версия 1080p",
+        "duration": 3780,
         "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "tY-r09eLqcM",
+        "url": "https://archive.org/download/oxxxymiron-vs-versus-slovospb-av-1-1080p/%D0%A0%D1%8D%D0%BF-%D0%B1%D0%B0%D1%82%D0%BB%20Oxxxymiron%20VS%20%D0%A1%D0%BB%D0%B0%D0%B2%D0%B0%20%D0%9A%D0%9F%D0%A1%D0%A1_%D0%93%D0%BD%D0%BE%D0%B9%D0%BD%D1%8B%D0%B9%20_versus%20slovospb%20%D0%9F%D1%80%D0%B5%D0%BC%D1%8C%D0%B5%D1%80%D0%B0_%20%D0%9F%D0%BE%D0%BB%D0%BD%D0%B0%D1%8F%20%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F_AV1%201080p.mp4",
         "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
-        "badgeTag": "🎤 СЛАВА КПСС",
-        "description": "Солнечный и ироничный видеоклип Вячеслава Машнова."
+        "badgeTag": "🎤 ВЕРСУС БАТТЛ",
+        "description": "Легендарное историческое противостояние Оксимирона и Гнойного (Славы КПСС)."
       },
       {
-        "title": "Букер (BOOKER): Чапстикс (Клип)",
-        "episode": "Официальный музыкальный клип",
-        "duration": 195,
+        "title": "Слава КПСС: Я нашёл Артёма Графа!",
+        "episode": "Большой стрим Славы КПСС и разборки",
+        "duration": 4500,
         "type": "video",
-        "url": "https://archive.org/download/22MonsterSchoolTHEFLOORISLAVAMinecraftAnimation/22-Monster%20School%20-%20THE%20FLOOR%20IS%20LAVA%20-%20Minecraft%20Animation.mp4",
-        "youtubeId": "4QbNci72QDo",
-        "poster": "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600",
-        "badgeTag": "🎤 BOOKER",
-        "description": "Мощный флоу и клип от Фёдора Букера."
-      },
-      {
-        "title": "Слава КПСС: Mike Killer (Клип)",
-        "episode": "Премьера трека и видео 2022",
-        "duration": 210,
-        "type": "video",
-        "url": "https://archive.org/download/begin-again-a-minecraft-original-music-video/_Begin%20Again_%20-%20A%20Minecraft%20Original%20Music%20Video%20%E2%99%AA.mp4",
-        "youtubeId": "Hso21LNVNqE",
+        "url": "https://archive.org/download/youtube-yfsG0uzXT20/%D0%A1%D0%9B%D0%90%D0%92%D0%90%20%D0%9A%D0%9F%D0%A1%D0%A1%20-%20%D0%AF%20%D0%9D%D0%90%D0%A8%D0%95%D0%9B%20%D0%90%D0%A0%D0%A2%D0%95%D0%9C%D0%90%20%D0%93%D0%A0%D0%90%D0%A4%D0%90%20%21%21%21%20%28%D0%A1%D0%A2%D0%A0%D0%98%D0%9C%29%20%2820240108%29%20-%20yfsG0uzXT20.mp4",
         "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
         "badgeTag": "🎤 СЛАВА КПСС",
-        "description": "Брутальный сингл Гнойного с аутентичной подачей."
+        "description": "Вячеслав Машнов общается со зрителями, слушает биты и выдает панчи."
+      },
+      {
+        "title": "Рэп-батл Oxxxymiron VS Слава КПСС (Гнойный)",
+        "episode": "Versus Slovospb • Полная версия 1080p",
+        "duration": 3780,
+        "type": "video",
+        "url": "https://archive.org/download/oxxxymiron-vs-versus-slovospb-av-1-1080p/%D0%A0%D1%8D%D0%BF-%D0%B1%D0%B0%D1%82%D0%BB%20Oxxxymiron%20VS%20%D0%A1%D0%BB%D0%B0%D0%B2%D0%B0%20%D0%9A%D0%9F%D0%A1%D0%A1_%D0%93%D0%BD%D0%BE%D0%B9%D0%BD%D1%8B%D0%B9%20_versus%20slovospb%20%D0%9F%D1%80%D0%B5%D0%BC%D1%8C%D0%B5%D1%80%D0%B0_%20%D0%9F%D0%BE%D0%BB%D0%BD%D0%B0%D1%8F%20%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F_AV1%201080p.mp4",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎤 ВЕРСУС БАТТЛ",
+        "description": "Легендарное историческое противостояние Оксимирона и Гнойного (Славы КПСС)."
+      },
+      {
+        "title": "Слава КПСС: Я нашёл Артёма Графа!",
+        "episode": "Большой стрим Славы КПСС и разборки",
+        "duration": 4500,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-yfsG0uzXT20/%D0%A1%D0%9B%D0%90%D0%92%D0%90%20%D0%9A%D0%9F%D0%A1%D0%A1%20-%20%D0%AF%20%D0%9D%D0%90%D0%A8%D0%95%D0%9B%20%D0%90%D0%A0%D0%A2%D0%95%D0%9C%D0%90%20%D0%93%D0%A0%D0%90%D0%A4%D0%90%20%21%21%21%20%28%D0%A1%D0%A2%D0%A0%D0%98%D0%9C%29%20%2820240108%29%20-%20yfsG0uzXT20.mp4",
+        "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+        "badgeTag": "🎤 СЛАВА КПСС",
+        "description": "Вячеслав Машнов общается со зрителями, слушает биты и выдает панчи."
+      },
+      {
+        "title": "Рэп-батл Oxxxymiron VS Слава КПСС (Гнойный)",
+        "episode": "Versus Slovospb • Полная версия 1080p",
+        "duration": 3780,
+        "type": "video",
+        "url": "https://archive.org/download/oxxxymiron-vs-versus-slovospb-av-1-1080p/%D0%A0%D1%8D%D0%BF-%D0%B1%D0%B0%D1%82%D0%BB%20Oxxxymiron%20VS%20%D0%A1%D0%BB%D0%B0%D0%B2%D0%B0%20%D0%9A%D0%9F%D0%A1%D0%A1_%D0%93%D0%BD%D0%BE%D0%B9%D0%BD%D1%8B%D0%B9%20_versus%20slovospb%20%D0%9F%D1%80%D0%B5%D0%BC%D1%8C%D0%B5%D1%80%D0%B0_%20%D0%9F%D0%BE%D0%BB%D0%BD%D0%B0%D1%8F%20%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%8F_AV1%201080p.mp4",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "🎤 ВЕРСУС БАТТЛ",
+        "description": "Легендарное историческое противостояние Оксимирона и Гнойного (Славы КПСС)."
+      },
+      {
+        "title": "Слава КПСС: Я нашёл Артёма Графа!",
+        "episode": "Большой стрим Славы КПСС и разборки",
+        "duration": 4500,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-yfsG0uzXT20/%D0%A1%D0%9B%D0%90%D0%92%D0%90%20%D0%9A%D0%9F%D0%A1%D0%A1%20-%20%D0%AF%20%D0%9D%D0%90%D0%A8%D0%95%D0%9B%20%D0%90%D0%A0%D0%A2%D0%95%D0%9C%D0%90%20%D0%93%D0%A0%D0%90%D0%A4%D0%90%20%21%21%21%20%28%D0%A1%D0%A2%D0%A0%D0%98%D0%9C%29%20%2820240108%29%20-%20yfsG0uzXT20.mp4",
+        "poster": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600",
+        "badgeTag": "🎤 СЛАВА КПСС",
+        "description": "Вячеслав Машнов общается со зрителями, слушает биты и выдает панчи."
       }
     ]
   },
   {
     "id": "music-kids",
     "number": "12",
-    "streamId": "kids-music",
+    "streamId": "kids",
     "category": "music",
     "categoryName": "Музыка",
-    "name": "ДЕТСКОЕ МУЗ-ТВ",
-    "shortName": "ДЕТИ МУЗ",
-    "tagline": "Смешарики («От винта!»), Фиксики, Лунтик — любимые детские хиты",
+    "name": "ДЕТСКИЙ МУЗ",
+    "shortName": "ДЕТСКИЙ МУЗ",
+    "tagline": "Детское Муз-ТВ: Полина Мамрова, Детское радио, Фиксипелки и Смешарики",
     "icon": "child_care",
     "logoSvg": "toonster",
-    "badge": "ДЕТСКИЕ ХИТЫ",
+    "badge": "ДЕТСКИЙ МУЗ",
     "color": "#14b8a6",
     "schedule": [
       {
-        "title": "Смешарики",
-        "episode": "Выпуск 1: Истории Ромашковой долины",
-        "duration": 480,
+        "title": "Полина Мамрова — Пушистые Комочки",
+        "episode": "Выступление на Детском радио (LIVE)",
+        "duration": 190,
         "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac14.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Классические приключения жителей Ромашковой долины: Кроша, Ёжика, Кар-Карыча и Лосяша."
+        "url": "https://archive.org/download/youtube-aP_y9q55MBo/aP_y9q55MBo.mp4",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "👶 ДЕТСКИЙ МУЗ",
+        "description": "Веселая песня и выступление в эфире Детского радио."
       },
       {
-        "title": "Фиксики",
-        "episode": "Сезон 1 • Серия 1: Компакт-диск",
-        "duration": 320,
+        "title": "Соня Звонова — Морожка",
+        "episode": "Хит Детского радио LIVE",
+        "duration": 210,
         "type": "video",
-        "url": "https://archive.org/download/the-fixies-s-1-e-002-1686050080-t/The_Fixies_S1E_001_1686050074-t.mp4",
-        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Симка и Нолик спасают технику и объясняют устройство приборов."
-      },
-      {
-        "title": "Лунтик",
-        "episode": "Серия 1: Лунный гость",
-        "duration": 360,
-        "type": "video",
-        "url": "https://archive.org/download/1-._20200908/%D0%9B%D1%83%D0%BD%D1%82%D0%B8%D0%BA%20-%201%20%D1%81%D0%B5%D1%80%D0%B8%D1%8F.%20%D0%9B%D1%83%D0%BD%D0%BD%D1%8B%D0%B9%20%D0%B3%D0%BE%D1%81%D1%82%D1%8C.mp4",
-        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Рождение Лунтика на Луне и его падение на Землю в сказочный лес."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 2: Истории Ромашковой долины",
-        "duration": 790,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac20.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Классические приключения жителей Ромашковой долины: Кроша, Ёжика, Кар-Карыча и Лосяша."
+        "url": "https://archive.org/download/youtube-3WBsKggAjhk/3WBsKggAjhk.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "👶 ДЕТСКИЙ МУЗ",
+        "description": "Задорная детская песенка про любимое мороженое."
       },
       {
         "title": "Фиксики",
@@ -5791,16 +5891,6 @@ export const DEFAULT_CHANNELS = [
         "description": "Классические приключения жителей Ромашковой долины: Кроша, Ёжика, Кар-Карыча и Лосяша."
       },
       {
-        "title": "Фиксики",
-        "episode": "Сезон 1 • Серия 1: Компакт-диск",
-        "duration": 320,
-        "type": "video",
-        "url": "https://archive.org/download/the-fixies-s-1-e-002-1686050080-t/The_Fixies_S1E_001_1686050074-t.mp4",
-        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Симка и Нолик спасают технику и объясняют устройство приборов."
-      },
-      {
         "title": "Лунтик",
         "episode": "Серия 1: Лунный гость",
         "duration": 360,
@@ -5819,6 +5909,26 @@ export const DEFAULT_CHANNELS = [
         "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
         "badgeTag": "⭐ МУЛЬТФИЛЬМ",
         "description": "Классические приключения жителей Ромашковой долины: Кроша, Ёжика, Кар-Карыча и Лосяша."
+      },
+      {
+        "title": "Полина Мамрова — Пушистые Комочки",
+        "episode": "Выступление на Детском радио (LIVE)",
+        "duration": 190,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-aP_y9q55MBo/aP_y9q55MBo.mp4",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "👶 ДЕТСКИЙ МУЗ",
+        "description": "Веселая песня и выступление в эфире Детского радио."
+      },
+      {
+        "title": "Соня Звонова — Морожка",
+        "episode": "Хит Детского радио LIVE",
+        "duration": 210,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-3WBsKggAjhk/3WBsKggAjhk.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "👶 ДЕТСКИЙ МУЗ",
+        "description": "Задорная детская песенка про любимое мороженое."
       },
       {
         "title": "Фиксики",
@@ -5841,16 +5951,6 @@ export const DEFAULT_CHANNELS = [
         "description": "Классические приключения жителей Ромашковой долины: Кроша, Ёжика, Кар-Карыча и Лосяша."
       },
       {
-        "title": "Фиксики",
-        "episode": "Сезон 1 • Серия 1: Компакт-диск",
-        "duration": 320,
-        "type": "video",
-        "url": "https://archive.org/download/the-fixies-s-1-e-002-1686050080-t/The_Fixies_S1E_001_1686050074-t.mp4",
-        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Симка и Нолик спасают технику и объясняют устройство приборов."
-      },
-      {
         "title": "Лунтик",
         "episode": "Серия 1: Лунный гость",
         "duration": 360,
@@ -5869,6 +5969,26 @@ export const DEFAULT_CHANNELS = [
         "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
         "badgeTag": "⭐ МУЛЬТФИЛЬМ",
         "description": "Классические приключения жителей Ромашковой долины: Кроша, Ёжика, Кар-Карыча и Лосяша."
+      },
+      {
+        "title": "Полина Мамрова — Пушистые Комочки",
+        "episode": "Выступление на Детском радио (LIVE)",
+        "duration": 190,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-aP_y9q55MBo/aP_y9q55MBo.mp4",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "👶 ДЕТСКИЙ МУЗ",
+        "description": "Веселая песня и выступление в эфире Детского радио."
+      },
+      {
+        "title": "Соня Звонова — Морожка",
+        "episode": "Хит Детского радио LIVE",
+        "duration": 210,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-3WBsKggAjhk/3WBsKggAjhk.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "👶 ДЕТСКИЙ МУЗ",
+        "description": "Задорная детская песенка про любимое мороженое."
       },
       {
         "title": "Фиксики",
@@ -5891,16 +6011,6 @@ export const DEFAULT_CHANNELS = [
         "description": "Классические приключения жителей Ромашковой долины: Кроша, Ёжика, Кар-Карыча и Лосяша."
       },
       {
-        "title": "Фиксики",
-        "episode": "Сезон 1 • Серия 1: Компакт-диск",
-        "duration": 320,
-        "type": "video",
-        "url": "https://archive.org/download/the-fixies-s-1-e-002-1686050080-t/The_Fixies_S1E_001_1686050074-t.mp4",
-        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Симка и Нолик спасают технику и объясняют устройство приборов."
-      },
-      {
         "title": "Лунтик",
         "episode": "Серия 1: Лунный гость",
         "duration": 360,
@@ -5919,6 +6029,26 @@ export const DEFAULT_CHANNELS = [
         "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
         "badgeTag": "⭐ МУЛЬТФИЛЬМ",
         "description": "Классические приключения жителей Ромашковой долины: Кроша, Ёжика, Кар-Карыча и Лосяша."
+      },
+      {
+        "title": "Полина Мамрова — Пушистые Комочки",
+        "episode": "Выступление на Детском радио (LIVE)",
+        "duration": 190,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-aP_y9q55MBo/aP_y9q55MBo.mp4",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "👶 ДЕТСКИЙ МУЗ",
+        "description": "Веселая песня и выступление в эфире Детского радио."
+      },
+      {
+        "title": "Соня Звонова — Морожка",
+        "episode": "Хит Детского радио LIVE",
+        "duration": 210,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-3WBsKggAjhk/3WBsKggAjhk.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "👶 ДЕТСКИЙ МУЗ",
+        "description": "Задорная детская песенка про любимое мороженое."
       },
       {
         "title": "Фиксики",
@@ -5941,16 +6071,6 @@ export const DEFAULT_CHANNELS = [
         "description": "Классические приключения жителей Ромашковой долины: Кроша, Ёжика, Кар-Карыча и Лосяша."
       },
       {
-        "title": "Фиксики",
-        "episode": "Сезон 1 • Серия 1: Компакт-диск",
-        "duration": 320,
-        "type": "video",
-        "url": "https://archive.org/download/the-fixies-s-1-e-002-1686050080-t/The_Fixies_S1E_001_1686050074-t.mp4",
-        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Симка и Нолик спасают технику и объясняют устройство приборов."
-      },
-      {
         "title": "Лунтик",
         "episode": "Серия 1: Лунный гость",
         "duration": 360,
@@ -5969,6 +6089,26 @@ export const DEFAULT_CHANNELS = [
         "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
         "badgeTag": "⭐ МУЛЬТФИЛЬМ",
         "description": "Классические приключения жителей Ромашковой долины: Кроша, Ёжика, Кар-Карыча и Лосяша."
+      },
+      {
+        "title": "Полина Мамрова — Пушистые Комочки",
+        "episode": "Выступление на Детском радио (LIVE)",
+        "duration": 190,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-aP_y9q55MBo/aP_y9q55MBo.mp4",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "👶 ДЕТСКИЙ МУЗ",
+        "description": "Веселая песня и выступление в эфире Детского радио."
+      },
+      {
+        "title": "Соня Звонова — Морожка",
+        "episode": "Хит Детского радио LIVE",
+        "duration": 210,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-3WBsKggAjhk/3WBsKggAjhk.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "👶 ДЕТСКИЙ МУЗ",
+        "description": "Задорная детская песенка про любимое мороженое."
       },
       {
         "title": "Фиксики",
@@ -5991,16 +6131,6 @@ export const DEFAULT_CHANNELS = [
         "description": "Классические приключения жителей Ромашковой долины: Кроша, Ёжика, Кар-Карыча и Лосяша."
       },
       {
-        "title": "Фиксики",
-        "episode": "Сезон 1 • Серия 1: Компакт-диск",
-        "duration": 320,
-        "type": "video",
-        "url": "https://archive.org/download/the-fixies-s-1-e-002-1686050080-t/The_Fixies_S1E_001_1686050074-t.mp4",
-        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Симка и Нолик спасают технику и объясняют устройство приборов."
-      },
-      {
         "title": "Лунтик",
         "episode": "Серия 1: Лунный гость",
         "duration": 360,
@@ -6019,6 +6149,26 @@ export const DEFAULT_CHANNELS = [
         "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
         "badgeTag": "⭐ МУЛЬТФИЛЬМ",
         "description": "Классические приключения жителей Ромашковой долины: Кроша, Ёжика, Кар-Карыча и Лосяша."
+      },
+      {
+        "title": "Полина Мамрова — Пушистые Комочки",
+        "episode": "Выступление на Детском радио (LIVE)",
+        "duration": 190,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-aP_y9q55MBo/aP_y9q55MBo.mp4",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "👶 ДЕТСКИЙ МУЗ",
+        "description": "Веселая песня и выступление в эфире Детского радио."
+      },
+      {
+        "title": "Соня Звонова — Морожка",
+        "episode": "Хит Детского радио LIVE",
+        "duration": 210,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-3WBsKggAjhk/3WBsKggAjhk.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "👶 ДЕТСКИЙ МУЗ",
+        "description": "Задорная детская песенка про любимое мороженое."
       },
       {
         "title": "Фиксики",
@@ -6041,16 +6191,6 @@ export const DEFAULT_CHANNELS = [
         "description": "Классические приключения жителей Ромашковой долины: Кроша, Ёжика, Кар-Карыча и Лосяша."
       },
       {
-        "title": "Фиксики",
-        "episode": "Сезон 1 • Серия 1: Компакт-диск",
-        "duration": 320,
-        "type": "video",
-        "url": "https://archive.org/download/the-fixies-s-1-e-002-1686050080-t/The_Fixies_S1E_001_1686050074-t.mp4",
-        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Симка и Нолик спасают технику и объясняют устройство приборов."
-      },
-      {
         "title": "Лунтик",
         "episode": "Серия 1: Лунный гость",
         "duration": 360,
@@ -6069,6 +6209,26 @@ export const DEFAULT_CHANNELS = [
         "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
         "badgeTag": "⭐ МУЛЬТФИЛЬМ",
         "description": "Классические приключения жителей Ромашковой долины: Кроша, Ёжика, Кар-Карыча и Лосяша."
+      },
+      {
+        "title": "Полина Мамрова — Пушистые Комочки",
+        "episode": "Выступление на Детском радио (LIVE)",
+        "duration": 190,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-aP_y9q55MBo/aP_y9q55MBo.mp4",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "👶 ДЕТСКИЙ МУЗ",
+        "description": "Веселая песня и выступление в эфире Детского радио."
+      },
+      {
+        "title": "Соня Звонова — Морожка",
+        "episode": "Хит Детского радио LIVE",
+        "duration": 210,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-3WBsKggAjhk/3WBsKggAjhk.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "👶 ДЕТСКИЙ МУЗ",
+        "description": "Задорная детская песенка про любимое мороженое."
       },
       {
         "title": "Фиксики",
@@ -6091,16 +6251,6 @@ export const DEFAULT_CHANNELS = [
         "description": "Классические приключения жителей Ромашковой долины: Кроша, Ёжика, Кар-Карыча и Лосяша."
       },
       {
-        "title": "Фиксики",
-        "episode": "Сезон 1 • Серия 1: Компакт-диск",
-        "duration": 320,
-        "type": "video",
-        "url": "https://archive.org/download/the-fixies-s-1-e-002-1686050080-t/The_Fixies_S1E_001_1686050074-t.mp4",
-        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Симка и Нолик спасают технику и объясняют устройство приборов."
-      },
-      {
         "title": "Лунтик",
         "episode": "Серия 1: Лунный гость",
         "duration": 360,
@@ -6119,6 +6269,26 @@ export const DEFAULT_CHANNELS = [
         "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
         "badgeTag": "⭐ МУЛЬТФИЛЬМ",
         "description": "Классические приключения жителей Ромашковой долины: Кроша, Ёжика, Кар-Карыча и Лосяша."
+      },
+      {
+        "title": "Полина Мамрова — Пушистые Комочки",
+        "episode": "Выступление на Детском радио (LIVE)",
+        "duration": 190,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-aP_y9q55MBo/aP_y9q55MBo.mp4",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "👶 ДЕТСКИЙ МУЗ",
+        "description": "Веселая песня и выступление в эфире Детского радио."
+      },
+      {
+        "title": "Соня Звонова — Морожка",
+        "episode": "Хит Детского радио LIVE",
+        "duration": 210,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-3WBsKggAjhk/3WBsKggAjhk.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "👶 ДЕТСКИЙ МУЗ",
+        "description": "Задорная детская песенка про любимое мороженое."
       },
       {
         "title": "Фиксики",
@@ -6141,16 +6311,6 @@ export const DEFAULT_CHANNELS = [
         "description": "Классические приключения жителей Ромашковой долины: Кроша, Ёжика, Кар-Карыча и Лосяша."
       },
       {
-        "title": "Фиксики",
-        "episode": "Сезон 1 • Серия 1: Компакт-диск",
-        "duration": 320,
-        "type": "video",
-        "url": "https://archive.org/download/the-fixies-s-1-e-002-1686050080-t/The_Fixies_S1E_001_1686050074-t.mp4",
-        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Симка и Нолик спасают технику и объясняют устройство приборов."
-      },
-      {
         "title": "Лунтик",
         "episode": "Серия 1: Лунный гость",
         "duration": 360,
@@ -6169,6 +6329,26 @@ export const DEFAULT_CHANNELS = [
         "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
         "badgeTag": "⭐ МУЛЬТФИЛЬМ",
         "description": "Классические приключения жителей Ромашковой долины: Кроша, Ёжика, Кар-Карыча и Лосяша."
+      },
+      {
+        "title": "Полина Мамрова — Пушистые Комочки",
+        "episode": "Выступление на Детском радио (LIVE)",
+        "duration": 190,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-aP_y9q55MBo/aP_y9q55MBo.mp4",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "👶 ДЕТСКИЙ МУЗ",
+        "description": "Веселая песня и выступление в эфире Детского радио."
+      },
+      {
+        "title": "Соня Звонова — Морожка",
+        "episode": "Хит Детского радио LIVE",
+        "duration": 210,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-3WBsKggAjhk/3WBsKggAjhk.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "👶 ДЕТСКИЙ МУЗ",
+        "description": "Задорная детская песенка про любимое мороженое."
       },
       {
         "title": "Фиксики",
@@ -6191,16 +6371,6 @@ export const DEFAULT_CHANNELS = [
         "description": "Классические приключения жителей Ромашковой долины: Кроша, Ёжика, Кар-Карыча и Лосяша."
       },
       {
-        "title": "Фиксики",
-        "episode": "Сезон 1 • Серия 1: Компакт-диск",
-        "duration": 320,
-        "type": "video",
-        "url": "https://archive.org/download/the-fixies-s-1-e-002-1686050080-t/The_Fixies_S1E_001_1686050074-t.mp4",
-        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Симка и Нолик спасают технику и объясняют устройство приборов."
-      },
-      {
         "title": "Лунтик",
         "episode": "Серия 1: Лунный гость",
         "duration": 360,
@@ -6219,6 +6389,26 @@ export const DEFAULT_CHANNELS = [
         "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
         "badgeTag": "⭐ МУЛЬТФИЛЬМ",
         "description": "Классические приключения жителей Ромашковой долины: Кроша, Ёжика, Кар-Карыча и Лосяша."
+      },
+      {
+        "title": "Полина Мамрова — Пушистые Комочки",
+        "episode": "Выступление на Детском радио (LIVE)",
+        "duration": 190,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-aP_y9q55MBo/aP_y9q55MBo.mp4",
+        "poster": "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=600",
+        "badgeTag": "👶 ДЕТСКИЙ МУЗ",
+        "description": "Веселая песня и выступление в эфире Детского радио."
+      },
+      {
+        "title": "Соня Звонова — Морожка",
+        "episode": "Хит Детского радио LIVE",
+        "duration": 210,
+        "type": "video",
+        "url": "https://archive.org/download/youtube-3WBsKggAjhk/3WBsKggAjhk.mp4",
+        "poster": "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600",
+        "badgeTag": "👶 ДЕТСКИЙ МУЗ",
+        "description": "Задорная детская песенка про любимое мороженое."
       },
       {
         "title": "Фиксики",
@@ -6241,16 +6431,6 @@ export const DEFAULT_CHANNELS = [
         "description": "Классические приключения жителей Ромашковой долины: Кроша, Ёжика, Кар-Карыча и Лосяша."
       },
       {
-        "title": "Фиксики",
-        "episode": "Сезон 1 • Серия 1: Компакт-диск",
-        "duration": 320,
-        "type": "video",
-        "url": "https://archive.org/download/the-fixies-s-1-e-002-1686050080-t/The_Fixies_S1E_001_1686050074-t.mp4",
-        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Симка и Нолик спасают технику и объясняют устройство приборов."
-      },
-      {
         "title": "Лунтик",
         "episode": "Серия 1: Лунный гость",
         "duration": 360,
@@ -6269,66 +6449,6 @@ export const DEFAULT_CHANNELS = [
         "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
         "badgeTag": "⭐ МУЛЬТФИЛЬМ",
         "description": "Классические приключения жителей Ромашковой долины: Кроша, Ёжика, Кар-Карыча и Лосяша."
-      },
-      {
-        "title": "Фиксики",
-        "episode": "Сезон 1 • Серия 1: Компакт-диск",
-        "duration": 320,
-        "type": "video",
-        "url": "https://archive.org/download/the-fixies-s-1-e-002-1686050080-t/The_Fixies_S1E_001_1686050074-t.mp4",
-        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Симка и Нолик спасают технику и объясняют устройство приборов."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 1: Истории Ромашковой долины",
-        "duration": 480,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac14.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Классические приключения жителей Ромашковой долины: Кроша, Ёжика, Кар-Карыча и Лосяша."
-      },
-      {
-        "title": "Фиксики",
-        "episode": "Сезон 1 • Серия 1: Компакт-диск",
-        "duration": 320,
-        "type": "video",
-        "url": "https://archive.org/download/the-fixies-s-1-e-002-1686050080-t/The_Fixies_S1E_001_1686050074-t.mp4",
-        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Симка и Нолик спасают технику и объясняют устройство приборов."
-      },
-      {
-        "title": "Лунтик",
-        "episode": "Серия 1: Лунный гость",
-        "duration": 360,
-        "type": "video",
-        "url": "https://archive.org/download/1-._20200908/%D0%9B%D1%83%D0%BD%D1%82%D0%B8%D0%BA%20-%201%20%D1%81%D0%B5%D1%80%D0%B8%D1%8F.%20%D0%9B%D1%83%D0%BD%D0%BD%D1%8B%D0%B9%20%D0%B3%D0%BE%D1%81%D1%82%D1%8C.mp4",
-        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Рождение Лунтика на Луне и его падение на Землю в сказочный лес."
-      },
-      {
-        "title": "Смешарики",
-        "episode": "Выпуск 2: Истории Ромашковой долины",
-        "duration": 790,
-        "type": "video",
-        "url": "https://ia801408.us.archive.org/19/items/smesh_lunniy_zayac_by_rabfakovskiy/smesh_lunniy_zayac20.mp4",
-        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Классические приключения жителей Ромашковой долины: Кроша, Ёжика, Кар-Карыча и Лосяша."
-      },
-      {
-        "title": "Фиксики",
-        "episode": "Сезон 1 • Серия 1: Компакт-диск",
-        "duration": 320,
-        "type": "video",
-        "url": "https://archive.org/download/the-fixies-s-1-e-002-1686050080-t/The_Fixies_S1E_001_1686050074-t.mp4",
-        "poster": "https://images.unsplash.com/photo-1563089145-599997674d42?w=600",
-        "badgeTag": "⭐ МУЛЬТФИЛЬМ",
-        "description": "Симка и Нолик спасают технику и объясняют устройство приборов."
       }
     ]
   }

@@ -195,58 +195,8 @@ function playBumperAmbientTone() {
 }
 
 // -----------------------------------------------------------------------------
-// YouTube IFrame Player Engine
+// Native Stream Engine (100% Direct Video MP4 & HLS.js • Zero YouTube Dependency)
 // -----------------------------------------------------------------------------
-window.onYouTubeIframeAPIReady = function() {
-  state.isYtReady = true;
-  initYouTubePlayer();
-};
-
-function initYouTubePlayer() {
-  if (state.ytPlayer || !window.YT || !window.YT.Player) return;
-  state.ytPlayer = new YT.Player('yt-player', {
-    height: '100%',
-    width: '100%',
-    playerVars: {
-      autoplay: 1,
-      controls: 0,
-      disablekb: 1,
-      fs: 0,
-      modestbranding: 1,
-      rel: 0,
-      playsinline: 1,
-      iv_load_policy: 3
-    },
-    events: {
-      onReady: (event) => {
-        state.isYtReady = true;
-        if (!state.isTVStarted || state.isMuted) {
-          event.target.mute();
-        } else {
-          event.target.unMute();
-          event.target.setVolume(state.volume);
-        }
-        // If current show is YouTube, start playing
-        const ch = state.channels[state.currentChannelIndex];
-        if (ch) {
-          const { currentItem, elapsed } = calculateBroadcastPosition(ch);
-          if (currentItem.type === 'youtube' || currentItem.youtubeId) {
-            event.target.loadVideoById({
-              videoId: currentItem.youtubeId,
-              startSeconds: Math.max(0, Math.floor(elapsed))
-            });
-            event.target.playVideo();
-          }
-        }
-      },
-      onStateChange: (event) => {
-        if (event.data === 0) { // ENDED
-          playCurrentChannel(false);
-        }
-      }
-    }
-  });
-}
 
 // -----------------------------------------------------------------------------
 // Deterministic Sverdlovsk Broadcast Scheduler (UTC+5 / YEKT)
@@ -481,43 +431,6 @@ function playCurrentChannel(withGlitch = true) {
       }
     }
 
-  } else if (currentItem.type === 'youtube' || currentItem.youtubeId) {
-    if (bumperScreen) bumperScreen.classList.add('hidden');
-    if (hlsVideo) {
-      hlsVideo.pause();
-      hlsVideo.classList.add('hidden');
-    }
-    if (ytContainer) ytContainer.classList.remove('hidden');
-
-    const ytid = currentItem.youtubeId;
-    state.currentStreamUrl = null;
-    const isNewYt = (state.currentYtId !== ytid);
-    state.currentYtId = ytid;
-
-    if (state.ytPlayer && state.ytPlayer.loadVideoById) {
-      if (isNewYt) {
-        state.ytPlayer.loadVideoById({
-          videoId: ytid,
-          startSeconds: Math.max(0, Math.floor(elapsed))
-        });
-        if (state.isTVStarted && !state.isMuted) {
-          state.ytPlayer.unMute();
-          state.ytPlayer.setVolume(state.volume);
-        } else {
-          state.ytPlayer.mute();
-        }
-        state.ytPlayer.playVideo();
-      } else {
-        try {
-          const curTime = state.ytPlayer.getCurrentTime();
-          if (Math.abs(curTime - elapsed) > 4 && !state.isCatchUpMode) {
-            state.ytPlayer.seekTo(elapsed, true);
-          }
-        } catch (e) {}
-      }
-    } else if (window.YT && window.YT.Player && !state.ytPlayer) {
-      initYouTubePlayer();
-    }
   }
 
   renderVerticalChannelDock();
