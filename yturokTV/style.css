@@ -1,0 +1,161 @@
+/* yturokTV — Ultra-Modern Cinematic Retro-TV Stylesheet */
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Space+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+  --font-pixel: 'VT323', monospace;
+  --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --ambilight-color: rgba(6, 182, 212, 0.28);
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #06070b;
+  color: #f8fafc;
+  overflow-x: hidden;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Dynamic Ambient Glow around the TV Cabinet */
+.ambilight-glow {
+  box-shadow: 0 0 60px 5px var(--ambilight-color), 0 0 120px 20px rgba(0, 0, 0, 0.9);
+  transition: box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* CRT Scanlines Overlay */
+.crt-mode {
+  position: relative;
+}
+
+.crt-mode::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.28) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 255, 0, 0.03));
+  z-index: 20;
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+}
+
+.crt-mode::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: radial-gradient(circle at center, transparent 65%, rgba(0, 0, 0, 0.7) 100%);
+  pointer-events: none;
+  z-index: 21;
+}
+
+/* TV Static Flicker Effect */
+.static-noise {
+  background-image: repeating-radial-gradient(circle at 17% 32%, white, black 0.00085px);
+  animation: static-flicker 0.1s steps(4) infinite;
+}
+
+@keyframes static-flicker {
+  0% { transform: scale(1) translate(0, 0); opacity: 0.92; }
+  25% { transform: scale(1.02) translate(-2px, 1px); opacity: 0.88; }
+  50% { transform: scale(0.99) translate(1px, -2px); opacity: 0.95; }
+  75% { transform: scale(1.01) translate(-1px, -1px); opacity: 0.9; }
+  100% { transform: scale(1) translate(2px, 2px); opacity: 0.94; }
+}
+
+/* 2x2 Bumper Screen */
+.bumper-screen {
+  background-color: #030407;
+  color: #f8fafc;
+}
+
+/* Glassmorphism Surface */
+.glass-card {
+  background: rgba(13, 16, 27, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-card-interactive {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-interactive:hover {
+  background: rgba(20, 25, 42, 0.85);
+  border-color: rgba(255, 255, 255, 0.14);
+  transform: translateY(-1px);
+}
+
+/* Channel Card Active Glow */
+.channel-card.active {
+  border-color: #06b6d4;
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.18), rgba(13, 16, 27, 0.9));
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.22);
+}
+
+/* Auto-hiding Cursor */
+.cursor-hidden,
+.cursor-hidden * {
+  cursor: none !important;
+}
+
+/* Corner Navigation Pod */
+.corner-nav-zone {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 35;
+  padding: 14px;
+  pointer-events: auto;
+}
+
+.corner-nav-trigger {
+  opacity: 0.45;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.corner-nav-zone:hover .corner-nav-trigger {
+  opacity: 1;
+}
+
+.corner-nav-content {
+  opacity: 0;
+  transform: translateY(-8px) scale(0.96);
+  pointer-events: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: top right;
+}
+
+.corner-nav-zone:hover .corner-nav-content,
+.corner-nav-zone.menu-open .corner-nav-content {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* Pulse animation for live badge */
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.9); }
+}
+
+.live-dot {
+  animation: live-pulse 1.3s ease-in-out infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #090a0f;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e2438;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #333d5e;
+}

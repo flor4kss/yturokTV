@@ -1,0 +1,92 @@
+{
+  "one-punch-man": {
+    "name": "Ванпанчмен",
+    "poster": "https://anilibria.top/storage/releases/posters/1210/XssyhK2MH4H8S7A35bMJeuXbpFgbaW4X.jpg",
+    "desc": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайтама. Однаж...",
+    "ep1": {
+      "name": "Серия 1",
+      "duration": 1465,
+      "hls": "https://cache.libria.fun/videos/media/ts/1210/1/720/4c5ec6d26457611fef4853bfa7053746.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+    },
+    "ep2": {
+      "name": "Серия 2",
+      "duration": 1465,
+      "hls": "https://cache.libria.fun/videos/media/ts/1210/2/720/4284104794c97eafa88b1cf8aeadc406.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+    }
+  },
+  "tokyo-ghoul": {
+    "name": "Токийский Гуль",
+    "poster": "https://anilibria.top/storage/releases/posters/432/LpoztaRxyEgwc29nheLdWR5sKVdEAOqS.jpg",
+    "desc": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать не только...",
+    "ep1": {
+      "name": "Серия 1",
+      "duration": 1470,
+      "hls": "https://cache.libria.fun/videos/media/ts/432/1/720/2257451a7b079b3e54fba7676460877b.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+    },
+    "ep2": {
+      "name": "Серия 2",
+      "duration": 1469,
+      "hls": "https://cache.libria.fun/videos/media/ts/432/2/720/300341b76b9feccf7f33c7cd550ad488.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+    }
+  },
+  "hunter-x-hunter": {
+    "name": "Хантер х Хантер",
+    "poster": "https://anilibria.top/storage/releases/posters/10294/DJH6l8g7gykL58F6ECUbHMxodbhu1Un3.jpg",
+    "desc": "Охотник — это тот, кто путешествует по миру, выполняя различные опасные миссии: от поимки преступников до поиска сокровищ в неизведанных землях. Главный герой —...",
+    "ep1": {
+      "name": "Начало пути × И × Дружба",
+      "duration": 1417,
+      "hls": "https://cache.libria.fun/videos/media/ts/10294/1/720/86aeeac26b2f8f1c50007991f605c667.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+    },
+    "ep2": {
+      "name": "Экзамен × На × Экзамене",
+      "duration": 1417,
+      "hls": "https://cache.libria.fun/videos/media/ts/10294/2/720/99e6249573d32e75bb3eed83cc39941e.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+    }
+  },
+  "cyberpunk-edgerunners": {
+    "name": "Киберпанк: Бегущие по краю",
+    "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
+    "desc": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность сродни об...",
+    "ep1": {
+      "name": "Подвел Тебя",
+      "duration": 1536,
+      "hls": "https://cache.libria.fun/videos/media/ts/9307/1/720/585351ecd1ab4afbef42db505154e407.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+    },
+    "ep2": {
+      "name": "Как Мальчишка",
+      "duration": 1534,
+      "hls": "https://cache.libria.fun/videos/media/ts/9307/2/720/80967bea66eafa4f14f9b2783c3cc7e8.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+    }
+  },
+  "ijiranaide-nagatoro-san-2nd-attack": {
+    "name": "Не издевайся, Нагаторо: Вторая атака",
+    "poster": "https://anilibria.top/storage/releases/posters/9329/KkIz4Vtyi44Yy8lohf3VqC5TyCKEfCsL.jpg",
+    "desc": "Вы слышите эти звуки? Кажется, это плачет семпай! Ох, чего и следовало ожидать! Нагаторо снова задумала что-то коварное и жестокое! И, конечно же, она спешит к ...",
+    "ep1": {
+      "name": "Серия 1",
+      "duration": 1420,
+      "hls": "https://cache.libria.fun/videos/media/ts/9329/1/720/efc3c2127f6bdff96896484a8526f000.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+    },
+    "ep2": {
+      "name": "Серия 2",
+      "duration": 1419,
+      "hls": "https://cache.libria.fun/videos/media/ts/9329/2/720/d94a71e0c9c889a13ba0ae41a8a45701.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+    }
+  },
+  "mob-psycho-100": {
+    "name": "Моб Психо 100",
+    "poster": "https://anilibria.top/storage/releases/posters/2622/AeySGfVDvfc3xmhXuOMFQO7fgDUqEfJ8.jpg",
+    "desc": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с ранних лет,...",
+    "ep1": {
+      "name": "Серия 1",
+      "duration": 1469,
+      "hls": "https://cache.libria.fun/videos/media/ts/2622/1/720/d14330a13846be8a068ab7e52796a0c2.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+    },
+    "ep2": {
+      "name": "Серия 2",
+      "duration": 1469,
+      "hls": "https://cache.libria.fun/videos/media/ts/2622/2/720/072eb4791945ff7bb59a48e65bd8b8db.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+    }
+  }
+}

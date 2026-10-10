@@ -1,0 +1,326 @@
+// Сетка вещания телеканалов yturokTV
+export const DEFAULT_CHANNELS = [
+  {
+    "id": "cartoons-gold",
+    "number": "01",
+    "name": "МУЛЬТ-КЛАССИКА (РУС)",
+    "tagline": "Культовые мультсериалы в оригинале: Ну Погоди 1080p Remastered, блоки Утро/День/Вечер/Ночь",
+    "logo": "🐺",
+    "badge": "МУЛЬТИКИ HD",
+    "color": "#06b6d4",
+    "schedule": [
+      {
+        "title": "Ну, погоди! (1080p Remaster)",
+        "episode": "Выпуск 1: В городе и на пляже",
+        "duration": 600,
+        "type": "video",
+        "timeSlot": "morning",
+        "timeSlotLabel": "☀️ УТРЕННИЙ БЛОК [1/2]",
+        "url": "https://archive.org/download/NuPogody/Nu_Pogody!E01.BDRip.1080p.by_genkasper.mp4",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "description": "Легендарный первый выпуск «Ну, погоди!». Заяц на водных лыжах, Волк и знаменитая погоня."
+      },
+      {
+        "title": "Ну, погоди! (1080p Remaster)",
+        "episode": "Выпуск 2: В городском парке",
+        "duration": 600,
+        "type": "video",
+        "timeSlot": "morning",
+        "timeSlotLabel": "☀️ УТРЕННИЙ БЛОК [2/2]",
+        "url": "https://archive.org/download/NuPogody/Nu_Pogody!E02.BDRip.1080p.by_genkasper.mp4",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "description": "Летний вечер в парке культуры. Танго на эстраде, фокусы кота и колесо обозрения."
+      },
+      {
+        "title": "Бампер: Мульт-Канал",
+        "episode": "Заставка",
+        "duration": 15,
+        "type": "bumper",
+        "timeSlotLabel": "📺 ОТБИВКА",
+        "bumperText": "МУЛЬТ-ХИТЫ\n\nНе переключайтесь! Далее: Выпуски 3 и 4!",
+        "poster": "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=600",
+        "description": "Отбивка мульт-канала"
+      },
+      {
+        "title": "Ну, погоди! (1080p Remaster)",
+        "episode": "Выпуск 3: На дороге и стройке",
+        "duration": 580,
+        "type": "video",
+        "timeSlot": "day",
+        "timeSlotLabel": "🌤️ ДНЕВНОЙ МАРАФОН [1/2]",
+        "url": "https://archive.org/download/NuPogody/Nu_Pogody!E03.BDRip.1080p.by_genkasper.mp4",
+        "poster": "https://images.unsplash.com/photo-1514533450685-4493e01d1fdc?w=600",
+        "description": "Волк на гоночном автомобиле, каток и сумасшедшая стройка."
+      },
+      {
+        "title": "Ну, погоди! (1080p Remaster)",
+        "episode": "Выпуск 4: На стадионе",
+        "duration": 585,
+        "type": "video",
+        "timeSlot": "day",
+        "timeSlotLabel": "🌤️ ДНЕВНОЙ МАРАФОН [2/2]",
+        "url": "https://archive.org/download/NuPogody/Nu_Pogody!E04.BDRip.1080p.by_genkasper.mp4",
+        "poster": "https://images.unsplash.com/photo-1514533450685-4493e01d1fdc?w=600",
+        "description": "Спортивные состязания: прыжки с шестом, штанга и бег."
+      },
+      {
+        "title": "Ну, погоди! (1080p Remaster)",
+        "episode": "Выпуск 5: В метро и универсаме",
+        "duration": 590,
+        "type": "video",
+        "timeSlot": "evening",
+        "timeSlotLabel": "🌆 ВЕЧЕРНИЙ ПРАЙМ [1/2]",
+        "url": "https://archive.org/download/NuPogody/Nu_Pogody!E05.BDRip.1080p.by_genkasper.mp4",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "description": "Приключения Волка в центре города, троллейбусе и магазине телевизоров."
+      },
+      {
+        "title": "Ну, погоди! (1080p Remaster)",
+        "episode": "Выпуск 6: В деревне",
+        "duration": 570,
+        "type": "video",
+        "timeSlot": "evening",
+        "timeSlotLabel": "🌆 ВЕЧЕРНИЙ ПРАЙМ [2/2]",
+        "url": "https://archive.org/download/NuPogody/Nu_Pogody!E06.BDRip.1080p.by_genkasper.mp4",
+        "poster": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600",
+        "description": "Погоня на парашютах над полями, курятник и поезд."
+      },
+      {
+        "title": "Ну, погоди! (1080p Remaster)",
+        "episode": "Выпуск 7: На теплоходе",
+        "duration": 580,
+        "type": "video",
+        "timeSlot": "night",
+        "timeSlotLabel": "🌙 НОЧНОЙ ЭФИР [1/2]",
+        "url": "https://archive.org/download/NuPogody/Nu_Pogody!E07.BDRip.1080p.by_genkasper.mp4",
+        "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
+        "description": "Морской круиз, капитан Морж и спасательный круг."
+      },
+      {
+        "title": "Ну, погоди! (1080p Remaster)",
+        "episode": "Выпуск 8: Новый Год",
+        "duration": 585,
+        "type": "video",
+        "timeSlot": "night",
+        "timeSlotLabel": "🌙 НОЧНОЙ ЭФИР [2/2]",
+        "url": "https://archive.org/download/NuPogody/Nu_Pogody!E08.BDRip.1080p.by_genkasper.mp4",
+        "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
+        "description": "«Расскажи, Снегурочка, где была...» Знаменитый новогодний выпуск."
+      }
+    ]
+  },
+  {
+    "id": "2x2-prime",
+    "number": "02",
+    "name": "2х2 PRIME & ADULT SWIM",
+    "tagline": "Ванпанчмен, Моб Психо 100 и культовые бамперы",
+    "logo": "[2x2]",
+    "badge": "2x2 PRIME",
+    "color": "#f59e0b",
+    "schedule": [
+      {
+        "title": "Ванпанчмен",
+        "episode": "Серия 1: Сильнейший человек",
+        "duration": 1465,
+        "type": "hls",
+        "timeSlotLabel": "🔥 СЁНЭН ЗАЛПОМ [1/2]",
+        "url": "https://cache.libria.fun/videos/media/ts/1210/1/720/4c5ec6d26457611fef4853bfa7053746.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/1210/XssyhK2MH4H8S7A35bMJeuXbpFgbaW4X.jpg",
+        "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайтама. Однаж..."
+      },
+      {
+        "title": "Ванпанчмен",
+        "episode": "Серия 2: Одинокий киборг",
+        "duration": 1465,
+        "type": "hls",
+        "timeSlotLabel": "🔥 СЁНЭН ЗАЛПОМ [2/2]",
+        "url": "https://cache.libria.fun/videos/media/ts/1210/2/720/4284104794c97eafa88b1cf8aeadc406.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/1210/XssyhK2MH4H8S7A35bMJeuXbpFgbaW4X.jpg",
+        "description": "Действия происходят в альтернативном мире, где супергероями и монстрами никого не удивить. В этом мире живёт самый обычный с виду парень по имени Сайтама. Однаж..."
+      },
+      {
+        "title": "Бампер 2х2",
+        "episode": "Отбивка эфира",
+        "duration": 18,
+        "type": "bumper",
+        "timeSlotLabel": "📺 БАМПЕР 2х2",
+        "bumperText": "Вы смотрите 2х2.\n\nНе переключайтесь, а то вырастет хвост.",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "description": "Фирменная отбивка 2х2"
+      },
+      {
+        "title": "Моб Психо 100",
+        "episode": "Серия 1: Самозваный экстрасенс",
+        "duration": 1469,
+        "type": "hls",
+        "timeSlotLabel": "⚡ МОБ ПСИХО [1/2]",
+        "url": "https://cache.libria.fun/videos/media/ts/2622/1/720/d14330a13846be8a068ab7e52796a0c2.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/2622/AeySGfVDvfc3xmhXuOMFQO7fgDUqEfJ8.jpg",
+        "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с ранних лет,..."
+      },
+      {
+        "title": "Моб Психо 100",
+        "episode": "Серия 2: Сомнения молодости",
+        "duration": 1469,
+        "type": "hls",
+        "timeSlotLabel": "⚡ МОБ ПСИХО [2/2]",
+        "url": "https://cache.libria.fun/videos/media/ts/2622/2/720/072eb4791945ff7bb59a48e65bd8b8db.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/2622/AeySGfVDvfc3xmhXuOMFQO7fgDUqEfJ8.jpg",
+        "description": "\"Шигэо Кагэяма, также известный как «Моб», — восьмиклассник с телекинетическими способностями. Он может сгибать ложки и поднимать вещи силой мысли с ранних лет,..."
+      },
+      {
+        "title": "Бампер Adult Swim",
+        "episode": "Ночной блок",
+        "duration": 20,
+        "type": "bumper",
+        "timeSlotLabel": "🌙 ADULT SWIM",
+        "bumperText": "[adult swim]\n\nСпать пора. Завтра опять всё проспишь.",
+        "poster": "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?w=600",
+        "description": "Ночная отбивка Adult Swim"
+      }
+    ]
+  },
+  {
+    "id": "anime-hits",
+    "number": "03",
+    "name": "ANIME HITS (ПРАЙМ)",
+    "tagline": "Клинок, Магическая битва, Семья шпиона — сериями залпом с русской озвучкой",
+    "logo": "⛩️",
+    "badge": "ANIME HITS",
+    "color": "#e11d48",
+    "schedule": [
+      {
+        "title": "Клинок, рассекающий демонов",
+        "episode": "Серия 1: Жестокость",
+        "duration": 1440,
+        "type": "hls",
+        "timeSlotLabel": "⚔️ КЛИНОК [1/2]",
+        "url": "https://cache.libria.fun/videos/media/ts/8325/1/720/6345e24e3d20a19882e0a992f9f7d8d4.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
+        "description": "Танджиро возвращается домой и застаёт трагедию. Его сестра Незуко обращена в демона."
+      },
+      {
+        "title": "Клинок, рассекающий демонов",
+        "episode": "Серия 2: Учитель Саконджи Урокодаки",
+        "duration": 1440,
+        "type": "hls",
+        "timeSlotLabel": "⚔️ КЛИНОК [2/2]",
+        "url": "https://cache.libria.fun/videos/media/ts/8325/2/720/189457294d11300596b717b7081bd365.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
+        "description": "Танджиро направляется к горе Сагири, чтобы обучиться дыханию воды у мастера Урокодаки."
+      },
+      {
+        "title": "Бампер Аниме",
+        "episode": "Анонс",
+        "duration": 15,
+        "type": "bumper",
+        "timeSlotLabel": "📺 АНОНС",
+        "bumperText": "ANIME PRIME\n\nДалее в эфире: Магическая Битва (2 серии подряд)",
+        "poster": "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=600",
+        "description": "Анонс следующего блока"
+      },
+      {
+        "title": "Магическая битва",
+        "episode": "Серия 1: Двуликий Сукуна",
+        "duration": 1435,
+        "type": "hls",
+        "timeSlotLabel": "🔮 МАГИЧЕСКАЯ БИТВА [1/2]",
+        "url": "https://cache.libria.fun/videos/media/ts/8789/1/720/6673036bb2bf535a5e149abe4ed52af3.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
+        "description": "Юдзи Итадори проглатывает проклятый палец Сукуны ради спасения друзей."
+      },
+      {
+        "title": "Магическая битва",
+        "episode": "Серия 2: Ради себя самого",
+        "duration": 1435,
+        "type": "hls",
+        "timeSlotLabel": "🔮 МАГИЧЕСКАЯ БИТВА [2/2]",
+        "url": "https://cache.libria.fun/videos/media/ts/8789/2/720/2580e1bc9a9b85aebcc3d1b388e998a9.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
+        "description": "Сатору Годжо забирает Юдзи в Токийский магический техникум."
+      },
+      {
+        "title": "Семья шпиона",
+        "episode": "Серия 1: Операция «Неясыть»",
+        "duration": 1449,
+        "type": "hls",
+        "timeSlotLabel": "🕵️ СЕМЬЯ ШПИОНА",
+        "url": "https://cache.libria.fun/videos/media/ts/9161/1/720/035988346d1cc4626f7126516a92d59a.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
+        "description": "Шпион под кодовым именем «Сумрак» берёт из приюта девочку Аню, которая умеет читать мысли."
+      }
+    ]
+  },
+  {
+    "id": "dark-cyber",
+    "number": "04",
+    "name": "ТЁМНЫЙ ЭФИР & CYBER",
+    "tagline": "Киберпанк, Токийский Гуль, Хантер х Хантер с озвучкой",
+    "logo": "💀",
+    "badge": "18+ CYBER",
+    "color": "#8b5cf6",
+    "schedule": [
+      {
+        "title": "Киберпанк: Бегущие по краю",
+        "episode": "Серия 1: Городской облом",
+        "duration": 1536,
+        "type": "hls",
+        "timeSlotLabel": "🌃 КИБЕРПАНК [1/2]",
+        "url": "https://cache.libria.fun/videos/media/ts/9307/1/720/585351ecd1ab4afbef42db505154e407.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
+        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность сродни об..."
+      },
+      {
+        "title": "Киберпанк: Бегущие по краю",
+        "episode": "Серия 2: Будто мальчишка",
+        "duration": 1534,
+        "type": "hls",
+        "timeSlotLabel": "🌃 КИБЕРПАНК [2/2]",
+        "url": "https://cache.libria.fun/videos/media/ts/9307/2/720/80967bea66eafa4f14f9b2783c3cc7e8.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/9307/k2g37dpWT3e0Dgj5vFe38g5IQeRDnnGh.jpg",
+        "description": "Найт-Сити — город будущего, оснащённый всевозможными новейшими технологиями. Город, где модификация тела не просто мечты безумных учёных, а реальность сродни об..."
+      },
+      {
+        "title": "Бампер Ночной Эфир",
+        "episode": "2х2 Ночь",
+        "duration": 20,
+        "type": "bumper",
+        "timeSlotLabel": "🌙 НОЧНОЙ ЭФИР",
+        "bumperText": "ТЁМНЫЙ ЭФИР 2х2\n\nНайт-сити никогда не спит. И ты не спишь.",
+        "poster": "https://images.unsplash.com/photo-1542751371-adc38448a05e?w=600",
+        "description": "Ночной бампер"
+      },
+      {
+        "title": "Токийский Гуль",
+        "episode": "Серия 1: Трагедия",
+        "duration": 1470,
+        "type": "hls",
+        "timeSlotLabel": "🩸 ТОКИЙСКИЙ ГУЛЬ [1/2]",
+        "url": "https://cache.libria.fun/videos/media/ts/432/1/720/2257451a7b079b3e54fba7676460877b.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/432/LpoztaRxyEgwc29nheLdWR5sKVdEAOqS.jpg",
+        "description": "Во вселенной аниме \"Токийский Гуль\", город Токио предстаёт перед нами загадочным и мистическим местом, где в тёмной подворотне тебя может подстерегать не только..."
+      },
+      {
+        "title": "Хантер х Хантер",
+        "episode": "Серия 1: Отправление и друзья",
+        "duration": 1417,
+        "type": "hls",
+        "timeSlotLabel": "🎯 ХАНТЕР Х ХАНТЕР",
+        "url": "https://cache.libria.fun/videos/media/ts/10294/1/720/86aeeac26b2f8f1c50007991f605c667.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+        "poster": "https://anilibria.top/storage/releases/posters/10294/DJH6l8g7gykL58F6ECUbHMxodbhu1Un3.jpg",
+        "description": "Охотник — это тот, кто путешествует по миру, выполняя различные опасные миссии: от поимки преступников до поиска сокровищ в неизведанных землях. Главный герой —..."
+      }
+    ]
+  },
+  {
+    "id": "my-custom-channel",
+    "number": "05",
+    "name": "МОЙ КАНАЛ (СТУДИЯ)",
+    "tagline": "Твоя персональная ТВ-сетка. Ищи и добавляй любые тайтлы через Конструктор!",
+    "logo": "⭐",
+    "badge": "CUSTOM DIY",
+    "color": "#10b981",
+    "isCustom": true,
+    "schedule": []
+  }
+];

@@ -1,0 +1,152 @@
+{
+  "kimetsu-no-yaiba": {
+    "name": "Клинок, рассекающий демонов",
+    "poster": "https://anilibria.top/storage/releases/posters/8325/nCaLGeaSAbDMzqOOppaCuEoq60DnZCVf.jpg",
+    "episodes": [
+      {
+        "ordinal": 1,
+        "name": null,
+        "duration": 1440,
+        "hls": "https://cache.libria.fun/videos/media/ts/8325/1/720/6345e24e3d20a19882e0a992f9f7d8d4.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+      },
+      {
+        "ordinal": 2,
+        "name": "Учитель Саконджи Урокодаки",
+        "duration": 1440,
+        "hls": "https://cache.libria.fun/videos/media/ts/8325/2/720/189457294d11300596b717b7081bd365.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+      },
+      {
+        "ordinal": 3,
+        "name": "Сабито Макомо",
+        "duration": 1440,
+        "hls": "https://cache.libria.fun/videos/media/ts/8325/3/720/36ed7d31a112aeaefc2e9e249ed89b32.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+      },
+      {
+        "ordinal": 4,
+        "name": "Финальный отбор",
+        "duration": 1440,
+        "hls": "https://cache.libria.fun/videos/media/ts/8325/4/720/b3dd9f7fe28032a42869fa89e5138f97.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+      }
+    ]
+  },
+  "jujutsu-kaisen": {
+    "name": "Магическая битва",
+    "poster": "https://anilibria.top/storage/releases/posters/8789/6dmupxwogGAY8PHlMTT33486cRXJB8np.jpg",
+    "episodes": [
+      {
+        "ordinal": 1,
+        "name": null,
+        "duration": 1435,
+        "hls": "https://cache.libria.fun/videos/media/ts/8789/1/720/6673036bb2bf535a5e149abe4ed52af3.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+      },
+      {
+        "ordinal": 2,
+        "name": null,
+        "duration": 1435,
+        "hls": "https://cache.libria.fun/videos/media/ts/8789/2/720/2580e1bc9a9b85aebcc3d1b388e998a9.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+      },
+      {
+        "ordinal": 3,
+        "name": null,
+        "duration": 1435,
+        "hls": "https://cache.libria.fun/videos/media/ts/8789/3/720/3fb53b7e8c96803d13ccc4b18ca8d748.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+      },
+      {
+        "ordinal": 4,
+        "name": null,
+        "duration": 1435,
+        "hls": "https://cache.libria.fun/videos/media/ts/8789/4/720/7a43b7781730a5d5ae47d5b1b6bdd3fb.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+      }
+    ]
+  },
+  "spy-x-family": {
+    "name": "Семья шпиона",
+    "poster": "https://anilibria.top/storage/releases/posters/9161/cd7NdGwnpqSltVbZQZ9PEbWYVG98JSvj.jpg",
+    "episodes": [
+      {
+        "ordinal": 1,
+        "name": null,
+        "duration": 1449,
+        "hls": "https://cache.libria.fun/videos/media/ts/9161/1/720/035988346d1cc4626f7126516a92d59a.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+      },
+      {
+        "ordinal": 2,
+        "name": null,
+        "duration": 1450,
+        "hls": "https://cache.libria.fun/videos/media/ts/9161/2/720/d3088b1ee0b6cb108cf269e1bc51f1bc.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+      },
+      {
+        "ordinal": 3,
+        "name": null,
+        "duration": 1450,
+        "hls": "https://cache.libria.fun/videos/media/ts/9161/3/720/cc439da357051e55f535d79cde9db8b8.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+      },
+      {
+        "ordinal": 4,
+        "name": null,
+        "duration": 1450,
+        "hls": "https://cache.libria.fun/videos/media/ts/9161/4/720/b222070504cb5717cf01276362ba1ebf.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+      }
+    ]
+  },
+  "bleach": {
+    "name": "Блич",
+    "poster": "https://anilibria.top/storage/releases/posters/8452/bJotddCEwNlavuWUX6yUPCCP173Nxc8e.jpg",
+    "episodes": [
+      {
+        "ordinal": 1,
+        "name": null,
+        "duration": 1384,
+        "hls": "https://cache.libria.fun/videos/media/ts/8452/1/720/366fe6574079d30788ba8c4a8bc7ce66.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+      },
+      {
+        "ordinal": 2,
+        "name": null,
+        "duration": 1384,
+        "hls": "https://cache.libria.fun/videos/media/ts/8452/2/720/b4947617142f45da4702dbf3e2f194ec.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+      },
+      {
+        "ordinal": 3,
+        "name": null,
+        "duration": 1384,
+        "hls": "https://cache.libria.fun/videos/media/ts/8452/3/720/f21bd89fdc1750651cf10411d289e022.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+      },
+      {
+        "ordinal": 4,
+        "name": null,
+        "duration": 1384,
+        "hls": "https://cache.libria.fun/videos/media/ts/8452/4/720/65626b5f33719f5f0b1946fb02350407.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+      }
+    ]
+  },
+  "naruto-shippuuden-naruto-uragannye-khroniki": {
+    "name": "Наруто Ураганные хроники",
+    "poster": "https://anilibria.top/storage/releases/posters/413/oNGrAgRa8RNXfZNf8NTL4EzOV1PsAiFD.jpg",
+    "episodes": [
+      {
+        "ordinal": 370,
+        "name": null,
+        "duration": 1400,
+        "hls": "https://cache.libria.fun/videos/media/ts/413/370/720/9d692daf4a6baee364774252acd32e4d.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+      },
+      {
+        "ordinal": 371,
+        "name": null,
+        "duration": 1401,
+        "hls": "https://cache.libria.fun/videos/media/ts/413/371/720/846ae75160e571d17791ef7c34822578.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+      },
+      {
+        "ordinal": 372,
+        "name": null,
+        "duration": 1415,
+        "hls": "https://cache.libria.fun/videos/media/ts/413/372/720/50e8c80721f1c23b6750c35ce30ecfdd.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+      },
+      {
+        "ordinal": 373,
+        "name": null,
+        "duration": 1415,
+        "hls": "https://cache.libria.fun/videos/media/ts/413/373/720/026ed800675fe0eb6df2810b1c9f2cd8.m3u8?countryIso=US&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1"
+      }
+    ]
+  }
+}

@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>yturokTV — Виртуальное Линейное ТВ 24/7 (Мультики, Аниме & 2x2)</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- HLS.js for direct AniLibria & video streaming -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.7/dist/hls.min.js"></script>
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#06070b] text-slate-100 min-h-screen flex flex-col selection:bg-cyan-500 selection:text-black">
+
+  <!-- TOP HEADER -->
+  <header class="border-b border-white/10 bg-[#090b14]/90 backdrop-blur-2xl sticky top-0 z-40 px-4 py-2.5 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 via-indigo-600 to-rose-500 flex items-center justify-center font-black text-xl shadow-lg shadow-cyan-950/40">
+        📺
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <h1 class="text-lg font-black tracking-wider font-mono text-white flex items-center gap-1.5">
+            yturok<span class="text-cyan-400">TV</span>
+          </h1>
+          <span class="px-2 py-0.5 text-[10px] font-bold uppercase rounded-full bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-cyan-400 live-dot"></span> ПРЯМОЙ ЭФИР 24/7
+          </span>
+        </div>
+        <p class="text-[11px] text-gray-400 flex items-center gap-2">
+          <span>Мультсериалы, 2х2 & Аниме с русской озвучкой</span>
+          <span class="text-gray-600 hidden md:inline">•</span>
+          <span id="header-time-block" class="text-cyan-400/90 font-mono hidden md:inline">☀️ Утренний блок</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Clock & Global Actions -->
+    <div class="flex items-center gap-2 sm:gap-3">
+      <!-- Live Server Clock -->
+      <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-black/50 border border-white/10 text-xs font-mono text-gray-300">
+        <i class="fa-regular fa-clock text-cyan-400"></i>
+        <span id="current-clock">--:--:--</span>
+      </div>
+
+      <!-- CRT / Screen Mode Switch -->
+      <button id="btn-toggle-crt" title="Включить / Выключить ЭЛТ-фильтр" class="px-3 py-1.5 text-xs font-semibold rounded-xl bg-gray-900 hover:bg-gray-800 text-gray-200 border border-white/10 transition flex items-center gap-1.5">
+        <i class="fa-solid fa-tv text-amber-400"></i>
+        <span class="hidden md:inline">ЭЛТ Экран:</span>
+        <span id="crt-status-text" class="text-amber-400">ВКЛ</span>
+      </button>
+
+      <!-- EPG Program Guide Button -->
+      <button id="btn-open-epg" class="px-3.5 py-1.5 text-xs font-bold rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white transition flex items-center gap-1.5 shadow-md shadow-indigo-950/40">
+        <i class="fa-solid fa-calendar-days"></i>
+        <span class="hidden sm:inline">Телепрограмма</span>
+      </button>
+
+      <!-- Studio Button -->
+      <button id="btn-open-studio" class="px-3.5 py-1.5 text-xs font-bold rounded-xl bg-gradient-to-r from-rose-600 to-amber-600 hover:from-rose-500 hover:to-amber-500 text-white transition flex items-center gap-1.5 shadow-md shadow-rose-950/40">
+        <i class="fa-solid fa-wand-magic-sparkles"></i>
+        <span>Конструктор</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN BROADCAST INTERFACE -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-3 md:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+    
+    <!-- LEFT: TV SCREEN & CONTROLS (8 cols) -->
+    <div class="lg:col-span-8 flex flex-col gap-4">
+      
+      <!-- TV CABINET / BEZEL WITH DYNAMIC AMBILIGHT -->
+      <div id="tv-cabinet" class="relative rounded-2xl bg-[#0c0f1a] p-2 md:p-4 border border-white/10 ambilight-glow">
+        
+        <!-- TV SCREEN WRAPPER (16:9 ratio) -->
+        <div id="tv-screen-container" class="relative aspect-video w-full rounded-xl overflow-hidden bg-black crt-mode flex items-center justify-center">
+          
+          <!-- Unified Video Player for HLS and MP4 -->
+          <video id="hls-player" class="w-full h-full object-contain absolute inset-0 z-0 hidden" playsinline></video>
+
+          <!-- 2x2 Retro Text Bumper Screen -->
+          <div id="bumper-screen" class="absolute inset-0 z-10 bumper-screen flex flex-col items-center justify-center p-8 text-center select-none hidden">
+            <div class="max-w-lg">
+              <div id="bumper-logo" class="font-mono font-black text-3xl tracking-widest text-cyan-400 mb-6 drop-shadow">[2x2]</div>
+              <p id="bumper-text" class="text-xl md:text-2xl font-bold tracking-tight text-white leading-snug whitespace-pre-line"></p>
+            </div>
+          </div>
+
+          <!-- Static Noise Screen during switching -->
+          <div id="static-screen" class="absolute inset-0 z-20 static-noise hidden"></div>
+
+          <!-- TV Channel Corner Watermark & Time of Day badge (top-left) -->
+          <div class="absolute top-4 left-4 z-10 flex items-center gap-2 pointer-events-none">
+            <div id="channel-watermark" class="px-2.5 py-1 rounded-lg bg-black/75 backdrop-blur-md border border-white/15 text-white font-mono text-xs font-black tracking-widest drop-shadow">
+              🐺 МУЛЬТИКИ HD
+            </div>
+            <div id="screen-slot-badge" class="px-2.5 py-1 rounded-lg bg-cyan-950/80 backdrop-blur-md border border-cyan-500/30 text-cyan-300 font-mono text-[10px] font-bold uppercase drop-shadow">
+              ☀️ УТРЕННИЙ БЛОК
+            </div>
+          </div>
+
+          <!-- CORNER HOVER NAVIGATION POD (top-right corner) -->
+          <div id="corner-nav-zone" class="corner-nav-zone">
+            <div class="flex flex-col items-end gap-2">
+              <!-- Corner Trigger Button -->
+              <button id="corner-nav-trigger-btn" class="corner-nav-trigger px-3 py-1.5 rounded-full bg-black/80 hover:bg-black/95 backdrop-blur-md border border-white/20 text-white font-mono text-xs flex items-center gap-2 shadow-2xl cursor-pointer">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 live-dot"></span>
+                <span id="corner-channel-indicator">CH 01</span>
+                <i class="fa-solid fa-bars text-[11px] text-gray-300"></i>
+              </button>
+              
+              <!-- Slide-out Navigation Hub on Corner Hover -->
+              <div id="corner-nav-content" class="corner-nav-content bg-[#0b0e1a]/95 backdrop-blur-2xl border border-white/15 rounded-2xl p-3.5 shadow-2xl text-xs w-68 flex flex-col gap-3">
+                <!-- Channel Quick Switch Buttons -->
+                <div>
+                  <div class="text-[10px] uppercase font-bold text-gray-400 font-mono mb-1.5 flex items-center justify-between">
+                    <span>Телеканалы</span>
+                    <span class="text-cyan-400 font-mono" id="corner-nav-channel-title">МУЛЬТ-КЛАССИКА</span>
+                  </div>
+                  <div id="corner-channel-buttons" class="grid grid-cols-5 gap-1.5">
+                    <!-- Populated by app.js: 01, 02, 03, 04, 05 -->
+                  </div>
+                </div>
+                
+                <!-- Quick Tools Row -->
+                <div class="grid grid-cols-3 gap-1.5 pt-2 border-t border-white/10">
+                  <button id="corner-btn-epg" class="py-2 px-2 rounded-xl bg-gray-800/80 hover:bg-indigo-600 text-gray-200 hover:text-white transition flex flex-col items-center gap-1">
+                    <i class="fa-solid fa-calendar-days text-sm"></i>
+                    <span class="text-[10px] font-semibold">Программа</span>
+                  </button>
+                  <button id="corner-btn-crt" class="py-2 px-2 rounded-xl bg-gray-800/80 hover:bg-amber-600 text-gray-200 hover:text-white transition flex flex-col items-center gap-1">
+                    <i class="fa-solid fa-tv text-sm"></i>
+                    <span class="text-[10px] font-semibold">ЭЛТ Экран</span>
+                  </button>
+                  <button id="corner-btn-fullscreen" class="py-2 px-2 rounded-xl bg-gray-800/80 hover:bg-cyan-600 text-gray-200 hover:text-white transition flex flex-col items-center gap-1">
+                    <i class="fa-solid fa-expand text-sm"></i>
+                    <span class="text-[10px] font-semibold">Кинотеатр</span>
+                  </button>
+                </div>
+
+                <!-- Volume Row -->
+                <div class="flex items-center justify-between gap-2 pt-2 border-t border-white/10 text-gray-300">
+                  <button id="corner-btn-mute" class="hover:text-white transition p-1">
+                    <i id="corner-mute-icon" class="fa-solid fa-volume-high text-sm"></i>
+                  </button>
+                  <input id="corner-volume-slider" type="range" min="0" max="100" value="80" class="w-full accent-cyan-400 h-1 bg-gray-700 rounded cursor-pointer">
+                  <button id="corner-btn-studio" class="p-1 text-gray-400 hover:text-cyan-400 transition" title="Конструктор">
+                    <i class="fa-solid fa-wand-magic-sparkles text-sm"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Unmute / First Click Prompt Overlay -->
+          <div id="unmute-overlay" class="absolute inset-0 z-30 bg-black/85 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center cursor-pointer transition">
+            <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center text-white text-2xl mb-4 shadow-xl shadow-cyan-500/40 hover:scale-110 transition">
+              <i class="fa-solid fa-play ml-1"></i>
+            </div>
+            <h2 class="text-xl font-bold text-white mb-2 font-mono">ВКЛЮЧИТЬ ТЕЛЕВИЗОР</h2>
+            <p class="text-sm text-gray-300 max-w-sm">
+              Нажмите сюда, чтобы запустить прямой эфир со звуком
+            </p>
+          </div>
+
+          <!-- Retro OSD Banner on channel switch -->
+          <div id="osd-banner" class="absolute bottom-6 left-6 right-6 z-20 bg-black/90 backdrop-blur-lg border border-cyan-500/50 rounded-xl p-3 md:p-4 text-cyan-400 font-mono shadow-2xl transition-all duration-300 opacity-0 pointer-events-none transform translate-y-2">
+            <div class="flex items-center justify-between text-xs font-bold border-b border-cyan-500/30 pb-1.5 mb-2">
+              <span id="osd-channel-num" class="text-cyan-300 text-sm tracking-wider">CH 01 • МУЛЬТ-КЛАССИКА (РУС)</span>
+              <span id="osd-time" class="text-cyan-500">14:45 • STEREO HQ</span>
+            </div>
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <div id="osd-title" class="text-sm md:text-base font-bold text-white truncate">
+                  Ну, погоди! (1080p Remaster)
+                </div>
+                <div id="osd-subtitle" class="text-xs text-cyan-300/80">
+                  Выпуск 1: В городе и на пляже
+                </div>
+              </div>
+              <div class="text-right text-xs">
+                <span class="text-cyan-500/70 block">СЛЕДОМ В ЭФИРЕ:</span>
+                <span id="osd-next" class="text-cyan-200 font-semibold truncate block max-w-[200px]">
+                  Ну, погоди! (Выпуск 2)
+                </span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- TV CABINET BOTTOM BAR -->
+        <div class="mt-3 pt-2.5 border-t border-white/10 flex flex-wrap items-center justify-between gap-3 text-xs text-gray-400">
+          
+          <!-- Channel Controls & Volume -->
+          <div class="flex items-center gap-2">
+            <button id="btn-prev-ch" class="w-8 h-8 rounded-lg bg-gray-800 hover:bg-gray-700 text-white flex items-center justify-center font-bold transition" title="Предыдущий канал">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <span class="font-mono text-gray-300 font-bold px-1" id="current-channel-badge">CH 01</span>
+            <button id="btn-next-ch" class="w-8 h-8 rounded-lg bg-gray-800 hover:bg-gray-700 text-white flex items-center justify-center font-bold transition" title="Следующий канал">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+
+            <!-- Volume Slider -->
+            <div class="flex items-center gap-2 ml-3 bg-black/40 px-2.5 py-1 rounded-lg border border-white/10">
+              <button id="btn-mute" class="text-gray-300 hover:text-white transition">
+                <i id="mute-icon" class="fa-solid fa-volume-high"></i>
+              </button>
+              <input id="volume-slider" type="range" min="0" max="100" value="80" class="w-16 accent-cyan-400 h-1 bg-gray-700 rounded cursor-pointer">
+            </div>
+          </div>
+
+          <!-- Broadcast Progress Bar -->
+          <div class="flex items-center gap-3 flex-1 max-w-xs mx-auto">
+            <div class="w-full bg-gray-800/80 h-1.5 rounded-full overflow-hidden">
+              <div id="broadcast-progress" class="bg-gradient-to-r from-cyan-400 to-indigo-500 h-full w-0 transition-all duration-1000"></div>
+            </div>
+            <span id="broadcast-time-text" class="font-mono text-[11px] text-gray-400 whitespace-nowrap">00:00 / 00:00</span>
+          </div>
+
+          <!-- Right actions: Fullscreen Cinema -->
+          <div class="flex items-center gap-2">
+            <button id="btn-cinema" class="px-3 py-1 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 transition flex items-center gap-1.5" title="Полноэкранный режим">
+              <i class="fa-solid fa-expand"></i>
+              <span class="hidden sm:inline text-[11px]">Кинотеатр</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- CURRENT SHOW INFO CARD -->
+      <div class="glass-card rounded-2xl p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div class="flex items-start gap-4">
+          <img id="show-poster" src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=200" alt="Постер" class="w-16 h-20 object-cover rounded-xl border border-white/10 shadow-lg">
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span id="show-slot-badge" class="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 font-mono">
+                ☀️ УТРЕННИЙ БЛОК
+              </span>
+              <span id="show-channel-name" class="text-xs font-mono text-gray-400">МУЛЬТ-КЛАССИКА</span>
+            </div>
+            <h3 id="show-title" class="text-base font-bold text-white leading-snug">
+              Ну, погоди! (1080p Remaster)
+            </h3>
+            <p id="show-episode" class="text-xs text-cyan-400 font-medium mb-1">
+              Выпуск 1: В городе и на пляже
+            </p>
+            <p id="show-description" class="text-xs text-gray-400 line-clamp-2 max-w-xl">
+              Легендарный первый выпуск «Ну, погоди!». Заяц на водных лыжах, Волк и знаменитая погоня...
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-col items-end gap-1.5 text-right w-full md:w-auto border-t md:border-t-0 pt-2 md:pt-0 border-white/10">
+          <span class="text-[11px] text-gray-400">Следом в эфире:</span>
+          <span id="show-next-title" class="text-xs font-bold text-cyan-300 max-w-[200px] truncate">
+            Ну, погоди! (Выпуск 2)
+          </span>
+          <span id="show-next-time" class="text-[11px] font-mono text-gray-500">через ~9 минут</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: CHANNELS & MULTI-CHANNEL TIMELINE INSPECTOR (4 cols) -->
+    <div class="lg:col-span-4 flex flex-col gap-4">
+      
+      <!-- Channels Selector -->
+      <div class="glass-card rounded-2xl p-4">
+        <div class="flex items-center justify-between mb-3 pb-2 border-b border-white/10">
+          <h2 class="text-sm font-bold uppercase tracking-wider text-gray-200 font-mono flex items-center gap-2">
+            <i class="fa-solid fa-list-ol text-cyan-400"></i> Телеканалы эфира
+          </h2>
+          <span class="text-[11px] text-cyan-400 font-mono">5 кнопок</span>
+        </div>
+
+        <!-- Channels List -->
+        <div id="channels-list" class="flex flex-col gap-2.5">
+          <!-- Dynamically filled by app.js -->
+        </div>
+      </div>
+
+      <!-- MULTI-CHANNEL LIVE TIMELINE INSPECTOR -->
+      <div class="glass-card rounded-2xl p-4 flex flex-col gap-3">
+        <div class="flex items-center justify-between pb-2 border-b border-white/10">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-gray-300 font-mono flex items-center gap-2">
+            <i class="fa-solid fa-tower-broadcast text-rose-500"></i> Сетка других каналов
+          </h3>
+          <span class="text-[10px] text-gray-500 font-mono">синхронный поток</span>
+        </div>
+
+        <!-- Inspector Grid -->
+        <div id="inspector-grid" class="flex flex-col gap-2 text-xs">
+          <!-- Populated by app.js with live progress on all other channels! -->
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- MODAL: EPG (ТЕЛЕПРОГРАММА НА МНОГО ДНЕЙ ВПЕРЕД) -->
+  <div id="modal-epg" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-xl hidden flex items-center justify-center p-4">
+    <div class="glass-card rounded-2xl max-w-4xl w-full max-h-[85vh] flex flex-col shadow-2xl overflow-hidden border border-white/15">
+      
+      <div class="p-4 border-b border-white/10 flex items-center justify-between bg-[#0b0e1a]">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-calendar-days text-cyan-400 text-lg"></i>
+          <div>
+            <h3 class="font-bold text-white">Интерактивная Телепрограмма (EPG)</h3>
+            <p class="text-xs text-gray-400">Сетка вещания по тайм-слотам: Утро, День, Вечер, Ночь</p>
+          </div>
+        </div>
+        <button id="btn-close-epg" class="w-8 h-8 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 flex items-center justify-center transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Date Selector Tabs -->
+      <div class="flex items-center gap-2 px-4 py-2 bg-black/40 border-b border-white/10 overflow-x-auto text-xs">
+        <span class="text-gray-400 font-mono mr-1">ДАТА:</span>
+        <button class="epg-day-btn active px-3.5 py-1 rounded-lg bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 font-bold">СЕГОДНЯ</button>
+        <button class="epg-day-btn px-3.5 py-1 rounded-lg bg-gray-800/60 text-gray-400 hover:text-white">ЗАВТРА</button>
+        <button class="epg-day-btn px-3.5 py-1 rounded-lg bg-gray-800/60 text-gray-400 hover:text-white">ЧЕРЕЗ 3 ДНЯ</button>
+        <button class="epg-day-btn px-3.5 py-1 rounded-lg bg-gray-800/60 text-gray-400 hover:text-white">СУББОТА (МАРАФОН)</button>
+      </div>
+
+      <!-- Channel Tabs inside EPG -->
+      <div id="epg-tabs" class="flex items-center gap-2 px-4 py-2 bg-gray-900/60 border-b border-white/10 overflow-x-auto">
+        <!-- Rendered by app.js -->
+      </div>
+
+      <!-- EPG Content Grid -->
+      <div id="epg-schedule-list" class="flex-1 overflow-y-auto p-4 flex flex-col gap-3">
+        <!-- Rendered by app.js -->
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MODAL: STUDIO / CONSTRUCTOR -->
+  <div id="modal-studio" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-xl hidden flex items-center justify-center p-4">
+    <div class="glass-card rounded-2xl max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden border border-white/15">
+      
+      <div class="p-4 border-b border-white/10 flex items-center justify-between bg-[#0b0e1a]">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-wand-magic-sparkles text-rose-500 text-lg"></i>
+          <div>
+            <h3 class="font-bold text-white">Конструктор ТВ & База Контента</h3>
+            <p class="text-xs text-gray-400">Ищи аниме по живой базе AniLibria или добавляй любые тайтлы на "Мой Канал"</p>
+          </div>
+        </div>
+        <button id="btn-close-studio" class="w-8 h-8 rounded-lg bg-gray-800 hover:bg-gray-700 text-gray-300 flex items-center justify-center transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- Search Section -->
+      <div class="p-4 bg-gray-900/50 border-b border-white/10 flex flex-col md:flex-row gap-3">
+        <div class="relative flex-1">
+          <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-gray-400 text-sm"></i>
+          <input id="studio-search-input" type="text" placeholder="Поиск аниме по базе AniLibria (напр. Клинок, Блич, Наруто)..." class="w-full bg-[#181d2e] border border-gray-700 rounded-xl pl-10 pr-4 py-2.5 text-sm text-white focus:outline-none focus:border-cyan-400 transition">
+        </div>
+        <button id="btn-studio-search" class="px-5 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-semibold text-sm transition flex items-center justify-center gap-2 shadow">
+          <span>Найти в базе</span>
+        </button>
+      </div>
+
+      <!-- Studio Body -->
+      <div class="flex-1 overflow-y-auto p-4 grid grid-cols-1 md:grid-cols-12 gap-6">
+        
+        <!-- Left: Search Results -->
+        <div class="md:col-span-7 flex flex-col gap-3">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-gray-400 font-mono">
+              Результаты поиска (AniLibria API)
+            </h4>
+            <span id="search-count-badge" class="text-[11px] text-gray-500">Введите запрос выше</span>
+          </div>
+
+          <div id="search-results-container" class="flex flex-col gap-2.5 min-h-[220px]">
+            <div class="text-center py-12 text-gray-500 text-xs">
+              Напиши название любого аниме в строке поиска выше (например «Клинок», «Человек», «Блич», «Наруто»)
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: "Мой Канал" Schedule -->
+        <div class="md:col-span-5 flex flex-col gap-3 border-t md:border-t-0 md:border-l border-white/10 md:pl-6 pt-4 md:pt-0">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-cyan-400 font-mono flex items-center gap-1.5">
+              <i class="fa-solid fa-star"></i> Сетка «Моего Канала»
+            </h4>
+            <button id="btn-clear-custom" class="text-[11px] text-gray-500 hover:text-red-400 transition">Очистить</button>
+          </div>
+
+          <!-- Add direct anime by alias / stream block -->
+          <div class="bg-gray-900/60 border border-white/10 rounded-xl p-3 flex flex-col gap-2 text-xs">
+            <span class="font-bold text-gray-300">Добавить аниме по коду AniLibria:</span>
+            <div class="flex gap-2">
+              <input id="custom-alias-input" type="text" placeholder="Код тайтла (напр. bleach, chainsaw-man)" class="flex-1 bg-[#181d2e] border border-gray-700 rounded-lg px-2.5 py-1.5 text-xs text-white">
+              <button id="btn-add-alias" class="py-1.5 px-3 rounded-lg bg-cyan-600 hover:bg-cyan-500 text-white font-semibold transition">
+                + Добавить
+              </button>
+            </div>
+            <p class="text-[10px] text-gray-500">Либо просто воспользуйтесь поиском по каталогу слева</p>
+          </div>
+
+          <!-- Custom channel list -->
+          <div id="custom-schedule-items" class="flex flex-col gap-2 overflow-y-auto max-h-[300px]">
+            <!-- Rendered by app.js -->
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SCRIPT -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
