@@ -139,6 +139,26 @@ html, body {
   transition: box-shadow 0.6s ease;
 }
 
+/* Seamless Viewport Crop: Scales past any external player title bar & bottom watermark */
+#yt-player-container {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background-color: #000;
+}
+
+#yt-player-container iframe,
+#yt-player {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 135% !important;
+  height: 135% !important;
+  transform: translate(-50%, -50%) !important;
+  border: none !important;
+}
+
 /* CRT Screen Filter Simulation */
 .crt-mode::before {
   content: " ";

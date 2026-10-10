@@ -360,47 +360,8 @@ function playCurrentChannel(withGlitch = true) {
   const ytContainer = $('yt-player-container');
   const bumperScreen = $('bumper-screen');
 
-  // Handle Playback by Stream Type
-  if (currentItem.type === 'youtube' || currentItem.youtubeId) {
-    if (bumperScreen) bumperScreen.classList.add('hidden');
-    if (hlsVideo) {
-      hlsVideo.pause();
-      hlsVideo.classList.add('hidden');
-    }
-    if (ytContainer) ytContainer.classList.remove('hidden');
-
-    const ytid = currentItem.youtubeId;
-    state.currentStreamUrl = null;
-    const isNewYt = (state.currentYtId !== ytid);
-    state.currentYtId = ytid;
-
-    if (state.ytPlayer && state.ytPlayer.loadVideoById) {
-      if (isNewYt) {
-        state.ytPlayer.loadVideoById({
-          videoId: ytid,
-          startSeconds: Math.max(0, Math.floor(elapsed))
-        });
-        if (state.isTVStarted && !state.isMuted) {
-          state.ytPlayer.unMute();
-          state.ytPlayer.setVolume(state.volume);
-        } else {
-          state.ytPlayer.mute();
-        }
-        state.ytPlayer.playVideo();
-      } else {
-        // Drift check for YouTube
-        try {
-          const curTime = state.ytPlayer.getCurrentTime();
-          if (Math.abs(curTime - elapsed) > 4 && !state.isCatchUpMode) {
-            state.ytPlayer.seekTo(elapsed, true);
-          }
-        } catch (e) {}
-      }
-    } else if (window.YT && window.YT.Player && !state.ytPlayer) {
-      initYouTubePlayer();
-    }
-
-  } else if (currentItem.type === 'bumper') {
+  // Handle Playback by Stream Type (Prioritize Direct Native Video Streams!)
+  if (currentItem.type === 'bumper') {
     if (ytContainer) {
       ytContainer.classList.add('hidden');
       try { state.ytPlayer?.pauseVideo(); } catch (e) {}
@@ -416,7 +377,8 @@ function playCurrentChannel(withGlitch = true) {
     }
     playBumperAmbientTone();
 
-  } else if (currentItem.type === 'video') {
+  } else if (currentItem.type === 'video' || (currentItem.url && !currentItem.url.includes('.m3u8'))) {
+    // Pure Direct MP4 Video Stream (Native HTML5 <video> - Zero YouTube interface / Zero Bot blocks!)
     if (ytContainer) {
       ytContainer.classList.add('hidden');
       try { state.ytPlayer?.pauseVideo(); } catch (e) {}
@@ -455,7 +417,8 @@ function playCurrentChannel(withGlitch = true) {
       }
     }
 
-  } else if (currentItem.type === 'hls' || currentItem.url) {
+  } else if (currentItem.type === 'hls' || (currentItem.url && currentItem.url.includes('.m3u8'))) {
+    // Pure HLS Stream (Native AniLibria / HLS.js - Zero YouTube interface!)
     if (ytContainer) {
       ytContainer.classList.add('hidden');
       try { state.ytPlayer?.pauseVideo(); } catch (e) {}
@@ -516,6 +479,44 @@ function playCurrentChannel(withGlitch = true) {
         hlsVideo.volume = state.volume / 100;
         hlsVideo.play().catch(() => {});
       }
+    }
+
+  } else if (currentItem.type === 'youtube' || currentItem.youtubeId) {
+    if (bumperScreen) bumperScreen.classList.add('hidden');
+    if (hlsVideo) {
+      hlsVideo.pause();
+      hlsVideo.classList.add('hidden');
+    }
+    if (ytContainer) ytContainer.classList.remove('hidden');
+
+    const ytid = currentItem.youtubeId;
+    state.currentStreamUrl = null;
+    const isNewYt = (state.currentYtId !== ytid);
+    state.currentYtId = ytid;
+
+    if (state.ytPlayer && state.ytPlayer.loadVideoById) {
+      if (isNewYt) {
+        state.ytPlayer.loadVideoById({
+          videoId: ytid,
+          startSeconds: Math.max(0, Math.floor(elapsed))
+        });
+        if (state.isTVStarted && !state.isMuted) {
+          state.ytPlayer.unMute();
+          state.ytPlayer.setVolume(state.volume);
+        } else {
+          state.ytPlayer.mute();
+        }
+        state.ytPlayer.playVideo();
+      } else {
+        try {
+          const curTime = state.ytPlayer.getCurrentTime();
+          if (Math.abs(curTime - elapsed) > 4 && !state.isCatchUpMode) {
+            state.ytPlayer.seekTo(elapsed, true);
+          }
+        } catch (e) {}
+      }
+    } else if (window.YT && window.YT.Player && !state.ytPlayer) {
+      initYouTubePlayer();
     }
   }
 
