@@ -16,7 +16,10 @@ const state = {
   mouseTimer: null,
   currentStreamUrl: null,
   serverTimeDeltaMs: 0,
-  isTimeSynced: false
+  isTimeSynced: false,
+  isCatchUpMode: false,
+  sleepTimerMinutes: 0,
+  sleepTimerEndMs: 0
 };
 
 // Safe DOM Helpers
@@ -193,8 +196,8 @@ function playBumperAmbientTone() {
   } catch (e) {}
 }
 
-// Deterministic Broadcast Timeline Math (Continuous Multi-Season Broadcast Anchored to Fixed Epoch)
-const EPOCH_START = 1767225600; // 2026-01-01 00:00:00 UTC (predictable across days and years!)
+// Deterministic Broadcast Timeline Math (Continuous Multi-Season Broadcast Anchored to Today YEKT)
+const EPOCH_START = 1791658800; // Today 00:00:00 YEKT (Starts cleanly from early episodes!)
 
 function calculateBroadcastPosition(channel, dayOffset = 0) {
   const schedule = channel.schedule;
@@ -291,6 +294,11 @@ function playCurrentChannel(withGlitch = true) {
 
   // Apply CRT mode strictly according to state.crtEnabled (never resets on channel switch!)
   applyCRT();
+
+  // Reset Catch-Up mode on channel switch
+  state.isCatchUpMode = false;
+  $('btn-go-live')?.classList.add('hidden');
+  $('btn-start-over')?.classList.remove('hidden');
 
   const hlsVideo = $('hls-player');
   const bumperScreen = $('bumper-screen');
@@ -445,6 +453,120 @@ function updateChannelInfoDOM(channel, currentItem, elapsed, nextItem, progressP
   const prog = $('broadcast-progress');
   if (prog) prog.style.width = `${progressPercent}%`;
   text('broadcast-time-text', `${formatTime(elapsed)} / ${formatTime(currentItem.duration || 1400)}`);
+
+  // Update Broadcast News Ticker
+  updateNewsTickerDOM(channel, currentItem, nextItem);
+}
+
+// Update News Ticker Track (Бегущая строка)
+function updateNewsTickerDOM(channel, currentItem, nextItem) {
+  const tickerEl = $('ticker-text');
+  if (!tickerEl) return;
+  const nextInfo = nextItem ? `СЛЕДУЮЩИМ: ${nextItem.title} (${nextItem.episode || ''})` : 'КРУГЛОСУТОЧНЫЙ ЭФИР 24/7';
+  const tagInfo = currentItem.badgeTag || 'ПРЕМЬЕРА';
+  tickerEl.textContent = `📢 В ЭФИРЕ: [${channel.shortName || channel.name}] ${currentItem.title} • ${currentItem.episode || ''} [${tagInfo}]  •  👉 ${nextInfo}  •  ⚡ СИНХРОН: СВЕРДЛОВСКАЯ ОБЛАСТЬ (ЕКБ • UTC+5)  •  🌙 ВЕЧЕРНИЙ ЭФИР: САГА О ВИНЛАНДЕ, АДСКИЙ БОСС, КИБЕРПАНК & БАМПЕРЫ 2Х2  •  💡 ГОРЯЧИЕ КЛАВИШИ: [F] ПОЛНЫЙ ЭКРАН • [1/2/3] СМЕНА ПОТОКА • [M] ЗВУК • ЖМИТЕ ЭМОДЗИ ДЛЯ РЕАКЦИИ`;
+}
+
+// Floating Live Emoji Reactions (Danmaku-lite)
+function spawnFloatingReaction(emoji) {
+  const container = $('reactions-stage');
+  if (!container) return;
+
+  const el = document.createElement('div');
+  el.className = 'floating-reaction';
+  el.textContent = emoji;
+
+  // Random horizontal position
+  const randomLeft = 20 + Math.random() * 65;
+  el.style.left = `${randomLeft}%`;
+
+  container.appendChild(el);
+
+  setTimeout(() => {
+    if (el.parentNode) el.parentNode.removeChild(el);
+  }, 2300);
+}
+
+// Sleep Timer (Таймер сна)
+function handleSleepTimerToggle() {
+  const steps = [0, 15, 30, 45, 60];
+  const currentIdx = steps.indexOf(state.sleepTimerMinutes);
+  const nextIdx = (currentIdx + 1) % steps.length;
+  state.sleepTimerMinutes = steps[nextIdx];
+
+  const btnText = $('sleep-timer-text');
+  const btn = $('btn-sleep-timer');
+
+  if (state.sleepTimerMinutes > 0) {
+    if (btnText) btnText.textContent = `Сон: ${state.sleepTimerMinutes}м`;
+    if (btn) btn.classList.add('active');
+    state.sleepTimerEndMs = Date.now() + (state.sleepTimerMinutes * 60 * 1000);
+  } else {
+    if (btnText) btnText.textContent = `Сон: Выкл`;
+    if (btn) btn.classList.remove('active');
+    state.sleepTimerEndMs = 0;
+  }
+}
+
+function checkSleepTimerTick() {
+  if (state.sleepTimerMinutes > 0 && state.sleepTimerEndMs > 0) {
+    const leftMs = state.sleepTimerEndMs - Date.now();
+    if (leftMs <= 0) {
+      state.sleepTimerMinutes = 0;
+      state.sleepTimerEndMs = 0;
+      text('sleep-timer-text', 'Сон: Выкл');
+      $('btn-sleep-timer')?.classList.remove('active');
+
+      const hlsVideo = $('hls-player');
+      if (hlsVideo) {
+        hlsVideo.pause();
+        hlsVideo.classList.add('hidden');
+      }
+      const bumperScreen = $('bumper-screen');
+      if (bumperScreen) {
+        bumperScreen.classList.remove('hidden');
+        text('bumper-logo', 'yturokTV');
+        text('bumper-text', 'ТЕЛЕВИЗОР ВЫКЛЮЧЕН ПО ТАЙМЕРУ СНА 🌙\n\nСпокойной ночи! Эфир ждёт вас завтра.');
+      }
+    } else {
+      const leftM = Math.ceil(leftMs / 60000);
+      text('sleep-timer-text', `Сон: ${leftM}м`);
+    }
+  }
+}
+
+// Catch-Up TV (Начать сначала / В эфир)
+function initCatchUpButtons() {
+  const btnStartOver = $('btn-start-over');
+  const btnGoLive = $('btn-go-live');
+
+  if (btnStartOver) {
+    btnStartOver.addEventListener('click', () => {
+      const hlsVideo = $('hls-player');
+      if (hlsVideo) {
+        state.isCatchUpMode = true;
+        try { hlsVideo.currentTime = 0; } catch (e) {}
+        btnStartOver.classList.add('hidden');
+        btnGoLive?.classList.remove('hidden');
+      }
+    });
+  }
+
+  if (btnGoLive) {
+    btnGoLive.addEventListener('click', () => {
+      state.isCatchUpMode = false;
+      btnGoLive.classList.add('hidden');
+      btnStartOver?.classList.remove('hidden');
+      const channel = state.channels[state.currentChannelIndex];
+      if (channel) {
+        const { elapsed } = calculateBroadcastPosition(channel);
+        const hlsVideo = $('hls-player');
+        if (hlsVideo) {
+          try { hlsVideo.currentTime = elapsed; } catch (e) {}
+        }
+      }
+    });
+  }
 }
 
 // Apply CRT state strictly without regressions
@@ -988,6 +1110,15 @@ function setupEventListeners() {
     });
   }
 
+  // Catch-Up TV buttons & Sleep timer
+  initCatchUpButtons();
+  on('btn-sleep-timer', 'click', handleSleepTimerToggle);
+
+  // Floating Emoji Reaction Buttons
+  document.querySelectorAll('.emoji-react-btn').forEach(btn => {
+    btn.addEventListener('click', () => spawnFloatingReaction(btn.dataset.emoji));
+  });
+
   // Keyboard Shortcuts (TV Remote)
   window.addEventListener('keydown', (e) => {
     if (e.target.tagName === 'INPUT') return;
@@ -998,12 +1129,20 @@ function setupEventListeners() {
     } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
       state.currentChannelIndex = (state.currentChannelIndex - 1 + state.channels.length) % state.channels.length;
       playCurrentChannel(true);
-    } else if (['1', '2', '3', '4'].includes(e.key)) {
+    } else if (['1', '2', '3'].includes(e.key)) {
       const targetIdx = parseInt(e.key, 10) - 1;
       if (targetIdx < state.channels.length) {
         state.currentChannelIndex = targetIdx;
         playCurrentChannel(true);
       }
+    } else if (e.key === '5') {
+      spawnFloatingReaction('🔥');
+    } else if (e.key === '6') {
+      spawnFloatingReaction('😂');
+    } else if (e.key === '7') {
+      spawnFloatingReaction('😱');
+    } else if (e.key === '8') {
+      spawnFloatingReaction('🍿');
     } else if (e.key.toLowerCase() === 'm') {
       toggleMute();
     } else if (e.key.toLowerCase() === 'f') {
@@ -1012,12 +1151,18 @@ function setupEventListeners() {
   });
 }
 
-// Master Periodic Loop: Clock Ticking, Sverdlovsk Sync & Stream Drift Correction
+// Master Periodic Loop: Clock Ticking, Sverdlovsk Sync, Sleep Timer & Stream Drift Correction
 function startMasterLoop() {
   tickClock();
 
   setInterval(() => {
     tickClock();
+    checkSleepTimerTick();
+
+    // Occasional ambient viewer reaction
+    if (Math.random() < 0.05 && state.isTVStarted) {
+      spawnFloatingReaction(['🔥', '🚀', '🍿', '😂'][Math.floor(Math.random() * 4)]);
+    }
 
     const channel = state.channels[state.currentChannelIndex];
     if (channel) {
@@ -1029,9 +1174,9 @@ function startMasterLoop() {
         if (prog) prog.style.width = `${progressPercent}%`;
         text('broadcast-time-text', `${formatTime(elapsed)} / ${formatTime(currentItem.duration || 1400)}`);
 
-        // Stream Drift Auto-Correction (Snaps video to deterministic Sverdlovsk time)
+        // Stream Drift Auto-Correction (Snaps video to deterministic Sverdlovsk time unless Catch-Up mode is on)
         const hlsVideo = $('hls-player');
-        if (hlsVideo && !hlsVideo.paused && currentItem.type !== 'bumper' && hlsVideo.duration) {
+        if (!state.isCatchUpMode && hlsVideo && !hlsVideo.paused && currentItem.type !== 'bumper' && hlsVideo.duration) {
           const drift = Math.abs(hlsVideo.currentTime - elapsed);
           if (drift > 3 && elapsed < hlsVideo.duration) {
             console.log(`[TV Sync] Correcting drift ${drift.toFixed(1)}s -> snapping to ${elapsed.toFixed(1)}s`);

@@ -316,3 +316,107 @@ input[type="range"]::-webkit-slider-thumb:hover {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.25);
 }
+
+/* TV Broadcast News Ticker (Бегущая строка) */
+.tv-ticker-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 26px;
+  background: rgba(8, 9, 14, 0.88);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  z-index: 15;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  user-select: none;
+}
+
+.ticker-badge {
+  background: #f43f5e;
+  color: white;
+  font-weight: 800;
+  font-size: 9px;
+  letter-spacing: 0.5px;
+  padding: 3px 8px;
+  text-transform: uppercase;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.ticker-content-track {
+  flex: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ticker-text {
+  display: inline-block;
+  padding-left: 100%;
+  animation: ticker-slide 28s linear infinite;
+  color: #cbd5e1;
+  font-weight: 600;
+}
+
+@keyframes ticker-slide {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-100%, 0, 0); }
+}
+
+/* Floating Live Emoji Reactions */
+.emoji-react-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s cubic-bezier(0.2, 0, 0, 1), background-color 0.15s;
+}
+
+.emoji-react-btn:hover {
+  transform: scale(1.25);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.emoji-react-btn:active {
+  transform: scale(0.95);
+}
+
+.floating-reaction {
+  position: absolute;
+  bottom: 30px;
+  font-size: 30px;
+  pointer-events: none;
+  animation: float-rise 2.2s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+  z-index: 24;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.8));
+}
+
+@keyframes float-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.6) rotate(0deg);
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(-40px) scale(1.2) rotate(-8deg);
+  }
+  50% {
+    transform: translateY(-160px) scale(1) rotate(6deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-320px) scale(0.8) rotate(-12deg);
+  }
+}
+

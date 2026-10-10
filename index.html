@@ -64,6 +64,12 @@
         <span class="hidden md:inline text-[11px]">Синхрон</span>
       </button>
 
+      <!-- Sleep Timer Chip -->
+      <button id="btn-sleep-timer" title="Таймер сна (автовыключение)" class="m3-chip">
+        <span class="material-symbols-outlined text-[16px]">bedtime</span>
+        <span id="sleep-timer-text" class="hidden md:inline text-[11px]">Сон: Выкл</span>
+      </button>
+
       <!-- Teleprogram (EPG) Chip -->
       <button id="btn-nav-epg" class="m3-chip">
         <span class="material-symbols-outlined text-[16px]">calendar_month</span>
@@ -90,7 +96,7 @@
       <!-- Vertical Stream Variations (УТРО, ДЕНЬ, ВЕЧЕР) -->
       <div class="flex flex-col items-center gap-2 w-full">
         <span class="text-[9px] font-mono uppercase font-bold text-gray-400 tracking-wider">Потоки</span>
-        <div id="vertical-channel-dock" class="flex flex-col gap-2 w-full px-2">
+        <div id="vertical-channel-dock" class="flex flex-col gap-2.5 w-full px-2">
           <!-- Populated by app.js: 3 Stream Variations -->
         </div>
       </div>
@@ -127,6 +133,9 @@
         <!-- Static Glitch Screen on channel switch -->
         <div id="static-screen" class="absolute inset-0 z-20 static-noise hidden"></div>
 
+        <!-- Floating Reactions Container -->
+        <div id="reactions-stage" class="absolute inset-0 pointer-events-none overflow-hidden z-20"></div>
+
         <!-- Real Corner Watermark (Small, Clean, Non-intrusive) -->
         <div id="tv-watermark" class="tv-watermark flex items-center gap-2">
           <span id="watermark-logo-slot"></span>
@@ -155,7 +164,25 @@
               <span id="hover-channel-badge" class="px-2 py-0.5 rounded-full bg-purple-500/30 text-[10px] font-bold font-mono">УТРО 01</span>
               <span id="hover-show-title" class="font-bold truncate max-w-md">Загрузка эфира...</span>
             </div>
+            
+            <!-- Quick Catch-up & Live Emoji Reactions Bar -->
             <div class="flex items-center gap-2">
+              <button id="btn-start-over" class="m3-chip py-1 px-2.5 text-[10px] bg-black/40 hover:bg-purple-600/40" title="Начать текущую серию с начала">
+                <span class="material-symbols-outlined text-[14px]">replay</span>
+                <span class="hidden sm:inline">С начала</span>
+              </button>
+              <button id="btn-go-live" class="m3-chip py-1 px-2.5 text-[10px] bg-rose-600/80 hover:bg-rose-500 hidden" title="Вернуться в прямой эфир">
+                <span class="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                <span>В эфир</span>
+              </button>
+              
+              <div class="hidden sm:flex items-center gap-1 bg-black/50 p-1 rounded-full">
+                <button class="emoji-react-btn" data-emoji="🔥" title="Огонь">🔥</button>
+                <button class="emoji-react-btn" data-emoji="😂" title="Угар">😂</button>
+                <button class="emoji-react-btn" data-emoji="😱" title="Шок">😱</button>
+                <button class="emoji-react-btn" data-emoji="🍿" title="Попкорн">🍿</button>
+              </div>
+
               <span class="px-2 py-0.5 rounded-full bg-white/10 text-[10px] font-mono font-bold">1080p HD</span>
             </div>
           </div>
@@ -164,7 +191,7 @@
           <div></div>
 
           <!-- Bottom Bar on Hover (Player Controls) -->
-          <div class="flex flex-col gap-2 bg-black/60 backdrop-blur-md p-3 rounded-2xl shadow-2xl">
+          <div class="flex flex-col gap-2 bg-black/60 backdrop-blur-md p-3 rounded-2xl shadow-2xl mb-5">
             
             <!-- Progress Slider Line -->
             <div class="flex items-center gap-3">
@@ -209,6 +236,14 @@
 
           </div>
 
+        </div>
+
+        <!-- TV Broadcast News Ticker Bar (Бегущая строка) -->
+        <div id="tv-ticker-bar" class="tv-ticker-bar flex items-center overflow-hidden z-15">
+          <span class="ticker-badge flex-shrink-0">ЭФИР ЕКБ</span>
+          <div class="ticker-content-track">
+            <span id="ticker-text" class="ticker-text">Загрузка эфира yturokTV...</span>
+          </div>
         </div>
 
       </div>
