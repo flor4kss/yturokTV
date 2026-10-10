@@ -1,6 +1,6 @@
 /* ==========================================================================
-   yturokTV — Ultra-Modern Anime & Linear TV Aesthetic Stylesheet (2026 Edition)
-   Inspired by Organic Squircle UI, Layered Glassmorphism & Cyber Bento Hubs
+   yturokTV — Ultra-Modern Anime & Linear TV Aesthetic (2026 Edition)
+   Organic Squircles • Layered Glassmorphism • Neon Accents • Cyber Bento UI
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700;800&display=swap');
@@ -10,27 +10,29 @@
   --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Channel Accent Dynamics */
+  /* Dynamic Channel Accents */
   --channel-primary: #06b6d4;
   --channel-glow: rgba(6, 182, 212, 0.45);
   --channel-glow-soft: rgba(6, 182, 212, 0.18);
   --channel-border: rgba(6, 182, 212, 0.4);
 
-  /* Deep Plum & Charcoal Organic Base */
-  --bg-deep: #09070f;
-  --bg-card: rgba(18, 14, 26, 0.72);
-  --bg-card-hover: rgba(28, 22, 40, 0.85);
-  --bg-glass-pill: rgba(25, 20, 36, 0.7);
+  /* Deep Obsidian & Midnight Violet Base */
+  --bg-deep: #07050e;
+  --bg-card: rgba(15, 11, 24, 0.75);
+  --bg-card-hover: rgba(24, 18, 38, 0.88);
+  --bg-glass-pill: rgba(22, 17, 34, 0.72);
 
-  /* Radius tokens */
+  /* Squircles & Curvature */
   --radius-screen: 32px;
-  --radius-card: 26px;
+  --radius-card: 28px;
+  --radius-bento: 24px;
   --radius-pill: 9999px;
 }
 
-/* Base Setup */
 *, *::before, *::after {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -44,18 +46,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Ambient Deep Mesh Gradient Background */
+/* Background Atmosphere */
 .bg-mesh-canvas {
-  background-color: #09070f;
+  background-color: #07050e;
   background-image: 
-    radial-gradient(at 15% 15%, rgba(147, 51, 234, 0.18) 0px, transparent 55%),
-    radial-gradient(at 85% 20%, rgba(6, 182, 212, 0.16) 0px, transparent 55%),
-    radial-gradient(at 50% 80%, rgba(244, 63, 94, 0.14) 0px, transparent 65%),
-    radial-gradient(at 90% 85%, rgba(245, 158, 11, 0.12) 0px, transparent 50%);
+    radial-gradient(at 10% 15%, rgba(139, 92, 246, 0.22) 0px, transparent 55%),
+    radial-gradient(at 85% 15%, rgba(6, 182, 212, 0.2) 0px, transparent 55%),
+    radial-gradient(at 50% 50%, rgba(244, 63, 94, 0.12) 0px, transparent 65%),
+    radial-gradient(at 80% 85%, rgba(245, 158, 11, 0.14) 0px, transparent 50%),
+    radial-gradient(at 20% 90%, rgba(99, 102, 241, 0.18) 0px, transparent 55%);
   background-attachment: fixed;
 }
 
-/* Noise overlay for cinematic texture */
+/* Cinematic Grain Noise */
 .noise-overlay {
   position: fixed;
   inset: 0;
@@ -66,49 +69,46 @@ body {
   z-index: 999;
 }
 
-/* Typography Helpers */
-.font-display {
-  font-family: var(--font-display);
-}
+/* Typography */
+.font-display { font-family: var(--font-display); }
+.font-mono { font-family: var(--font-mono); }
 
-.font-mono {
-  font-family: var(--font-mono);
-}
-
-/* Glassmorphism Cards & Panels (Reference 1, 2, 5) */
+/* Glassmorphism Panels */
 .glass-panel {
   background: var(--bg-card);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 
-    0 20px 45px -15px rgba(0, 0, 0, 0.7),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.12);
+    0 20px 45px -15px rgba(0, 0, 0, 0.75),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-card);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-panel:hover {
-  border-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.16);
   box-shadow: 
-    0 25px 55px -15px rgba(0, 0, 0, 0.8),
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.18);
+    0 25px 55px -15px rgba(0, 0, 0, 0.85),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.18);
 }
 
-/* Tactile Pill Elements (Reference 1 & 4) */
+/* Tactile Glass Pills */
 .glass-pill {
   background: var(--bg-glass-pill);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  box-shadow: 
+    0 8px 24px -6px rgba(0, 0, 0, 0.4), 
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-pill);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-pill:hover {
-  background: rgba(35, 28, 52, 0.85);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(36, 28, 55, 0.85);
+  border-color: rgba(255, 255, 255, 0.22);
   transform: translateY(-1px);
 }
 
@@ -116,23 +116,23 @@ body {
   transform: translateY(1px);
 }
 
-/* Hero TV Stage Bezel & Dynamic Ambilight Aura (Reference 5) */
+/* Hero TV Stage Bezel & Dynamic Ambilight Aura */
 .tv-stage-wrapper {
   position: relative;
   border-radius: var(--radius-screen);
-  padding: 6px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 50%, rgba(0, 0, 0, 0.8) 100%);
+  padding: 5px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.04) 50%, rgba(0, 0, 0, 0.85) 100%);
   box-shadow: 
-    0 0 80px -10px var(--channel-glow),
-    0 35px 85px -25px rgba(0, 0, 0, 0.9);
+    0 0 90px -15px var(--channel-glow),
+    0 35px 85px -25px rgba(0, 0, 0, 0.95);
   transition: box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .tv-screen-bezel {
-  border-radius: calc(var(--radius-screen) - 6px);
+  border-radius: calc(var(--radius-screen) - 5px);
   overflow: hidden;
   position: relative;
-  background-color: #050409;
+  background-color: #040307;
 }
 
 /* Live Equalizer Animation Bars */
@@ -149,20 +149,20 @@ body {
 .eq-bar:nth-child(4) { height: 10px; animation-delay: 0.45s; }
 
 @keyframes eq-bounce {
-  0% { transform: scaleY(0.3); opacity: 0.5; }
-  50% { transform: scaleY(1); opacity: 1; }
-  100% { transform: scaleY(0.4); opacity: 0.6; }
+  0% { transform: scaleY(0.25); }
+  50% { transform: scaleY(1); }
+  100% { transform: scaleY(0.4); }
 }
 
-/* CRT Scanlines Overlay */
+/* CRT Screen Filter Simulation */
 .crt-mode::before {
   content: " ";
   display: block;
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
   z-index: 15;
-  background-size: 100% 3px, 6px 100%;
+  background-size: 100% 3px, 3px 100%;
   pointer-events: none;
 }
 
@@ -171,65 +171,81 @@ body {
   display: block;
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
-  background: radial-gradient(circle at center, transparent 65%, rgba(0, 0, 0, 0.65) 100%);
+  background: radial-gradient(circle at center, transparent 65%, rgba(0, 0, 0, 0.45) 100%);
+  z-index: 15;
   pointer-events: none;
-  z-index: 16;
 }
 
-/* Static Noise Glitch */
+/* 2x2 Retro Text Bumper Screen */
+.bumper-screen {
+  background: radial-gradient(circle at center, #180e29 0%, #080410 100%);
+}
+
+/* Static Noise Glitch Effect */
 .static-noise {
-  background-image: repeating-radial-gradient(circle at 17% 32%, white, black 0.00085px);
-  animation: static-flicker 0.1s steps(4) infinite;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.8'/%3E%3C/svg%3E");
+  animation: static-flicker 0.1s steps(3) infinite;
 }
 
 @keyframes static-flicker {
-  0% { transform: scale(1) translate(0, 0); opacity: 0.92; }
-  25% { transform: scale(1.02) translate(-2px, 1px); opacity: 0.88; }
-  50% { transform: scale(0.99) translate(1px, -2px); opacity: 0.95; }
-  75% { transform: scale(1.01) translate(-1px, -1px); opacity: 0.9; }
-  100% { transform: scale(1) translate(2px, 2px); opacity: 0.94; }
+  0% { transform: translate(0, 0); }
+  33% { transform: translate(-3%, 2%); }
+  66% { transform: translate(2%, -3%); }
+  100% { transform: translate(0, 0); }
 }
 
-/* 2x2 Bumper Screen */
-.bumper-screen {
-  background: radial-gradient(circle at center, #110e1c 0%, #050409 100%);
-  color: #f8fafc;
+/* Bento Channel Cards (Bottom Grid) */
+.channel-card-bento {
+  background: var(--bg-card);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-bento);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Active Channel Highlight */
-.channel-pill-btn.active {
-  background: linear-gradient(135deg, var(--channel-glow-soft) 0%, rgba(255, 255, 255, 0.08) 100%);
-  border-color: var(--channel-primary);
-  box-shadow: 0 0 25px var(--channel-glow-soft), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+.channel-card-bento:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.85);
 }
 
 .channel-card-bento.active {
+  background: linear-gradient(145deg, rgba(35, 22, 55, 0.9) 0%, rgba(18, 12, 30, 0.9) 100%);
   border-color: var(--channel-primary);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, var(--channel-glow-soft) 100%);
-  box-shadow: 0 15px 40px -10px var(--channel-glow);
+  box-shadow: 
+    0 0 40px -10px var(--channel-glow),
+    0 20px 45px -10px rgba(0, 0, 0, 0.9),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-/* Auto-hiding Cursor in Cinema */
-.cursor-hidden,
-.cursor-hidden * {
-  cursor: none !important;
-}
-
-/* Custom Sleek Scrollbar */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
-
 ::-webkit-scrollbar-track {
-  background: rgba(10, 8, 16, 0.6);
+  background: rgba(0, 0, 0, 0.2);
 }
-
 ::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.15);
   border-radius: 9999px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Cursor auto-hiding during fullscreen/playback */
+.cursor-hidden {
+  cursor: none !important;
+}
+
+/* Pulse Glow Keyframe */
+@keyframes neon-pulse {
+  0%, 100% { opacity: 1; filter: drop-shadow(0 0 8px currentColor); }
+  50% { opacity: 0.6; filter: drop-shadow(0 0 2px currentColor); }
+}
+.animate-neon-pulse {
+  animation: neon-pulse 2s infinite ease-in-out;
 }

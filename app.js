@@ -19,12 +19,34 @@ const state = {
   isTimeSynced: false
 };
 
-// Global Atomic Time Synchronization Engine (NTP-over-HTTP)
-// Guarantees all viewers in any city/device watch the exact same frame simultaneously
+// Safe DOM Helpers
+const $ = (id) => document.getElementById(id);
+const text = (id, str) => { const el = $(id); if (el) el.textContent = str; };
+const html = (id, markup) => { const el = $(id); if (el) el.innerHTML = markup; };
+const on = (id, evt, handler) => { const el = $(id); if (el) el.addEventListener(evt, handler); return el; };
+
+// Unified Global Master Clock (Sverdlovsk Oblast / YEKT • UTC+5 / Екатеринбург)
+function getSyncedTimestamp() {
+  return Date.now() + (state.serverTimeDeltaMs || 0);
+}
+
+function getSverdlovskDate() {
+  return new Date(getSyncedTimestamp() + (5 * 3600 * 1000));
+}
+
+function tickClock() {
+  const d = getSverdlovskDate();
+  const h = String(d.getUTCHours()).padStart(2, '0');
+  const m = String(d.getUTCMinutes()).padStart(2, '0');
+  const s = String(d.getUTCSeconds()).padStart(2, '0');
+  text('current-clock', `${h}:${m}:${s} ЕКБ`);
+}
+
+// Background Atomic Time Synchronization (NTP-over-HTTP)
 async function syncAtomicTime() {
   const t0 = performance.now();
 
-  // 1. Try local server endpoint if running with Python backend
+  // 1. Try local backend endpoint
   try {
     const res = await fetch('/api/time?t=' + Date.now());
     if (res.ok) {
@@ -34,14 +56,13 @@ async function syncAtomicTime() {
         const serverUtcMs = (data.timestamp * 1000) + (rtt / 2);
         state.serverTimeDeltaMs = serverUtcMs - Date.now();
         state.isTimeSynced = true;
-        console.log(`[Atomic Sync] Backend API delta: ${state.serverTimeDeltaMs.toFixed(0)}ms (RTT: ${rtt.toFixed(1)}ms)`);
         updateSyncBadgeDOM();
         return;
       }
     }
   } catch (e) {}
 
-  // 2. Try same-origin HTTP Date header (works on GitHub Pages / CDN with 0 extra requests)
+  // 2. Try HTTP Date header (works on GitHub Pages / CDN with 0 extra requests)
   try {
     const res = await fetch(window.location.href, { method: 'HEAD', cache: 'no-store' });
     const rtt = performance.now() - t0;
@@ -50,13 +71,12 @@ async function syncAtomicTime() {
       const serverUtcMs = new Date(dateHeader).getTime() + (rtt / 2);
       state.serverTimeDeltaMs = serverUtcMs - Date.now();
       state.isTimeSynced = true;
-      console.log(`[Atomic Sync] GitHub Pages Date header delta: ${state.serverTimeDeltaMs.toFixed(0)}ms (RTT: ${rtt.toFixed(1)}ms)`);
       updateSyncBadgeDOM();
       return;
     }
   } catch (e) {}
 
-  // 3. Fallback to public atomic time service (timeapi.io)
+  // 3. Fallback to public atomic time service
   try {
     const res = await fetch('https://timeapi.io/api/time/current/zone?timeZone=UTC');
     if (res.ok) {
@@ -65,7 +85,6 @@ async function syncAtomicTime() {
         const serverUtcMs = new Date(data.dateTime + 'Z').getTime();
         state.serverTimeDeltaMs = serverUtcMs - Date.now();
         state.isTimeSynced = true;
-        console.log(`[Atomic Sync] Public timeapi.io delta: ${state.serverTimeDeltaMs.toFixed(0)}ms`);
         updateSyncBadgeDOM();
         return;
       }
@@ -76,12 +95,8 @@ async function syncAtomicTime() {
   updateSyncBadgeDOM();
 }
 
-function getSyncedTimestamp() {
-  return Date.now() + (state.serverTimeDeltaMs || 0);
-}
-
 function updateSyncBadgeDOM() {
-  const badge = document.getElementById('sync-indicator-badge');
+  const badge = $('sync-indicator-badge');
   if (badge) {
     badge.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> СИНХРОН (ЕКБ • UTC+5)`;
     badge.classList.remove('hidden');
@@ -89,7 +104,7 @@ function updateSyncBadgeDOM() {
   }
 }
 
-// Fetch live schedule from Backend API with local fallback
+// Load schedule from Backend API or fallback to channels.js
 async function loadScheduleFromBackend() {
   try {
     const res = await fetch('/api/schedule?t=' + Date.now());
@@ -97,15 +112,26 @@ async function loadScheduleFromBackend() {
       const data = await res.json();
       if (Array.isArray(data) && data.length >= 4) {
         state.channels = data;
+        return;
       }
     }
-  } catch (e) {
-    console.log("Using local default schedule:", e);
-    state.channels = DEFAULT_CHANNELS;
+  } catch (e) {}
+
+  const saved = localStorage.getItem('yturok_schedule_saved');
+  if (saved) {
+    try {
+      const parsed = JSON.parse(saved);
+      if (Array.isArray(parsed) && parsed.length >= 4) {
+        state.channels = parsed;
+        return;
+      }
+    } catch (e) {}
   }
+
+  state.channels = DEFAULT_CHANNELS;
 }
 
-// Web Audio API Synthesizer for Mechanical Rotary Click and Static
+// Web Audio API Synthesizer: Rotary Click Sound
 function playChannelSwitchAudio() {
   try {
     if (!state.audioCtx) {
@@ -116,21 +142,19 @@ function playChannelSwitchAudio() {
     }
     const ctx = state.audioCtx;
 
-    // Rotary click tone
     const osc = ctx.createOscillator();
     const clickGain = ctx.createGain();
     osc.type = 'triangle';
     osc.frequency.setValueAtTime(140, ctx.currentTime);
     osc.frequency.exponentialRampToValueAtTime(30, ctx.currentTime + 0.08);
-    clickGain.gain.setValueAtTime(0.25, ctx.currentTime);
+    clickGain.gain.setValueAtTime(0.22, ctx.currentTime);
     clickGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.08);
     osc.connect(clickGain);
     clickGain.connect(ctx.destination);
     osc.start();
     osc.stop(ctx.currentTime + 0.08);
 
-    // Static burst
-    const bufferSize = ctx.sampleRate * 0.12;
+    const bufferSize = ctx.sampleRate * 0.1;
     const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
     const data = buffer.getChannelData(0);
     for (let i = 0; i < bufferSize; i++) {
@@ -142,18 +166,16 @@ function playChannelSwitchAudio() {
     filter.type = 'bandpass';
     filter.frequency.value = 1100;
     const noiseGain = ctx.createGain();
-    noiseGain.gain.setValueAtTime(0.1, ctx.currentTime);
-    noiseGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+    noiseGain.gain.setValueAtTime(0.08, ctx.currentTime);
+    noiseGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1);
     noise.connect(filter);
     filter.connect(noiseGain);
     noiseGain.connect(ctx.destination);
     noise.start();
-  } catch (err) {
-    console.warn("Audio error:", err);
-  }
+  } catch (err) {}
 }
 
-// Lo-Fi Synth tone for 2x2 retro bumpers
+// Lo-Fi Synth Tone for 2x2 bumpers
 function playBumperAmbientTone() {
   try {
     if (!state.audioCtx || state.isMuted) return;
@@ -173,8 +195,8 @@ function playBumperAmbientTone() {
 
 // Calculate current Time of Day block label (Anchored to Sverdlovsk Time UTC+5 / ЕКБ)
 function getTimeOfDayBlock() {
-  const yektDate = new Date(getSyncedTimestamp() + (5 * 3600 * 1000));
-  const hour = yektDate.getUTCHours();
+  const d = getSverdlovskDate();
+  const hour = d.getUTCHours();
   if (hour >= 6 && hour < 12) return { label: "☀️ УТРЕННИЙ БЛОК (ЕКБ)", id: "morning" };
   if (hour >= 12 && hour < 18) return { label: "🌤️ ДНЕВНОЙ МАРАФОН (ЕКБ)", id: "day" };
   if (hour >= 18 && hour < 23) return { label: "🌆 ВЕЧЕРНИЙ ПРАЙМ (ЕКБ)", id: "evening" };
@@ -233,7 +255,7 @@ function formatTime(sec) {
   return `${m}:${s < 10 ? '0' : ''}${s}`;
 }
 
-// Update Dynamic Ambilight Color
+// Update Dynamic Ambilight Aura Color
 function updateAmbilight(colorHex) {
   const rgb = hexToRgb(colorHex || "#06b6d4");
   document.documentElement.style.setProperty('--channel-primary', colorHex || '#06b6d4');
@@ -264,148 +286,124 @@ function playCurrentChannel(withGlitch = true) {
   // Sound & Static noise glitch
   if (withGlitch) {
     playChannelSwitchAudio();
-    const staticScreen = document.getElementById('static-screen');
-    staticScreen.classList.remove('hidden');
-    setTimeout(() => {
-      staticScreen.classList.add('hidden');
-    }, 240);
+    const staticScreen = $('static-screen');
+    if (staticScreen) {
+      staticScreen.classList.remove('hidden');
+      setTimeout(() => staticScreen.classList.add('hidden'), 220);
+    }
   }
 
-  // Update Ambilight
+  // Update Ambilight & DOM
   updateAmbilight(channel.color);
-
-  // Update DOM Labels
   updateChannelInfoDOM(channel, currentItem, elapsed, nextItem, progressPercent);
-
-  // Trigger OSD
   showOSDBanner(channel, currentItem, nextItem);
 
-  const hlsVideo = document.getElementById('hls-player');
-  const bumperScreen = document.getElementById('bumper-screen');
+  const hlsVideo = $('hls-player');
+  const bumperScreen = $('bumper-screen');
 
   // Handle Stream Types
   if (currentItem.type === 'bumper') {
-    // 1. NATIVE 2x2 RETRO BUMPER
-    hlsVideo.pause();
-    hlsVideo.classList.add('hidden');
-    bumperScreen.classList.remove('hidden');
-
-    document.getElementById('bumper-logo').textContent = channel.logo || "[2x2]";
-    document.getElementById('bumper-text').textContent = currentItem.bumperText || "Вы смотрите 2х2. Не переключайтесь.";
+    if (hlsVideo) {
+      hlsVideo.pause();
+      hlsVideo.classList.add('hidden');
+    }
+    if (bumperScreen) {
+      bumperScreen.classList.remove('hidden');
+      text('bumper-logo', channel.logo || "[2x2]");
+      text('bumper-text', currentItem.bumperText || "Вы смотрите 2х2. Не переключайтесь.");
+    }
     playBumperAmbientTone();
 
   } else if (currentItem.type === 'video') {
-    // 2. DIRECT MP4 VIDEO (Ну, погоди! и классика)
-    bumperScreen.classList.add('hidden');
-    hlsVideo.classList.remove('hidden');
+    if (bumperScreen) bumperScreen.classList.add('hidden');
+    if (hlsVideo) {
+      hlsVideo.classList.remove('hidden');
 
-    // Destroy HLS instance if it was active
-    if (state.hlsInstance) {
-      state.hlsInstance.destroy();
-      state.hlsInstance = null;
-    }
+      if (state.hlsInstance) {
+        state.hlsInstance.destroy();
+        state.hlsInstance = null;
+      }
 
-    const isNewUrl = (state.currentStreamUrl !== currentItem.url);
-    state.currentStreamUrl = currentItem.url;
+      const isNewUrl = (state.currentStreamUrl !== currentItem.url);
+      state.currentStreamUrl = currentItem.url;
 
-    if (isNewUrl || !hlsVideo.src || hlsVideo.src !== currentItem.url) {
-      hlsVideo.src = currentItem.url;
-      hlsVideo.muted = state.isTVStarted ? state.isMuted : true;
-      hlsVideo.volume = state.volume / 100;
+      if (isNewUrl || !hlsVideo.src || hlsVideo.src !== currentItem.url) {
+        hlsVideo.src = currentItem.url;
+        hlsVideo.muted = state.isTVStarted ? state.isMuted : true;
+        hlsVideo.volume = state.volume / 100;
 
-      const applySeek = () => {
-        if (elapsed > 0 && hlsVideo.duration && elapsed < hlsVideo.duration) {
+        const applySeek = () => {
+          if (elapsed > 0 && hlsVideo.duration && elapsed < hlsVideo.duration) {
+            try { hlsVideo.currentTime = elapsed; } catch (e) {}
+          }
+        };
+        hlsVideo.addEventListener('loadedmetadata', applySeek, { once: true });
+        if (hlsVideo.readyState >= 1) applySeek();
+        hlsVideo.play().catch(e => console.log("Play waiting user interaction:", e));
+      } else {
+        if (Math.abs(hlsVideo.currentTime - elapsed) > 3) {
           try { hlsVideo.currentTime = elapsed; } catch (e) {}
         }
-      };
-      hlsVideo.addEventListener('loadedmetadata', applySeek, { once: true });
-      if (hlsVideo.readyState >= 1) {
-        applySeek();
-      }
-
-      hlsVideo.play().catch(e => console.log("Play waiting interaction:", e));
-    } else {
-      if (Math.abs(hlsVideo.currentTime - elapsed) > 3) {
-        try { hlsVideo.currentTime = elapsed; } catch (e) {}
-      }
-      if (hlsVideo.paused) {
-        hlsVideo.play().catch(() => {});
+        if (hlsVideo.paused) hlsVideo.play().catch(() => {});
       }
     }
 
   } else if (currentItem.type === 'hls' || currentItem.url) {
-    // 3. LIVE ANILIBRIA HLS STREAM (.m3u8)
-    bumperScreen.classList.add('hidden');
-    hlsVideo.classList.remove('hidden');
+    if (bumperScreen) bumperScreen.classList.add('hidden');
+    if (hlsVideo) {
+      hlsVideo.classList.remove('hidden');
+      const isNewUrl = (state.currentStreamUrl !== currentItem.url);
+      state.currentStreamUrl = currentItem.url;
 
-    const isNewUrl = (state.currentStreamUrl !== currentItem.url);
-    state.currentStreamUrl = currentItem.url;
+      if (hlsVideo.getAttribute('src')) {
+        hlsVideo.removeAttribute('src');
+        hlsVideo.load();
+      }
 
-    // Reset native src attribute so HLS MediaSource works reliably
-    if (hlsVideo.getAttribute('src')) {
-      hlsVideo.removeAttribute('src');
-      hlsVideo.load();
-    }
+      if (window.Hls && Hls.isSupported()) {
+        if (isNewUrl || !state.hlsInstance) {
+          if (state.hlsInstance) state.hlsInstance.destroy();
+          const hls = new Hls({ maxBufferLength: 30, enableWorker: true });
+          state.hlsInstance = hls;
+          hls.loadSource(currentItem.url);
+          hls.attachMedia(hlsVideo);
 
-    if (Hls.isSupported()) {
-      if (isNewUrl || !state.hlsInstance) {
-        if (state.hlsInstance) {
-          state.hlsInstance.destroy();
-        }
-        const hls = new Hls({
-          maxBufferLength: 30,
-          enableWorker: true
-        });
-        state.hlsInstance = hls;
-        hls.loadSource(currentItem.url);
-        hls.attachMedia(hlsVideo);
+          hls.on(Hls.Events.MANIFEST_PARSED, () => {
+            try {
+              if (elapsed > 0) hlsVideo.currentTime = elapsed;
+            } catch (e) {}
+            hlsVideo.muted = state.isTVStarted ? state.isMuted : true;
+            hlsVideo.volume = state.volume / 100;
+            hlsVideo.play().catch(e => console.log("HLS play waiting interaction:", e));
+          });
 
-        hls.on(Hls.Events.MANIFEST_PARSED, () => {
-          try {
-            if (elapsed > 0) hlsVideo.currentTime = elapsed;
-          } catch (e) {}
-          hlsVideo.muted = state.isTVStarted ? state.isMuted : true;
-          hlsVideo.volume = state.volume / 100;
-          hlsVideo.play().catch(e => console.log("HLS play waiting interaction:", e));
-        });
-
-        hls.on(Hls.Events.ERROR, (event, data) => {
-          if (data.fatal) {
-            switch (data.type) {
-              case Hls.ErrorTypes.NETWORK_ERROR:
-                hls.startLoad();
-                break;
-              case Hls.ErrorTypes.MEDIA_ERROR:
-                hls.recoverMediaError();
-                break;
-              default:
-                hls.destroy();
-                break;
+          hls.on(Hls.Events.ERROR, (event, data) => {
+            if (data.fatal) {
+              switch (data.type) {
+                case Hls.ErrorTypes.NETWORK_ERROR: hls.startLoad(); break;
+                case Hls.ErrorTypes.MEDIA_ERROR: hls.recoverMediaError(); break;
+                default: hls.destroy(); break;
+              }
             }
+          });
+        } else {
+          if (Math.abs(hlsVideo.currentTime - elapsed) > 3) {
+            hlsVideo.currentTime = elapsed;
           }
-        });
-      } else {
-        if (Math.abs(hlsVideo.currentTime - elapsed) > 3) {
+          if (hlsVideo.paused && state.isTVStarted) {
+            hlsVideo.play().catch(() => {});
+          }
+        }
+      } else if (hlsVideo.canPlayType('application/vnd.apple.mpegurl')) {
+        if (isNewUrl) {
+          hlsVideo.src = currentItem.url;
           hlsVideo.currentTime = elapsed;
         }
-        if (hlsVideo.paused && state.isTVStarted) {
-          hlsVideo.play().catch(() => {});
-        }
+        hlsVideo.muted = state.isTVStarted ? state.isMuted : true;
+        hlsVideo.volume = state.volume / 100;
+        hlsVideo.play().catch(() => {});
       }
-    } else if (hlsVideo.canPlayType('application/vnd.apple.mpegurl')) {
-      // Native Safari HLS
-      if (isNewUrl) {
-        hlsVideo.src = currentItem.url;
-        hlsVideo.currentTime = elapsed;
-      }
-      hlsVideo.muted = state.isMuted;
-      hlsVideo.volume = state.volume / 100;
-      if (state.isTVStarted) hlsVideo.play().catch(() => {});
     }
-
-  } else {
-    bumperScreen.classList.add('hidden');
-    hlsVideo.classList.add('hidden');
   }
 
   renderChannelList();
@@ -417,47 +415,33 @@ function playCurrentChannel(withGlitch = true) {
 function updateChannelInfoDOM(channel, currentItem, elapsed, nextItem, progressPercent) {
   const timeBlock = getTimeOfDayBlock();
 
-  const setElText = (id, val) => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = val;
-  };
+  text('channel-watermark', `${channel.logo || ''} ${channel.name}`);
+  text('screen-slot-badge', currentItem.timeSlotLabel || timeBlock.label);
+  text('current-channel-badge', `CH ${channel.number}`);
+  text('show-title', currentItem.title);
+  text('show-episode', currentItem.episode || "");
+  text('show-description', currentItem.description || "");
+  text('show-slot-badge', currentItem.timeSlotLabel || timeBlock.label);
 
-  // Watermark (top-left) & Slot Badge
-  setElText('channel-watermark', `${channel.logo || ''} ${channel.name}`);
-  setElText('screen-slot-badge', currentItem.timeSlotLabel || timeBlock.label);
-
-  // Badges & Show info
-  setElText('current-channel-badge', `CH ${channel.number}`);
-  setElText('show-title', currentItem.title);
-  setElText('show-episode', currentItem.episode || "");
-  setElText('show-description', currentItem.description || "");
-  setElText('show-slot-badge', currentItem.timeSlotLabel || timeBlock.label);
-
-  const poster = document.getElementById('show-poster');
+  const poster = $('show-poster');
   if (poster && currentItem.poster) {
     poster.src = currentItem.poster;
   }
 
-  // Progress Bar
-  const prog = document.getElementById('broadcast-progress');
+  const prog = $('broadcast-progress');
   if (prog) prog.style.width = `${progressPercent}%`;
-  setElText('broadcast-time-text', `${formatTime(elapsed)} / ${formatTime(currentItem.duration || 1400)}`);
+  text('broadcast-time-text', `${formatTime(elapsed)} / ${formatTime(currentItem.duration || 1400)}`);
 }
 
 // Retro OSD Banner Popup
 let osdTimeout = null;
 function showOSDBanner(channel, currentItem, nextItem) {
-  const osd = document.getElementById('osd-banner');
+  const osd = $('osd-banner');
   if (!osd) return;
 
-  const setElText = (id, val) => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = val;
-  };
-
-  setElText('osd-channel', `CH ${channel.number} • ${channel.name}`);
-  setElText('osd-title', currentItem.title);
-  setElText('osd-next', nextItem ? `Далее: ${nextItem.title}` : "Далее: Конец блока");
+  text('osd-channel', `CH ${channel.number} • ${channel.name}`);
+  text('osd-title', currentItem.title);
+  text('osd-next', nextItem ? `Далее: ${nextItem.title}` : "Далее: Конец блока");
 
   osd.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-2');
   osd.classList.add('opacity-100', 'translate-y-0');
@@ -471,7 +455,7 @@ function showOSDBanner(channel, currentItem, nextItem) {
 
 // Render Channel Bento Cards in the Bottom Showcase
 function renderChannelList() {
-  const container = document.getElementById('channels-container');
+  const container = $('channels-container');
   if (!container) return;
   container.innerHTML = '';
 
@@ -531,7 +515,7 @@ function renderChannelList() {
 
 // Render Left Vertical Floating Channel Dock
 function renderVerticalChannelDock() {
-  const dock = document.getElementById('vertical-channel-dock');
+  const dock = $('vertical-channel-dock');
   if (!dock) return;
   dock.innerHTML = '';
 
@@ -558,14 +542,14 @@ function renderVerticalChannelDock() {
   });
 }
 
-// Render Multi-Channel Timeline Inspector
+// Render Multi-Channel Timeline Inspector Radar
 function renderInspectorGrid() {
-  const container = document.getElementById('inspector-grid');
+  const container = $('inspector-grid');
   if (!container) return;
   container.innerHTML = '';
 
   state.channels.forEach((ch, idx) => {
-    if (idx === state.currentChannelIndex) return; // Don't show currently active channel here
+    if (idx === state.currentChannelIndex) return;
     const { currentItem, progressPercent, nextItem } = calculateBroadcastPosition(ch);
 
     const card = document.createElement('div');
@@ -599,30 +583,33 @@ function renderInspectorGrid() {
   });
 }
 
-// EPG (Electronic Program Guide)
+// EPG Teleprogram Modal
 function renderEPG() {
-  const tabs = document.getElementById('epg-tabs');
-  const scheduleList = document.getElementById('epg-schedule-list');
+  const tabs = $('epg-tabs');
+  const scheduleList = $('epg-schedule-list');
+  if (!scheduleList) return;
 
   if (!state.activeEpgChannelId) {
-    state.activeEpgChannelId = state.channels[state.currentChannelIndex].id;
+    state.activeEpgChannelId = state.channels[state.currentChannelIndex]?.id || state.channels[0].id;
   }
 
   // Render Tabs
-  tabs.innerHTML = '';
-  state.channels.forEach(ch => {
-    const isTabActive = ch.id === state.activeEpgChannelId;
-    const btn = document.createElement('button');
-    btn.className = `px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition flex items-center gap-1.5 ${
-      isTabActive ? 'bg-cyan-500 text-black font-bold shadow' : 'bg-gray-900 text-gray-300 hover:bg-gray-800'
-    }`;
-    btn.innerHTML = `<span class="font-mono">${ch.number}</span> ${ch.name}`;
-    btn.addEventListener('click', () => {
-      state.activeEpgChannelId = ch.id;
-      renderEPG();
+  if (tabs) {
+    tabs.innerHTML = '';
+    state.channels.forEach(ch => {
+      const isTabActive = ch.id === state.activeEpgChannelId;
+      const btn = document.createElement('button');
+      btn.className = `px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition flex items-center gap-1.5 cursor-pointer ${
+        isTabActive ? 'bg-cyan-500 text-black font-bold shadow' : 'bg-gray-900 text-gray-300 hover:bg-gray-800'
+      }`;
+      btn.innerHTML = `<span class="font-mono">${ch.number}</span> ${ch.name}`;
+      btn.addEventListener('click', () => {
+        state.activeEpgChannelId = ch.id;
+        renderEPG();
+      });
+      tabs.appendChild(btn);
     });
-    tabs.appendChild(btn);
-  });
+  }
 
   // Calculate schedule for selected Day Offset
   const channel = state.channels.find(c => c.id === state.activeEpgChannelId) || state.channels[0];
@@ -654,7 +641,7 @@ function renderEPG() {
         </div>
         <div>
           <div class="flex items-center gap-2">
-            ${isNowPlaying ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400 live-dot"></span> СЕЙЧАС В ЭФИРЕ</span>' : ''}
+            ${isNowPlaying ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span> СЕЙЧАС В ЭФИРЕ</span>' : ''}
             <span class="text-[10px] px-2 py-0.5 rounded bg-gray-800 text-gray-300 font-mono">${item.timeSlotLabel || 'ТАЙМ-СЛОТ'}</span>
             <span class="text-xs font-mono text-gray-400">${formatTime(item.duration || 1400)}</span>
           </div>
@@ -663,7 +650,7 @@ function renderEPG() {
           <p class="text-xs text-gray-400 line-clamp-1 mt-0.5">${item.description || item.bumperText || ''}</p>
         </div>
       </div>
-      <button class="btn-tune-epg px-4 py-2 rounded-xl text-xs font-bold ${isNowPlaying ? 'bg-cyan-500 text-black shadow-lg shadow-cyan-500/30' : 'bg-gray-800 hover:bg-gray-700 text-gray-200'} transition flex-shrink-0">
+      <button class="btn-tune-epg px-4 py-2 rounded-xl text-xs font-bold ${isNowPlaying ? 'bg-cyan-500 text-black shadow-lg shadow-cyan-500/30' : 'bg-gray-800 hover:bg-gray-700 text-gray-200'} transition flex-shrink-0 cursor-pointer">
         ${isNowPlaying ? 'Смотреть сейчас' : 'Выбрать канал'}
       </button>
     `;
@@ -673,7 +660,7 @@ function renderEPG() {
       if (chIdx !== -1) {
         state.currentChannelIndex = chIdx;
         playCurrentChannel(true);
-        document.getElementById('modal-epg').classList.add('hidden');
+        $('modal-epg')?.classList.add('hidden');
       }
     });
 
@@ -683,12 +670,11 @@ function renderEPG() {
 
 // AniLibria Live Search & Studio Manager
 async function searchAniLibria(query) {
-  const container = document.getElementById('search-results-container');
-  const countBadge = document.getElementById('search-count-badge');
+  const container = $('search-results-container');
+  if (!container) return;
   
-  if (!query.trim()) {
+  if (!query || !query.trim()) {
     container.innerHTML = `<div class="text-center py-12 text-gray-500 text-xs">Введите название аниме выше...</div>`;
-    countBadge.textContent = "Введите запрос";
     return;
   }
 
@@ -706,11 +692,9 @@ async function searchAniLibria(query) {
 
     if (!Array.isArray(data) || data.length === 0) {
       container.innerHTML = `<div class="text-center py-12 text-gray-500 text-xs">Ничего не найдено по запросу «${query}». Попробуйте другое слово.</div>`;
-      countBadge.textContent = "0 найдено";
       return;
     }
 
-    countBadge.textContent = `Найдено: ${data.length}`;
     container.innerHTML = '';
 
     data.slice(0, 10).forEach(item => {
@@ -732,7 +716,7 @@ async function searchAniLibria(query) {
             <span class="text-[10px] text-cyan-400 font-mono">ID: ${alias}</span>
           </div>
         </div>
-        <button class="btn-add-anime px-3 py-1.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold transition flex-shrink-0 flex items-center gap-1.5 shadow">
+        <button class="btn-add-anime px-3 py-1.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold transition flex-shrink-0 flex items-center gap-1.5 shadow cursor-pointer">
           <i class="fa-solid fa-plus"></i> В эфир
         </button>
       `;
@@ -808,9 +792,9 @@ async function addAnimeReleaseToCustomChannel(alias, titleRu, poster) {
 
 // Render Custom Channel's schedule in Studio
 function renderCustomSchedule() {
-  const container = document.getElementById('custom-schedule-items');
+  const container = $('custom-schedule-items');
   const customChan = state.channels.find(c => c.isCustom);
-  if (!customChan) return;
+  if (!container || !customChan) return;
 
   container.innerHTML = '';
   if (customChan.schedule.length === 0) {
@@ -830,10 +814,10 @@ function renderCustomSchedule() {
         <span class="text-gray-500 font-mono">${idx + 1}.</span>
         <div class="truncate">
           <div class="font-bold text-white truncate">${item.title}</div>
-          <div class="text-[10px] text-gray-400 font-mono">${formatTime(item.duration || 1400)} • ${item.type.toUpperCase()}</div>
+          <div class="text-[10px] text-gray-400 font-mono">${formatTime(item.duration || 1400)} • ${(item.type || 'hls').toUpperCase()}</div>
         </div>
       </div>
-      <button class="btn-del-item text-gray-500 hover:text-red-400 px-2 py-1 transition" title="Удалить из сетки">
+      <button class="btn-del-item text-gray-500 hover:text-red-400 px-2 py-1 transition cursor-pointer" title="Удалить из сетки">
         <i class="fa-solid fa-trash"></i>
       </button>
     `;
@@ -861,16 +845,14 @@ async function saveChannelsToBackend() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(state.channels)
     });
-  } catch (e) {
-    console.log("Offline or static host, saved locally:", e);
-  }
+  } catch (e) {}
 }
 
 // Setup Event Listeners
 function setupEventListeners() {
-  const screenContainer = document.getElementById('tv-screen-container');
+  const screenContainer = $('tv-screen-container');
 
-  // 1. AUTO-HIDE CURSOR ON INACTIVITY
+  // Auto-hide cursor on inactivity
   function resetMouseTimer() {
     if (screenContainer) screenContainer.classList.remove('cursor-hidden');
     if (state.mouseTimer) clearTimeout(state.mouseTimer);
@@ -890,34 +872,34 @@ function setupEventListeners() {
   }
 
   // Unmute / Sound activate click
-  document.getElementById('unmute-overlay').addEventListener('click', () => {
+  on('unmute-overlay', 'click', () => {
     state.isTVStarted = true;
     state.isMuted = false;
-    document.getElementById('unmute-overlay').classList.add('hidden');
-    const hlsVideo = document.getElementById('hls-player');
-    hlsVideo.muted = false;
-    hlsVideo.volume = state.volume / 100;
-    if (hlsVideo.paused) {
-      hlsVideo.play().catch(() => {});
+    $('unmute-overlay')?.classList.add('hidden');
+    const hlsVideo = $('hls-player');
+    if (hlsVideo) {
+      hlsVideo.muted = false;
+      hlsVideo.volume = state.volume / 100;
+      if (hlsVideo.paused) hlsVideo.play().catch(() => {});
     }
     playChannelSwitchAudio();
   });
 
   // Next / Prev Channel Buttons
-  document.getElementById('btn-next-ch').addEventListener('click', () => {
+  on('btn-next-ch', 'click', () => {
     state.currentChannelIndex = (state.currentChannelIndex + 1) % state.channels.length;
     playCurrentChannel(true);
   });
 
-  document.getElementById('btn-prev-ch').addEventListener('click', () => {
+  on('btn-prev-ch', 'click', () => {
     state.currentChannelIndex = (state.currentChannelIndex - 1 + state.channels.length) % state.channels.length;
     playCurrentChannel(true);
   });
 
-  // Volume Slider & Mute synchronization
-  const volumeSlider = document.getElementById('volume-slider');
-  const muteIcon = document.getElementById('mute-icon');
-  const dockMuteIcon = document.getElementById('dock-mute-icon');
+  // Volume Controls
+  const volumeSlider = $('volume-slider');
+  const muteIcon = $('mute-icon');
+  const dockMuteIcon = $('dock-mute-icon');
 
   function handleVolumeChange(val) {
     state.volume = parseInt(val, 10);
@@ -935,10 +917,8 @@ function setupEventListeners() {
     applyVolume();
   }
 
-  const btnMute = document.getElementById('btn-mute');
-  if (btnMute) btnMute.addEventListener('click', toggleMute);
-  const dockBtnMute = document.getElementById('dock-btn-mute');
-  if (dockBtnMute) dockBtnMute.addEventListener('click', toggleMute);
+  on('btn-mute', 'click', toggleMute);
+  on('dock-btn-mute', 'click', toggleMute);
 
   function applyVolume() {
     const iconClass = state.isMuted || state.volume === 0 
@@ -947,7 +927,7 @@ function setupEventListeners() {
     if (muteIcon) muteIcon.className = iconClass;
     if (dockMuteIcon) dockMuteIcon.className = iconClass;
 
-    const hlsVideo = document.getElementById('hls-player');
+    const hlsVideo = $('hls-player');
     if (hlsVideo) {
       hlsVideo.muted = state.isMuted;
       hlsVideo.volume = state.volume / 100;
@@ -955,9 +935,7 @@ function setupEventListeners() {
   }
 
   // CRT Screen Toggle
-  const crtBtn = document.getElementById('btn-toggle-crt');
-  const crtText = document.getElementById('crt-status-text');
-
+  const crtText = $('crt-status-text');
   function toggleCRT() {
     state.crtEnabled = !state.crtEnabled;
     if (screenContainer) {
@@ -970,27 +948,23 @@ function setupEventListeners() {
       }
     }
   }
-
-  if (crtBtn) crtBtn.addEventListener('click', toggleCRT);
+  on('btn-toggle-crt', 'click', toggleCRT);
 
   // Fullscreen Cinema mode
   function toggleFullscreen() {
-    const el = document.getElementById('tv-screen-container');
+    const el = $('tv-screen-container');
     if (!el) return;
     if (!document.fullscreenElement) {
-      el.requestFullscreen().catch(err => alert("Fullscreen error: " + err.message));
+      el.requestFullscreen().catch(() => {});
     } else {
-      document.exitFullscreen();
+      document.exitFullscreen().catch(() => {});
     }
   }
-
-  const btnCinema = document.getElementById('btn-cinema');
-  if (btnCinema) btnCinema.addEventListener('click', toggleFullscreen);
-  const dockBtnCinema = document.getElementById('dock-btn-cinema');
-  if (dockBtnCinema) dockBtnCinema.addEventListener('click', toggleFullscreen);
+  on('btn-cinema', 'click', toggleFullscreen);
+  on('dock-btn-cinema', 'click', toggleFullscreen);
 
   // Manual Live Force Sync Button
-  const btnSyncLive = document.getElementById('btn-sync-live');
+  const btnSyncLive = $('btn-sync-live');
   if (btnSyncLive) {
     btnSyncLive.addEventListener('click', async () => {
       btnSyncLive.innerHTML = `<i class="fa-solid fa-spinner fa-spin text-[11px]"></i> <span class="hidden sm:inline text-[11px] font-bold">Синхрон...</span>`;
@@ -998,7 +972,7 @@ function setupEventListeners() {
       const channel = state.channels[state.currentChannelIndex];
       if (channel) {
         const { elapsed } = calculateBroadcastPosition(channel);
-        const hlsVideo = document.getElementById('hls-player');
+        const hlsVideo = $('hls-player');
         if (hlsVideo && hlsVideo.duration && elapsed < hlsVideo.duration) {
           try { hlsVideo.currentTime = elapsed; } catch(e) {}
         }
@@ -1013,16 +987,13 @@ function setupEventListeners() {
   }
 
   // EPG Modal Open / Close
-  const modalEpg = document.getElementById('modal-epg');
+  const modalEpg = $('modal-epg');
   function openEPG() {
     renderEPG();
     if (modalEpg) modalEpg.classList.remove('hidden');
   }
-
-  const btnNavEpg = document.getElementById('btn-nav-epg');
-  if (btnNavEpg) btnNavEpg.addEventListener('click', openEPG);
-  const btnCloseEpg = document.getElementById('btn-close-epg');
-  if (btnCloseEpg) btnCloseEpg.addEventListener('click', () => modalEpg.classList.add('hidden'));
+  on('btn-nav-epg', 'click', openEPG);
+  on('btn-close-epg', 'click', () => modalEpg?.classList.add('hidden'));
 
   // EPG Day Selector Buttons
   document.querySelectorAll('.epg-day-btn').forEach((btn, idx) => {
@@ -1031,7 +1002,6 @@ function setupEventListeners() {
         b.className = "epg-day-btn glass-pill px-4 py-1.5 text-xs text-gray-400 hover:text-white cursor-pointer";
       });
       btn.className = "epg-day-btn active glass-pill px-4 py-1.5 text-xs font-bold text-cyan-300 border-cyan-500/40 cursor-pointer";
-      
       const offsets = [0, 1, 3, 5];
       state.activeEpgDayOffset = offsets[idx] || 0;
       renderEPG();
@@ -1039,49 +1009,28 @@ function setupEventListeners() {
   });
 
   // Studio Modal Open / Close
-  const modalStudio = document.getElementById('modal-studio');
+  const modalStudio = $('modal-studio');
   function openStudio() {
     renderCustomSchedule();
     if (modalStudio) modalStudio.classList.remove('hidden');
   }
-
-  const btnOpenStudio = document.getElementById('btn-open-studio');
-  if (btnOpenStudio) btnOpenStudio.addEventListener('click', openStudio);
-  const btnBannerStudio = document.getElementById('btn-banner-studio');
-  if (btnBannerStudio) btnBannerStudio.addEventListener('click', openStudio);
-  const btnCloseStudio = document.getElementById('btn-close-studio');
-  if (btnCloseStudio) btnCloseStudio.addEventListener('click', () => modalStudio.classList.add('hidden'));
+  on('btn-open-studio', 'click', openStudio);
+  on('btn-banner-studio', 'click', openStudio);
+  on('btn-close-studio', 'click', () => modalStudio?.classList.add('hidden'));
 
   // Studio Search Button & Enter Key
-  const searchInput = document.getElementById('studio-search-input');
-  document.getElementById('btn-studio-search').addEventListener('click', () => {
-    searchAniLibria(searchInput.value);
+  const searchInput = $('studio-search-input');
+  on('btn-studio-search', 'click', () => {
+    if (searchInput) searchAniLibria(searchInput.value);
   });
-  searchInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') searchAniLibria(searchInput.value);
-  });
-
-  // Direct Alias Add Button
-  const aliasInput = document.getElementById('custom-alias-input');
-  const btnAddAlias = document.getElementById('btn-add-alias');
-  if (btnAddAlias && aliasInput) {
-    btnAddAlias.addEventListener('click', async () => {
-      const alias = aliasInput.value.trim();
-      if (!alias) {
-        alert("Введите код аниме, например bleach или chainsaw-man");
-        return;
-      }
-      btnAddAlias.disabled = true;
-      btnAddAlias.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i>`;
-      await addAnimeReleaseToCustomChannel(alias, alias, 'https://images.unsplash.com/photo-1578632767115-351597cf2477?w=100');
-      btnAddAlias.disabled = false;
-      btnAddAlias.innerHTML = `+ Добавить`;
-      aliasInput.value = '';
+  if (searchInput) {
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') searchAniLibria(searchInput.value);
     });
   }
 
   // Clear Custom Channel
-  document.getElementById('btn-clear-custom').addEventListener('click', () => {
+  on('btn-clear-custom', 'click', () => {
     if (confirm("Точно очистить сетку «Моего Канала»?")) {
       const customChan = state.channels.find(c => c.isCustom);
       if (customChan) {
@@ -1093,7 +1042,7 @@ function setupEventListeners() {
     }
   });
 
-  // Keyboard Shortcuts: TV Remote
+  // Keyboard Shortcuts
   window.addEventListener('keydown', (e) => {
     if (e.target.tagName === 'INPUT') return;
 
@@ -1115,18 +1064,16 @@ function setupEventListeners() {
       toggleFullscreen();
     }
   });
+}
 
-  // Periodic Clock Ticking, Sverdlovsk (UTC+5 / ЕКБ) Alignment & Active Stream Drift Correction
+// Master Periodic Loop: Clock Ticking, Sverdlovsk Sync & Stream Drift Correction
+function startMasterLoop() {
+  // 1. Tick clock immediately
+  tickClock();
+
+  // 2. 1-Second Interval Ticker
   setInterval(() => {
-    // Unified Sverdlovsk Time (YEKT, UTC+5 / Екатеринбург)
-    const yektDate = new Date(getSyncedTimestamp() + (5 * 3600 * 1000));
-    const h = String(yektDate.getUTCHours()).padStart(2, '0');
-    const m = String(yektDate.getUTCMinutes()).padStart(2, '0');
-    const s = String(yektDate.getUTCSeconds()).padStart(2, '0');
-    const clock = document.getElementById('current-clock');
-    if (clock) {
-      clock.textContent = `${h}:${m}:${s} ЕКБ`;
-    }
+    tickClock();
 
     const channel = state.channels[state.currentChannelIndex];
     if (channel) {
@@ -1134,40 +1081,38 @@ function setupEventListeners() {
       if (state.currentShow !== currentItem) {
         playCurrentChannel(false);
       } else {
-        document.getElementById('broadcast-progress').style.width = `${progressPercent}%`;
-        document.getElementById('broadcast-time-text').textContent = `${formatTime(elapsed)} / ${formatTime(currentItem.duration || 1400)}`;
+        const prog = $('broadcast-progress');
+        if (prog) prog.style.width = `${progressPercent}%`;
+        text('broadcast-time-text', `${formatTime(elapsed)} / ${formatTime(currentItem.duration || 1400)}`);
 
-        // Active Stream Drift Auto-Correction (Eliminates buffer lag between different friends)
-        const hlsVideo = document.getElementById('hls-player');
+        // Stream Drift Auto-Correction (Snaps video to deterministic Sverdlovsk time)
+        const hlsVideo = $('hls-player');
         if (hlsVideo && !hlsVideo.paused && currentItem.type !== 'bumper' && hlsVideo.duration) {
           const drift = Math.abs(hlsVideo.currentTime - elapsed);
-          // If video drifted by more than 2.5 seconds (lagged or paused tab)
-          if (drift > 2.5 && elapsed < hlsVideo.duration) {
-            console.log(`[TV Sync] Correcting drift of ${drift.toFixed(1)}s -> snapping to ${elapsed.toFixed(1)}s`);
-            try {
-              hlsVideo.currentTime = elapsed;
-            } catch (err) {}
+          if (drift > 3 && elapsed < hlsVideo.duration) {
+            console.log(`[TV Sync] Correcting drift ${drift.toFixed(1)}s -> snapping to ${elapsed.toFixed(1)}s`);
+            try { hlsVideo.currentTime = elapsed; } catch (err) {}
           }
         }
       }
     }
   }, 1000);
 
-  // Periodic atomic time re-synchronization every 60 seconds
-  setInterval(syncAtomicTime, 60000);
+  // 3. Periodic Atomic Time Sync every 60 seconds
+  setInterval(() => {
+    syncAtomicTime().catch(() => {});
+  }, 60000);
 }
 
-// Initialization on DOMContentLoaded
+// Application Startup
 window.addEventListener('DOMContentLoaded', async () => {
-  // Clear any old corrupted localStorage versions
-  localStorage.removeItem('yturok_channels');
-  localStorage.removeItem('yturok_channels_v2');
-  localStorage.removeItem('yturok_channels_v3');
+  // Start Master Clock & Ticker IMMEDIATELY (Zero delay)
+  startMasterLoop();
 
-  // Synchronize atomic time before calculating initial broadcast position
-  await syncAtomicTime();
-
+  // Load schedule asynchronously
   await loadScheduleFromBackend();
+
+  // Render all initial UI components
   renderChannelList();
   renderVerticalChannelDock();
   renderInspectorGrid();
@@ -1178,6 +1123,9 @@ window.addEventListener('DOMContentLoaded', async () => {
   updateChannelInfoDOM(initialChannel, currentItem, elapsed, nextItem, progressPercent);
   updateAmbilight(initialChannel.color);
 
-  // Auto-start playback in background (muted until user clicks)
+  // Start background playback (muted initially for browser autoplay compliance)
   playCurrentChannel(false);
+
+  // Launch background atomic time sync (completely non-blocking)
+  syncAtomicTime().catch(() => {});
 });
