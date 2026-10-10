@@ -22,10 +22,9 @@ const state = {
 // Safe DOM Helpers
 const $ = (id) => document.getElementById(id);
 const text = (id, str) => { const el = $(id); if (el) el.textContent = str; };
-const html = (id, markup) => { const el = $(id); if (el) el.innerHTML = markup; };
 const on = (id, evt, handler) => { const el = $(id); if (el) el.addEventListener(evt, handler); return el; };
 
-// Unified Global Master Clock (Sverdlovsk Oblast / YEKT • UTC+5 / Екатеринбург)
+// Unified Master Sverdlovsk Clock (YEKT • UTC+5 / Екатеринбург)
 function getSyncedTimestamp() {
   return Date.now() + (state.serverTimeDeltaMs || 0);
 }
@@ -42,7 +41,7 @@ function tickClock() {
   text('current-clock', `${h}:${m}:${s} ЕКБ`);
 }
 
-// Background Atomic Time Synchronization (NTP-over-HTTP)
+// Background NTP-over-HTTP Time Synchronization
 async function syncAtomicTime() {
   const t0 = performance.now();
 
@@ -62,7 +61,7 @@ async function syncAtomicTime() {
     }
   } catch (e) {}
 
-  // 2. Try HTTP Date header (works on GitHub Pages / CDN with 0 extra requests)
+  // 2. Try HTTP Date header (static GitHub Pages fallback)
   try {
     const res = await fetch(window.location.href, { method: 'HEAD', cache: 'no-store' });
     const rtt = performance.now() - t0;
@@ -73,21 +72,6 @@ async function syncAtomicTime() {
       state.isTimeSynced = true;
       updateSyncBadgeDOM();
       return;
-    }
-  } catch (e) {}
-
-  // 3. Fallback to public atomic time service
-  try {
-    const res = await fetch('https://timeapi.io/api/time/current/zone?timeZone=UTC');
-    if (res.ok) {
-      const data = await res.json();
-      if (data && data.dateTime) {
-        const serverUtcMs = new Date(data.dateTime + 'Z').getTime();
-        state.serverTimeDeltaMs = serverUtcMs - Date.now();
-        state.isTimeSynced = true;
-        updateSyncBadgeDOM();
-        return;
-      }
     }
   } catch (e) {}
 
@@ -104,7 +88,7 @@ function updateSyncBadgeDOM() {
   }
 }
 
-// Load schedule from Backend API or fallback to channels.js
+// Load schedule from Backend API or localStorage
 async function loadScheduleFromBackend() {
   try {
     const res = await fetch('/api/schedule?t=' + Date.now());
@@ -131,7 +115,7 @@ async function loadScheduleFromBackend() {
   state.channels = DEFAULT_CHANNELS;
 }
 
-// Web Audio API Synthesizer: Rotary Click Sound
+// Web Audio API Synthesizer: Rotary Channel Switch Click
 function playChannelSwitchAudio() {
   try {
     if (!state.audioCtx) {
@@ -147,7 +131,7 @@ function playChannelSwitchAudio() {
     osc.type = 'triangle';
     osc.frequency.setValueAtTime(140, ctx.currentTime);
     osc.frequency.exponentialRampToValueAtTime(30, ctx.currentTime + 0.08);
-    clickGain.gain.setValueAtTime(0.22, ctx.currentTime);
+    clickGain.gain.setValueAtTime(0.2, ctx.currentTime);
     clickGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.08);
     osc.connect(clickGain);
     clickGain.connect(ctx.destination);
@@ -175,7 +159,7 @@ function playChannelSwitchAudio() {
   } catch (err) {}
 }
 
-// Lo-Fi Synth Tone for 2x2 bumpers
+// Lo-Fi Synth tone for 2x2 retro bumpers
 function playBumperAmbientTone() {
   try {
     if (!state.audioCtx || state.isMuted) return;
@@ -193,7 +177,7 @@ function playBumperAmbientTone() {
   } catch (e) {}
 }
 
-// Calculate current Time of Day block label (Anchored to Sverdlovsk Time UTC+5 / ЕКБ)
+// Calculate current Time of Day block label (YEKT, UTC+5 / ЕКБ)
 function getTimeOfDayBlock() {
   const d = getSverdlovskDate();
   const hour = d.getUTCHours();
@@ -203,7 +187,7 @@ function getTimeOfDayBlock() {
   return { label: "🌙 НОЧНОЙ ADULT SWIM (ЕКБ)", id: "night" };
 }
 
-// Deterministic Broadcast Timeline Math (Synchronized worldwide down to millisecond)
+// Deterministic Broadcast Timeline Math (Continuous multi-hour progression)
 function calculateBroadcastPosition(channel, dayOffset = 0) {
   const schedule = channel.schedule;
   if (!schedule || schedule.length === 0) {
@@ -259,9 +243,8 @@ function formatTime(sec) {
 function updateAmbilight(colorHex) {
   const rgb = hexToRgb(colorHex || "#06b6d4");
   document.documentElement.style.setProperty('--channel-primary', colorHex || '#06b6d4');
-  document.documentElement.style.setProperty('--channel-glow', `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.5)`);
-  document.documentElement.style.setProperty('--channel-glow-soft', `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.18)`);
-  document.documentElement.style.setProperty('--channel-border', `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.4)`);
+  document.documentElement.style.setProperty('--channel-glow', `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.45)`);
+  document.documentElement.style.setProperty('--channel-border', `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, 0.5)`);
 }
 
 function hexToRgb(hex) {
@@ -275,7 +258,7 @@ function hexToRgb(hex) {
   };
 }
 
-// Play Current Channel (Guaranteed 100% Reliable Stream Switching)
+// Play Current Channel (Guaranteed 100% Stream Switching)
 function playCurrentChannel(withGlitch = true) {
   const channel = state.channels[state.currentChannelIndex];
   if (!channel) return;
@@ -289,14 +272,13 @@ function playCurrentChannel(withGlitch = true) {
     const staticScreen = $('static-screen');
     if (staticScreen) {
       staticScreen.classList.remove('hidden');
-      setTimeout(() => staticScreen.classList.add('hidden'), 220);
+      setTimeout(() => staticScreen.classList.add('hidden'), 200);
     }
   }
 
   // Update Ambilight & DOM
   updateAmbilight(channel.color);
   updateChannelInfoDOM(channel, currentItem, elapsed, nextItem, progressPercent);
-  showOSDBanner(channel, currentItem, nextItem);
 
   const hlsVideo = $('hls-player');
   const bumperScreen = $('bumper-screen');
@@ -406,7 +388,6 @@ function playCurrentChannel(withGlitch = true) {
     }
   }
 
-  renderChannelList();
   renderVerticalChannelDock();
   renderInspectorGrid();
 }
@@ -415,12 +396,17 @@ function playCurrentChannel(withGlitch = true) {
 function updateChannelInfoDOM(channel, currentItem, elapsed, nextItem, progressPercent) {
   const timeBlock = getTimeOfDayBlock();
 
-  text('channel-watermark', `${channel.logo || ''} ${channel.name}`);
-  text('screen-slot-badge', currentItem.timeSlotLabel || timeBlock.label);
+  // Corner Watermark: clean, real TV aesthetic
+  text('channel-watermark', `${channel.name}`);
+
+  // Badges & Show info in Player Hover Overlay
+  text('hover-channel-badge', `CH ${channel.number}`);
+  text('hover-show-title', `${currentItem.title} • ${currentItem.episode || ''}`);
+
+  // Badges & Show info in under-player metadata card
   text('current-channel-badge', `CH ${channel.number}`);
   text('show-title', currentItem.title);
   text('show-episode', currentItem.episode || "");
-  text('show-description', currentItem.description || "");
   text('show-slot-badge', currentItem.timeSlotLabel || timeBlock.label);
 
   const poster = $('show-poster');
@@ -428,92 +414,13 @@ function updateChannelInfoDOM(channel, currentItem, elapsed, nextItem, progressP
     poster.src = currentItem.poster;
   }
 
+  // Progress Bar
   const prog = $('broadcast-progress');
   if (prog) prog.style.width = `${progressPercent}%`;
   text('broadcast-time-text', `${formatTime(elapsed)} / ${formatTime(currentItem.duration || 1400)}`);
 }
 
-// Retro OSD Banner Popup
-let osdTimeout = null;
-function showOSDBanner(channel, currentItem, nextItem) {
-  const osd = $('osd-banner');
-  if (!osd) return;
-
-  text('osd-channel', `CH ${channel.number} • ${channel.name}`);
-  text('osd-title', currentItem.title);
-  text('osd-next', nextItem ? `Далее: ${nextItem.title}` : "Далее: Конец блока");
-
-  osd.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-2');
-  osd.classList.add('opacity-100', 'translate-y-0');
-
-  if (osdTimeout) clearTimeout(osdTimeout);
-  osdTimeout = setTimeout(() => {
-    osd.classList.remove('opacity-100', 'translate-y-0');
-    osd.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
-  }, 3500);
-}
-
-// Render Channel Bento Cards in the Bottom Showcase
-function renderChannelList() {
-  const container = $('channels-container');
-  if (!container) return;
-  container.innerHTML = '';
-
-  state.channels.forEach((ch, idx) => {
-    const isActive = idx === state.currentChannelIndex;
-    const { currentItem, progressPercent } = calculateBroadcastPosition(ch);
-
-    const card = document.createElement('div');
-    card.className = `glass-panel p-4 flex flex-col justify-between gap-3 cursor-pointer transition-all duration-300 relative overflow-hidden group ${
-      isActive 
-        ? 'channel-card-bento active ring-2 ring-rose-500/80 shadow-2xl scale-[1.02]' 
-        : 'hover:scale-[1.01] hover:border-white/20'
-    }`;
-
-    card.innerHTML = `
-      <div class="flex items-center justify-between gap-2">
-        <div class="flex items-center gap-2">
-          <span class="w-8 h-8 rounded-xl glass-pill font-mono font-black text-xs flex items-center justify-center ${isActive ? 'text-rose-400 border-rose-500/50' : 'text-gray-400'}">
-            ${ch.number}
-          </span>
-          <div>
-            <h4 class="font-display font-extrabold text-xs text-white truncate max-w-[120px]">${ch.name}</h4>
-            <span class="text-[9px] text-gray-400 font-mono">${ch.badge || 'HD'}</span>
-          </div>
-        </div>
-        ${isActive ? '<span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-rose-500/20 text-rose-300 border border-rose-500/40 animate-pulse">В ЭФИРЕ</span>' : ''}
-      </div>
-
-      <div class="my-1">
-        <div class="text-xs font-bold text-gray-200 line-clamp-1">${currentItem.title}</div>
-        <div class="text-[10px] text-gray-400 line-clamp-1 mt-0.5">${currentItem.episode || ch.tagline || ''}</div>
-      </div>
-
-      <div>
-        <div class="w-full bg-gray-800/80 h-1 rounded-full overflow-hidden mb-2">
-          <div class="h-full bg-gradient-to-r from-rose-500 to-cyan-400 transition-all" style="width: ${progressPercent}%"></div>
-        </div>
-        <div class="flex items-center justify-between text-[10px] text-gray-400">
-          <span>${progressPercent}% эфира</span>
-          <span class="text-cyan-400 font-bold group-hover:translate-x-1 transition flex items-center gap-1">
-            Смотреть <i class="fa-solid fa-arrow-right text-[8px]"></i>
-          </span>
-        </div>
-      </div>
-    `;
-
-    card.addEventListener('click', () => {
-      if (state.currentChannelIndex !== idx) {
-        state.currentChannelIndex = idx;
-        playCurrentChannel(true);
-      }
-    });
-
-    container.appendChild(card);
-  });
-}
-
-// Render Left Vertical Floating Channel Dock
+// Render Left Vertical Navigation Rail (Channels 01-05)
 function renderVerticalChannelDock() {
   const dock = $('vertical-channel-dock');
   if (!dock) return;
@@ -522,15 +429,11 @@ function renderVerticalChannelDock() {
   state.channels.forEach((ch, idx) => {
     const isActive = idx === state.currentChannelIndex;
     const btn = document.createElement('button');
-    btn.className = `w-10 h-11 rounded-2xl glass-pill flex flex-col items-center justify-center transition-all cursor-pointer ${
-      isActive 
-        ? 'bg-gradient-to-b from-rose-500/30 to-purple-500/30 border-rose-400 text-white font-black shadow-lg shadow-rose-500/30 scale-105 ring-1 ring-rose-400' 
-        : 'text-gray-400 hover:text-white hover:border-white/30'
-    }`;
+    btn.className = `rail-channel-btn ${isActive ? 'active' : ''}`;
     btn.title = `${ch.number}: ${ch.name}`;
     btn.innerHTML = `
-      <span class="text-xs font-mono font-extrabold leading-none">${ch.number}</span>
-      <span class="text-[9px] mt-0.5 leading-none opacity-80">${ch.logo || ''}</span>
+      <span class="text-xs font-mono font-bold leading-none">${ch.number}</span>
+      <span class="text-[11px] mt-1 leading-none">${ch.logo || ''}</span>
     `;
     btn.addEventListener('click', () => {
       if (state.currentChannelIndex !== idx) {
@@ -542,35 +445,38 @@ function renderVerticalChannelDock() {
   });
 }
 
-// Render Multi-Channel Timeline Inspector Radar
+// Render Right Multi-Channel Live Radar Feed
 function renderInspectorGrid() {
   const container = $('inspector-grid');
   if (!container) return;
   container.innerHTML = '';
 
   state.channels.forEach((ch, idx) => {
-    if (idx === state.currentChannelIndex) return;
+    if (idx === state.currentChannelIndex) return; // Hide active channel here
     const { currentItem, progressPercent, nextItem } = calculateBroadcastPosition(ch);
 
     const card = document.createElement('div');
-    card.className = "glass-panel p-2.5 rounded-2xl border border-white/8 hover:border-white/25 cursor-pointer transition flex flex-col gap-1.5 group";
+    card.className = "p-2.5 rounded-2xl bg-[#1b1d2a] border border-white/8 hover:border-white/20 cursor-pointer transition flex flex-col gap-1.5 group";
     card.innerHTML = `
       <div class="flex items-center justify-between text-[11px]">
         <div class="flex items-center gap-1.5 truncate">
-          <span class="w-5 h-5 rounded-lg glass-pill text-[10px] font-mono text-cyan-300 font-bold flex items-center justify-center">${ch.number}</span>
+          <span class="w-5 h-5 rounded-lg bg-white/10 text-[10px] font-mono text-purple-300 font-bold flex items-center justify-center">${ch.number}</span>
           <span class="font-bold text-gray-200 truncate">${ch.name}</span>
         </div>
-        <span class="text-[10px] text-gray-500 font-mono">${progressPercent}%</span>
+        <span class="text-[10px] text-gray-400 font-mono">${progressPercent}%</span>
       </div>
-      <div class="text-xs font-semibold text-white truncate group-hover:text-cyan-300 transition">
+      <div class="text-xs font-semibold text-white truncate group-hover:text-purple-300 transition">
         ${currentItem.title}
       </div>
-      <div class="w-full bg-gray-800/80 h-1 rounded-full overflow-hidden">
-        <div class="h-full bg-gradient-to-r from-cyan-500 to-rose-500" style="width: ${progressPercent}%"></div>
+      <div class="text-[10px] text-gray-400 truncate">
+        ${currentItem.episode || ''}
+      </div>
+      <div class="w-full bg-black/40 h-1 rounded-full overflow-hidden">
+        <div class="h-full bg-gradient-to-r from-purple-400 to-cyan-400" style="width: ${progressPercent}%"></div>
       </div>
       <div class="text-[10px] text-gray-500 truncate flex items-center justify-between">
         <span class="truncate">Далее: ${nextItem ? nextItem.title : '—'}</span>
-        <i class="fa-solid fa-play text-[8px] text-gray-600 group-hover:text-rose-400 transition"></i>
+        <span class="material-symbols-outlined text-[13px] text-gray-400 group-hover:text-purple-400 transition">play_arrow</span>
       </div>
     `;
 
@@ -583,7 +489,7 @@ function renderInspectorGrid() {
   });
 }
 
-// EPG Teleprogram Modal
+// EPG Teleprogram Guide
 function renderEPG() {
   const tabs = $('epg-tabs');
   const scheduleList = $('epg-schedule-list');
@@ -599,9 +505,7 @@ function renderEPG() {
     state.channels.forEach(ch => {
       const isTabActive = ch.id === state.activeEpgChannelId;
       const btn = document.createElement('button');
-      btn.className = `px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition flex items-center gap-1.5 cursor-pointer ${
-        isTabActive ? 'bg-cyan-500 text-black font-bold shadow' : 'bg-gray-900 text-gray-300 hover:bg-gray-800'
-      }`;
+      btn.className = `m3-chip ${isTabActive ? 'active' : ''}`;
       btn.innerHTML = `<span class="font-mono">${ch.number}</span> ${ch.name}`;
       btn.addEventListener('click', () => {
         state.activeEpgChannelId = ch.id;
@@ -618,7 +522,6 @@ function renderEPG() {
   if (!channel.schedule || channel.schedule.length === 0) {
     scheduleList.innerHTML = `
       <div class="text-center py-12 text-gray-400 text-xs">
-        <i class="fa-solid fa-circle-exclamation text-xl mb-2 text-amber-500 block"></i>
         В сетке этого канала пока нет передач. Добавьте серии в Конструкторе!
       </div>
     `;
@@ -630,28 +533,24 @@ function renderEPG() {
   channel.schedule.forEach((item) => {
     const isNowPlaying = (item === currentItem && state.activeEpgDayOffset === 0);
     const row = document.createElement('div');
-    row.className = `p-3.5 rounded-2xl border flex flex-col md:flex-row items-start md:items-center justify-between gap-3 transition ${
-      isNowPlaying ? 'border-cyan-400/60 bg-cyan-950/20' : 'border-white/10 bg-black/40 hover:bg-white/5'
+    row.className = `p-3 rounded-2xl border flex items-center justify-between gap-3 transition ${
+      isNowPlaying ? 'border-purple-400/60 bg-purple-950/20' : 'border-white/10 bg-[#171824] hover:bg-white/5'
     }`;
 
     row.innerHTML = `
-      <div class="flex items-start gap-3.5 flex-1">
-        <div class="w-14 h-16 rounded-xl bg-gray-900 overflow-hidden flex-shrink-0 border border-white/10">
-          <img src="${item.poster || 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=100'}" class="w-full h-full object-cover">
-        </div>
-        <div>
+      <div class="flex items-center gap-3 min-w-0">
+        <img src="${item.poster || 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=100'}" class="w-10 h-12 rounded-xl object-cover border border-white/10 flex-shrink-0">
+        <div class="min-w-0">
           <div class="flex items-center gap-2">
-            ${isNowPlaying ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping"></span> СЕЙЧАС В ЭФИРЕ</span>' : ''}
-            <span class="text-[10px] px-2 py-0.5 rounded bg-gray-800 text-gray-300 font-mono">${item.timeSlotLabel || 'ТАЙМ-СЛОТ'}</span>
+            ${isNowPlaying ? '<span class="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase bg-purple-500/20 text-purple-300 border border-purple-500/30">СЕЙЧАС В ЭФИРЕ</span>' : ''}
             <span class="text-xs font-mono text-gray-400">${formatTime(item.duration || 1400)}</span>
           </div>
-          <h4 class="font-bold text-sm text-white mt-1">${item.title}</h4>
-          <p class="text-xs text-cyan-400 font-medium">${item.episode || ''}</p>
-          <p class="text-xs text-gray-400 line-clamp-1 mt-0.5">${item.description || item.bumperText || ''}</p>
+          <h4 class="font-bold text-xs text-white truncate mt-0.5">${item.title}</h4>
+          <p class="text-[11px] text-purple-300 truncate">${item.episode || ''}</p>
         </div>
       </div>
-      <button class="btn-tune-epg px-4 py-2 rounded-xl text-xs font-bold ${isNowPlaying ? 'bg-cyan-500 text-black shadow-lg shadow-cyan-500/30' : 'bg-gray-800 hover:bg-gray-700 text-gray-200'} transition flex-shrink-0 cursor-pointer">
-        ${isNowPlaying ? 'Смотреть сейчас' : 'Выбрать канал'}
+      <button class="btn-tune-epg m3-chip ${isNowPlaying ? 'active' : ''} flex-shrink-0">
+        ${isNowPlaying ? 'Смотреть' : 'Включить'}
       </button>
     `;
 
@@ -679,15 +578,15 @@ async function searchAniLibria(query) {
   }
 
   container.innerHTML = `
-    <div class="flex items-center justify-center py-12 gap-2 text-cyan-400 text-xs">
-      <i class="fa-solid fa-spinner fa-spin"></i> Поиск в базе AniLibria...
+    <div class="flex items-center justify-center py-12 gap-2 text-purple-300 text-xs">
+      Поиск в базе AniLibria...
     </div>
   `;
 
   try {
     const encoded = encodeURIComponent(query.trim());
     const res = await fetch(`https://anilibria.top/api/v1/app/search/releases?query=${encoded}`);
-    if (!res.ok) throw new Error("Search API responded with error " + res.status);
+    if (!res.ok) throw new Error("API error " + res.status);
     const data = await res.json();
 
     if (!Array.isArray(data) || data.length === 0) {
@@ -705,31 +604,30 @@ async function searchAniLibria(query) {
       const alias = item.alias;
 
       const card = document.createElement('div');
-      card.className = "p-3 rounded-2xl border border-white/10 bg-black/40 hover:bg-white/5 transition flex items-center justify-between gap-3";
+      card.className = "p-2.5 rounded-2xl border border-white/10 bg-[#171824] hover:bg-white/5 transition flex items-center justify-between gap-3";
 
       card.innerHTML = `
         <div class="flex items-center gap-3 overflow-hidden">
-          <img src="${poster}" class="w-12 h-16 object-cover rounded-xl border border-white/10 flex-shrink-0">
+          <img src="${poster}" class="w-10 h-14 object-cover rounded-xl border border-white/10 flex-shrink-0">
           <div class="truncate">
-            <h5 class="font-bold text-sm text-white truncate">${titleRu}</h5>
-            <p class="text-xs text-gray-400 truncate">${titleEn} (${year})</p>
-            <span class="text-[10px] text-cyan-400 font-mono">ID: ${alias}</span>
+            <h5 class="font-bold text-xs text-white truncate">${titleRu}</h5>
+            <p class="text-[10px] text-gray-400 truncate">${titleEn} (${year})</p>
           </div>
         </div>
-        <button class="btn-add-anime px-3 py-1.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white text-xs font-semibold transition flex-shrink-0 flex items-center gap-1.5 shadow cursor-pointer">
-          <i class="fa-solid fa-plus"></i> В эфир
+        <button class="btn-add-anime m3-chip text-xs py-1 px-3 flex-shrink-0">
+          + В эфир
         </button>
       `;
 
       card.querySelector('.btn-add-anime').addEventListener('click', async (e) => {
         const btn = e.currentTarget;
         btn.disabled = true;
-        btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Добавляем...`;
+        btn.textContent = "Добавляем...";
         await addAnimeReleaseToCustomChannel(alias, titleRu, poster);
-        btn.innerHTML = `<i class="fa-solid fa-check"></i> Добавлено!`;
+        btn.textContent = "Добавлено!";
         setTimeout(() => {
           btn.disabled = false;
-          btn.innerHTML = `<i class="fa-solid fa-plus"></i> В эфир`;
+          btn.textContent = "+ В эфир";
         }, 1500);
       });
 
@@ -737,7 +635,6 @@ async function searchAniLibria(query) {
     });
 
   } catch (err) {
-    console.error("AniLibria search error:", err);
     container.innerHTML = `
       <div class="text-center py-12 text-rose-400 text-xs">
         Ошибка подключения к базе AniLibria. Проверьте соединение или попробуйте снова.
@@ -778,14 +675,12 @@ async function addAnimeReleaseToCustomChannel(alias, titleRu, poster) {
       customChan.schedule.push(newItem);
       saveChannelsToBackend();
       renderCustomSchedule();
-      renderChannelList();
 
       if (state.channels[state.currentChannelIndex].isCustom) {
         playCurrentChannel(false);
       }
     }
   } catch (err) {
-    console.error("Error adding anime to custom channel:", err);
     alert("Не удалось загрузить серию: " + err.message);
   }
 }
@@ -808,17 +703,17 @@ function renderCustomSchedule() {
 
   customChan.schedule.forEach((item, idx) => {
     const el = document.createElement('div');
-    el.className = "p-2 rounded-xl bg-[#181d2e] border border-white/10 flex items-center justify-between gap-2 text-xs";
+    el.className = "p-2 rounded-xl bg-[#1b1d2a] border border-white/10 flex items-center justify-between gap-2 text-xs";
     el.innerHTML = `
       <div class="truncate flex items-center gap-2">
         <span class="text-gray-500 font-mono">${idx + 1}.</span>
         <div class="truncate">
           <div class="font-bold text-white truncate">${item.title}</div>
-          <div class="text-[10px] text-gray-400 font-mono">${formatTime(item.duration || 1400)} • ${(item.type || 'hls').toUpperCase()}</div>
+          <div class="text-[10px] text-gray-400 font-mono">${formatTime(item.duration || 1400)}</div>
         </div>
       </div>
-      <button class="btn-del-item text-gray-500 hover:text-red-400 px-2 py-1 transition cursor-pointer" title="Удалить из сетки">
-        <i class="fa-solid fa-trash"></i>
+      <button class="btn-del-item text-gray-500 hover:text-red-400 px-2 py-1 transition" title="Удалить">
+        ✕
       </button>
     `;
 
@@ -826,7 +721,6 @@ function renderCustomSchedule() {
       customChan.schedule.splice(idx, 1);
       saveChannelsToBackend();
       renderCustomSchedule();
-      renderChannelList();
       if (state.channels[state.currentChannelIndex].isCustom) {
         playCurrentChannel(false);
       }
@@ -850,28 +744,35 @@ async function saveChannelsToBackend() {
 
 // Setup Event Listeners
 function setupEventListeners() {
-  const screenContainer = $('tv-screen-container');
+  const tvCabinet = $('tv-cabinet');
 
-  // Auto-hide cursor on inactivity
-  function resetMouseTimer() {
-    if (screenContainer) screenContainer.classList.remove('cursor-hidden');
+  // Interactive Player Controls on Hover & Mouse Move
+  function showPlayerControls() {
+    if (tvCabinet) {
+      tvCabinet.classList.add('show-controls');
+      tvCabinet.classList.remove('cursor-hidden');
+    }
     if (state.mouseTimer) clearTimeout(state.mouseTimer);
 
     state.mouseTimer = setTimeout(() => {
-      if (screenContainer) screenContainer.classList.add('cursor-hidden');
-    }, 2500);
+      if (tvCabinet) {
+        tvCabinet.classList.remove('show-controls');
+        tvCabinet.classList.add('cursor-hidden');
+      }
+    }, 2800);
   }
 
-  if (screenContainer) {
-    screenContainer.addEventListener('mousemove', resetMouseTimer);
-    screenContainer.addEventListener('mouseenter', resetMouseTimer);
-    screenContainer.addEventListener('mouseleave', () => {
-      screenContainer.classList.remove('cursor-hidden');
+  if (tvCabinet) {
+    tvCabinet.addEventListener('mousemove', showPlayerControls);
+    tvCabinet.addEventListener('mouseenter', showPlayerControls);
+    tvCabinet.addEventListener('mouseleave', () => {
+      tvCabinet.classList.remove('show-controls');
+      tvCabinet.classList.remove('cursor-hidden');
       if (state.mouseTimer) clearTimeout(state.mouseTimer);
     });
   }
 
-  // Unmute / Sound activate click
+  // Unmute on overlay click or TV click
   on('unmute-overlay', 'click', () => {
     state.isTVStarted = true;
     state.isMuted = false;
@@ -882,6 +783,7 @@ function setupEventListeners() {
       hlsVideo.volume = state.volume / 100;
       if (hlsVideo.paused) hlsVideo.play().catch(() => {});
     }
+    applyVolume();
     playChannelSwitchAudio();
   });
 
@@ -921,11 +823,9 @@ function setupEventListeners() {
   on('dock-btn-mute', 'click', toggleMute);
 
   function applyVolume() {
-    const iconClass = state.isMuted || state.volume === 0 
-      ? "fa-solid fa-volume-xmark text-rose-500" 
-      : "fa-solid fa-volume-high";
-    if (muteIcon) muteIcon.className = iconClass;
-    if (dockMuteIcon) dockMuteIcon.className = iconClass;
+    const iconName = state.isMuted || state.volume === 0 ? "volume_off" : "volume_up";
+    if (muteIcon) muteIcon.textContent = iconName;
+    if (dockMuteIcon) dockMuteIcon.textContent = iconName;
 
     const hlsVideo = $('hls-player');
     if (hlsVideo) {
@@ -934,25 +834,32 @@ function setupEventListeners() {
     }
   }
 
-  // CRT Screen Toggle
+  // CRT Screen Toggle (Быстрые настройки: ЭЛТ-фильтр)
+  const crtBtn = $('btn-toggle-crt');
+  const crtPlayerBtn = $('btn-player-crt');
   const crtText = $('crt-status-text');
+
   function toggleCRT() {
     state.crtEnabled = !state.crtEnabled;
-    if (screenContainer) {
+    if (tvCabinet) {
       if (state.crtEnabled) {
-        screenContainer.classList.add('crt-mode');
-        if (crtText) { crtText.textContent = "ЭЛТ"; crtText.className = "text-amber-400 font-bold text-[10px]"; }
+        tvCabinet.classList.add('crt-mode');
+        if (crtBtn) crtBtn.classList.add('active');
+        if (crtText) crtText.textContent = "ЭЛТ: ВКЛ";
       } else {
-        screenContainer.classList.remove('crt-mode');
-        if (crtText) { crtText.textContent = "ВЫКЛ"; crtText.className = "text-gray-400 text-[10px]"; }
+        tvCabinet.classList.remove('crt-mode');
+        if (crtBtn) crtBtn.classList.remove('active');
+        if (crtText) crtText.textContent = "ЭЛТ: ВЫКЛ";
       }
     }
   }
-  on('btn-toggle-crt', 'click', toggleCRT);
 
-  // Fullscreen Cinema mode
+  if (crtBtn) crtBtn.addEventListener('click', toggleCRT);
+  if (crtPlayerBtn) crtPlayerBtn.addEventListener('click', toggleCRT);
+
+  // Fullscreen Cinema mode (Развернуть на весь экран)
   function toggleFullscreen() {
-    const el = $('tv-screen-container');
+    const el = $('tv-cabinet');
     if (!el) return;
     if (!document.fullscreenElement) {
       el.requestFullscreen().catch(() => {});
@@ -963,11 +870,11 @@ function setupEventListeners() {
   on('btn-cinema', 'click', toggleFullscreen);
   on('dock-btn-cinema', 'click', toggleFullscreen);
 
-  // Manual Live Force Sync Button
+  // Force Live Sync Button (Синхрон ЕКБ)
   const btnSyncLive = $('btn-sync-live');
   if (btnSyncLive) {
     btnSyncLive.addEventListener('click', async () => {
-      btnSyncLive.innerHTML = `<i class="fa-solid fa-spinner fa-spin text-[11px]"></i> <span class="hidden sm:inline text-[11px] font-bold">Синхрон...</span>`;
+      btnSyncLive.innerHTML = `<span class="material-symbols-outlined text-[16px] animate-spin">sync</span> <span class="hidden md:inline text-[11px]">Синхрон...</span>`;
       await syncAtomicTime();
       const channel = state.channels[state.currentChannelIndex];
       if (channel) {
@@ -978,30 +885,27 @@ function setupEventListeners() {
         }
       }
       setTimeout(() => {
-        btnSyncLive.innerHTML = `<i class="fa-solid fa-check text-[11px] text-emerald-400"></i> <span class="hidden sm:inline text-[11px] font-bold text-emerald-400">Синхрон</span>`;
+        btnSyncLive.innerHTML = `<span class="material-symbols-outlined text-[16px] text-emerald-400">check</span> <span class="hidden md:inline text-[11px] text-emerald-400">Синхрон</span>`;
         setTimeout(() => {
-          btnSyncLive.innerHTML = `<i class="fa-solid fa-arrows-rotate text-[11px]"></i> <span class="hidden sm:inline text-[11px] font-bold">Синхрон</span>`;
+          btnSyncLive.innerHTML = `<span class="material-symbols-outlined text-[16px]">sync</span> <span class="hidden md:inline text-[11px]">Синхрон</span>`;
         }, 1500);
-      }, 400);
+      }, 350);
     });
   }
 
   // EPG Modal Open / Close
   const modalEpg = $('modal-epg');
-  function openEPG() {
+  on('btn-nav-epg', 'click', () => {
     renderEPG();
-    if (modalEpg) modalEpg.classList.remove('hidden');
-  }
-  on('btn-nav-epg', 'click', openEPG);
+    modalEpg?.classList.remove('hidden');
+  });
   on('btn-close-epg', 'click', () => modalEpg?.classList.add('hidden'));
 
-  // EPG Day Selector Buttons
+  // EPG Day Selector
   document.querySelectorAll('.epg-day-btn').forEach((btn, idx) => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.epg-day-btn').forEach(b => {
-        b.className = "epg-day-btn glass-pill px-4 py-1.5 text-xs text-gray-400 hover:text-white cursor-pointer";
-      });
-      btn.className = "epg-day-btn active glass-pill px-4 py-1.5 text-xs font-bold text-cyan-300 border-cyan-500/40 cursor-pointer";
+      document.querySelectorAll('.epg-day-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
       const offsets = [0, 1, 3, 5];
       state.activeEpgDayOffset = offsets[idx] || 0;
       renderEPG();
@@ -1010,15 +914,17 @@ function setupEventListeners() {
 
   // Studio Modal Open / Close
   const modalStudio = $('modal-studio');
-  function openStudio() {
+  on('btn-open-studio', 'click', () => {
     renderCustomSchedule();
-    if (modalStudio) modalStudio.classList.remove('hidden');
-  }
-  on('btn-open-studio', 'click', openStudio);
-  on('btn-banner-studio', 'click', openStudio);
+    modalStudio?.classList.remove('hidden');
+  });
+  on('btn-banner-studio', 'click', () => {
+    renderCustomSchedule();
+    modalStudio?.classList.remove('hidden');
+  });
   on('btn-close-studio', 'click', () => modalStudio?.classList.add('hidden'));
 
-  // Studio Search Button & Enter Key
+  // Studio Search
   const searchInput = $('studio-search-input');
   on('btn-studio-search', 'click', () => {
     if (searchInput) searchAniLibria(searchInput.value);
@@ -1037,12 +943,11 @@ function setupEventListeners() {
         customChan.schedule = [];
         saveChannelsToBackend();
         renderCustomSchedule();
-        renderChannelList();
       }
     }
   });
 
-  // Keyboard Shortcuts
+  // Keyboard Shortcuts (TV Remote)
   window.addEventListener('keydown', (e) => {
     if (e.target.tagName === 'INPUT') return;
 
@@ -1068,10 +973,8 @@ function setupEventListeners() {
 
 // Master Periodic Loop: Clock Ticking, Sverdlovsk Sync & Stream Drift Correction
 function startMasterLoop() {
-  // 1. Tick clock immediately
   tickClock();
 
-  // 2. 1-Second Interval Ticker
   setInterval(() => {
     tickClock();
 
@@ -1098,7 +1001,7 @@ function startMasterLoop() {
     }
   }, 1000);
 
-  // 3. Periodic Atomic Time Sync every 60 seconds
+  // Periodic Atomic Time Sync every 60 seconds
   setInterval(() => {
     syncAtomicTime().catch(() => {});
   }, 60000);
@@ -1106,14 +1009,9 @@ function startMasterLoop() {
 
 // Application Startup
 window.addEventListener('DOMContentLoaded', async () => {
-  // Start Master Clock & Ticker IMMEDIATELY (Zero delay)
   startMasterLoop();
-
-  // Load schedule asynchronously
   await loadScheduleFromBackend();
 
-  // Render all initial UI components
-  renderChannelList();
   renderVerticalChannelDock();
   renderInspectorGrid();
   setupEventListeners();
@@ -1126,6 +1024,6 @@ window.addEventListener('DOMContentLoaded', async () => {
   // Start background playback (muted initially for browser autoplay compliance)
   playCurrentChannel(false);
 
-  // Launch background atomic time sync (completely non-blocking)
+  // Background non-blocking sync
   syncAtomicTime().catch(() => {});
 });

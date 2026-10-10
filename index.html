@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="h-screen w-screen overflow-hidden">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>yturokTV — Виртуальное Линейное ТВ 24/7 (Мультики, Аниме & 2x2)</title>
+  <title>yturokTV — Виртуальное Линейное ТВ 24/7 (Material 3 Edition)</title>
   
   <!-- Tailwind CSS 3.x CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -11,348 +11,303 @@
   <!-- HLS.js for direct AniLibria & video streaming -->
   <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.7/dist/hls.min.js"></script>
   
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Material Symbols & Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   
-  <!-- Custom Modern 2026 Stylesheet -->
+  <!-- Custom Modern 2026 Material 3 Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-mesh-canvas text-slate-100 min-h-screen flex flex-col selection:bg-rose-500 selection:text-white relative">
-
-  <!-- Cinematic Noise Texture Overlay -->
-  <div class="noise-overlay"></div>
+<body class="h-screen w-screen overflow-hidden flex flex-col bg-[#0b0c12] text-slate-100 selection:bg-purple-500 selection:text-white">
 
   <!-- =====================================================================
-       TOP FLOATING CAPSULE ISLAND (Inspired by Ref 1 & 5)
+       TOP APP BAR (Material 3 Header with Master Clock & Quick Settings)
        ===================================================================== -->
-  <header class="sticky top-3 z-50 px-3 sm:px-4 max-w-7xl w-full mx-auto">
-    <div class="glass-pill px-3.5 sm:px-5 py-2.5 flex items-center justify-between gap-3 shadow-2xl">
-      
-      <!-- Left: Logo & Live Status Badges -->
-      <div class="flex items-center gap-3">
-        <a href="#" class="flex items-center gap-2.5 group">
-          <div class="w-9 h-9 rounded-2xl bg-gradient-to-tr from-rose-500 via-purple-600 to-cyan-400 flex items-center justify-center font-black text-lg shadow-lg shadow-rose-950/40 group-hover:scale-105 transition-transform duration-300">
-            📺
-          </div>
-          <div class="flex flex-col">
-            <span class="text-base font-black tracking-wider font-display text-white leading-tight flex items-center gap-1">
-              yturok<span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-400 via-fuchsia-400 to-cyan-400">TV</span>
-            </span>
-            <span class="text-[9px] text-gray-400 font-mono tracking-widest leading-none hidden sm:inline">24/7 BROADCAST</span>
-          </div>
-        </a>
-
-        <!-- Live Pulsing Pill & Sverdlovsk Master Clock Sync -->
-        <div class="hidden sm:flex items-center gap-2">
-          <span class="px-2.5 py-1 text-[10px] font-bold uppercase rounded-full bg-rose-500/15 text-rose-300 border border-rose-500/30 flex items-center gap-1.5 shadow-sm">
+  <header class="h-14 flex items-center justify-between px-4 sm:px-6 border-b border-white/8 bg-[#12131b] flex-shrink-0 z-30 select-none">
+    
+    <!-- Left: Brand Identity & Live Broadcast Badge -->
+    <div class="flex items-center gap-3">
+      <a href="#" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-purple-500 via-indigo-500 to-cyan-400 flex items-center justify-center font-black text-sm shadow-md group-hover:scale-105 transition-transform">
+          📺
+        </div>
+        <div class="flex items-center gap-1.5">
+          <span class="text-base font-black tracking-wider text-white">yturok<span class="text-purple-400">TV</span></span>
+          <span class="px-2 py-0.5 text-[9px] font-bold uppercase rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/40 flex items-center gap-1">
             <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-ping"></span> 24/7 ЭФИР
           </span>
-          <span id="sync-indicator-badge" class="px-2.5 py-1 text-[10px] font-bold uppercase rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 flex items-center gap-1.5 shadow-sm">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> СИНХРОН (ЕКБ • UTC+5)
-          </span>
         </div>
-      </div>
-
-      <!-- Center: Navigation Pills (EPG & Studio) -->
-      <div class="flex items-center gap-1.5 sm:gap-2">
-        <button id="btn-nav-epg" class="glass-pill px-3.5 py-1.5 text-xs font-semibold text-gray-300 hover:text-white flex items-center gap-1.5 cursor-pointer">
-          <i class="fa-solid fa-calendar-days text-cyan-400 text-xs"></i>
-          <span class="hidden md:inline">Телепрограмма</span>
-        </button>
-        <button id="btn-open-studio" class="glass-pill px-3.5 py-1.5 text-xs font-semibold text-gray-300 hover:text-white flex items-center gap-1.5 cursor-pointer">
-          <i class="fa-solid fa-wand-magic-sparkles text-rose-400 text-xs"></i>
-          <span class="hidden md:inline">Конструктор</span>
-        </button>
-      </div>
-
-      <!-- Right: Unified Sverdlovsk Clock & Utility Buttons -->
-      <div class="flex items-center gap-2">
-        <!-- Master Sverdlovsk Clock (YEKT, UTC+5) -->
-        <div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/50 border border-white/10 text-xs font-mono text-cyan-300 shadow-inner">
-          <i class="fa-regular fa-clock text-[11px] text-cyan-400"></i>
-          <span id="current-clock" class="font-bold tracking-wider">--:--:-- ЕКБ</span>
-        </div>
-
-        <!-- Live Snap Sync Button -->
-        <button id="btn-sync-live" class="glass-pill px-2.5 py-1.5 text-xs font-bold text-emerald-300 hover:text-white border-emerald-500/30 flex items-center gap-1 cursor-pointer" title="Синхронизировать секунда в секунду (ЕКБ)">
-          <i class="fa-solid fa-arrows-rotate text-[11px]"></i>
-          <span class="hidden lg:inline text-[11px]">Синхрон</span>
-        </button>
-
-        <!-- CRT TV Filter Toggle Button -->
-        <button id="btn-toggle-crt" title="ЭЛТ Ретро-Фильтр" class="glass-pill px-2.5 py-1.5 text-xs text-amber-300 hover:text-white cursor-pointer flex items-center gap-1">
-          <i class="fa-solid fa-tv text-xs"></i>
-          <span id="crt-status-text" class="text-[10px] font-bold font-mono hidden sm:inline">ЭЛТ</span>
-        </button>
-      </div>
-
+      </a>
     </div>
+
+    <!-- Center: Master Sverdlovsk Clock & Unified NTP Sync Badge -->
+    <div class="flex items-center gap-2">
+      <div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/50 border border-white/10 text-xs font-mono text-cyan-300 shadow-inner">
+        <span class="material-symbols-outlined text-[15px] text-cyan-400">schedule</span>
+        <span id="current-clock" class="font-bold tracking-wider">--:--:-- ЕКБ</span>
+      </div>
+      <div id="sync-indicator-badge" class="hidden sm:flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-bold uppercase rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> СИНХРОН (ЕКБ • UTC+5)
+      </div>
+    </div>
+
+    <!-- Right: Quick Settings (Material 3 Action Chips) -->
+    <div class="flex items-center gap-1.5 sm:gap-2">
+      <!-- CRT Filter Toggle Chip (ЭЛТ-фильтр) -->
+      <button id="btn-toggle-crt" title="Тумблер ЭЛТ ретро-фильтра" class="m3-chip active">
+        <span class="material-symbols-outlined text-[16px]">tv</span>
+        <span id="crt-status-text" class="hidden md:inline text-[11px]">ЭЛТ: ВКЛ</span>
+      </button>
+
+      <!-- Force Live Sync Chip -->
+      <button id="btn-sync-live" title="Синхронизировать секунда в секунду (ЕКБ)" class="m3-chip">
+        <span class="material-symbols-outlined text-[16px]">sync</span>
+        <span class="hidden md:inline text-[11px]">Синхрон</span>
+      </button>
+
+      <!-- Teleprogram (EPG) Chip -->
+      <button id="btn-nav-epg" class="m3-chip">
+        <span class="material-symbols-outlined text-[16px]">calendar_month</span>
+        <span class="hidden lg:inline text-[11px]">Программа</span>
+      </button>
+
+      <!-- Anime Studio / Constructor Chip -->
+      <button id="btn-open-studio" class="m3-chip">
+        <span class="material-symbols-outlined text-[16px]">auto_fix_high</span>
+        <span class="hidden lg:inline text-[11px]">Конструктор</span>
+      </button>
+    </div>
+
   </header>
 
   <!-- =====================================================================
-       MAIN APP CANVAS (Inspired by Ref 1, 2, 3, 5)
+       MAIN VIEWPORT CANVAS (Non-scrolling Single Viewport)
        ===================================================================== -->
-  <main class="flex-1 max-w-7xl w-full mx-auto p-3 sm:p-5 grid grid-cols-1 lg:grid-cols-12 gap-5 items-start mt-1">
+  <main class="flex-1 min-h-0 flex gap-3.5 p-3.5 overflow-hidden">
 
-    <!-- LEFT FLOATING CHANNEL DOCK (1 col on lg) -->
-    <div class="hidden lg:flex lg:col-span-1 flex-col items-center gap-3 sticky top-20">
-      <div class="glass-panel p-2 flex flex-col items-center gap-2.5 w-full shadow-2xl">
-        <span class="text-[9px] font-mono uppercase font-bold text-gray-400 tracking-wider mb-0.5">Каналы</span>
-        
-        <!-- Vertical Channel Switcher Icons (01, 02, 03, 04, 05) -->
-        <div id="vertical-channel-dock" class="flex flex-col gap-2 w-full">
+    <!-- LEFT: MATERIAL 3 NAVIGATION RAIL (Channels 01-05 & Controls) -->
+    <aside class="w-16 flex flex-col items-center justify-between py-2.5 m3-surface flex-shrink-0 z-20">
+      
+      <!-- Vertical Channel Selector (01, 02, 03, 04, 05) -->
+      <div class="flex flex-col items-center gap-2 w-full">
+        <span class="text-[9px] font-mono uppercase font-bold text-gray-500 tracking-wider">Каналы</span>
+        <div id="vertical-channel-dock" class="flex flex-col gap-2 w-full px-1.5">
           <!-- Populated by app.js -->
         </div>
-
-        <div class="w-8 h-[1px] bg-white/10 my-1"></div>
-
-        <!-- Volume Toggle Icon -->
-        <button id="dock-btn-mute" class="w-10 h-10 rounded-2xl glass-pill flex items-center justify-center text-gray-300 hover:text-white cursor-pointer transition" title="Звук">
-          <i id="dock-mute-icon" class="fa-solid fa-volume-high text-xs"></i>
-        </button>
-
-        <!-- Cinema Fullscreen Icon -->
-        <button id="dock-btn-cinema" class="w-10 h-10 rounded-2xl glass-pill flex items-center justify-center text-gray-300 hover:text-white cursor-pointer transition" title="Кинотеатр">
-          <i class="fa-solid fa-expand text-xs"></i>
-        </button>
-      </div>
-    </div>
-
-    <!-- CENTER HERO BROADCAST STAGE (8 cols on lg) -->
-    <div class="lg:col-span-8 flex flex-col gap-4">
-
-      <!-- THE TV SCREEN CABINET (Squircle Bezel with Dynamic Ambilight) -->
-      <div id="tv-cabinet" class="tv-stage-wrapper">
-        <div id="tv-screen-container" class="tv-screen-bezel aspect-video w-full flex items-center justify-center crt-mode select-none">
-          
-          <!-- Unified Video Player for HLS and MP4 -->
-          <video id="hls-player" class="w-full h-full object-contain absolute inset-0 z-0 hidden" playsinline></video>
-
-          <!-- 2x2 Retro Text Bumper Screen -->
-          <div id="bumper-screen" class="absolute inset-0 z-10 bumper-screen flex flex-col items-center justify-center p-8 text-center select-none hidden">
-            <div class="max-w-lg">
-              <div id="bumper-logo" class="font-display font-black text-3xl tracking-widest text-cyan-400 mb-4 drop-shadow">[2x2]</div>
-              <p id="bumper-text" class="text-xl md:text-2xl font-bold tracking-tight text-white leading-snug whitespace-pre-line"></p>
-            </div>
-          </div>
-
-          <!-- Static Noise Glitch Screen -->
-          <div id="static-screen" class="absolute inset-0 z-20 static-noise hidden"></div>
-
-          <!-- TOP-LEFT FLOATING WATERMARK PILL -->
-          <div class="absolute top-3.5 left-3.5 z-20 flex items-center gap-2 pointer-events-none">
-            <div id="channel-watermark" class="glass-pill px-3 py-1 text-white font-display text-xs font-extrabold tracking-wide drop-shadow flex items-center gap-1.5">
-              🐺 МУЛЬТИКИ HD
-            </div>
-            <div id="screen-slot-badge" class="glass-pill px-2.5 py-1 text-cyan-300 font-mono text-[10px] font-bold uppercase drop-shadow hidden sm:inline">
-              ☀️ УТРЕННИЙ БЛОК (ЕКБ)
-            </div>
-          </div>
-
-          <!-- TOP-RIGHT LIVE AUDIO EQUALIZER PILL (Ref 5) -->
-          <div class="absolute top-3.5 right-3.5 z-20 flex items-center gap-2 pointer-events-none">
-            <div class="glass-pill px-3 py-1 flex items-center gap-2 text-[10px] font-mono text-cyan-300">
-              <span class="flex items-end gap-0.5 h-3">
-                <span class="eq-bar"></span>
-                <span class="eq-bar"></span>
-                <span class="eq-bar"></span>
-                <span class="eq-bar"></span>
-              </span>
-              <span class="font-bold tracking-wider">ON AIR</span>
-            </div>
-          </div>
-
-          <!-- UNMUTE / SOUND ACTIVATION OVERLAY -->
-          <div id="unmute-overlay" class="absolute inset-0 z-30 bg-black/60 backdrop-blur-[2px] flex flex-col items-center justify-center p-6 text-center cursor-pointer transition-all duration-300 hover:bg-black/40">
-            <div class="w-16 h-16 rounded-3xl bg-gradient-to-tr from-rose-500 via-purple-600 to-cyan-400 flex items-center justify-center text-white text-2xl mb-3 shadow-2xl shadow-rose-500/40 hover:scale-110 transition-transform animate-bounce">
-              <i class="fa-solid fa-volume-high"></i>
-            </div>
-            <h2 class="text-xl font-black text-white mb-1.5 font-display tracking-wider">ЭФИР ИДЁТ (БЕЗ ЗВУКА)</h2>
-            <p class="text-xs text-gray-200 glass-pill px-5 py-2 shadow-xl flex items-center gap-2">
-              <i class="fa-solid fa-hand-pointer text-cyan-400"></i> Кликните в любом месте, чтобы включить звук
-            </p>
-          </div>
-
-          <!-- RETRO OSD BANNER (Slide-up pill on channel switch) -->
-          <div id="osd-banner" class="absolute bottom-4 left-4 right-4 z-20 glass-panel p-3 text-cyan-300 font-mono shadow-2xl transition-all duration-300 opacity-0 pointer-events-none transform translate-y-2">
-            <div class="flex items-center justify-between text-xs mb-1">
-              <span id="osd-channel" class="font-black text-white flex items-center gap-1.5">CH 01 • МУЛЬТ-КЛАССИКА</span>
-              <span class="text-[10px] text-gray-400">1080p BDRip • РУС. ДУБЛЯЖ</span>
-            </div>
-            <div id="osd-title" class="text-sm font-bold text-white truncate">Ну, погоди! (Выпуск 1)</div>
-            <div class="text-[11px] text-cyan-400/80 truncate" id="osd-next">Далее: Выпуск 2</div>
-          </div>
-
-        </div>
       </div>
 
-      <!-- TV BOTTOM CONTROLS & TIMELINE BAR -->
-      <div class="glass-panel px-4 py-3 flex flex-wrap items-center justify-between gap-3 text-xs text-gray-300 shadow-xl">
+      <!-- Bottom Quick Action Icons -->
+      <div class="flex flex-col items-center gap-2">
+        <button id="dock-btn-mute" class="m3-icon-btn tonal" title="Звук">
+          <span id="dock-mute-icon" class="material-symbols-outlined text-[18px]">volume_up</span>
+        </button>
+        <button id="dock-btn-cinema" class="m3-icon-btn tonal" title="На весь экран">
+          <span class="material-symbols-outlined text-[18px]">fullscreen</span>
+        </button>
+      </div>
+
+    </aside>
+
+    <!-- CENTER: HERO VIDEO PLAYER STAGE -->
+    <section class="flex-1 flex flex-col min-w-0 min-h-0 gap-3">
+
+      <!-- THE TV SCREEN (Ambilight Aura & Interactive Hover Controls) -->
+      <div id="tv-cabinet" class="tv-stage flex-1 min-h-0 w-full relative flex items-center justify-center crt-mode select-none">
         
-        <!-- Prev / Next Channel & Quick Switch -->
-        <div class="flex items-center gap-2">
-          <button id="btn-prev-ch" class="w-8 h-8 rounded-xl glass-pill flex items-center justify-center text-white hover:text-cyan-400 transition cursor-pointer" title="Предыдущий канал">
-            <i class="fa-solid fa-chevron-left text-xs"></i>
-          </button>
-          <span class="font-mono text-white font-extrabold px-1.5 text-xs" id="current-channel-badge">CH 01</span>
-          <button id="btn-next-ch" class="w-8 h-8 rounded-xl glass-pill flex items-center justify-center text-white hover:text-cyan-400 transition cursor-pointer" title="Следующий канал">
-            <i class="fa-solid fa-chevron-right text-xs"></i>
-          </button>
+        <!-- Video Stream Player -->
+        <video id="hls-player" class="w-full h-full object-contain absolute inset-0 z-0 hidden" playsinline></video>
 
-          <!-- Volume Controls -->
-          <div class="flex items-center gap-2 ml-2 glass-pill px-3 py-1">
-            <button id="btn-mute" class="text-gray-300 hover:text-white transition cursor-pointer" title="Вкл/Выкл звук">
-              <i id="mute-icon" class="fa-solid fa-volume-high text-xs"></i>
-            </button>
-            <input id="volume-slider" type="range" min="0" max="100" value="80" class="w-16 accent-rose-500 h-1 bg-gray-700 rounded-full cursor-pointer">
+        <!-- 2x2 Retro Text Bumper Screen -->
+        <div id="bumper-screen" class="absolute inset-0 z-10 bumper-screen flex flex-col items-center justify-center p-8 text-center select-none hidden">
+          <div class="max-w-lg">
+            <div id="bumper-logo" class="font-black text-3xl tracking-widest text-cyan-400 mb-3 drop-shadow">[2x2]</div>
+            <p id="bumper-text" class="text-xl md:text-2xl font-bold tracking-tight text-white leading-snug whitespace-pre-line"></p>
           </div>
         </div>
 
-        <!-- Progress Timeline -->
-        <div class="flex items-center gap-3 flex-1 max-w-sm mx-auto">
-          <div class="w-full bg-gray-800/80 h-1.5 rounded-full overflow-hidden">
-            <div id="broadcast-progress" class="bg-gradient-to-r from-rose-500 via-purple-500 to-cyan-400 h-full w-0 transition-all duration-1000"></div>
-          </div>
-          <span id="broadcast-time-text" class="font-mono text-[11px] text-gray-400 whitespace-nowrap">00:00 / 00:00</span>
+        <!-- Static Glitch Screen on channel switch -->
+        <div id="static-screen" class="absolute inset-0 z-20 static-noise hidden"></div>
+
+        <!-- Real Corner Watermark (Small, Clean, Non-intrusive) -->
+        <div id="tv-watermark" class="tv-watermark">
+          <span class="text-xs">📺</span>
+          <span id="channel-watermark" class="tracking-widest uppercase">yturokTV</span>
         </div>
 
-        <!-- Cinema Fullscreen Button -->
-        <div class="flex items-center gap-2">
-          <button id="btn-cinema" class="glass-pill px-3 py-1.5 text-gray-300 hover:text-white transition flex items-center gap-1.5 cursor-pointer">
-            <i class="fa-solid fa-expand text-xs"></i>
-            <span class="text-[11px] font-semibold">Кинотеатр</span>
-          </button>
+        <!-- Initial Unmute Prompt (disappears on first click) -->
+        <div id="unmute-overlay" class="absolute inset-0 z-30 bg-black/60 backdrop-blur-[2px] flex flex-col items-center justify-center p-6 text-center cursor-pointer transition-all duration-300 hover:bg-black/40">
+          <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-purple-500 to-cyan-400 flex items-center justify-center text-white mb-3 shadow-2xl hover:scale-110 transition-transform animate-bounce">
+            <span class="material-symbols-outlined text-3xl">volume_up</span>
+          </div>
+          <h2 class="text-lg font-black text-white mb-1 tracking-wider">ЭФИР ИДЁТ (БЕЗ ЗВУКА)</h2>
+          <p class="text-xs text-gray-200 m3-chip shadow-xl">
+            <span class="material-symbols-outlined text-[14px]">touch_app</span> Кликните в любом месте, чтобы включить звук
+          </p>
+        </div>
+
+        <!-- =================================================================
+             INTERACTIVE PLAYER HOVER CONTROLS OVERLAY (Appears on Mouse Move)
+             ================================================================= -->
+        <div id="player-controls-overlay" class="player-controls-overlay">
+          
+          <!-- Top Bar on Hover -->
+          <div class="flex items-center justify-between text-xs text-white/90">
+            <div class="flex items-center gap-2">
+              <span id="hover-channel-badge" class="px-2 py-0.5 rounded-full bg-purple-500/30 border border-purple-400/40 text-[10px] font-bold font-mono">CH 01</span>
+              <span id="hover-show-title" class="font-bold truncate max-w-md">Загрузка эфира...</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-0.5 rounded-full bg-white/10 text-[10px] font-mono font-bold">1080p HD</span>
+            </div>
+          </div>
+
+          <!-- Center: Click to Pause/Play feedback -->
+          <div class="flex items-center justify-center pointer-events-none"></div>
+
+          <!-- Bottom Bar on Hover (Player Controls) -->
+          <div class="flex flex-col gap-2 bg-black/60 backdrop-blur-md p-3 rounded-2xl border border-white/10 shadow-2xl">
+            
+            <!-- Progress Slider Line -->
+            <div class="flex items-center gap-3">
+              <div class="flex-1 m3-progress-track">
+                <div id="broadcast-progress" class="m3-progress-fill" style="width: 0%"></div>
+              </div>
+              <span id="broadcast-time-text" class="text-[11px] font-mono text-gray-300 whitespace-nowrap">00:00 / 00:00</span>
+            </div>
+
+            <!-- Buttons Row -->
+            <div class="flex items-center justify-between gap-3 pt-1">
+              
+              <!-- Left: Prev/Next Channel, Mute, Volume -->
+              <div class="flex items-center gap-2">
+                <button id="btn-prev-ch" class="m3-icon-btn tonal w-8 h-8" title="Предыдущий канал">
+                  <span class="material-symbols-outlined text-[18px]">skip_previous</span>
+                </button>
+                <span id="current-channel-badge" class="font-mono text-xs font-bold px-1 text-purple-300">CH 01</span>
+                <button id="btn-next-ch" class="m3-icon-btn tonal w-8 h-8" title="Следующий канал">
+                  <span class="material-symbols-outlined text-[18px]">skip_next</span>
+                </button>
+
+                <div class="w-[1px] h-4 bg-white/15 mx-1"></div>
+
+                <button id="btn-mute" class="m3-icon-btn w-8 h-8" title="Звук">
+                  <span id="mute-icon" class="material-symbols-outlined text-[18px]">volume_up</span>
+                </button>
+                <input id="volume-slider" type="range" min="0" max="100" value="80" class="w-20 cursor-pointer">
+              </div>
+
+              <!-- Right: CRT Toggle & Fullscreen -->
+              <div class="flex items-center gap-2">
+                <button id="btn-player-crt" class="m3-icon-btn tonal w-8 h-8" title="ЭЛТ Фильтр">
+                  <span class="material-symbols-outlined text-[16px]">tv</span>
+                </button>
+                <button id="btn-cinema" class="m3-icon-btn tonal w-8 h-8" title="Развернуть на весь экран">
+                  <span class="material-symbols-outlined text-[18px]">fullscreen</span>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
 
       </div>
 
-      <!-- CURRENT SHOW HERO CARD (Inspired by Ref 2 & 4) -->
-      <div class="glass-panel p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
-        <div class="flex items-start gap-4">
-          <img id="show-poster" src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=200" alt="Постер" class="w-20 h-28 object-cover rounded-2xl border border-white/10 shadow-2xl flex-shrink-0">
-          <div class="flex flex-col gap-1.5">
-            <div class="flex flex-wrap items-center gap-2">
-              <span id="show-slot-badge" class="glass-pill px-3 py-0.5 text-[10px] font-bold uppercase text-cyan-300 font-mono">
-                ☀️ УТРЕННИЙ БЛОК (ЕКБ)
+      <!-- COMPACT SHOW METADATA CARD (Fits neatly under the TV) -->
+      <div class="m3-surface px-4 py-2.5 flex items-center justify-between gap-4 flex-shrink-0">
+        <div class="flex items-center gap-3.5 min-w-0">
+          <img id="show-poster" src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=100" alt="Постер" class="w-10 h-14 object-cover rounded-xl border border-white/10 flex-shrink-0">
+          <div class="flex flex-col min-w-0">
+            <div class="flex items-center gap-2">
+              <span id="show-slot-badge" class="px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 text-[10px] font-bold font-mono">
+                ☀️ ЭФИР ЕКБ
               </span>
-              <span class="px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 border border-rose-500/30 text-[10px] font-bold">
-                1080p BDRip
-              </span>
-              <span class="px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 text-[10px] font-bold">
+              <span class="px-2 py-0.5 rounded-full bg-white/10 text-[10px] font-bold text-gray-300">
                 Русская озвучка
               </span>
             </div>
-            <h2 id="show-title" class="text-xl md:text-2xl font-black font-display text-white tracking-wide">
-              Ну, погоди! (1080p Remaster)
-            </h2>
-            <div id="show-episode" class="text-sm font-semibold text-rose-400">
-              Выпуск 1: В городе и на пляже
-            </div>
-            <p id="show-description" class="text-xs text-gray-400 line-clamp-2 max-w-xl leading-relaxed">
-              Легендарный первый выпуск «Ну, погоди!». Заяц на водных лыжах, Волк и знаменитая погоня.
-            </p>
+            <h2 id="show-title" class="text-sm font-bold text-white truncate mt-0.5">Ну, погоди!</h2>
+            <div id="show-episode" class="text-xs text-purple-300 truncate font-medium">Выпуск 1</div>
           </div>
         </div>
+
+        <div class="hidden sm:flex flex-col items-end text-right flex-shrink-0">
+          <span class="text-[10px] text-gray-400 font-mono">Прямой эфир</span>
+          <span class="text-xs font-bold text-emerald-400 flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Синхронизировано
+          </span>
+        </div>
       </div>
 
-    </div>
+    </section>
 
-    <!-- RIGHT: MULTI-CHANNEL TIMELINE RADAR (3 cols on lg) (Ref 2 & 3) -->
-    <div class="lg:col-span-3 flex flex-col gap-4">
+    <!-- RIGHT: "СЕЙЧАС В ЭФИРЕ" LIVE RADAR PANEL (Scrolls internally if needed) -->
+    <aside class="w-72 xl:w-80 flex flex-col gap-3 m3-surface p-3.5 flex-shrink-0 overflow-hidden">
       
-      <!-- Live Grid Header -->
-      <div class="glass-panel p-4 flex flex-col gap-3 shadow-xl">
-        <div class="flex items-center justify-between">
-          <h3 class="text-xs font-black uppercase tracking-wider text-rose-400 font-display flex items-center gap-2">
-            <i class="fa-solid fa-tower-broadcast text-rose-400"></i> Эфир сейчас (ЕКБ)
-          </h3>
-          <span class="text-[10px] text-gray-500 font-mono">5 Каналов</span>
+      <!-- Panel Header -->
+      <div class="flex items-center justify-between pb-2 border-b border-white/8 flex-shrink-0">
+        <div class="flex items-center gap-1.5 text-xs font-bold text-purple-300 uppercase tracking-wider">
+          <span class="material-symbols-outlined text-[16px] text-purple-400">cell_tower</span>
+          Эфир сейчас (ЕКБ)
         </div>
-        <p class="text-[11px] text-gray-400">
-          Смотрите, что идёт на других кнопках, и переключайтесь в 1 клик:
-        </p>
-
-        <!-- Dynamic Multi-Channel Timeline Feed (Channels 01-05) -->
-        <div id="inspector-grid" class="flex flex-col gap-2.5">
-          <!-- Populated by app.js -->
-        </div>
+        <span class="text-[10px] text-gray-500 font-mono">5 Каналов</span>
       </div>
 
-      <!-- Quick Action Bento Banner -->
-      <div class="glass-panel p-4 flex items-center justify-between gap-3 bg-gradient-to-r from-purple-900/40 to-rose-900/40 border-rose-500/20">
+      <!-- Dynamic Multi-Channel Timeline Feed (Channels 01-05) -->
+      <div id="inspector-grid" class="flex-1 overflow-y-auto flex flex-col gap-2.5 pr-1 min-h-0">
+        <!-- Populated by app.js -->
+      </div>
+
+      <!-- Quick Action Promo Banner -->
+      <div class="p-3 rounded-2xl bg-gradient-to-r from-purple-950/60 to-indigo-950/60 border border-purple-500/20 flex items-center justify-between gap-2 flex-shrink-0">
         <div>
-          <h4 class="text-xs font-bold text-white font-display">Твой личный канал</h4>
-          <p class="text-[10px] text-gray-400 mt-0.5">Добавь любое аниме через поиск</p>
+          <div class="text-xs font-bold text-white">Мой Канал (05)</div>
+          <div class="text-[10px] text-gray-400">Собери свой плейлист</div>
         </div>
-        <button id="btn-banner-studio" class="glass-pill px-3 py-1.5 text-xs font-bold text-rose-300 hover:text-white cursor-pointer">
+        <button id="btn-banner-studio" class="m3-chip text-[11px] py-1 px-3">
           Открыть
         </button>
       </div>
 
-    </div>
-
-    <!-- BOTTOM ROW: FULL CHANNEL BENTO SHOWCASE (12 cols) (Ref 2, 3, 4) -->
-    <div class="lg:col-span-12 mt-2">
-      <div class="flex items-center justify-between mb-3 px-1">
-        <h3 class="text-sm font-black uppercase tracking-wider text-white font-display flex items-center gap-2">
-          <i class="fa-solid fa-layer-group text-cyan-400"></i> Каталог телеканалов yturokTV
-        </h3>
-        <span class="text-xs text-gray-400 font-mono">24/7 Линейное вещание</span>
-      </div>
-
-      <!-- Channel Bento Grid -->
-      <div id="channels-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
-        <!-- Rendered by app.js: 5 Bento Channel Cards with posters and live badges -->
-      </div>
-    </div>
+    </aside>
 
   </main>
 
   <!-- =====================================================================
-       EPG TELEPROGRAM MODAL (Ref 3)
+       EPG TELEPROGRAM MODAL (Material 3 Dialog)
        ===================================================================== -->
-  <div id="modal-epg" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-xl flex items-center justify-center p-4 hidden">
-    <div class="glass-panel max-w-4xl w-full max-h-[85vh] flex flex-col p-6 border-white/15 shadow-2xl">
+  <div id="modal-epg" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+    <div class="m3-surface max-w-4xl w-full max-h-[85vh] flex flex-col p-6 shadow-2xl">
       
-      <!-- Modal Header -->
+      <!-- Header -->
       <div class="flex items-center justify-between pb-4 border-b border-white/10">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-2xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-lg">
-            <i class="fa-solid fa-calendar-days"></i>
-          </div>
+          <span class="material-symbols-outlined text-2xl text-cyan-400">calendar_month</span>
           <div>
-            <h3 class="text-lg font-black font-display text-white">Телепрограмма передач</h3>
-            <p class="text-xs text-gray-400">Сетка эфира рассчитана по Свердловскому времени (ЕКБ, UTC+5)</p>
+            <h3 class="text-base font-bold text-white">Телепрограмма передач</h3>
+            <p class="text-xs text-gray-400">Сетка рассчитана по Свердловскому времени (ЕКБ, UTC+5)</p>
           </div>
         </div>
-        <button id="btn-close-epg" class="w-8 h-8 rounded-full glass-pill flex items-center justify-center text-gray-400 hover:text-white cursor-pointer">
-          <i class="fa-solid fa-xmark"></i>
+        <button id="btn-close-epg" class="m3-icon-btn tonal">
+          <span class="material-symbols-outlined text-lg">close</span>
         </button>
       </div>
 
-      <!-- Channel Switcher Tabs -->
-      <div id="epg-tabs" class="flex items-center gap-2 py-3 overflow-x-auto border-b border-white/5">
+      <!-- Channels Selector Tabs -->
+      <div id="epg-tabs" class="flex items-center gap-2 py-3 overflow-x-auto border-b border-white/8">
         <!-- Rendered by app.js -->
       </div>
 
-      <!-- EPG Days Switcher -->
-      <div class="flex items-center gap-2 py-3 overflow-x-auto">
-        <button class="epg-day-btn active glass-pill px-4 py-1.5 text-xs font-bold text-cyan-300 border-cyan-500/40 cursor-pointer">
-          Сегодня
-        </button>
-        <button class="epg-day-btn glass-pill px-4 py-1.5 text-xs text-gray-400 hover:text-white cursor-pointer">
-          Завтра
-        </button>
-        <button class="epg-day-btn glass-pill px-4 py-1.5 text-xs text-gray-400 hover:text-white cursor-pointer">
-          Через 3 дня
-        </button>
-        <button class="epg-day-btn glass-pill px-4 py-1.5 text-xs text-gray-400 hover:text-white cursor-pointer">
-          Через 5 дней
-        </button>
+      <!-- Day Selector -->
+      <div class="flex items-center gap-2 py-2.5 overflow-x-auto">
+        <button class="epg-day-btn active m3-chip">Сегодня</button>
+        <button class="epg-day-btn m3-chip">Завтра</button>
+        <button class="epg-day-btn m3-chip">Через 3 дня</button>
+        <button class="epg-day-btn m3-chip">Через 5 дней</button>
       </div>
 
-      <!-- EPG Schedule Content Grid -->
-      <div id="epg-schedule-list" class="flex-1 overflow-y-auto py-2 flex flex-col gap-2.5 max-h-[460px]">
+      <!-- Schedule Timetable List -->
+      <div id="epg-schedule-list" class="flex-1 overflow-y-auto py-2 flex flex-col gap-2 min-h-0 max-h-[440px]">
         <!-- Rendered by app.js -->
       </div>
 
@@ -360,60 +315,55 @@
   </div>
 
   <!-- =====================================================================
-       STUDIO / CONSTRUCTOR MODAL (Ref 3 & 4)
+       STUDIO / CONSTRUCTOR MODAL (Material 3 Dialog)
        ===================================================================== -->
-  <div id="modal-studio" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-xl flex items-center justify-center p-4 hidden">
-    <div class="glass-panel max-w-4xl w-full max-h-[85vh] flex flex-col p-6 border-white/15 shadow-2xl">
+  <div id="modal-studio" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+    <div class="m3-surface max-w-4xl w-full max-h-[85vh] flex flex-col p-6 shadow-2xl">
       
-      <!-- Modal Header -->
+      <!-- Header -->
       <div class="flex items-center justify-between pb-4 border-b border-white/10">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-2xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-lg">
-            <i class="fa-solid fa-wand-magic-sparkles"></i>
-          </div>
+          <span class="material-symbols-outlined text-2xl text-purple-400">auto_fix_high</span>
           <div>
-            <h3 class="text-lg font-black font-display text-white">Конструктор «Моего Канала»</h3>
-            <p class="text-xs text-gray-400">Ищи любые аниме из базы AniLibria и формируй свой телеканал</p>
+            <h3 class="text-base font-bold text-white">Конструктор «Моего Канала»</h3>
+            <p class="text-xs text-gray-400">Поиск аниме из базы AniLibria с русской озвучкой</p>
           </div>
         </div>
-        <button id="btn-close-studio" class="w-8 h-8 rounded-full glass-pill flex items-center justify-center text-gray-400 hover:text-white cursor-pointer">
-          <i class="fa-solid fa-xmark"></i>
+        <button id="btn-close-studio" class="m3-icon-btn tonal">
+          <span class="material-symbols-outlined text-lg">close</span>
         </button>
       </div>
 
-      <!-- Search & Custom schedule layout -->
       <div class="grid grid-cols-1 md:grid-cols-12 gap-5 py-4 flex-1 overflow-hidden">
-        
         <!-- Left: Search Box & Catalog -->
-        <div class="md:col-span-7 flex flex-col gap-3 overflow-y-auto pr-2 max-h-[480px]">
+        <div class="md:col-span-7 flex flex-col gap-3 overflow-y-auto pr-2 max-h-[460px]">
           <div class="flex gap-2">
-            <input id="studio-search-input" type="text" placeholder="Поиск аниме (например: Наруто, Блич, Тетрадь смерти)..." class="flex-1 bg-black/50 border border-white/10 rounded-2xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-400 transition">
-            <button id="btn-studio-search" class="glass-pill px-4 py-2 text-xs font-bold text-white bg-gradient-to-r from-rose-500 to-cyan-500 hover:opacity-90 cursor-pointer">
+            <input id="studio-search-input" type="text" placeholder="Поиск аниме (например: Наруто, Блич, Тетрадь смерти)..." class="flex-1 bg-black/50 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-purple-400">
+            <button id="btn-studio-search" class="m3-chip bg-purple-600 text-white hover:bg-purple-500 font-bold">
               Поиск
             </button>
           </div>
 
-          <div id="search-results-container" class="flex flex-col gap-2.5 min-h-[220px]">
+          <div id="search-results-container" class="flex flex-col gap-2 min-h-[200px]">
             <div class="text-center py-12 text-gray-500 text-xs">
-              Введите название аниме выше, чтобы найти серии с русской озвучкой
+              Введите название аниме выше, чтобы найти серии
             </div>
           </div>
         </div>
 
-        <!-- Right: Current Custom Channel Queue -->
-        <div class="md:col-span-5 flex flex-col gap-3 border-t md:border-t-0 md:border-l border-white/10 md:pl-5 pt-3 md:pt-0 overflow-y-auto max-h-[480px]">
+        <!-- Right: Current Custom Channel Playlist -->
+        <div class="md:col-span-5 flex flex-col gap-3 border-t md:border-t-0 md:border-l border-white/10 md:pl-5 pt-3 md:pt-0 overflow-y-auto max-h-[460px]">
           <div class="flex items-center justify-between">
-            <h4 class="text-xs font-bold uppercase tracking-wider text-cyan-400 font-mono flex items-center gap-1.5">
-              <i class="fa-solid fa-star"></i> Плейлист канала (05)
+            <h4 class="text-xs font-bold text-purple-300 font-mono flex items-center gap-1.5">
+              <span>⭐</span> Плейлист канала (05)
             </h4>
-            <button id="btn-clear-custom" class="text-[11px] text-gray-500 hover:text-rose-400 transition cursor-pointer">Очистить</button>
+            <button id="btn-clear-custom" class="text-[11px] text-gray-500 hover:text-rose-400 transition">Очистить</button>
           </div>
 
           <div id="custom-schedule-items" class="flex flex-col gap-2">
             <!-- Rendered by app.js -->
           </div>
         </div>
-
       </div>
 
     </div>
