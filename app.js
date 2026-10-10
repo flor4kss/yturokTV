@@ -24,17 +24,22 @@ const $ = (id) => document.getElementById(id);
 const text = (id, str) => { const el = $(id); if (el) el.textContent = str; };
 const on = (id, evt, handler) => { const el = $(id); if (el) el.addEventListener(evt, handler); return el; };
 
-// Channel SVG Logos Dictionary
+// Stream SVG Logos Dictionary
 const CHANNEL_LOGOS = {
-  "toonster": `<svg viewBox="0 0 40 32" class="w-7 h-6 inline-block"><rect width="36" height="26" x="2" y="5" rx="7" fill="#06b6d4"/><path d="M13 18a5 5 0 0 0 14 0" stroke="#08090e" stroke-width="2.5" stroke-linecap="round" fill="none"/><circle cx="15" cy="13" r="2" fill="#08090e"/><circle cx="25" cy="13" r="2" fill="#08090e"/><path d="M20 5 L16 1 M20 5 L24 1" stroke="#f43f5e" stroke-width="2" stroke-linecap="round"/></svg>`,
-  "2x2": `<svg viewBox="0 0 44 28" class="w-7 h-5 inline-block"><rect width="44" height="28" rx="6" fill="#f59e0b"/><text x="22" y="20" font-family="system-ui, sans-serif" font-weight="900" font-size="16" text-anchor="middle" fill="#08090e" letter-spacing="-1">2x2</text></svg>`,
-  "animehit": `<svg viewBox="0 0 36 36" class="w-6 h-6 inline-block"><circle cx="18" cy="18" r="16" fill="#e11d48"/><path d="M10 10 h16 M12 16 h12 M14 10 v16 M22 10 v16" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/></svg>`,
-  "cyber": `<svg viewBox="0 0 36 36" class="w-6 h-6 inline-block"><rect width="32" height="32" x="2" y="2" rx="7" fill="#8b5cf6"/><path d="M9 14 h18 v8 h-5 l-4 4 l-4 -4 h-5 z" fill="#08090e"/><circle cx="14" cy="17" r="2" fill="#22d3ee"/><circle cx="22" cy="17" r="2" fill="#22d3ee"/></svg>`
+  "toonster": `<svg viewBox="0 0 40 32" class="w-6 h-5 inline-block"><rect width="36" height="26" x="2" y="5" rx="7" fill="#06b6d4"/><path d="M13 18a5 5 0 0 0 14 0" stroke="#08090e" stroke-width="2.5" stroke-linecap="round" fill="none"/><circle cx="15" cy="13" r="2" fill="#08090e"/><circle cx="25" cy="13" r="2" fill="#08090e"/><path d="M20 5 L16 1 M20 5 L24 1" stroke="#f43f5e" stroke-width="2" stroke-linecap="round"/></svg>`,
+  "animehit": `<svg viewBox="0 0 36 36" class="w-5 h-5 inline-block"><circle cx="18" cy="18" r="16" fill="#f43f5e"/><path d="M10 10 h16 M12 16 h12 M14 10 v16 M22 10 v16" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round"/></svg>`,
+  "cyber": `<svg viewBox="0 0 36 36" class="w-5 h-5 inline-block"><rect width="32" height="32" x="2" y="2" rx="7" fill="#a855f7"/><path d="M9 14 h18 v8 h-5 l-4 4 l-4 -4 h-5 z" fill="#08090e"/><circle cx="14" cy="17" r="2" fill="#22d3ee"/><circle cx="22" cy="17" r="2" fill="#22d3ee"/></svg>`,
+  "2x2": `<svg viewBox="0 0 44 28" class="w-6 h-5 inline-block"><rect width="44" height="28" rx="6" fill="#f59e0b"/><text x="22" y="20" font-family="system-ui, sans-serif" font-weight="900" font-size="16" text-anchor="middle" fill="#08090e" letter-spacing="-1">2x2</text></svg>`
 };
 
 function getChannelLogo(ch) {
-  const key = ch.logoSvg || (ch.id === 'toonster' ? 'toonster' : ch.id === '2x2-max' ? '2x2' : ch.id === 'anime-hit' ? 'animehit' : 'cyber');
-  return CHANNEL_LOGOS[key] || CHANNEL_LOGOS['toonster'];
+  if (ch.logoSvg && CHANNEL_LOGOS[ch.logoSvg]) {
+    return CHANNEL_LOGOS[ch.logoSvg];
+  }
+  if (ch.streamId === 'morning' || ch.id === 'yturok-morning') return CHANNEL_LOGOS['toonster'];
+  if (ch.streamId === 'day' || ch.id === 'yturok-day') return CHANNEL_LOGOS['animehit'];
+  if (ch.streamId === 'night' || ch.id === 'yturok-night') return CHANNEL_LOGOS['cyber'];
+  return CHANNEL_LOGOS['toonster'];
 }
 
 // Master Sverdlovsk Clock (YEKT • UTC+5 / Екатеринбург)
@@ -105,7 +110,7 @@ async function loadScheduleFromBackend() {
     const res = await fetch('/api/schedule?t=' + Date.now());
     if (res.ok) {
       const data = await res.json();
-      if (Array.isArray(data) && data.length >= 4) {
+      if (Array.isArray(data) && data.length >= 3) {
         state.channels = data;
         return;
       }
@@ -116,7 +121,7 @@ async function loadScheduleFromBackend() {
   if (saved) {
     try {
       const parsed = JSON.parse(saved);
-      if (Array.isArray(parsed) && parsed.length >= 4) {
+      if (Array.isArray(parsed) && parsed.length >= 3) {
         state.channels = parsed;
         return;
       }
@@ -406,17 +411,30 @@ function updateChannelInfoDOM(channel, currentItem, elapsed, nextItem, progressP
   if (logoSlot) {
     logoSlot.innerHTML = getChannelLogo(channel);
   }
-  text('channel-watermark', channel.name);
+  text('channel-watermark', `yturokTV • ${channel.shortName || channel.name}`);
 
   // Badges & Show info in Player Hover Overlay
-  text('hover-channel-badge', `CH ${channel.number}`);
-  text('hover-show-title', `${currentItem.title} • ${currentItem.episode || ''}`);
+  text('hover-channel-badge', `${channel.shortName || channel.number} • ПОТОК`);
+  text('hover-show-title', `${currentItem.badgeTag ? currentItem.badgeTag + ' ' : ''}${currentItem.title} • ${currentItem.episode || ''}`);
 
   // Badges & Show info in under-player metadata card
-  text('current-channel-badge', `CH ${channel.number}`);
+  text('current-channel-badge', `${channel.shortName || channel.number}`);
   text('show-title', currentItem.title);
   text('show-episode', currentItem.episode || "");
-  text('show-slot-badge', `☀️ ${channel.badge || 'ЭФИР ЕКБ'}`);
+  text('show-slot-badge', `${channel.shortName === 'УТРО' ? '☀️' : channel.shortName === 'ДЕНЬ' ? '🌤️' : '🌙'} ${channel.name}`);
+
+  const tagBadge = $('show-tag-badge');
+  if (tagBadge) {
+    const tag = currentItem.badgeTag || "⭐ ПРЕМЬЕРА";
+    tagBadge.textContent = tag;
+    if (tag.includes("ПОВТОР")) {
+      tagBadge.className = "px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 text-[10px] font-bold";
+    } else if (tag.includes("БАМПЕР")) {
+      tagBadge.className = "px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-bold";
+    } else {
+      tagBadge.className = "px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-bold";
+    }
+  }
 
   const poster = $('show-poster');
   if (poster && currentItem.poster) {
@@ -448,7 +466,7 @@ function applyCRT() {
   }
 }
 
-// Render Left Vertical Navigation Rail (4 Channels with SVGs)
+// Render Left Vertical Navigation Rail (3 Streams with icons & names)
 function renderVerticalChannelDock() {
   const dock = $('vertical-channel-dock');
   if (!dock) return;
@@ -458,10 +476,14 @@ function renderVerticalChannelDock() {
     const isActive = idx === state.currentChannelIndex;
     const btn = document.createElement('button');
     btn.className = `rail-channel-btn ${isActive ? 'active' : ''}`;
-    btn.title = `${ch.number}: ${ch.name}`;
+    btn.title = `${ch.name}: ${ch.tagline || ''}`;
+    
+    const icon = ch.icon || (idx === 0 ? 'wb_sunny' : idx === 1 ? 'wb_twilight' : 'dark_mode');
+    
     btn.innerHTML = `
-      <span class="text-xs font-mono font-bold leading-none mb-1">${ch.number}</span>
-      <div class="leading-none">${getChannelLogo(ch)}</div>
+      <span class="material-symbols-outlined text-[20px] ${isActive ? 'text-white' : 'text-gray-400'}">${icon}</span>
+      <span class="text-[10px] font-black uppercase tracking-wider leading-tight">${ch.shortName || ch.name}</span>
+      <span class="text-[8px] font-mono ${isActive ? 'text-purple-200' : 'text-gray-500'} font-bold">${ch.number}</span>
     `;
     btn.addEventListener('click', () => {
       if (state.currentChannelIndex !== idx) {
@@ -473,38 +495,56 @@ function renderVerticalChannelDock() {
   });
 }
 
-// Render Right Multi-Channel Live Radar Feed
+// Render Right Multi-Stream Live Radar Feed
 function renderInspectorGrid() {
   const container = $('inspector-grid');
   if (!container) return;
   container.innerHTML = '';
 
   state.channels.forEach((ch, idx) => {
-    if (idx === state.currentChannelIndex) return; // Hide active channel here
+    if (idx === state.currentChannelIndex) return; // Hide active playing stream
     const { currentItem, progressPercent, nextItem } = calculateBroadcastPosition(ch);
 
     const card = document.createElement('div');
-    card.className = "p-2.5 rounded-2xl bg-[#181926] hover:bg-[#1f2030] cursor-pointer transition flex flex-col gap-1.5 group";
+    card.className = "p-3 rounded-2xl bg-[#141520] hover:bg-[#1c1d2c] cursor-pointer transition flex flex-col gap-2 group border border-white/5 hover:border-purple-500/30 shadow-md";
+    
+    const icon = ch.icon || (idx === 0 ? 'wb_sunny' : idx === 1 ? 'wb_twilight' : 'dark_mode');
+    const isRepeat = currentItem.badgeTag && currentItem.badgeTag.includes("ПОВТОР");
+    const tagStyle = isRepeat ? "bg-cyan-500/20 text-cyan-300" : "bg-emerald-500/20 text-emerald-300";
+
     card.innerHTML = `
       <div class="flex items-center justify-between text-[11px]">
         <div class="flex items-center gap-1.5 truncate">
-          <span class="w-5 h-5 rounded-lg bg-black/40 text-[10px] font-mono text-purple-300 font-bold flex items-center justify-center">${ch.number}</span>
-          <span class="font-bold text-gray-200 truncate">${ch.name}</span>
+          <span class="material-symbols-outlined text-[15px] text-purple-400">${icon}</span>
+          <span class="font-black text-white uppercase text-[11px] truncate tracking-wider">${ch.name}</span>
         </div>
-        <span class="text-[10px] text-gray-400 font-mono">${progressPercent}%</span>
+        <span class="text-[10px] text-gray-400 font-mono font-bold">${progressPercent}%</span>
       </div>
-      <div class="text-xs font-semibold text-white truncate group-hover:text-purple-300 transition">
-        ${currentItem.title}
+      
+      <div class="flex items-start gap-2.5">
+        <img src="${currentItem.poster || 'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=100'}" class="w-10 h-14 object-cover rounded-xl flex-shrink-0 shadow">
+        <div class="min-w-0 flex-1">
+          <div class="flex items-center gap-1.5 mb-0.5">
+            <span class="px-1.5 py-0.5 rounded text-[8px] font-bold ${tagStyle}">
+              ${currentItem.badgeTag || "⭐ ПРЕМЬЕРА"}
+            </span>
+          </div>
+          <div class="text-xs font-bold text-white truncate group-hover:text-purple-300 transition">
+            ${currentItem.title}
+          </div>
+          <div class="text-[10px] text-purple-300 truncate">
+            ${currentItem.episode || ''}
+          </div>
+        </div>
       </div>
-      <div class="text-[10px] text-gray-400 truncate">
-        ${currentItem.episode || ''}
+
+      <div class="w-full bg-black/50 h-1.5 rounded-full overflow-hidden">
+        <div class="h-full rounded-full transition-all" style="width: ${progressPercent}%; background-color: ${ch.color || '#06b6d4'}"></div>
       </div>
-      <div class="w-full bg-black/50 h-1 rounded-full overflow-hidden">
-        <div class="h-full bg-gradient-to-r from-purple-400 to-cyan-400" style="width: ${progressPercent}%"></div>
-      </div>
-      <div class="text-[10px] text-gray-500 truncate flex items-center justify-between">
-        <span class="truncate">Далее: ${nextItem ? nextItem.title : '—'}</span>
-        <span class="material-symbols-outlined text-[13px] text-gray-400 group-hover:text-purple-400 transition">play_arrow</span>
+
+      <div class="text-[10px] text-gray-400 truncate flex items-center justify-between pt-0.5">
+        <span class="truncate">Далее: <strong class="text-gray-300">${nextItem ? nextItem.title : '—'}</strong></span>
+        <span class="material-symbols-outlined text-[15px] text-purple-400 group-hover:scale-125 transition-transform">play_circle</span>
       </div>
     `;
 
@@ -527,14 +567,15 @@ function renderEPG() {
     state.activeEpgChannelId = state.channels[state.currentChannelIndex]?.id || state.channels[0].id;
   }
 
-  // Render Channel Tabs
+  // Render Stream Tabs
   if (tabs) {
     tabs.innerHTML = '';
     state.channels.forEach(ch => {
       const isTabActive = ch.id === state.activeEpgChannelId;
       const btn = document.createElement('button');
       btn.className = `m3-chip ${isTabActive ? 'active' : ''}`;
-      btn.innerHTML = `<span class="font-mono">${ch.number}</span> ${ch.name}`;
+      const icon = ch.icon || 'live_tv';
+      btn.innerHTML = `<span class="material-symbols-outlined text-[16px]">${icon}</span> <span class="font-bold">${ch.name}</span>`;
       btn.addEventListener('click', () => {
         state.activeEpgChannelId = ch.id;
         renderEPG();
@@ -548,7 +589,7 @@ function renderEPG() {
 
   const schedule = channel.schedule;
   if (!schedule || schedule.length === 0) {
-    scheduleList.innerHTML = `<div class="text-center py-12 text-gray-400 text-xs">В сетке этого канала пока нет передач.</div>`;
+    scheduleList.innerHTML = `<div class="text-center py-12 text-gray-400 text-xs">В сетке этого потока пока нет передач.</div>`;
     return;
   }
 
@@ -559,7 +600,7 @@ function renderEPG() {
   let rollingStartSec = (nowMs / 1000) - elapsed;
 
   // Render chronological sequence of episodes
-  for (let i = 0; i < Math.min(schedule.length, 30); i++) {
+  for (let i = 0; i < Math.min(schedule.length, 35); i++) {
     const itemIdx = (currentIndex + i) % schedule.length;
     const item = schedule[itemIdx];
     const dur = item.duration || 1440;
@@ -571,6 +612,8 @@ function renderEPG() {
     const endStr = `${String(endDate.getUTCHours()).padStart(2, '0')}:${String(endDate.getUTCMinutes()).padStart(2, '0')}`;
 
     const isNowPlaying = (i === 0 && state.activeEpgDayOffset === 0);
+    const isRepeat = item.badgeTag && item.badgeTag.includes("ПОВТОР");
+    const tagClass = isRepeat ? "bg-cyan-500/20 text-cyan-300" : "bg-emerald-500/20 text-emerald-300";
 
     const row = document.createElement('div');
     row.className = `p-3 rounded-2xl flex items-center justify-between gap-3 transition ${
@@ -587,6 +630,9 @@ function renderEPG() {
         <div class="min-w-0">
           <div class="flex items-center gap-2">
             ${isNowPlaying ? '<span class="px-2 py-0.5 rounded-full text-[9px] font-bold uppercase bg-rose-500/20 text-rose-300 animate-pulse">В ЭФИРЕ СЕЙЧАС</span>' : ''}
+            <span class="px-1.5 py-0.5 rounded text-[8px] font-bold ${tagClass}">
+              ${item.badgeTag || "⭐ ПРЕМЬЕРА"}
+            </span>
             <span class="text-[11px] font-mono text-gray-400">${formatTime(dur)}</span>
           </div>
           <h4 class="font-bold text-xs text-white truncate mt-0.5">${item.title}</h4>
@@ -681,10 +727,9 @@ async function searchAdminCatalog(query) {
           </div>
         </div>
         <div class="flex items-center gap-1.5 flex-shrink-0">
-          <button class="btn-add-ch m3-chip text-[10px] py-1 px-2.5" data-ch="0" title="Добавить в ТОЙСТЕР">+ 01</button>
-          <button class="btn-add-ch m3-chip text-[10px] py-1 px-2.5" data-ch="1" title="Добавить в 2х2">+ 02</button>
-          <button class="btn-add-ch m3-chip text-[10px] py-1 px-2.5" data-ch="2" title="Добавить в АНИМЕ ХИТ">+ 03</button>
-          <button class="btn-add-ch m3-chip text-[10px] py-1 px-2.5" data-ch="3" title="Добавить в ДАРК">+ 04</button>
+          <button class="btn-add-ch m3-chip text-[10px] py-1 px-2.5" data-ch="0" title="Добавить в УТРО">+ УТРО</button>
+          <button class="btn-add-ch m3-chip text-[10px] py-1 px-2.5" data-ch="1" title="Добавить в ДЕНЬ">+ ДЕНЬ</button>
+          <button class="btn-add-ch m3-chip text-[10px] py-1 px-2.5" data-ch="2" title="Добавить в ВЕЧЕР">+ ВЕЧЕР</button>
         </div>
       `;
 

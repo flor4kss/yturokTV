@@ -84,14 +84,14 @@
        ===================================================================== -->
   <main class="flex-1 min-h-0 flex gap-3 p-3 overflow-hidden">
 
-    <!-- LEFT: NAVIGATION RAIL (4 Channels & Media Buttons) -->
-    <aside class="w-16 flex flex-col items-center justify-between py-2.5 m3-surface flex-shrink-0 z-20">
+    <!-- LEFT: NAVIGATION RAIL (3 Stream Variations & Media Buttons) -->
+    <aside class="w-20 sm:w-24 flex flex-col items-center justify-between py-3 m3-surface flex-shrink-0 z-20">
       
-      <!-- Vertical Channel Selector (01, 02, 03, 04) -->
+      <!-- Vertical Stream Variations (УТРО, ДЕНЬ, ВЕЧЕР) -->
       <div class="flex flex-col items-center gap-2 w-full">
-        <span class="text-[9px] font-mono uppercase font-bold text-gray-500 tracking-wider">Каналы</span>
-        <div id="vertical-channel-dock" class="flex flex-col gap-2 w-full px-1.5">
-          <!-- Populated by app.js: 4 Channels with SVGs -->
+        <span class="text-[9px] font-mono uppercase font-bold text-gray-400 tracking-wider">Потоки</span>
+        <div id="vertical-channel-dock" class="flex flex-col gap-2 w-full px-2">
+          <!-- Populated by app.js: 3 Stream Variations -->
         </div>
       </div>
 
@@ -130,7 +130,7 @@
         <!-- Real Corner Watermark (Small, Clean, Non-intrusive) -->
         <div id="tv-watermark" class="tv-watermark flex items-center gap-2">
           <span id="watermark-logo-slot"></span>
-          <span id="channel-watermark" class="tracking-widest uppercase font-bold text-xs text-white/90">ТОЙСТЕР</span>
+          <span id="channel-watermark" class="tracking-widest uppercase font-bold text-xs text-white/90">yturokTV • УТРО</span>
         </div>
 
         <!-- Initial Unmute Prompt (Disappears on first click) -->
@@ -152,7 +152,7 @@
           <!-- Top Bar on Hover -->
           <div class="flex items-center justify-between text-xs text-white/90">
             <div class="flex items-center gap-2">
-              <span id="hover-channel-badge" class="px-2 py-0.5 rounded-full bg-purple-500/30 text-[10px] font-bold font-mono">CH 01</span>
+              <span id="hover-channel-badge" class="px-2 py-0.5 rounded-full bg-purple-500/30 text-[10px] font-bold font-mono">УТРО 01</span>
               <span id="hover-show-title" class="font-bold truncate max-w-md">Загрузка эфира...</span>
             </div>
             <div class="flex items-center gap-2">
@@ -177,13 +177,13 @@
             <!-- Buttons Row -->
             <div class="flex items-center justify-between gap-3 pt-1">
               
-              <!-- Left: Prev/Next Channel, Mute, Volume -->
+              <!-- Left: Prev/Next Stream, Mute, Volume -->
               <div class="flex items-center gap-2">
-                <button id="btn-prev-ch" class="m3-icon-btn tonal w-8 h-8" title="Предыдущий канал">
+                <button id="btn-prev-ch" class="m3-icon-btn tonal w-8 h-8" title="Предыдущий поток">
                   <span class="material-symbols-outlined text-[18px]">skip_previous</span>
                 </button>
-                <span id="current-channel-badge" class="font-mono text-xs font-bold px-1 text-purple-300">CH 01</span>
-                <button id="btn-next-ch" class="m3-icon-btn tonal w-8 h-8" title="Следующий канал">
+                <span id="current-channel-badge" class="font-mono text-xs font-bold px-1 text-purple-300">УТРО 01</span>
+                <button id="btn-next-ch" class="m3-icon-btn tonal w-8 h-8" title="Следующий поток">
                   <span class="material-symbols-outlined text-[18px]">skip_next</span>
                 </button>
 
@@ -220,10 +220,10 @@
           <div class="flex flex-col min-w-0">
             <div class="flex items-center gap-2">
               <span id="show-slot-badge" class="px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 text-[10px] font-bold font-mono">
-                ☀️ ЭФИР ЕКБ
+                ☀️ УТРЕННИЙ ЭФИР
               </span>
-              <span class="px-2 py-0.5 rounded-full bg-white/10 text-[10px] font-bold text-gray-300">
-                Русская озвучка
+              <span id="show-tag-badge" class="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-bold">
+                ⭐ ПРЕМЬЕРА
               </span>
             </div>
             <h2 id="show-title" class="text-sm font-bold text-white truncate mt-0.5">Семья шпиона</h2>
@@ -248,9 +248,9 @@
       <div class="flex items-center justify-between pb-2 flex-shrink-0 border-b border-white/5">
         <div class="flex items-center gap-1.5 text-xs font-bold text-purple-300 uppercase tracking-wider">
           <span class="material-symbols-outlined text-[16px] text-purple-400">cell_tower</span>
-          Эфир сейчас (ЕКБ)
+          Другие потоки (ЕКБ)
         </div>
-        <span class="text-[10px] text-gray-400 font-mono">4 Канала</span>
+        <span id="radar-channels-count" class="text-[10px] text-gray-400 font-mono">3 Потока</span>
       </div>
 
       <!-- Dynamic Multi-Channel Timeline Feed (Channels 01-04) -->
@@ -353,8 +353,8 @@
         <!-- Right: Current Channels Status & Stats -->
         <div class="md:col-span-5 flex flex-col gap-3 border-t md:border-t-0 md:border-l border-white/5 md:pl-5 pt-3 md:pt-0 overflow-y-auto max-h-[460px]">
           <div class="flex items-center justify-between">
-            <h4 class="text-xs font-bold text-purple-300 font-mono">Активные каналы и сезоны</h4>
-            <span class="text-[10px] text-gray-400 font-mono">4 Канала</span>
+            <h4 class="text-xs font-bold text-purple-300 font-mono">Активные потоки и сезоны</h4>
+            <span class="text-[10px] text-gray-400 font-mono">3 Потока</span>
           </div>
 
           <div id="admin-channels-summary" class="flex flex-col gap-2 text-xs">
