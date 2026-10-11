@@ -29,7 +29,9 @@ export default function App() {
   });
   const [sounds, setSounds] = useState(() => saved("yturok_sounds", true));
   const [night, setNight] = useState(() => saved("yturok_night", false));
-  const [theater, setTheater] = useState(false);
+  const [theater, setTheater] = useState(
+    () => saved("yturok_wide_screen", true) === true,
+  );
   const [toast, setToast] = useState("");
   const toastTimer = useRef();
   const searchRef = useRef();
@@ -50,6 +52,9 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem("yturok_sounds", JSON.stringify(sounds));
   }, [sounds]);
+  useEffect(() => {
+    localStorage.setItem("yturok_wide_screen", JSON.stringify(theater));
+  }, [theater]);
   useEffect(() => () => clearTimeout(toastTimer.current), []);
   useEffect(() => {
     if (snapshot.note) showToast(snapshot.note);
@@ -117,8 +122,21 @@ export default function App() {
     scrollWatch();
   }
   function allChannels() {
-    scrollWatch();
+    searchRef.current?.scrollIntoView({
+      behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "auto"
+        : "smooth",
+      block: "center",
+    });
     searchRef.current?.focus({ preventScroll: true });
+  }
+  function selectChannel(index) {
+    tv.select(index);
+    if (theater) scrollWatch();
+  }
+  function toggleWide() {
+    setTheater((value) => !value);
+    requestAnimationFrame(scrollWatch);
   }
   return (
     <div
@@ -137,7 +155,6 @@ export default function App() {
             aria-label="yturokTV — в начало"
             onClick={(event) => {
               event.preventDefault();
-              setTheater(false);
               window.scrollTo({
                 top: 0,
                 behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
@@ -203,16 +220,27 @@ export default function App() {
                 Поймай свою волну <span>✧</span>
               </h2>
             </div>
-            <button className="text-button" onClick={() => setModal("guide")}>
-              Вся телепрограмма <Icon name="arrowUp" size={18} />
-            </button>
+            <div className="watch-view-actions">
+              <button
+                className={`button button-outline wide-toggle ${theater ? "is-active" : ""}`}
+                aria-label="Широкий экран"
+                aria-pressed={theater}
+                onClick={toggleWide}
+              >
+                <Icon name="wide" size={18} />
+                <span>{theater ? "Обычный вид" : "Широкий экран"}</span>
+              </button>
+              <button className="text-button" onClick={() => setModal("guide")}>
+                Вся телепрограмма <Icon name="arrowUp" size={18} />
+              </button>
+            </div>
           </div>
           <div className="watch-layout">
             <ChannelRail
               snapshot={snapshot}
               favorites={favorites}
               onFavorite={favorite}
-              onSelect={(index) => tv.select(index)}
+              onSelect={selectChannel}
               searchRef={searchRef}
             />
             <Player
@@ -220,29 +248,18 @@ export default function App() {
               favorite={favorites.includes(snapshot.channel?.id)}
               onFavorite={() => favorite(snapshot.channel?.id)}
               theater={theater}
-              onTheater={() => {
-                setTheater(!theater);
-                setTimeout(scrollWatch, 30);
-              }}
+              onTheater={toggleWide}
               onSettings={() => setModal("settings")}
               onSchedule={() => setModal("guide")}
               onToast={showToast}
             />
             <CommunityPanel
               snapshot={snapshot}
-              onSelect={(index) => tv.select(index)}
+              onSelect={selectChannel}
               onAllChannels={allChannels}
               onToast={showToast}
             />
           </div>
-          {theater && (
-            <button
-              className="button button-outline theater-exit"
-              onClick={() => setTheater(false)}
-            >
-              <Icon name="left" size={17} /> Вернуться в комнату
-            </button>
-          )}
         </main>
         <footer className="app-footer">
           <span>Твоя уютная комната в большом интернете.</span>

@@ -21,6 +21,7 @@ import {
   Palette,
   Play,
   Radio,
+  RectangleHorizontal,
   RotateCcw,
   Search,
   Send,
@@ -34,6 +35,7 @@ import {
   X,
 } from "lucide-react";
 const icons = {
+  wide: RectangleHorizontal,
   arrowDown: ArrowDown,
   arrowLeft: ArrowLeft,
   arrowRight: ArrowRight,

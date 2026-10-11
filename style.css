@@ -1528,25 +1528,111 @@ kbd {
 .app-footer a:hover {
   color: var(--coral);
 }
-.theater-mode .channel-panel,
+.theater-mode .watch-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 350px;
+  max-width: none;
+  margin: auto;
+}
+.theater-mode .watch-card {
+  grid-column: 1 / -1;
+  grid-row: 1;
+}
+.theater-mode .channel-panel {
+  display: block;
+  grid-column: 1;
+  grid-row: 2;
+  padding: 24px;
+}
 .theater-mode .community-panel {
+  display: block;
+  grid-column: 2;
+  grid-row: 2;
+  padding: 24px;
+}
+.theater-mode .channel-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+  gap: 8px;
+  max-height: none;
+  overflow: visible;
+}
+.theater-mode .channel-item {
+  border: 1px solid var(--line);
+  margin: 0;
+}
+.theater-mode .channel-select {
+  min-height: 72px;
+}
+.theater-mode .channel-panel .search-field {
+  max-width: 360px;
+}
+.theater-mode .channel-categories {
+  margin: 14px 0 20px;
+}
+.theater-mode .remote-hint {
   display: none;
 }
-.theater-mode .watch-layout {
-  display: block;
-  max-width: 1200px;
-  margin: auto;
+.theater-mode .stream-card:nth-child(4) {
+  display: grid;
+}
+.theater-mode .stream-list {
+  grid-template-columns: 1fr;
+}
+.theater-mode .mood-card {
+  margin-top: 18px;
+  padding: 16px;
+}
+.theater-mode .mood-card > span {
+  font-size: 28px;
+}
+.theater-mode .mood-card strong {
+  font-size: 12px;
+}
+.theater-mode .mood-card p {
+  font-size: 10px;
 }
 .theater-mode .tv-stage {
   aspect-ratio: 16/9;
+  max-height: calc(100dvh - 210px);
+}
+.theater-mode .tv-stage:fullscreen {
+  max-height: none;
+}
+.theater-mode .player-icon {
+  width: 42px;
+  height: 44px;
+}
+.theater-mode .player-controls {
+  padding: 40px 22px 14px;
+}
+.theater-mode .video-time {
+  font-size: 11px;
+}
+.theater-mode .volume-range {
+  width: 80px;
+}
+.theater-mode .big-play {
+  width: 84px;
+  height: 84px;
+  border-radius: 28px;
+}
+.theater-mode .player-prompt h3 {
+  font-size: 28px;
 }
 .theater-mode .watch-section-heading {
-  max-width: 1200px;
+  max-width: none;
   margin: 28px auto 20px;
 }
-.theater-exit {
+.watch-view-actions {
   display: flex;
-  margin: 24px auto 0;
+  align-items: center;
+  gap: 24px;
+}
+.wide-toggle.is-active {
+  border-color: var(--coral);
+  color: var(--coral);
+  background: var(--coral-soft);
 }
 .tv-stage:fullscreen {
   width: 100vw;
@@ -3446,5 +3532,141 @@ kbd {
   }
   .hero-copy {
     padding-right: 18px;
+  }
+}
+@media (max-width: 1050px) {
+  .theater-mode .watch-layout {
+    grid-template-columns: minmax(0, 1fr) 300px;
+  }
+  .theater-mode .channel-list {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+  .theater-mode .channel-panel,
+  .theater-mode .community-panel {
+    padding: 18px;
+  }
+  .theater-mode .channel-item {
+    width: auto;
+  }
+  .watch-view-actions {
+    gap: 14px;
+  }
+}
+@media (max-width: 760px) {
+  .theater-mode .watch-layout {
+    grid-template-columns: 1fr;
+  }
+  .theater-mode .channel-panel {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .theater-mode .community-panel {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  .theater-mode .channel-list {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 8px;
+  }
+  .theater-mode .channel-item {
+    width: 165px;
+    flex-shrink: 0;
+  }
+  .theater-mode .channel-panel .search-field {
+    position: static;
+    max-width: none;
+    margin: 12px 0;
+  }
+  .theater-mode .channel-categories {
+    margin: 12px 0;
+  }
+  .theater-mode .tv-stage {
+    aspect-ratio: 16/9;
+    max-height: none;
+  }
+  .theater-mode .stream-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .theater-mode .volume-range {
+    width: 55px;
+  }
+  .theater-mode .player-icon {
+    width: 36px;
+    height: 42px;
+  }
+  .theater-mode .player-controls {
+    padding: 26px 12px 9px;
+  }
+  .theater-mode .video-time {
+    font-size: 9px;
+  }
+  .watch-view-actions {
+    gap: 8px;
+  }
+  .wide-toggle {
+    min-height: 40px;
+    padding: 0 12px;
+    font-size: 10px;
+  }
+  .watch-view-actions > .text-button {
+    font-size: 10px;
+  }
+  .watch-section-heading {
+    flex-wrap: wrap;
+  }
+  .watch-view-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+@media (max-width: 480px) {
+  .theater-mode .channel-panel,
+  .theater-mode .community-panel {
+    padding: 14px;
+  }
+  .theater-mode .channel-select {
+    min-height: 62px;
+  }
+  .theater-mode .player-icon {
+    width: 29px;
+    height: 38px;
+  }
+  .theater-mode .player-controls {
+    padding: 26px 7px 6px;
+  }
+  .theater-mode .video-time {
+    font-size: 7px;
+  }
+  .theater-mode .volume-range {
+    display: none;
+  }
+  .theater-mode .tv-stage {
+    aspect-ratio: 16/10;
+  }
+  .theater-mode .stream-card {
+    grid-template-columns: 44px minmax(0, 1fr);
+  }
+  .theater-mode .watch-section-heading {
+    margin-top: 18px;
+  }
+  .wide-toggle {
+    font-size: 10px;
+  }
+  .theater-mode .player-prompt h3 {
+    font-size: 15px;
+  }
+  .theater-mode .player-prompt p {
+    font-size: 9px;
+  }
+  .theater-mode .big-play {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 0;
+  }
+  .theater-mode .player-prompt {
+    gap: 5px;
+    padding: 20px;
   }
 }

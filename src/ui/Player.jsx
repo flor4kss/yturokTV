@@ -182,11 +182,14 @@ export default function Player({
           <div className="tool-buttons">
             <button
               className="player-icon"
-              aria-label={theater ? "Выйти из кинотеатра" : "Режим кинотеатра"}
+              aria-label={
+                theater ? "Обычный вид плеера" : "Широкий экран плеера"
+              }
+              title={theater ? "Обычный вид" : "Широкий экран"}
               aria-pressed={theater}
               onClick={onTheater}
             >
-              <Icon name="grid" size={17} />
+              <Icon name="wide" size={17} />
             </button>
             <button
               className="player-icon"
