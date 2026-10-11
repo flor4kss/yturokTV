@@ -204,7 +204,92 @@ function playBumperAmbientTone() {
 }
 
 // -----------------------------------------------------------------------------
-// Native Stream Engine (100% Direct Video MP4 & HLS.js • Zero YouTube Dependency)
+// Global Volume & Mute Manager
+// -----------------------------------------------------------------------------
+function applyVolume() {
+  const iconName = state.isMuted || state.volume === 0 ? "volume_off" : "volume_up";
+  const muteIcon = $('mute-icon');
+  const dockMuteIcon = $('dock-mute-icon');
+  if (muteIcon) muteIcon.textContent = iconName;
+  if (dockMuteIcon) dockMuteIcon.textContent = iconName;
+
+  const hlsVideo = $('hls-player');
+  if (hlsVideo) {
+    hlsVideo.muted = state.isTVStarted ? state.isMuted : true;
+    hlsVideo.volume = state.volume / 100;
+  }
+
+  if (state.ytPlayer && state.ytPlayer.setVolume) {
+    try {
+      if (state.isMuted || !state.isTVStarted) {
+        state.ytPlayer.mute();
+      } else {
+        state.ytPlayer.unMute();
+        state.ytPlayer.setVolume(state.volume);
+      }
+    } catch (e) {}
+  }
+}
+
+// -----------------------------------------------------------------------------
+// YouTube IFrame Player Engine (Dual Engine Architecture)
+// -----------------------------------------------------------------------------
+function initYouTubePlayer() {
+  if (state.ytPlayer || !window.YT || !window.YT.Player) return;
+  try {
+    state.ytPlayer = new YT.Player('yt-player', {
+      width: '100%',
+      height: '100%',
+      playerVars: {
+        autoplay: 1,
+        controls: 0,
+        disablekb: 1,
+        fs: 0,
+        modestbranding: 1,
+        rel: 0,
+        iv_load_policy: 3,
+        playsinline: 1,
+        enablejsapi: 1,
+        origin: window.location.origin || 'http://localhost:8080'
+      },
+      events: {
+        onReady: (event) => {
+          state.isYtReady = true;
+          applyVolume();
+          const channel = state.channels[state.currentChannelIndex];
+          if (channel) {
+            const { currentItem } = calculateBroadcastPosition(channel);
+            if (currentItem && (currentItem.type === 'youtube' || currentItem.youtubeId)) {
+              playCurrentChannel(false);
+            }
+          }
+        },
+        onStateChange: (event) => {
+          if (event.data === (window.YT?.PlayerState?.ENDED ?? 0)) {
+            playCurrentChannel(false);
+          }
+        },
+        onError: (event) => {
+          console.warn('YouTube Player Event Code:', event.data);
+        }
+      }
+    });
+  } catch (e) {
+    console.warn('YouTube init exception:', e);
+  }
+}
+
+window.onYouTubeIframeAPIReady = function() {
+  initYouTubePlayer();
+};
+
+// Also attempt initialization if API is already loaded
+if (window.YT && window.YT.Player) {
+  initYouTubePlayer();
+}
+
+// -----------------------------------------------------------------------------
+// Native Stream Engine (Direct Video MP4 & HLS.js • YouTube Dual-Engine)
 // -----------------------------------------------------------------------------
 
 // -----------------------------------------------------------------------------
@@ -335,6 +420,54 @@ function playCurrentChannel(withGlitch = true) {
       text('bumper-text', currentItem.bumperText || "Вы смотрите 2х2. Не переключайтесь.");
     }
     playBumperAmbientTone();
+
+  } else if (currentItem.type === 'youtube' || currentItem.youtubeId) {
+    // Seamless YouTube IFrame Stream (Auto-cropped, Zero YouTube Interface, Instant Seek)
+    const ytId = currentItem.youtubeId || (currentItem.url ? (currentItem.url.includes('watch?v=') ? currentItem.url.split('watch?v=')[1].split('&')[0] : currentItem.url) : null);
+
+    if (hlsVideo) {
+      hlsVideo.pause();
+      hlsVideo.classList.add('hidden');
+    }
+    if (state.hlsInstance) {
+      state.hlsInstance.destroy();
+      state.hlsInstance = null;
+    }
+    if (bumperScreen) bumperScreen.classList.add('hidden');
+
+    if (ytContainer) {
+      ytContainer.classList.remove('hidden');
+    }
+
+    if (ytId) {
+      if (state.ytPlayer && state.isYtReady) {
+        if (state.currentYtId !== ytId) {
+          state.currentYtId = ytId;
+          try {
+            state.ytPlayer.loadVideoById({
+              videoId: ytId,
+              startSeconds: Math.max(0, elapsed)
+            });
+          } catch (e) {}
+        } else {
+          try {
+            const cur = state.ytPlayer.getCurrentTime();
+            if (Math.abs(cur - elapsed) > 4) {
+              state.ytPlayer.seekTo(elapsed, true);
+            }
+            if (state.ytPlayer.getPlayerState() !== 1 && state.isTVStarted) {
+              state.ytPlayer.playVideo();
+            }
+          } catch (e) {}
+        }
+        applyVolume();
+      } else {
+        state.currentYtId = ytId;
+        if (!state.ytPlayer && window.YT && window.YT.Player) {
+          initYouTubePlayer();
+        }
+      }
+    }
 
   } else if (currentItem.type === 'video' || (currentItem.url && !currentItem.url.includes('.m3u8'))) {
     // Pure Direct MP4 Video Stream (Native HTML5 <video> - Zero YouTube interface / Zero Bot blocks!)
@@ -1414,26 +1547,6 @@ function setupEventListeners() {
   on('btn-mute', 'click', toggleMute);
   on('dock-btn-mute', 'click', toggleMute);
 
-  function applyVolume() {
-    const iconName = state.isMuted || state.volume === 0 ? "volume_off" : "volume_up";
-    if (muteIcon) muteIcon.textContent = iconName;
-    if (dockMuteIcon) dockMuteIcon.textContent = iconName;
-
-    const hlsVideo = $('hls-player');
-    if (hlsVideo) {
-      hlsVideo.muted = state.isMuted;
-      hlsVideo.volume = state.volume / 100;
-    }
-
-    if (state.ytPlayer && state.ytPlayer.setVolume) {
-      if (state.isMuted) state.ytPlayer.mute();
-      else {
-        state.ytPlayer.unMute();
-        state.ytPlayer.setVolume(state.volume);
-      }
-    }
-  }
-
   // CRT Screen Toggle with LocalStorage persistence
   function toggleCRT() {
     state.crtEnabled = !state.crtEnabled;
@@ -1681,6 +1794,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   toggleTicker(state.tickerEnabled);
   toggleDanmaku(state.danmakuEnabled);
   initCommentSystem();
+  if (window.YT && window.YT.Player) initYouTubePlayer();
 
   // Start background playback (muted initially for browser autoplay policy)
   playCurrentChannel(false);
