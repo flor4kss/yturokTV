@@ -257,7 +257,8 @@ export default function Player({
                 onChange={(event) => tv.volume(event.target.value)}
               />
               <span className="video-time">
-                {time(elapsed)} <i>/</i> {time(item.duration)}
+                {time(elapsed)} <i>/</i>{" "}
+                <span className="video-duration">{time(item.duration)}</span>
               </span>
             </div>
             <div className="player-control-group">

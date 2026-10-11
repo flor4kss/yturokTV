@@ -114,12 +114,12 @@ svg {
   display: none !important;
 }
 .page-shell {
-  max-width: 1560px;
+  max-width: 1860px;
   margin: auto;
-  padding: 0 36px;
+  padding: 0 28px;
 }
 .app-header {
-  height: 98px;
+  height: 84px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -139,7 +139,7 @@ svg {
 }
 .brand small {
   display: block;
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 2px;
   margin-top: 3px;
@@ -170,7 +170,7 @@ svg {
   display: flex;
   align-items: center;
   gap: 30px;
-  font-size: 13px;
+  font-size: 15.6px;
   font-weight: 600;
 }
 .main-nav button {
@@ -197,14 +197,14 @@ svg {
   gap: 14px;
 }
 .header-clock {
-  font-size: 12px;
+  font-size: 14.4px;
   display: flex;
   align-items: center;
   gap: 7px;
   font-variant-numeric: tabular-nums;
 }
 .header-clock small {
-  font-size: 9px;
+  font-size: 11px;
   color: var(--muted);
 }
 .icon-button {
@@ -227,7 +227,7 @@ svg {
   min-height: 46px;
   padding: 0 22px;
   border-radius: 100px;
-  font-size: 12px;
+  font-size: 14.4px;
   font-weight: 700;
   white-space: nowrap;
 }
@@ -256,7 +256,7 @@ svg {
   color: #352b40;
 }
 .text-button {
-  font-size: 12px;
+  font-size: 14.4px;
   font-weight: 700;
   display: inline-flex;
   align-items: center;
@@ -268,7 +268,7 @@ svg {
   color: var(--coral);
 }
 .eyebrow {
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 1.8px;
   font-weight: 800;
   color: var(--muted);
@@ -311,14 +311,14 @@ svg {
 }
 .hero .eyebrow {
   color: var(--mint-ink);
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 1.4px;
   display: flex;
   align-items: center;
   gap: 9px;
 }
 .tiny-star {
-  font-size: 20px;
+  font-size: 24px;
   color: var(--mint-ink);
 }
 .hero h1 {
@@ -333,7 +333,7 @@ svg {
   font-style: italic;
 }
 .hero-description {
-  font-size: 12px;
+  font-size: 14.4px;
   line-height: 1.7;
   color: var(--mint-ink);
   font-weight: 500;
@@ -346,21 +346,21 @@ svg {
 }
 .hero .button {
   min-height: 46px;
-  font-size: 12px;
+  font-size: 14.4px;
 }
 .hero-secondary {
   min-height: 44px;
   display: flex;
   gap: 7px;
   align-items: center;
-  font-size: 12px;
+  font-size: 14.4px;
   font-weight: 700;
 }
 .hero-secondary:hover {
   color: var(--coral);
 }
 .hero-footnote {
-  font-size: 9px;
+  font-size: 11px;
   color: var(--mint-ink);
   margin-top: 15px;
   display: flex;
@@ -455,7 +455,7 @@ svg {
   color: #352b40;
   padding: 14px 18px;
   border-radius: 50px;
-  font-size: 11px;
+  font-size: 13.2px;
   box-shadow: 0 8px 20px #4060520c;
   transform: rotate(-6deg);
   z-index: 3;
@@ -482,7 +482,7 @@ svg {
 }
 .art-sticker span {
   display: block;
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 1px;
   color: #776d79;
   text-align: center;
@@ -493,7 +493,7 @@ svg {
   bottom: 18px;
   right: 26px;
   color: var(--mint-ink);
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 1.8px;
   font-weight: 700;
 }
@@ -544,14 +544,14 @@ svg {
   margin-bottom: 16px;
 }
 .section-label-row h2 {
-  font-size: 17px;
+  font-size: 20.4px;
   letter-spacing: -0.5px;
   margin-top: 7px;
   white-space: nowrap;
 }
 .section-label-row h2 span {
   display: inline-flex;
-  font-size: 10px;
+  font-size: 12px;
   align-items: center;
   justify-content: center;
   background: var(--soft);
@@ -581,7 +581,7 @@ svg {
   border: 0;
   background: none;
   outline: none;
-  font-size: 11px;
+  font-size: 13.2px;
   min-height: 42px;
 }
 .search-field:focus-within {
@@ -610,7 +610,7 @@ svg {
   gap: 4px;
   padding: 0 9px;
   min-height: 34px;
-  font-size: 9px;
+  font-size: 11px;
   border-radius: 10px;
   color: var(--muted);
 }
@@ -685,7 +685,7 @@ svg {
 }
 .channel-copy strong {
   display: block;
-  font-size: 11px;
+  font-size: 13.2px;
   font-weight: 800;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -693,7 +693,7 @@ svg {
 }
 .channel-copy small {
   display: block;
-  font-size: 9px;
+  font-size: 11px;
   color: var(--muted);
   white-space: nowrap;
   overflow: hidden;
@@ -701,7 +701,7 @@ svg {
   margin-top: 5px;
 }
 .channel-id {
-  font-size: 9px;
+  font-size: 11px;
   color: var(--muted);
   position: absolute;
   right: 10px;
@@ -728,7 +728,7 @@ svg {
   border-top: 1px solid var(--line);
   padding: 14px 4px 0;
   margin-top: 12px;
-  font-size: 9px;
+  font-size: 11px;
   color: var(--muted);
 }
 .remote-hint > span {
@@ -741,12 +741,12 @@ svg {
   gap: 4px;
 }
 .remote-hint small {
-  font-size: 8px;
+  font-size: 11px;
   margin: 0 7px 0 2px;
 }
 kbd {
   font-family: inherit;
-  font-size: 9px;
+  font-size: 11px;
   min-width: 19px;
   min-height: 19px;
   padding: 3px 5px;
@@ -771,7 +771,7 @@ kbd {
   margin: 0 2px 12px;
 }
 .live-label {
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 1.2px;
   display: flex;
@@ -783,7 +783,7 @@ kbd {
   display: flex;
   align-items: center;
   gap: 9px;
-  font-size: 11px;
+  font-size: 13.2px;
   font-weight: 700;
 }
 .channel-number {
@@ -791,13 +791,14 @@ kbd {
   padding: 4px 6px;
   border-radius: 6px;
   color: var(--muted);
-  font-size: 9px;
+  font-size: 11px;
 }
 .watch-heading .icon-button {
   width: 32px;
   height: 32px;
 }
 .tv-stage {
+  width: 100%;
   position: relative;
   aspect-ratio: 16/10;
   background: #302638;
@@ -858,7 +859,7 @@ kbd {
   top: 20px;
   left: 20px;
   z-index: 3;
-  font-size: 12px;
+  font-size: 14.4px;
   font-weight: 800;
   letter-spacing: -0.5px;
   display: flex;
@@ -919,7 +920,7 @@ kbd {
 }
 .player-prompt p {
   color: #d1c5d3;
-  font-size: 11px;
+  font-size: 13.2px;
   line-height: 1.6;
   max-width: 290px;
 }
@@ -940,12 +941,12 @@ kbd {
   margin-top: 12px;
 }
 .error-prompt .button {
-  font-size: 11px;
+  font-size: 13.2px;
   min-height: 40px;
   padding: 0 15px;
 }
 .error-prompt .text-button {
-  font-size: 11px;
+  font-size: 13.2px;
 }
 .player-tools {
   position: absolute;
@@ -959,7 +960,7 @@ kbd {
   transition: opacity 0.3s;
 }
 .source-label {
-  font-size: 7px;
+  font-size: 11px;
   letter-spacing: 1.2px;
   opacity: 0.65;
 }
@@ -1052,7 +1053,7 @@ kbd {
   cursor: pointer;
 }
 .video-time {
-  font-size: 8px;
+  font-size: 11px;
   color: #e1d8e3;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
@@ -1067,7 +1068,7 @@ kbd {
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 9px;
+  font-size: 11px;
   min-height: 38px;
   padding: 0 8px;
   border-radius: 9px;
@@ -1085,7 +1086,7 @@ kbd {
   background: #302638dd;
   padding: 12px 20px;
   border-radius: 30px;
-  font-size: 11px;
+  font-size: 13.2px;
   display: flex;
   gap: 9px;
   align-items: center;
@@ -1125,7 +1126,7 @@ kbd {
   color: var(--coral);
 }
 .poster-fallback span {
-  font-size: 12px;
+  font-size: 14.4px;
   font-weight: 800;
 }
 .now-playing-copy {
@@ -1133,19 +1134,19 @@ kbd {
   flex: 1;
 }
 .muted-label {
-  font-size: 7px;
+  font-size: 11px;
   letter-spacing: 1.1px;
   color: var(--muted);
   font-weight: 700;
 }
 .now-playing h2 {
-  font-size: 17px;
+  font-size: 20.4px;
   letter-spacing: -0.5px;
   margin: 5px 0;
   line-height: 1.3;
 }
 .now-playing-copy p {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
 }
 .next-program {
@@ -1158,12 +1159,12 @@ kbd {
   gap: 6px;
 }
 .next-program > span {
-  font-size: 7px;
+  font-size: 11px;
   letter-spacing: 1px;
   color: var(--muted);
 }
 .next-program strong {
-  font-size: 9px;
+  font-size: 11px;
   grid-row: 2;
   line-height: 1.5;
   font-weight: 600;
@@ -1188,7 +1189,7 @@ kbd {
   border-top: 1px solid var(--line);
   padding: 12px 2px 0;
   color: var(--muted);
-  font-size: 8px;
+  font-size: 11px;
 }
 .watch-smallprint > span:first-child {
   display: flex;
@@ -1215,7 +1216,7 @@ kbd {
   align-items: center;
   gap: 6px;
   min-height: 32px;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   color: var(--muted);
   position: relative;
@@ -1241,12 +1242,12 @@ kbd {
   border-radius: 50%;
   background: var(--coral-soft);
   color: var(--coral);
-  font-size: 8px;
+  font-size: 11px;
   display: grid;
   place-items: center;
 }
 .sidebar-eyebrow {
-  font-size: 7px;
+  font-size: 11px;
   color: var(--muted);
   font-weight: 700;
   letter-spacing: 0.6px;
@@ -1256,7 +1257,7 @@ kbd {
   gap: 2px;
 }
 .sidebar-eyebrow > span {
-  font-size: 6px;
+  font-size: 11px;
   color: var(--coral);
   letter-spacing: 1px;
   background: var(--coral-soft);
@@ -1287,7 +1288,7 @@ kbd {
   min-width: 0;
 }
 .stream-info > span {
-  font-size: 7px;
+  font-size: 11px;
   color: var(--muted);
   display: flex;
   justify-content: space-between;
@@ -1297,7 +1298,7 @@ kbd {
   color: var(--coral);
 }
 .stream-info h3 {
-  font-size: 11px;
+  font-size: 13.2px;
   letter-spacing: -0.2px;
   line-height: 1.4;
   margin: 5px 0 4px;
@@ -1307,7 +1308,7 @@ kbd {
   overflow: hidden;
 }
 .stream-info p {
-  font-size: 8px;
+  font-size: 11px;
   color: var(--muted);
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -1328,7 +1329,7 @@ kbd {
   transition: width 1s linear;
 }
 .stream-next {
-  font-size: 7px;
+  font-size: 11px;
   grid-column: 1/-1;
   color: var(--muted);
   border-bottom: 1px solid var(--line);
@@ -1338,7 +1339,7 @@ kbd {
   text-overflow: ellipsis;
 }
 .all-channels {
-  font-size: 10px;
+  font-size: 12px;
   width: 100%;
   min-height: 40px;
   padding: 0 12px;
@@ -1363,10 +1364,10 @@ kbd {
   min-width: 0;
 }
 .mood-card strong {
-  font-size: 10px;
+  font-size: 12px;
 }
 .mood-card p {
-  font-size: 8px;
+  font-size: 11px;
   line-height: 1.5;
   margin-top: 4px;
 }
@@ -1377,7 +1378,7 @@ kbd {
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 8px;
+  font-size: 11px;
   color: var(--muted);
   padding: 12px 0;
 }
@@ -1410,7 +1411,7 @@ kbd {
 .chat-message > div {
   display: flex;
   justify-content: space-between;
-  font-size: 8px;
+  font-size: 11px;
   gap: 8px;
 }
 .chat-message strong {
@@ -1418,10 +1419,10 @@ kbd {
 }
 .chat-message time {
   color: var(--muted);
-  font-size: 7px;
+  font-size: 11px;
 }
 .chat-message p {
-  font-size: 11px;
+  font-size: 13.2px;
   margin-top: 6px;
   line-height: 1.6;
   overflow-wrap: anywhere;
@@ -1444,7 +1445,7 @@ kbd {
   border: 0;
   background: none;
   outline: none;
-  font-size: 10px;
+  font-size: 12px;
   padding: 9px;
 }
 .chat-form input:focus-visible {
@@ -1460,7 +1461,7 @@ kbd {
   place-items: center;
 }
 .chat-footnote {
-  font-size: 7px;
+  font-size: 11px;
   color: var(--muted);
   text-align: center;
   line-height: 1.6;
@@ -1480,16 +1481,16 @@ kbd {
   opacity: 0.7;
 }
 .empty-state strong {
-  font-size: 12px;
+  font-size: 14.4px;
   color: var(--ink);
 }
 .empty-state p {
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.7;
   max-width: 220px;
 }
 .empty-state .text-button {
-  font-size: 10px;
+  font-size: 12px;
 }
 .chat-empty {
   height: 100%;
@@ -1508,14 +1509,14 @@ kbd {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  font-size: 9px;
+  font-size: 11px;
   color: var(--muted);
   margin-top: 38px;
   border-top: 1px solid var(--line);
   min-height: 86px;
 }
 .app-footer strong {
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 1.5px;
   font-weight: 600;
 }
@@ -1530,7 +1531,7 @@ kbd {
 }
 .theater-mode .watch-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 350px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   max-width: none;
   margin: auto;
 }
@@ -1577,7 +1578,7 @@ kbd {
   display: grid;
 }
 .theater-mode .stream-list {
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .theater-mode .mood-card {
   margin-top: 18px;
@@ -1587,10 +1588,10 @@ kbd {
   font-size: 28px;
 }
 .theater-mode .mood-card strong {
-  font-size: 12px;
+  font-size: 14.4px;
 }
 .theater-mode .mood-card p {
-  font-size: 10px;
+  font-size: 12px;
 }
 .theater-mode .tv-stage {
   aspect-ratio: 16/9;
@@ -1607,7 +1608,7 @@ kbd {
   padding: 40px 22px 14px;
 }
 .theater-mode .video-time {
-  font-size: 11px;
+  font-size: 13.2px;
 }
 .theater-mode .volume-range {
   width: 80px;
@@ -1622,7 +1623,7 @@ kbd {
 }
 .theater-mode .watch-section-heading {
   max-width: none;
-  margin: 28px auto 20px;
+  margin: 18px auto 16px;
 }
 .watch-view-actions {
   display: flex;
@@ -1647,7 +1648,7 @@ kbd {
   width: 100px;
 }
 .tv-stage:fullscreen .video-time {
-  font-size: 12px;
+  font-size: 14.4px;
 }
 .tv-stage:fullscreen .player-icon {
   width: 44px;
@@ -1709,7 +1710,7 @@ kbd {
   overscroll-behavior: contain;
 }
 .modal-description {
-  font-size: 12px;
+  font-size: 14.4px;
   color: var(--muted);
   line-height: 1.8;
   margin-bottom: 20px;
@@ -1727,7 +1728,7 @@ kbd {
   position: relative;
 }
 .select-field > span {
-  font-size: 9px;
+  font-size: 11px;
   color: var(--muted);
   font-weight: 700;
 }
@@ -1738,7 +1739,7 @@ kbd {
   background: var(--bg);
   height: 44px;
   padding: 0 40px 0 14px;
-  font-size: 12px;
+  font-size: 14.4px;
   font-weight: 600;
   max-width: 240px;
 }
@@ -1757,7 +1758,7 @@ kbd {
   align-self: flex-end;
 }
 .day-tabs button {
-  font-size: 11px;
+  font-size: 13.2px;
   min-height: 36px;
   padding: 0 13px;
   border-radius: 9px;
@@ -1772,7 +1773,7 @@ kbd {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 9px;
+  font-size: 11px;
   color: var(--muted);
   margin: 17px 0 20px;
 }
@@ -1795,7 +1796,7 @@ kbd {
 .guide-time {
   width: 44px;
   flex-shrink: 0;
-  font-size: 12px;
+  font-size: 14.4px;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -1803,7 +1804,7 @@ kbd {
 }
 .guide-time span {
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
 }
 .guide-row .poster {
   width: 44px;
@@ -1814,21 +1815,21 @@ kbd {
   min-width: 0;
 }
 .guide-copy h3 {
-  font-size: 13px;
+  font-size: 15.6px;
   margin-top: 5px;
   line-height: 1.5;
 }
 .guide-copy p {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   margin-top: 4px;
   line-height: 1.5;
 }
 .guide-copy .live-label {
-  font-size: 7px;
+  font-size: 11px;
 }
 .guide-row .button {
-  font-size: 10px;
+  font-size: 12px;
   min-height: 38px;
   padding: 0 14px;
 }
@@ -1856,10 +1857,10 @@ kbd {
   flex: 1;
 }
 .setting-row strong {
-  font-size: 12px;
+  font-size: 14.4px;
 }
 .setting-row p {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   line-height: 1.6;
   margin-top: 4px;
@@ -1926,11 +1927,11 @@ kbd {
 }
 .settings-quick > button > span {
   flex: 1;
-  font-size: 10px;
+  font-size: 12px;
 }
 .settings-quick strong {
   display: block;
-  font-size: 9px;
+  font-size: 11px;
   color: var(--muted);
   font-weight: 500;
   margin-top: 6px;
@@ -1944,7 +1945,7 @@ kbd {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  font-size: 9px;
+  font-size: 11px;
   color: var(--muted);
   margin-top: 12px;
 }
@@ -1959,7 +1960,7 @@ kbd {
   align-items: center;
   gap: 10px;
   padding: 20px 0 0;
-  font-size: 11px;
+  font-size: 13.2px;
   color: var(--coral);
   font-weight: 700;
   min-height: 44px;
@@ -1977,7 +1978,7 @@ kbd {
   flex: 1;
 }
 .studio-search input {
-  font-size: 12px;
+  font-size: 14.4px;
 }
 .catalog-results {
   display: grid;
@@ -2001,11 +2002,11 @@ kbd {
   min-width: 0;
 }
 .catalog-copy h3 {
-  font-size: 14px;
+  font-size: 16.8px;
   line-height: 1.5;
 }
 .catalog-copy > p {
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
   margin: 5px 0 15px;
 }
@@ -2019,13 +2020,13 @@ kbd {
   border: 1px solid var(--line);
   border-radius: 10px;
   padding: 10px;
-  font-size: 10px;
+  font-size: 12px;
   width: 160px;
   max-width: 100%;
 }
 .catalog-copy .button {
   min-height: 38px;
-  font-size: 10px;
+  font-size: 12px;
   padding: 0 15px;
 }
 .toast {
@@ -2041,7 +2042,7 @@ kbd {
   gap: 10px;
   color: var(--panel);
   background: var(--ink);
-  font-size: 11px;
+  font-size: 13.2px;
   border-radius: 50px;
   padding: 15px 22px;
   box-shadow: 0 8px 30px #352b4020;
@@ -2075,7 +2076,7 @@ kbd {
   color: #ed9dac;
 }
 .bumper-screen > p {
-  font-size: 12px;
+  font-size: 14.4px;
   color: #ded2df;
 }
 .static-screen {
@@ -2111,7 +2112,7 @@ kbd {
   left: 100%;
   white-space: nowrap;
   color: #fff;
-  font-size: 15px;
+  font-size: 18px;
   text-shadow:
     0 1px 4px #000,
     0 0 3px #000;
@@ -2209,7 +2210,7 @@ kbd {
     grid-template-columns: 58px minmax(0, 1fr);
   }
   .stream-info h3 {
-    font-size: 12px;
+    font-size: 14.4px;
   }
   .channel-list {
     max-height: 440px;
@@ -2265,7 +2266,7 @@ kbd {
     height: 33px;
   }
   .channel-copy strong {
-    font-size: 10px;
+    font-size: 12px;
   }
   .watch-card {
     padding: 12px;
@@ -2277,11 +2278,11 @@ kbd {
     gap: 9px;
   }
   .side-tabs button {
-    font-size: 9px;
+    font-size: 11px;
     gap: 4px;
   }
   .now-playing h2 {
-    font-size: 15px;
+    font-size: 18px;
   }
   .next-program {
     max-width: 110px;
@@ -2291,7 +2292,7 @@ kbd {
     width: 35px;
   }
   .video-time {
-    font-size: 7px;
+    font-size: 11px;
     margin-left: 2px;
   }
   .player-icon {
@@ -2324,7 +2325,7 @@ kbd {
     gap: 22px;
   }
   .side-tabs button {
-    font-size: 11px;
+    font-size: 13.2px;
     min-height: 38px;
   }
   .stream-panel {
@@ -2345,7 +2346,7 @@ kbd {
     grid-template-columns: 45px minmax(0, 1fr);
   }
   .stream-info h3 {
-    font-size: 11px;
+    font-size: 13.2px;
   }
   .all-channels {
     margin-bottom: 0;
@@ -2359,10 +2360,10 @@ kbd {
     flex-wrap: wrap;
   }
   .mood-card strong {
-    font-size: 13px;
+    font-size: 15.6px;
   }
   .mood-card p {
-    font-size: 10px;
+    font-size: 12px;
   }
   .mood-card > span {
     font-size: 50px;
@@ -2400,10 +2401,10 @@ kbd {
     font-size: 45px;
   }
   .hero-index {
-    font-size: 7px;
+    font-size: 11px;
   }
   .main-nav {
-    font-size: 12px;
+    font-size: 14.4px;
     gap: 16px;
   }
   .brand {
@@ -2413,11 +2414,11 @@ kbd {
     display: none;
   }
   .app-footer strong {
-    font-size: 7px;
+    font-size: 11px;
     letter-spacing: 0.5px;
   }
   .video-time {
-    font-size: 9px;
+    font-size: 11px;
   }
   .player-icon {
     width: 33px;
@@ -2454,7 +2455,7 @@ kbd {
     width: 100%;
     justify-content: center;
     gap: 32px;
-    font-size: 11px;
+    font-size: 13.2px;
   }
   .main-nav button {
     min-height: 32px;
@@ -2473,14 +2474,14 @@ kbd {
     margin: 11px 0 15px;
   }
   .hero-description {
-    font-size: 11px;
+    font-size: 13.2px;
   }
   .hero .eyebrow {
-    font-size: 6px;
+    font-size: 11px;
     letter-spacing: 1px;
   }
   .tiny-star {
-    font-size: 16px;
+    font-size: 19.2px;
   }
   .hero-art {
     width: 340px;
@@ -2506,7 +2507,7 @@ kbd {
   .art-label {
     right: 36px;
     bottom: 25px;
-    font-size: 9px;
+    font-size: 11px;
     padding: 10px 14px;
   }
   .star-one {
@@ -2522,15 +2523,15 @@ kbd {
     margin-top: 20px;
   }
   .hero-secondary {
-    font-size: 10px;
+    font-size: 12px;
     gap: 3px;
   }
   .hero .button {
-    font-size: 11px;
+    font-size: 13.2px;
     padding: 0 17px;
   }
   .hero-footnote {
-    font-size: 8px;
+    font-size: 11px;
   }
   .hero-index {
     display: none;
@@ -2542,10 +2543,10 @@ kbd {
     font-size: 23px;
   }
   .watch-section-heading > .text-button {
-    font-size: 10px;
+    font-size: 12px;
   }
   .watch-section-heading .eyebrow {
-    font-size: 8px;
+    font-size: 11px;
   }
   .watch-layout {
     grid-template-columns: 1fr;
@@ -2561,7 +2562,7 @@ kbd {
     display: none;
   }
   .section-label-row h2 {
-    font-size: 17px;
+    font-size: 20.4px;
     margin-top: 0;
   }
   .channel-panel .search-field {
@@ -2583,7 +2584,7 @@ kbd {
     gap: 6px;
   }
   .channel-categories button {
-    font-size: 10px;
+    font-size: 12px;
     min-height: 36px;
     padding: 0 12px;
   }
@@ -2610,17 +2611,17 @@ kbd {
     padding-right: 24px;
   }
   .channel-copy strong {
-    font-size: 10px;
+    font-size: 12px;
   }
   .channel-copy small {
-    font-size: 8px;
+    font-size: 11px;
   }
   .channel-glyph {
     width: 29px;
     height: 33px;
   }
   .channel-id {
-    font-size: 7px;
+    font-size: 11px;
   }
   .channel-heart {
     width: 28px;
@@ -2651,13 +2652,13 @@ kbd {
     margin-bottom: 9px;
   }
   .watch-heading-actions {
-    font-size: 10px;
+    font-size: 12px;
   }
   .now-playing h2 {
-    font-size: 17px;
+    font-size: 20.4px;
   }
   .now-playing-copy p {
-    font-size: 10px;
+    font-size: 12px;
   }
   .now-playing .poster {
     width: 42px;
@@ -2667,7 +2668,7 @@ kbd {
     max-width: 150px;
   }
   .watch-smallprint {
-    font-size: 8px;
+    font-size: 11px;
   }
   .player-icon {
     width: 36px;
@@ -2677,10 +2678,10 @@ kbd {
     width: 55px;
   }
   .video-time {
-    font-size: 9px;
+    font-size: 11px;
   }
   .start-over {
-    font-size: 10px;
+    font-size: 12px;
     padding: 0 5px;
   }
   .player-controls {
@@ -2706,23 +2707,23 @@ kbd {
     height: 70px;
   }
   .stream-info h3 {
-    font-size: 12px;
+    font-size: 14.4px;
   }
   .stream-info p {
-    font-size: 9px;
+    font-size: 11px;
   }
   .stream-info > span {
-    font-size: 8px;
+    font-size: 11px;
   }
   .stream-next {
-    font-size: 8px;
+    font-size: 11px;
   }
   .sidebar-eyebrow {
-    font-size: 8px;
+    font-size: 11px;
   }
   .all-channels {
     min-height: 44px;
-    font-size: 11px;
+    font-size: 13.2px;
     margin-bottom: 16px;
   }
   .mood-card {
@@ -2733,39 +2734,39 @@ kbd {
     font-size: 28px;
   }
   .mood-card strong {
-    font-size: 12px;
+    font-size: 14.4px;
   }
   .mood-card p {
-    font-size: 9px;
+    font-size: 11px;
   }
   .side-tabs button {
-    font-size: 12px;
+    font-size: 14.4px;
     min-height: 36px;
   }
   .chat-messages {
     height: 300px;
   }
   .chat-form input {
-    font-size: 12px;
+    font-size: 14.4px;
   }
   .chat-form button {
     min-width: 42px;
     min-height: 42px;
   }
   .chat-intro {
-    font-size: 10px;
-  }
-  .chat-footnote {
-    font-size: 9px;
-  }
-  .chat-message p {
     font-size: 12px;
   }
+  .chat-footnote {
+    font-size: 11px;
+  }
+  .chat-message p {
+    font-size: 14.4px;
+  }
   .chat-message > div {
-    font-size: 10px;
+    font-size: 12px;
   }
   .chat-message time {
-    font-size: 9px;
+    font-size: 11px;
   }
   .app-footer {
     flex-wrap: wrap;
@@ -2773,7 +2774,7 @@ kbd {
     padding: 18px 0;
     margin-top: 26px;
     min-height: 90px;
-    font-size: 9px;
+    font-size: 11px;
     gap: 5px;
   }
   .app-footer strong {
@@ -2800,11 +2801,11 @@ kbd {
     gap: 12px;
   }
   .day-tabs button {
-    font-size: 10px;
+    font-size: 12px;
     padding: 0 10px;
   }
   .select-field select {
-    font-size: 10px;
+    font-size: 12px;
     max-width: 190px;
   }
   .guide-row {
@@ -2812,17 +2813,17 @@ kbd {
     gap: 10px;
   }
   .guide-copy h3 {
-    font-size: 12px;
+    font-size: 14.4px;
   }
   .guide-copy p {
-    font-size: 9px;
+    font-size: 11px;
   }
   .guide-row .button {
     padding: 0 12px;
-    font-size: 9px;
+    font-size: 11px;
   }
   .toast {
-    font-size: 10px;
+    font-size: 12px;
     bottom: 18px;
     padding: 14px 19px;
   }
@@ -2840,11 +2841,11 @@ kbd {
     border-radius: 12px;
   }
   .brand {
-    font-size: 20px;
+    font-size: 24px;
     gap: 9px;
   }
   .brand small {
-    font-size: 7px;
+    font-size: 11px;
   }
   .app-header {
     padding-top: 14px;
@@ -2872,7 +2873,7 @@ kbd {
     max-width: 250px;
   }
   .hero-description {
-    font-size: 10px;
+    font-size: 12px;
     line-height: 1.7;
     max-width: 208px;
   }
@@ -2887,12 +2888,12 @@ kbd {
     right: 0;
   }
   .hero .eyebrow {
-    font-size: 5.5px;
+    font-size: 11px;
     letter-spacing: 0.7px;
     white-space: nowrap;
   }
   .hero .tiny-star {
-    font-size: 15px;
+    font-size: 18px;
   }
   .art-label {
     display: none;
@@ -2908,14 +2909,14 @@ kbd {
     gap: 6px;
   }
   .hero .button {
-    font-size: 10px;
+    font-size: 12px;
     min-height: 44px;
     padding: 0 15px;
     gap: 8px;
   }
   .hero-footnote {
     margin-top: 9px;
-    font-size: 6.8px;
+    font-size: 11px;
     gap: 5px;
   }
   .star-one {
@@ -2941,14 +2942,14 @@ kbd {
     font-size: 23px;
   }
   .watch-section-heading .text-button {
-    font-size: 9px;
+    font-size: 11px;
     gap: 4px;
   }
   .watch-section-heading .text-button svg {
     width: 14px;
   }
   .watch-section-heading .eyebrow {
-    font-size: 7px;
+    font-size: 11px;
     letter-spacing: 1.4px;
   }
   .channel-panel {
@@ -2964,7 +2965,7 @@ kbd {
     margin-bottom: 7px;
   }
   .channel-panel .section-label-row h2 {
-    font-size: 16px;
+    font-size: 19.2px;
   }
   .channel-panel .section-label-row .icon-button {
     width: 35px;
@@ -2976,7 +2977,7 @@ kbd {
     margin: 5px 0 10px;
   }
   .channel-categories button {
-    font-size: 9px;
+    font-size: 11px;
     padding: 0 8px;
     gap: 4px;
     min-height: 40px;
@@ -2992,10 +2993,10 @@ kbd {
   }
   .watch-heading-actions {
     gap: 5px;
-    font-size: 9px;
+    font-size: 11px;
   }
   .live-label {
-    font-size: 7px;
+    font-size: 11px;
     letter-spacing: 0.8px;
     gap: 5px;
   }
@@ -3004,7 +3005,7 @@ kbd {
     height: 28px;
   }
   .channel-number {
-    font-size: 8px;
+    font-size: 11px;
     padding: 3px;
   }
   .tv-stage {
@@ -3025,15 +3026,15 @@ kbd {
     width: 23px;
   }
   .player-prompt h3 {
-    font-size: 17px;
+    font-size: 20.4px;
   }
   .player-prompt p {
-    font-size: 9px;
+    font-size: 11px;
   }
   .player-channel {
     top: 15px;
     left: 14px;
-    font-size: 10px;
+    font-size: 12px;
   }
   .player-channel svg {
     width: 13px;
@@ -3048,7 +3049,7 @@ kbd {
     height: 34px;
   }
   .source-label {
-    font-size: 6px;
+    font-size: 11px;
   }
   .player-tools {
     padding: 48px 14px 0;
@@ -3071,14 +3072,14 @@ kbd {
     display: none;
   }
   .video-time {
-    font-size: 7px;
+    font-size: 11px;
     margin-left: 2px;
   }
   .control-divider {
     margin: 0 2px;
   }
   .start-over {
-    font-size: 8px;
+    font-size: 11px;
     gap: 3px;
     padding: 0 4px;
     min-height: 38px;
@@ -3091,18 +3092,18 @@ kbd {
     padding: 15px 1px 13px;
   }
   .now-playing h2 {
-    font-size: 14px;
+    font-size: 16.8px;
     line-height: 1.4;
   }
   .now-playing-copy p {
-    font-size: 9px;
+    font-size: 11px;
   }
   .now-playing .poster {
     width: 37px;
     height: 50px;
   }
   .muted-label {
-    font-size: 6px;
+    font-size: 11px;
   }
   .next-program {
     max-width: 90px;
@@ -3110,16 +3111,16 @@ kbd {
     gap: 4px;
   }
   .next-program strong {
-    font-size: 8px;
+    font-size: 11px;
   }
   .next-program > span {
-    font-size: 6px;
+    font-size: 11px;
   }
   .next-program > svg {
     width: 13px;
   }
   .watch-smallprint {
-    font-size: 7px;
+    font-size: 11px;
     gap: 5px;
     padding-top: 11px;
   }
@@ -3139,17 +3140,17 @@ kbd {
     height: 62px;
   }
   .stream-info h3 {
-    font-size: 10px;
+    font-size: 12px;
     margin-top: 4px;
   }
   .stream-info > span {
-    font-size: 7px;
+    font-size: 11px;
   }
   .stream-info p {
-    font-size: 8px;
+    font-size: 11px;
   }
   .stream-next {
-    font-size: 7px;
+    font-size: 11px;
     padding-bottom: 10px;
   }
   .community-panel {
@@ -3159,7 +3160,7 @@ kbd {
     padding: 15px;
   }
   .mood-card strong {
-    font-size: 11px;
+    font-size: 13.2px;
   }
   .guide-filters {
     flex-wrap: wrap;
@@ -3170,7 +3171,7 @@ kbd {
   .select-field select {
     max-width: 100%;
     width: 100%;
-    font-size: 12px;
+    font-size: 14.4px;
   }
   .day-tabs {
     width: 100%;
@@ -3179,7 +3180,7 @@ kbd {
   .day-tabs button {
     flex: 1;
     min-height: 38px;
-    font-size: 11px;
+    font-size: 13.2px;
   }
   .guide-row {
     gap: 9px;
@@ -3191,17 +3192,17 @@ kbd {
     height: 46px;
   }
   .guide-time {
-    font-size: 10px;
+    font-size: 12px;
     width: 35px;
   }
   .guide-time span {
-    font-size: 8px;
-  }
-  .guide-copy h3 {
     font-size: 11px;
   }
+  .guide-copy h3 {
+    font-size: 13.2px;
+  }
   .guide-copy p {
-    font-size: 8px;
+    font-size: 11px;
   }
   .guide-row.is-live .button {
     margin-left: 88px;
@@ -3211,10 +3212,10 @@ kbd {
     padding: 20px 18px 17px;
   }
   .modal-heading h2 {
-    font-size: 20px;
+    font-size: 24px;
   }
   .modal-heading .eyebrow {
-    font-size: 8px;
+    font-size: 11px;
     letter-spacing: 1.2px;
   }
   .modal-content {
@@ -3225,10 +3226,10 @@ kbd {
     padding: 15px 0;
   }
   .setting-row strong {
-    font-size: 11px;
+    font-size: 13.2px;
   }
   .setting-row p {
-    font-size: 9px;
+    font-size: 11px;
   }
   .setting-icon {
     width: 33px;
@@ -3245,24 +3246,24 @@ kbd {
     padding: 15px;
   }
   .settings-quick button > span {
-    font-size: 11px;
+    font-size: 13.2px;
   }
   .settings-quick strong {
-    font-size: 10px;
+    font-size: 12px;
   }
   .keyboard-help > div {
     gap: 10px;
-    font-size: 8px;
+    font-size: 11px;
   }
   .studio-search {
     gap: 7px;
   }
   .studio-search .button {
     padding: 0 14px;
-    font-size: 11px;
+    font-size: 13.2px;
   }
   .studio-search input {
-    font-size: 11px;
+    font-size: 13.2px;
   }
   .catalog-item {
     padding: 12px;
@@ -3273,7 +3274,7 @@ kbd {
     height: 74px;
   }
   .catalog-copy h3 {
-    font-size: 12px;
+    font-size: 14.4px;
   }
   .catalog-copy > div {
     flex-wrap: wrap;
@@ -3286,10 +3287,10 @@ kbd {
     width: 100%;
   }
   .error-prompt h3 {
-    font-size: 15px;
+    font-size: 18px;
   }
   .error-prompt p {
-    font-size: 9px;
+    font-size: 11px;
     max-width: 240px;
   }
   .error-prompt > div {
@@ -3297,12 +3298,12 @@ kbd {
     margin-top: 5px;
   }
   .error-prompt .button {
-    font-size: 9px;
+    font-size: 11px;
     min-height: 34px;
     padding: 0 11px;
   }
   .error-prompt .text-button {
-    font-size: 9px;
+    font-size: 11px;
   }
   .prompt-symbol {
     padding: 8px;
@@ -3329,37 +3330,37 @@ kbd {
 }
 /* Readable labels and comfortable touch targets at every size. */
 .channel-copy strong {
-  font-size: 12px;
+  font-size: 14.4px;
 }
 .channel-copy small {
-  font-size: 10px;
+  font-size: 12px;
 }
 .channel-categories button {
   min-height: 40px;
-  font-size: 10px;
+  font-size: 12px;
 }
 .channel-heart {
   width: 32px;
   height: 32px;
 }
 .side-tabs button {
-  font-size: 11px;
+  font-size: 13.2px;
   min-height: 38px;
 }
 .stream-info h3 {
-  font-size: 12px;
+  font-size: 14.4px;
 }
 .stream-info p {
-  font-size: 9px;
+  font-size: 11px;
 }
 .stream-info > span {
-  font-size: 8px;
+  font-size: 11px;
 }
 .stream-next {
-  font-size: 8px;
+  font-size: 11px;
 }
 .watch-smallprint {
-  font-size: 9px;
+  font-size: 11px;
 }
 .hero-art img {
   top: -8px;
@@ -3374,39 +3375,39 @@ kbd {
 }
 @media (max-width: 1200px) {
   .channel-copy strong {
-    font-size: 11px;
+    font-size: 13.2px;
   }
   .channel-copy small {
-    font-size: 9px;
+    font-size: 11px;
   }
   .side-tabs button {
-    font-size: 10px;
+    font-size: 12px;
   }
   .stream-info h3 {
-    font-size: 11px;
+    font-size: 13.2px;
   }
 }
 @media (max-width: 760px) {
   .channel-copy strong {
-    font-size: 11px;
+    font-size: 13.2px;
   }
   .channel-copy small {
-    font-size: 9px;
+    font-size: 11px;
   }
   .channel-categories button {
     min-height: 40px;
   }
   .side-tabs button {
-    font-size: 12px;
+    font-size: 14.4px;
   }
   .hero-art img {
     top: -4px;
   }
   .watch-smallprint {
-    font-size: 8px;
+    font-size: 11px;
   }
   .stream-info h3 {
-    font-size: 12px;
+    font-size: 14.4px;
   }
 }
 @media (max-width: 480px) {
@@ -3422,7 +3423,7 @@ kbd {
   }
   .hero-description {
     max-width: 178px;
-    font-size: 10px;
+    font-size: 12px;
   }
   .hero-art img {
     width: 200px;
@@ -3431,29 +3432,29 @@ kbd {
     right: 7px;
   }
   .hero-footnote {
-    font-size: 7px;
+    font-size: 11px;
     margin-top: 10px;
     max-width: 170px;
     line-height: 1.6;
   }
   .channel-categories button {
-    font-size: 9px;
+    font-size: 11px;
     padding: 0 7px;
   }
   .stream-info h3 {
-    font-size: 11px;
+    font-size: 13.2px;
   }
   .stream-info > span {
-    font-size: 7px;
+    font-size: 11px;
   }
   .stream-info p {
-    font-size: 8px;
+    font-size: 11px;
   }
   .stream-next {
-    font-size: 8px;
+    font-size: 11px;
   }
   .watch-smallprint {
-    font-size: 7px;
+    font-size: 11px;
   }
   .hero-actions {
     margin-top: 21px;
@@ -3467,12 +3468,12 @@ kbd {
   display: flex;
   align-items: center;
   gap: 9px;
-  font-size: 11px;
+  font-size: 13.2px;
   font-weight: 600;
 }
 .settings-volume strong {
   margin-left: auto;
-  font-size: 10px;
+  font-size: 12px;
   color: var(--muted);
 }
 .settings-volume svg {
@@ -3501,7 +3502,7 @@ kbd {
     flex-shrink: 1;
   }
   .video-time {
-    font-size: 6px;
+    font-size: 11px;
   }
   .control-divider {
     margin: 0 1px;
@@ -3600,7 +3601,7 @@ kbd {
     padding: 26px 12px 9px;
   }
   .theater-mode .video-time {
-    font-size: 9px;
+    font-size: 11px;
   }
   .watch-view-actions {
     gap: 8px;
@@ -3608,10 +3609,10 @@ kbd {
   .wide-toggle {
     min-height: 40px;
     padding: 0 12px;
-    font-size: 10px;
+    font-size: 12px;
   }
   .watch-view-actions > .text-button {
-    font-size: 10px;
+    font-size: 12px;
   }
   .watch-section-heading {
     flex-wrap: wrap;
@@ -3637,7 +3638,7 @@ kbd {
     padding: 26px 7px 6px;
   }
   .theater-mode .video-time {
-    font-size: 7px;
+    font-size: 11px;
   }
   .theater-mode .volume-range {
     display: none;
@@ -3652,13 +3653,13 @@ kbd {
     margin-top: 18px;
   }
   .wide-toggle {
-    font-size: 10px;
+    font-size: 12px;
   }
   .theater-mode .player-prompt h3 {
-    font-size: 15px;
+    font-size: 18px;
   }
   .theater-mode .player-prompt p {
-    font-size: 9px;
+    font-size: 11px;
   }
   .theater-mode .big-play {
     width: 48px;
@@ -3668,5 +3669,432 @@ kbd {
   .theater-mode .player-prompt {
     gap: 5px;
     padding: 20px;
+  }
+}
+/* Comfortable reading at 100% browser zoom. */
+.brand small {
+  font-size: 10px;
+}
+.hero {
+  height: 380px;
+}
+.hero .eyebrow {
+  font-size: 11px;
+}
+.hero-index {
+  font-size: 10px;
+}
+.hero-footnote {
+  font-size: 12px;
+}
+.watch-heading .icon-button {
+  width: 40px;
+  height: 40px;
+}
+.now-playing {
+  gap: 16px;
+  padding: 16px 2px 14px;
+}
+.now-playing .poster {
+  width: 52px;
+  height: 68px;
+}
+.now-playing h2 {
+  font-size: 22px;
+}
+.now-playing-copy p {
+  font-size: 14px;
+}
+.muted-label {
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+.next-program {
+  max-width: 260px;
+  min-height: 52px;
+  padding-left: 20px;
+}
+.next-program strong {
+  font-size: 13px;
+}
+.next-program > span {
+  font-size: 11px;
+}
+.watch-smallprint {
+  font-size: 12px;
+  padding-top: 10px;
+}
+.watch-smallprint .live-dot {
+  width: 5px;
+  height: 5px;
+}
+.source-label {
+  font-size: 11px;
+}
+.theater-mode .channel-panel,
+.theater-mode .community-panel {
+  padding: 20px;
+}
+.theater-mode .channel-list {
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+}
+.theater-mode .channel-panel .search-field {
+  max-width: 440px;
+}
+.theater-mode .channel-copy strong {
+  font-size: 15px;
+}
+.theater-mode .channel-copy small {
+  font-size: 12px;
+}
+.theater-mode .channel-id {
+  font-size: 11px;
+}
+.theater-mode .channel-select {
+  min-height: 74px;
+  gap: 12px;
+}
+.theater-mode .channel-glyph {
+  width: 40px;
+  height: 40px;
+}
+.theater-mode .channel-categories {
+  margin: 10px 0 14px;
+}
+.theater-mode .stream-card {
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 12px;
+}
+.theater-mode .stream-card .poster {
+  width: 64px;
+  height: 84px;
+}
+.theater-mode .stream-info h3 {
+  font-size: 16px;
+  line-height: 1.4;
+}
+.theater-mode .stream-info > span,
+.theater-mode .stream-info p,
+.theater-mode .stream-next {
+  font-size: 12px;
+}
+.theater-mode .stream-list {
+  gap: 16px;
+}
+.theater-mode .sidebar-eyebrow {
+  font-size: 11px;
+  margin: 16px 0;
+}
+.theater-mode .all-channels {
+  margin: 12px 0;
+  min-height: 44px;
+  font-size: 14px;
+}
+.theater-mode .mood-card {
+  margin-top: 10px;
+  padding: 14px;
+}
+.theater-mode .mood-card strong {
+  font-size: 14px;
+}
+.theater-mode .mood-card p {
+  font-size: 12px;
+}
+.theater-mode .chat-messages {
+  height: 330px;
+}
+.app-footer {
+  min-height: 64px;
+  margin-top: 24px;
+}
+@media (min-width: 761px) {
+  .theater-mode .watch-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+  .theater-mode .stream-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .theater-mode .video-time {
+    font-size: 14px;
+  }
+  .theater-mode .start-over {
+    font-size: 13px;
+    min-height: 44px;
+    padding: 0 12px;
+  }
+  .theater-mode .player-control-group {
+    gap: 6px;
+  }
+  .theater-mode .player-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+@media (min-width: 761px) and (max-width: 1100px) {
+  .theater-mode .stream-list {
+    grid-template-columns: 1fr;
+  }
+  .theater-mode .channel-list {
+    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  }
+  .theater-mode .stream-info h3 {
+    font-size: 15px;
+  }
+  .main-nav {
+    gap: 16px;
+  }
+}
+@media (max-width: 760px) {
+  .brand small {
+    font-size: 9px;
+  }
+  .main-nav {
+    font-size: 13px;
+    gap: 24px;
+  }
+  .app-header {
+    min-height: 110px;
+  }
+  .channel-panel .search-field {
+    position: static;
+    margin-bottom: 10px;
+  }
+  .search-field input,
+  .chat-form input,
+  select {
+    font-size: 16px;
+  }
+  .channel-copy strong {
+    font-size: 13px;
+  }
+  .channel-copy small {
+    font-size: 11px;
+  }
+  .theater-mode .channel-copy strong {
+    font-size: 13px;
+  }
+  .theater-mode .channel-copy small {
+    font-size: 11px;
+  }
+  .theater-mode .channel-item {
+    width: 190px;
+  }
+  .theater-mode .channel-select {
+    gap: 8px;
+    min-height: 66px;
+  }
+  .theater-mode .channel-glyph {
+    width: 32px;
+    height: 36px;
+  }
+  .theater-mode .stream-card {
+    grid-template-columns: 50px minmax(0, 1fr);
+    gap: 9px;
+  }
+  .theater-mode .stream-card .poster {
+    width: 50px;
+    height: 70px;
+  }
+  .theater-mode .stream-info h3 {
+    font-size: 13px;
+  }
+  .theater-mode .stream-info > span,
+  .theater-mode .stream-info p,
+  .theater-mode .stream-next {
+    font-size: 11px;
+  }
+  .theater-mode .stream-list {
+    gap: 14px;
+  }
+  .theater-mode .sidebar-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0;
+  }
+  .now-playing h2 {
+    font-size: 19px;
+  }
+  .now-playing-copy p {
+    font-size: 13px;
+  }
+  .now-playing .poster {
+    width: 44px;
+    height: 58px;
+  }
+  .next-program {
+    max-width: 145px;
+    padding-left: 12px;
+  }
+  .next-program strong {
+    font-size: 12px;
+  }
+  .watch-smallprint {
+    font-size: 11px;
+    line-height: 1.6;
+  }
+  .watch-heading-actions {
+    font-size: 12px;
+  }
+  .hero .eyebrow {
+    white-space: normal;
+  }
+  .hero-footnote {
+    font-size: 11px;
+  }
+  .hero-copy {
+    max-width: 450px;
+  }
+  .watch-section-heading .eyebrow {
+    font-size: 11px;
+  }
+}
+@media (max-width: 480px) {
+  .brand {
+    font-size: 22px;
+  }
+  .brand small {
+    font-size: 8px;
+  }
+  .main-nav {
+    gap: 20px;
+    font-size: 13px;
+  }
+  .hero {
+    height: 390px;
+  }
+  .hero-copy {
+    max-width: 330px;
+  }
+  .hero .eyebrow {
+    font-size: 10px;
+    line-height: 1.6;
+    max-width: 240px;
+  }
+  .hero-description {
+    font-size: 12px;
+    max-width: 180px;
+  }
+  .hero-footnote {
+    font-size: 10px;
+    max-width: 190px;
+  }
+  .hero-art img {
+    top: 120px;
+  }
+  .now-playing {
+    gap: 10px;
+    padding: 14px 0 12px;
+  }
+  .now-playing h2 {
+    font-size: 17px;
+  }
+  .now-playing-copy p {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .muted-label {
+    font-size: 10px;
+    letter-spacing: 0.6px;
+  }
+  .next-program {
+    max-width: 100px;
+    padding-left: 10px;
+  }
+  .next-program strong {
+    font-size: 11px;
+  }
+  .next-program > span {
+    font-size: 10px;
+  }
+  .watch-smallprint {
+    font-size: 10px;
+    gap: 8px;
+  }
+  .watch-heading-actions {
+    gap: 5px;
+    font-size: 11px;
+  }
+  .live-label {
+    font-size: 10px;
+    letter-spacing: 0.5px;
+  }
+  .watch-heading .icon-button {
+    width: 32px;
+    height: 32px;
+  }
+  .video-duration,
+  .video-time i {
+    display: none;
+  }
+  .video-time,
+  .theater-mode .video-time {
+    font-size: 11px;
+  }
+  .start-over {
+    font-size: 11px;
+    white-space: nowrap;
+  }
+  .source-label {
+    font-size: 10px;
+  }
+  .theater-mode .stream-card {
+    grid-template-columns: 1fr;
+  }
+  .theater-mode .stream-card .poster {
+    display: none;
+  }
+  .theater-mode .stream-info h3 {
+    font-size: 14px;
+  }
+  .theater-mode .stream-info > span {
+    font-size: 11px;
+  }
+  .theater-mode .sidebar-eyebrow {
+    font-size: 10px;
+  }
+  .hero-actions {
+    margin-top: 17px;
+  }
+  .hero-secondary {
+    font-size: 12px;
+  }
+  .theater-mode .player-prompt h3 {
+    font-size: 17px;
+  }
+  .theater-mode .player-prompt p {
+    font-size: 11px;
+  }
+  .app-footer {
+    font-size: 11px;
+  }
+}
+@media (max-width: 360px) {
+  .hero {
+    height: 425px;
+  }
+  .hero h1 {
+    max-width: 210px;
+  }
+  .hero .eyebrow {
+    max-width: 200px;
+  }
+  .hero-art img {
+    top: 160px;
+  }
+  .main-nav {
+    gap: 16px;
+  }
+  .watch-heading-actions {
+    font-size: 10px;
+  }
+  .theater-mode .player-icon,
+  .player-icon {
+    width: 26px;
+  }
+  .player-control-group {
+    gap: 0;
+  }
+  .start-over {
+    padding: 0 3px;
+    font-size: 10px;
   }
 }
