@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import Icon, { categoryIcon } from "./Icon";
+import Icon from "./Icon";
 import Poster from "./Poster";
 import { tv } from "../tvController";
 const categories = [
-  { id: "all", label: "Все", icon: "grid" },
-  { id: "anime", label: "Аниме", icon: "sparkles" },
-  { id: "cartoons", label: "Мульты", icon: "palette" },
-  { id: "minecrafters", label: "Игры", icon: "game" },
-  { id: "music", label: "Музыка", icon: "music" },
+  { id: "all", label: "Все жанры" },
+  { id: "anime", label: "Аниме" },
+  { id: "cartoons", label: "Мультфильмы" },
+  { id: "minecrafters", label: "Игры и стримы" },
+  { id: "music", label: "Музыка" },
 ];
 export function ChannelRail({
   snapshot,
@@ -19,7 +19,12 @@ export function ChannelRail({
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("all");
   const [onlyFavorites, setOnlyFavorites] = useState(false);
+  const [more, setMore] = useState(false);
+  const listRef = useRef(null);
   const normalized = query.trim().toLowerCase();
+  const favoriteCount = snapshot.channels.filter(({ channel }) =>
+    favorites.includes(channel.id),
+  ).length;
   const filtered = snapshot.channels.filter(
     ({ channel }) =>
       (category === "all" || channel.category === category) &&
@@ -32,132 +37,222 @@ export function ChannelRail({
           item.title?.toLowerCase().includes(normalized),
         )),
   );
+  useEffect(() => {
+    const list = listRef.current;
+    if (!list) return;
+    const measure = () =>
+      setMore(list.scrollHeight - list.scrollTop - list.clientHeight > 6);
+    list.scrollTop = 0;
+    measure();
+    list.addEventListener("scroll", measure, { passive: true });
+    const observer = new ResizeObserver(measure);
+    observer.observe(list);
+    return () => {
+      list.removeEventListener("scroll", measure);
+      observer.disconnect();
+    };
+  }, [query, category, onlyFavorites, filtered.length]);
+  useEffect(() => {
+    const list = listRef.current;
+    const current = list?.querySelector(".is-current");
+    if (!current) return;
+    const bounds = list.getBoundingClientRect(),
+      row = current.getBoundingClientRect();
+    if (row.top < bounds.top) list.scrollTop -= bounds.top - row.top;
+    else if (row.bottom > bounds.bottom)
+      list.scrollTop += row.bottom - bounds.bottom;
+  }, [snapshot.currentChannelIndex, query, category, onlyFavorites]);
   return (
-    <aside className="channel-panel" aria-label="Список каналов">
-      <div className="section-label-row">
+    <aside className="channel-panel rail-panel" aria-label="Список каналов">
+      <header className="rail-header">
         <div>
-          <p className="eyebrow">ВЫБЕРИ НАСТРОЕНИЕ</p>
-          <h2>
-            Твои каналы<span>{snapshot.channels.length}</span>
-          </h2>
+          <h2>Каналы</h2>
+          <p>Выбери, что смотреть</p>
         </div>
+        <span className="rail-live">
+          <span className="live-dot" /> LIVE
+        </span>
+      </header>
+      <div className="rail-tabs" aria-label="Подборка каналов">
         <button
-          className={`icon-button ${onlyFavorites ? "is-favorite" : ""}`}
-          aria-label={
-            onlyFavorites ? "Показать все каналы" : "Показать избранные каналы"
-          }
-          aria-pressed={onlyFavorites}
-          onClick={() => setOnlyFavorites(!onlyFavorites)}
+          className={!onlyFavorites ? "is-active" : ""}
+          aria-pressed={!onlyFavorites}
+          onClick={() => setOnlyFavorites(false)}
         >
-          <Icon
-            name="heart"
-            size={18}
-            fill={onlyFavorites ? "currentColor" : "none"}
-          />
+          Все <span>{snapshot.channels.length}</span>
+        </button>
+        <button
+          className={onlyFavorites ? "is-active" : ""}
+          aria-pressed={onlyFavorites}
+          onClick={() => setOnlyFavorites(true)}
+        >
+          <Icon name="heart" size={15} /> Избранное <span>{favoriteCount}</span>
         </button>
       </div>
-      <label className="search-field">
-        <Icon name="search" size={17} />
-        <input
-          ref={searchRef}
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder="Канал или аниме…"
-          aria-label="Поиск каналов или аниме"
-        />
-        {query && (
-          <button aria-label="Очистить поиск" onClick={() => setQuery("")}>
-            <Icon name="close" size={15} />
-          </button>
-        )}
-      </label>
-      <div className="channel-categories" aria-label="Категории каналов">
-        {categories.map((item) => (
-          <button
-            key={item.id}
-            className={category === item.id ? "is-active" : ""}
-            aria-pressed={category === item.id}
-            onClick={() => setCategory(item.id)}
-            title={item.label}
+      <div className="rail-filters">
+        <label className="rail-search">
+          <Icon name="search" size={18} />
+          <input
+            ref={searchRef}
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Канал или передача"
+            aria-label="Поиск каналов и передач"
+          />
+          {query && (
+            <button aria-label="Очистить поиск" onClick={() => setQuery("")}>
+              <Icon name="close" size={16} />
+            </button>
+          )}
+        </label>
+        <label className="rail-genre">
+          <select
+            aria-label="Жанр канала"
+            value={category}
+            onChange={(event) => setCategory(event.target.value)}
           >
-            <Icon name={item.icon} size={15} />
-            <span>{item.label}</span>
-          </button>
-        ))}
+            {categories.map((item) => (
+              <option key={item.id} value={item.id}>
+                {item.label}
+              </option>
+            ))}
+          </select>
+          <Icon name="down" size={16} />
+        </label>
       </div>
-      <div className="channel-list">
+      <div className="rail-results">
+        <span>{onlyFavorites ? "ТВОЁ ИЗБРАННОЕ" : "СЕЙЧАС В ЭФИРЕ"}</span>
+        <span>
+          {filtered.length} / {snapshot.channels.length}
+        </span>
+      </div>
+      <div className="rail-cards" ref={listRef}>
         {filtered.length ? (
-          filtered.map(({ channel, index, currentItem }) => (
-            <div
-              key={channel.id}
-              className={`channel-item ${snapshot.currentChannelIndex === index ? "is-active" : ""}`}
-            >
-              <button
-                className="channel-select"
-                onClick={() => onSelect(index)}
-                data-sound="channel"
-                aria-pressed={snapshot.currentChannelIndex === index}
+          filtered.map(({ channel, index, currentItem, progressPercent }) => {
+            const active = snapshot.currentChannelIndex === index;
+            const favorite = favorites.includes(channel.id);
+            const match =
+              normalized &&
+              !currentItem.title?.toLowerCase().includes(normalized) &&
+              !`${channel.name} ${channel.shortName}`
+                .toLowerCase()
+                .includes(normalized)
+                ? channel.schedule?.find((item) =>
+                    item.title?.toLowerCase().includes(normalized),
+                  )
+                : null;
+            return (
+              <div
+                key={channel.id}
+                className={`rail-card ${active ? "is-current" : ""}`}
               >
-                <span className={`channel-glyph category-${channel.category}`}>
-                  <Icon name={categoryIcon(channel.category)} size={20} />
-                </span>
-                <span className="channel-copy">
-                  <strong>{channel.shortName || channel.name}</strong>
-                  <small>{currentItem.title}</small>
-                </span>
-                <span className="channel-id">{channel.number}</span>
-              </button>
-              <button
-                className={`channel-heart ${favorites.includes(channel.id) ? "is-favorite" : ""}`}
-                aria-label={`${favorites.includes(channel.id) ? "Убрать" : "Добавить"} ${channel.shortName || channel.name} ${favorites.includes(channel.id) ? "из избранного" : "в избранное"}`}
-                aria-pressed={favorites.includes(channel.id)}
-                data-sound="favorite"
-                onClick={() => onFavorite(channel.id)}
-              >
-                <Icon
-                  name="heart"
-                  size={14}
-                  fill={
-                    favorites.includes(channel.id) ? "currentColor" : "none"
-                  }
-                />
-              </button>
-            </div>
-          ))
+                <button
+                  className="rail-select"
+                  aria-label={`Включить канал ${channel.shortName || channel.name}`}
+                  aria-pressed={active}
+                  disabled={!snapshot.ready}
+                  onClick={() => onSelect(index)}
+                  data-sound="channel"
+                >
+                  <span className="rail-number">
+                    <span>{channel.number}</span>
+                    <Icon name="play" size={17} fill="currentColor" />
+                  </span>
+                  <span className="rail-copy">
+                    <strong>{channel.shortName || channel.name}</strong>
+                    <span
+                      className="rail-show"
+                      title={(match || currentItem).title}
+                    >
+                      {(match || currentItem).title}
+                    </span>
+                    <span className="rail-status">
+                      {active ? (
+                        <>
+                          <span className="rail-equalizer" aria-hidden="true">
+                            <i />
+                            <i />
+                            <i />
+                          </span>
+                          {snapshot.isTVStarted ? "Смотришь" : "Выбран"}
+                        </>
+                      ) : match ? (
+                        "В программе канала"
+                      ) : (
+                        currentItem.episode || "Прямой эфир"
+                      )}
+                    </span>
+                  </span>
+                </button>
+                <button
+                  className={`rail-favorite ${favorite ? "is-favorite" : ""}`}
+                  aria-label={`${favorite ? "Убрать" : "Добавить"} ${channel.shortName || channel.name} ${favorite ? "из избранного" : "в избранное"}`}
+                  aria-pressed={favorite}
+                  title={favorite ? "Убрать из избранного" : "В избранное"}
+                  onClick={() => onFavorite(channel.id)}
+                  data-sound="favorite"
+                >
+                  <Icon
+                    name="heart"
+                    size={17}
+                    fill={favorite ? "currentColor" : "none"}
+                  />
+                </button>
+                <div className="rail-progress" aria-hidden="true">
+                  <span style={{ width: `${progressPercent}%` }} />
+                </div>
+              </div>
+            );
+          })
         ) : (
-          <div className="empty-state">
+          <div className="empty-state rail-empty">
             <Icon name={onlyFavorites ? "heart" : "search"} size={28} />
             <strong>
-              {onlyFavorites ? "Собери свою волну" : "Пока ничего не нашлось"}
+              {onlyFavorites && favoriteCount === 0
+                ? "Твои любимые каналы — здесь"
+                : "Ничего не нашлось"}
             </strong>
             <p>
-              {onlyFavorites
-                ? "Нажми на сердечко у любимого канала."
-                : "Попробуй другое название или категорию."}
+              {onlyFavorites && favoriteCount === 0
+                ? "Нажми сердечко у канала, и он появится в избранном."
+                : "Попробуй другое название или убери фильтр."}
             </p>
             <button
               className="text-button"
               onClick={() => {
-                setCategory("all");
                 setQuery("");
+                setCategory("all");
                 setOnlyFavorites(false);
               }}
             >
-              Показать все каналы <Icon name="arrowRight" />
+              Показать все каналы <Icon name="right" size={16} />
             </button>
           </div>
         )}
       </div>
-      <div className="remote-hint">
-        <span>Маленький пульт</span>
-        <div>
-          <kbd>↑</kbd>
-          <kbd>↓</kbd>
-          <small>каналы</small>
-          <kbd>M</kbd>
-          <small>звук</small>
-        </div>
-      </div>
+      <footer className="rail-footer">
+        {more ? (
+          <button
+            onClick={() =>
+              listRef.current?.scrollBy({
+                top: listRef.current.clientHeight * 0.75,
+                behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
+                  ? "auto"
+                  : "smooth",
+              })
+            }
+          >
+            Ещё каналы <Icon name="arrowDown" size={15} />
+          </button>
+        ) : (
+          <span>
+            <Icon name="radio" size={14} />{" "}
+            {filtered.length
+              ? "Нажми на канал, чтобы переключить"
+              : "Твоя следующая история уже рядом"}
+          </span>
+        )}
+      </footer>
     </aside>
   );
 }
