@@ -29,7 +29,11 @@ const state = {
   metaCardEnabled: localStorage.getItem('yturokTV_meta_enabled') !== 'false',
   danmakuEnabled: localStorage.getItem('yturokTV_danmaku_enabled') !== 'false',
   danmakuColor: '#ffffff',
-  danmakuLanes: [0, 0, 0, 0, 0, 0, 0, 0]
+  danmakuLanes: [0, 0, 0, 0, 0, 0, 0, 0],
+  seenCommentIds: new Set(),
+  commentsList: [],
+  activeRightTab: 'streams',
+  lastCommentTimestamp: 0
 };
 
 // Safe DOM Helpers
@@ -1075,53 +1079,222 @@ function sendDanmaku(commentText, color = null, isSelf = false) {
   }
 }
 
-const DANMAKU_PRESETS = {
-  general: [
-    "ахахахах", "имбаланс!", "лучший момент", "вайб 10/10", "рил база", "это мы смотрим",
-    "🔥", "угар", "наш слон!", "эпично", "кайф", "лол", "звук на максимум", "что он творит",
-    "красота", "погнали", "не переключаем!", "телевидение здорового человека"
-  ],
-  anime: [
-    "опенинг просто разрыв!", "Сукуна соло", "Маки мощь", "Дандадан разъёб", "Аня милаха",
-    "Чосо лучший брат", "годнота пошла", "графика отвал всего", "МАРРАФОН", "Магичка в сердце"
-  ],
-  cartoons: [
-    "Крош базу выдал", "Лосяш гений", "Феноменально!", "Вупсень и Пупсень легенды",
-    "Кто тоже смотрел это в детстве?", "Смешарики на века", "Симка и Нолик спасают", "Ностальгия"
-  ],
-  minecrafters: [
-    "5opka соло!", "Кирилл гений", "Ледшторм легенда", "СП3 в сердце", "БОЛОНЬЕЗЕ",
-    "Мазелов легенда", "фристайл разрыв", "Заквиель 900IQ", "Лололошка наш краш",
-    "Игра Бога шедевр", "Аид тащит BedWars", "Dambo Music клип детства", "Лига Кубизма!"
-  ],
-  music: [
-    "РАУНД!", "Гнойный разъебал", "историческая хуйня", "Судья Егоров в шоке",
-    "Оксимирон не вывез", "бит качает", "какой флоу!", "Детское радио ностальгия", "трек пушка"
-  ]
-};
-
-let danmakuSimTimer = null;
-function startDanmakuSimulation() {
-  if (danmakuSimTimer) clearInterval(danmakuSimTimer);
-
-  danmakuSimTimer = setInterval(() => {
-    if (!state.danmakuEnabled) return;
-    const ch = state.channels[state.currentChannelIndex];
-    if (!ch) return;
-
-    let pool = [...DANMAKU_PRESETS.general];
-    if (ch.category === 'anime') pool = pool.concat(DANMAKU_PRESETS.anime);
-    else if (ch.category === 'cartoons') pool = pool.concat(DANMAKU_PRESETS.cartoons);
-    else if (ch.category === 'minecrafters') pool = pool.concat(DANMAKU_PRESETS.minecrafters);
-    else if (ch.category === 'music') pool = pool.concat(DANMAKU_PRESETS.music);
-
-    const randomComment = pool[Math.floor(Math.random() * pool.length)];
-    const colors = ['#ffffff', '#ffffff', '#ffffff', '#22d3ee', '#facc15', '#a855f7', '#ec4899', '#4ade80'];
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
-
-    sendDanmaku(randomComment, randomColor, false);
-  }, 5000);
+// -----------------------------------------------------------------------------
+// Synchronized Real Comments Engine (Danmaku + Live Chat)
+// -----------------------------------------------------------------------------
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
 }
+
+// Cross-tab real-time sync channel
+const danmakuBroadcast = (typeof BroadcastChannel !== 'undefined') ? new BroadcastChannel('yturokTV_danmaku_sync') : null;
+
+if (danmakuBroadcast) {
+  danmakuBroadcast.onmessage = (event) => {
+    if (event.data && event.data.type === 'NEW_COMMENT' && event.data.comment) {
+      receiveRealComment(event.data.comment, false, true);
+    }
+  };
+}
+
+// Receive and display a genuine user comment
+function receiveRealComment(comment, isSelf = false, animate = true) {
+  if (!comment || !comment.id) return;
+  if (state.seenCommentIds.has(comment.id)) return;
+  state.seenCommentIds.add(comment.id);
+
+  state.commentsList.push(comment);
+  if (state.commentsList.length > 200) {
+    state.commentsList.shift();
+  }
+  if (comment.timestamp && comment.timestamp > state.lastCommentTimestamp) {
+    state.lastCommentTimestamp = comment.timestamp;
+  }
+
+  // Animate flying Danmaku on video screen
+  if (animate && state.danmakuEnabled) {
+    sendDanmaku(comment.text, comment.color, isSelf);
+  }
+
+  // Render into right-side synchronized chat panel
+  renderCommentInChat(comment, isSelf);
+}
+
+// Render a single message item inside the Live Chat panel
+function renderCommentInChat(comment, isSelf = false) {
+  const container = $('live-chat-messages');
+  const emptyPlaceholder = $('live-chat-empty');
+  if (emptyPlaceholder) emptyPlaceholder.style.display = 'none';
+  if (!container) return;
+
+  const item = document.createElement('div');
+  item.className = 'chat-message-item p-2 rounded-xl bg-white/[0.04] border border-white/5 flex flex-col gap-1 transition hover:bg-white/[0.08]';
+
+  const authorLabel = isSelf ? 'Вы' : (comment.author || 'Зритель');
+  const authorClass = isSelf ? 'text-purple-300 font-bold' : 'text-cyan-300 font-bold';
+  const timeStr = comment.timeStr || (comment.timestamp ? new Date(comment.timestamp).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' }) : '');
+  const channelBadge = comment.channelName || 'Эфир';
+
+  item.innerHTML = `
+    <div class="flex items-center justify-between text-[10px]">
+      <div class="flex items-center gap-1.5">
+        <span class="${authorClass} font-mono">${escapeHtml(authorLabel)}</span>
+        <span class="text-gray-500">•</span>
+        <span class="text-gray-400 truncate max-w-[110px]">${escapeHtml(channelBadge)}</span>
+      </div>
+      <span class="text-gray-500 font-mono">${escapeHtml(timeStr)}</span>
+    </div>
+    <div class="text-xs font-semibold leading-relaxed break-words" style="color: ${escapeHtml(comment.color || '#ffffff')}">
+      ${escapeHtml(comment.text)}
+    </div>
+  `;
+
+  container.appendChild(item);
+
+  const chatPanel = $('live-chat-panel');
+  if (chatPanel) {
+    chatPanel.scrollTop = chatPanel.scrollHeight;
+  }
+
+  const countBadge = $('chat-count-badge');
+  if (countBadge) {
+    countBadge.textContent = state.commentsList.length;
+    countBadge.classList.remove('hidden');
+  }
+}
+
+// Handle submission of a real comment by user
+async function handleUserCommentSubmit(rawText) {
+  const cleanText = (rawText || '').trim();
+  if (!cleanText) return;
+
+  const ch = state.channels[state.currentChannelIndex];
+  const now = Date.now();
+  const timeStr = new Date(now).toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
+
+  const comment = {
+    id: 'c_' + now + '_' + Math.random().toString(36).substring(2, 8),
+    text: cleanText,
+    color: state.danmakuColor || '#ffffff',
+    timestamp: now,
+    timeStr: timeStr,
+    channelName: ch ? ch.name : 'yturokTV',
+    author: 'Вы'
+  };
+
+  // 1. Immediately display locally (Danmaku + Chat)
+  receiveRealComment(comment, true, true);
+
+  // 2. Broadcast across tabs in real-time
+  if (danmakuBroadcast) {
+    try {
+      danmakuBroadcast.postMessage({ type: 'NEW_COMMENT', comment: { ...comment, author: 'Зритель' } });
+    } catch (e) {
+      console.warn('BroadcastChannel sync notice:', e);
+    }
+  }
+
+  // 3. Fallback persistence in localStorage
+  try {
+    const saved = JSON.parse(localStorage.getItem('yturokTV_real_comments') || '[]');
+    saved.push(comment);
+    if (saved.length > 100) saved.splice(0, saved.length - 100);
+    localStorage.setItem('yturokTV_real_comments', JSON.stringify(saved));
+  } catch (e) {}
+
+  // 4. Send to backend server API
+  try {
+    await fetch('/api/comments', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...comment, author: 'Зритель' })
+    });
+  } catch (e) {
+    // Normal when running statically on GitHub Pages
+  }
+}
+
+// Background sync loop for real comments with server
+let isSyncingComments = false;
+async function syncCommentsFromBackend() {
+  if (isSyncingComments) return;
+  isSyncingComments = true;
+  try {
+    const res = await fetch('/api/comments');
+    if (!res.ok) return;
+    const serverComments = await res.json();
+    if (Array.isArray(serverComments)) {
+      const isInitial = (state.seenCommentIds.size === 0);
+      const now = Date.now();
+      for (const c of serverComments) {
+        if (!c || !c.id || state.seenCommentIds.has(c.id)) continue;
+        const isFresh = (now - (c.timestamp || 0)) < 15000;
+        const shouldAnimate = isInitial ? isFresh : true;
+        receiveRealComment(c, false, shouldAnimate);
+      }
+    }
+  } catch (e) {
+    // Static / offline fallback
+  } finally {
+    isSyncingComments = false;
+  }
+}
+
+// Initialize comment system: load local history, sync backend, start polling
+function initCommentSystem() {
+  try {
+    const cached = JSON.parse(localStorage.getItem('yturokTV_real_comments') || '[]');
+    if (Array.isArray(cached)) {
+      for (const c of cached) {
+        if (c && c.id && !state.seenCommentIds.has(c.id)) {
+          receiveRealComment(c, false, false);
+        }
+      }
+    }
+  } catch (e) {}
+
+  syncCommentsFromBackend().catch(() => {});
+  setInterval(syncCommentsFromBackend, 2000);
+}
+
+// Switch between "Потоки" and "Чат" in the right sidebar
+function switchRightPanelTab(tabName) {
+  state.activeRightTab = tabName;
+  const streamsTab = $('tab-btn-streams');
+  const chatTab = $('tab-btn-chat');
+  const inspectorGrid = $('inspector-grid');
+  const chatPanel = $('live-chat-panel');
+  const statusEl = $('right-panel-status');
+
+  if (tabName === 'chat') {
+    streamsTab?.classList.remove('bg-purple-600/30', 'text-purple-200', 'border', 'border-purple-500/30');
+    streamsTab?.classList.add('text-gray-400');
+    chatTab?.classList.remove('text-gray-400');
+    chatTab?.classList.add('bg-purple-600/30', 'text-purple-200', 'border', 'border-purple-500/30');
+
+    inspectorGrid?.classList.add('hidden');
+    chatPanel?.classList.remove('hidden');
+    if (statusEl) statusEl.textContent = 'Чат эфира';
+
+    if (chatPanel) chatPanel.scrollTop = chatPanel.scrollHeight;
+  } else {
+    chatTab?.classList.remove('bg-purple-600/30', 'text-purple-200', 'border', 'border-purple-500/30');
+    chatTab?.classList.add('text-gray-400');
+    streamsTab?.classList.remove('text-gray-400');
+    streamsTab?.classList.add('bg-purple-600/30', 'text-purple-200', 'border', 'border-purple-500/30');
+
+    chatPanel?.classList.add('hidden');
+    inspectorGrid?.classList.remove('hidden');
+    if (statusEl) statusEl.textContent = `${state.channels.length} Потоков`;
+  }
+}
+
 
 // -----------------------------------------------------------------------------
 // Event Listeners & UI Handlers
@@ -1372,6 +1545,10 @@ function setupEventListeners() {
 
   on('btn-toggle-meta-card', 'click', () => toggleMetaCard());
 
+  // Dual Tabs: Streams vs Live Chat
+  on('tab-btn-streams', 'click', () => switchRightPanelTab('streams'));
+  on('tab-btn-chat', 'click', () => switchRightPanelTab('chat'));
+
   // Danmaku Color Pills
   document.querySelectorAll('.danmaku-color-btn').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -1381,7 +1558,7 @@ function setupEventListeners() {
     });
   });
 
-  // Danmaku Form Submit (Bilibili Comments)
+  // Synchronized Real Danmaku & Chat Submit
   const danmakuForm = $('danmaku-form');
   const danmakuInput = $('danmaku-input');
   if (danmakuForm) {
@@ -1389,7 +1566,7 @@ function setupEventListeners() {
       e.preventDefault();
       if (!danmakuInput || !danmakuInput.value.trim()) return;
       if (!state.danmakuEnabled) toggleDanmaku(true);
-      sendDanmaku(danmakuInput.value, state.danmakuColor, true);
+      handleUserCommentSubmit(danmakuInput.value);
       danmakuInput.value = '';
     });
   }
@@ -1503,7 +1680,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   applyCRT();
   toggleTicker(state.tickerEnabled);
   toggleDanmaku(state.danmakuEnabled);
-  startDanmakuSimulation();
+  initCommentSystem();
 
   // Start background playback (muted initially for browser autoplay policy)
   playCurrentChannel(false);

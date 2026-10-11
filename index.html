@@ -342,32 +342,47 @@
 
     </section>
 
-    <!-- RIGHT: "СЕЙЧАС В ЭФИРЕ" LIVE RADAR PANEL -->
+    <!-- RIGHT: "СЕЙЧАС В ЭФИРЕ" & "ЧАТ ЭФИРА" DUAL-TAB PANEL -->
     <aside class="w-72 xl:w-80 flex flex-col gap-3 m3-surface p-3.5 flex-shrink-0 overflow-hidden">
       
-      <!-- Panel Header -->
+      <!-- Panel Header with Dual Tabs -->
       <div class="flex items-center justify-between pb-2 flex-shrink-0 border-b border-white/5">
-        <div class="flex items-center gap-1.5 text-xs font-bold text-purple-300 uppercase tracking-wider">
-          <span class="material-symbols-outlined text-[16px] text-purple-400">cell_tower</span>
-          Другие потоки (ЕКБ)
+        <div class="flex items-center gap-1 p-0.5 bg-black/40 rounded-xl border border-white/5">
+          <button id="tab-btn-streams" class="px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 bg-purple-600/30 text-purple-200 border border-purple-500/30" title="Другие потоки">
+            <span class="material-symbols-outlined text-[15px]">cell_tower</span>
+            <span>Потоки</span>
+          </button>
+          <button id="tab-btn-chat" class="px-2.5 py-1 rounded-lg text-xs font-bold transition flex items-center gap-1 text-gray-400 hover:text-white" title="Синхронизированный чат эфира">
+            <span class="material-symbols-outlined text-[15px]">chat</span>
+            <span>Чат</span>
+            <span id="chat-count-badge" class="px-1.5 py-0.2 rounded-full bg-cyan-500/20 text-cyan-300 text-[10px] font-mono font-bold hidden">0</span>
+          </button>
         </div>
-        <span id="radar-channels-count" class="text-[10px] text-gray-400 font-mono">3 Потока</span>
+        <span id="right-panel-status" class="text-[10px] text-gray-400 font-mono">3 Потока</span>
       </div>
 
-      <!-- Dynamic Multi-Channel Timeline Feed (Channels 01-04) -->
+      <!-- Tab 1: Dynamic Multi-Channel Timeline Feed (Channels 01-04) -->
       <div id="inspector-grid" class="flex-1 overflow-y-auto flex flex-col gap-2.5 pr-1 min-h-0">
         <!-- Populated by app.js: 3 other channels -->
       </div>
 
-      <!-- Admin Status Widget -->
-      <div class="p-3 rounded-2xl bg-[#181926] flex items-center justify-between gap-2 flex-shrink-0">
-        <div>
-          <div class="text-xs font-bold text-white">Сетка вещания 24/7</div>
-          <div class="text-[10px] text-gray-400">Непрерывный цикл сезонов</div>
+      <!-- Tab 2: Synchronized Live Chat Feed -->
+      <div id="live-chat-panel" class="flex-1 overflow-y-auto flex flex-col gap-2 pr-1 min-h-0 hidden">
+        <div id="live-chat-empty" class="flex-1 flex flex-col items-center justify-center p-4 text-center text-gray-400 my-auto">
+          <span class="material-symbols-outlined text-3xl text-purple-400/50 mb-2">forum</span>
+          <p class="text-xs font-bold text-gray-300">Чат эфира пуст</p>
+          <p class="text-[11px] text-gray-500 mt-1 leading-relaxed">Напишите комментарий в поле под видео — он синхронизируется у всех зрителей и пролетит по экрану!</p>
         </div>
-        <button id="btn-banner-admin" class="m3-chip text-[11px] py-1 px-3">
-          Управление
-        </button>
+        <div id="live-chat-messages" class="flex flex-col gap-2"></div>
+      </div>
+
+      <!-- Live Sync Status Banner -->
+      <div class="p-2.5 rounded-2xl bg-[#181926] flex items-center justify-between gap-2 flex-shrink-0 border border-white/5">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <div class="text-[11px] font-bold text-white">Чат синхронизирован</div>
+        </div>
+        <span class="text-[10px] font-mono text-cyan-400">LIVE</span>
       </div>
 
     </aside>

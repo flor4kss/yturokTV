@@ -559,4 +559,26 @@ input[type="range"]::-webkit-slider-thumb:hover {
   outline-offset: 1px;
 }
 
+/* ==========================================================================
+   SYNCHRONIZED LIVE CHAT PANEL
+   ========================================================================== */
+#live-chat-panel {
+  scroll-behavior: smooth;
+}
+
+.chat-message-item {
+  animation: chatFadeIn 0.22s ease-out;
+}
+
+@keyframes chatFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
