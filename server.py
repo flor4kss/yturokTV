@@ -11,12 +11,13 @@ if hasattr(sys.stdout, 'reconfigure'):
 
 PORT = 8080
 DIRECTORY = os.path.dirname(os.path.abspath(__file__))
+FRONTEND_DIRECTORY = os.path.join(DIRECTORY, "dist")
 SCHEDULE_FILE = os.path.join(DIRECTORY, "schedule.json")
 COMMENTS_FILE = os.path.join(DIRECTORY, "comments.json")
 
 class TVApiHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, directory=DIRECTORY, **kwargs)
+        super().__init__(*args, directory=FRONTEND_DIRECTORY, **kwargs)
 
     def end_headers(self):
         # Disable cache & enable CORS
@@ -130,6 +131,9 @@ class TVApiHandler(http.server.SimpleHTTPRequestHandler):
         self.end_headers()
 
 def run():
+    if not os.path.isfile(os.path.join(FRONTEND_DIRECTORY, 'index.html')):
+        print('Сначала соберите интерфейс: npm run build')
+        return
     os.chdir(DIRECTORY)
     TVApiHandler.extensions_map.update({
         '.js': 'application/javascript',
