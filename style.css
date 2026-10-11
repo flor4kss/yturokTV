@@ -476,3 +476,87 @@ input[type="range"]::-webkit-slider-thumb:hover {
   }
 }
 
+/* ==========================================================================
+   TICKER & BOTTOM STRIP HIDING
+   ========================================================================== */
+.tv-ticker-bar.hidden,
+.tv-stage.no-ticker #tv-ticker-bar {
+  display: none !important;
+}
+
+#show-metadata-card.collapsed {
+  display: none !important;
+}
+
+/* ==========================================================================
+   BILIBILI DANMAKU BULLET COMMENTS (Летящие комментарии)
+   ========================================================================== */
+.danmaku-stage {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 22;
+  contain: layout style paint;
+}
+
+.tv-stage.no-danmaku .danmaku-stage {
+  display: none !important;
+}
+
+.danmaku-bullet {
+  position: absolute;
+  white-space: nowrap;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 800;
+  font-size: 21px;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  user-select: none;
+  pointer-events: none;
+  will-change: transform;
+  text-shadow: 
+    -1.5px -1.5px 0 #000,  
+     1.5px -1.5px 0 #000,
+    -1.5px  1.5px 0 #000,
+     1.5px  1.5px 0 #000,
+     0 2px 5px rgba(0, 0, 0, 0.95);
+  animation-name: danmaku-slide;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  left: 100%;
+}
+
+@keyframes danmaku-slide {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(calc(-100vw - 150%), 0, 0);
+  }
+}
+
+.danmaku-bullet.self-bullet {
+  padding: 4px 14px;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(168, 85, 247, 0.9);
+  box-shadow: 0 0 16px rgba(168, 85, 247, 0.7), inset 0 0 8px rgba(168, 85, 247, 0.4);
+  font-size: 23px;
+  z-index: 24;
+}
+
+.danmaku-color-btn {
+  transition: transform 0.15s ease, outline 0.15s ease;
+  cursor: pointer;
+}
+.danmaku-color-btn:hover {
+  transform: scale(1.25);
+}
+.danmaku-color-btn.active {
+  transform: scale(1.3);
+  outline: 2px solid #a855f7;
+  outline-offset: 1px;
+}
+
+

@@ -52,6 +52,18 @@
 
     <!-- Right: Quick Settings Chips -->
     <div class="flex items-center gap-1.5 sm:gap-2">
+      <!-- Toggle Bottom Ticker Bar -->
+      <button id="btn-toggle-ticker-header" title="Скрыть/показать бегущую строку снизу (T)" class="m3-chip active">
+        <span class="material-symbols-outlined text-[16px]">view_headline</span>
+        <span id="ticker-status-text" class="hidden xl:inline text-[11px]">Строка: ВКЛ</span>
+      </button>
+
+      <!-- Toggle Bilibili Danmaku -->
+      <button id="btn-toggle-danmaku-header" title="Скрыть/показать летящие комментарии Bilibili (D)" class="m3-chip active">
+        <span class="material-symbols-outlined text-[16px]">forum</span>
+        <span id="danmaku-status-text" class="hidden xl:inline text-[11px]">Чат: ВКЛ</span>
+      </button>
+
       <!-- CRT Filter Toggle Chip (ЭЛТ-фильтр) -->
       <button id="btn-toggle-crt" title="Тумблер ЭЛТ ретро-фильтра" class="m3-chip active">
         <span class="material-symbols-outlined text-[16px]">tv</span>
@@ -153,6 +165,9 @@
         <!-- Floating Reactions Container -->
         <div id="reactions-stage" class="absolute inset-0 pointer-events-none overflow-hidden z-20"></div>
 
+        <!-- Bilibili Danmaku Bullet Comments Stage (Летящие комментарии) -->
+        <div id="danmaku-stage" class="danmaku-stage absolute inset-0 pointer-events-none overflow-hidden z-20"></div>
+
         <!-- Real Corner Watermark (Small, Clean, Non-intrusive) -->
         <div id="tv-watermark" class="tv-watermark flex items-center gap-2">
           <span id="watermark-logo-slot"></span>
@@ -239,8 +254,14 @@
                 <input id="volume-slider" type="range" min="0" max="100" value="80" class="w-20 cursor-pointer">
               </div>
 
-              <!-- Right: CRT Toggle & Fullscreen -->
+              <!-- Right: Ticker, Danmaku, CRT Toggle & Fullscreen -->
               <div class="flex items-center gap-2">
+                <button id="btn-player-danmaku" class="m3-icon-btn tonal w-8 h-8 text-cyan-300" title="Летящие комментарии Bilibili (D)">
+                  <span class="material-symbols-outlined text-[16px]">forum</span>
+                </button>
+                <button id="btn-player-ticker" class="m3-icon-btn tonal w-8 h-8 text-rose-300" title="Скрыть/показать бегущую строку снизу (T)">
+                  <span class="material-symbols-outlined text-[16px]">view_headline</span>
+                </button>
                 <button id="btn-player-crt" class="m3-icon-btn tonal w-8 h-8" title="ЭЛТ Фильтр">
                   <span class="material-symbols-outlined text-[16px]">tv</span>
                 </button>
@@ -256,38 +277,66 @@
         </div>
 
         <!-- TV Broadcast News Ticker Bar (Бегущая строка) -->
-        <div id="tv-ticker-bar" class="tv-ticker-bar flex items-center overflow-hidden z-15">
-          <span class="ticker-badge flex-shrink-0">ЭФИР ЕКБ</span>
-          <div class="ticker-content-track">
-            <span id="ticker-text" class="ticker-text">Загрузка эфира yturokTV...</span>
+        <div id="tv-ticker-bar" class="tv-ticker-bar flex items-center justify-between overflow-hidden z-15">
+          <div class="flex items-center overflow-hidden flex-1 min-w-0">
+            <span class="ticker-badge flex-shrink-0">ЭФИР ЕКБ</span>
+            <div class="ticker-content-track">
+              <span id="ticker-text" class="ticker-text">Загрузка эфира yturokTV...</span>
+            </div>
           </div>
+          <button id="btn-close-ticker" class="text-gray-400 hover:text-white px-2 py-0.5 text-xs hover:bg-white/10 transition flex items-center flex-shrink-0" title="Скрыть бегущую строку (T)">
+            <span class="material-symbols-outlined text-[15px]">close</span>
+          </button>
         </div>
 
       </div>
 
-      <!-- COMPACT SHOW METADATA CARD (Fits neatly under the TV) -->
-      <div class="m3-surface px-4 py-2.5 flex items-center justify-between gap-4 flex-shrink-0">
-        <div class="flex items-center gap-3.5 min-w-0">
-          <img id="show-poster" src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=100" alt="Постер" class="w-10 h-14 object-cover rounded-xl flex-shrink-0 shadow">
+      <!-- COMPACT SHOW METADATA CARD & BILIBILI DANMAKU COMMENT BAR -->
+      <div id="show-metadata-card" class="m3-surface px-3.5 py-2 flex items-center justify-between gap-3 flex-shrink-0">
+        <div class="flex items-center gap-3 min-w-0 max-w-xs xl:max-w-sm">
+          <img id="show-poster" src="https://images.unsplash.com/photo-1534447677768-be436bb09401?w=100" alt="Постер" class="w-9 h-12 object-cover rounded-xl flex-shrink-0 shadow">
           <div class="flex flex-col min-w-0">
-            <div class="flex items-center gap-2">
-              <span id="show-slot-badge" class="px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 text-[10px] font-bold font-mono">
+            <div class="flex items-center gap-1.5">
+              <span id="show-slot-badge" class="px-1.5 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 text-[9px] font-bold font-mono">
                 ☀️ УТРЕННИЙ ЭФИР
               </span>
-              <span id="show-tag-badge" class="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[10px] font-bold">
+              <span id="show-tag-badge" class="px-1.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 text-[9px] font-bold">
                 ⭐ ПРЕМЬЕРА
               </span>
             </div>
-            <h2 id="show-title" class="text-sm font-bold text-white truncate mt-0.5">Семья шпиона</h2>
-            <div id="show-episode" class="text-xs text-purple-300 truncate font-medium">Серия 1</div>
+            <h2 id="show-title" class="text-xs font-bold text-white truncate mt-0.5">Семья шпиона</h2>
+            <div id="show-episode" class="text-[11px] text-purple-300 truncate font-medium">Серия 1</div>
           </div>
         </div>
 
-        <div class="hidden sm:flex flex-col items-end text-right flex-shrink-0">
-          <span class="text-[10px] text-gray-400 font-mono">Прямой эфир</span>
-          <span class="text-xs font-bold text-emerald-400 flex items-center gap-1">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Синхронизировано
-          </span>
+        <!-- Center: BILIBILI DANMAKU COMMENT INPUT BAR -->
+        <form id="danmaku-form" class="flex-1 flex items-center gap-2 max-w-xl mx-1">
+          <div class="relative flex-1 flex items-center bg-black/50 border border-white/10 rounded-full px-3 py-1.5 focus-within:border-purple-400 transition shadow-inner">
+            <span class="material-symbols-outlined text-purple-400 text-[18px] mr-1.5 flex-shrink-0">chat_bubble</span>
+            <input id="danmaku-input" type="text" maxlength="90" placeholder="Написать комментарий на экран (как в Bilibili)..." class="bg-transparent text-xs text-white placeholder-gray-400 focus:outline-none w-full">
+            <div class="flex items-center gap-1.5 ml-2 flex-shrink-0">
+              <button type="button" class="danmaku-color-btn w-3.5 h-3.5 rounded-full bg-white active" data-color="#ffffff" title="Белый"></button>
+              <button type="button" class="danmaku-color-btn w-3.5 h-3.5 rounded-full bg-cyan-400" data-color="#22d3ee" title="Циан"></button>
+              <button type="button" class="danmaku-color-btn w-3.5 h-3.5 rounded-full bg-yellow-400" data-color="#facc15" title="Жёлтый"></button>
+              <button type="button" class="danmaku-color-btn w-3.5 h-3.5 rounded-full bg-pink-500" data-color="#ec4899" title="Розовый"></button>
+            </div>
+          </div>
+          <button type="submit" id="btn-send-danmaku" class="px-3.5 py-1.5 rounded-full bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs flex items-center gap-1 shadow-md transition hover:scale-105 active:scale-95 flex-shrink-0">
+            <span class="material-symbols-outlined text-[15px]">send</span>
+            <span class="hidden sm:inline">Пустить</span>
+          </button>
+        </form>
+
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <div class="hidden xl:flex flex-col items-end text-right">
+            <span class="text-[9px] text-gray-400 font-mono">Прямой эфир</span>
+            <span class="text-[11px] font-bold text-emerald-400 flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Синхронизировано
+            </span>
+          </div>
+          <button id="btn-toggle-meta-card" class="m3-icon-btn tonal w-7 h-7 text-gray-400 hover:text-white" title="Скрыть/показать нижнюю панель информации">
+            <span id="collapse-meta-icon" class="material-symbols-outlined text-[16px]">expand_more</span>
+          </button>
         </div>
       </div>
 

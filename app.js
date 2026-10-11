@@ -24,7 +24,12 @@ const state = {
   isTimeSynced: false,
   isCatchUpMode: false,
   sleepTimerMinutes: 0,
-  sleepTimerEndMs: 0
+  sleepTimerEndMs: 0,
+  tickerEnabled: localStorage.getItem('yturokTV_ticker_enabled') !== 'false',
+  metaCardEnabled: localStorage.getItem('yturokTV_meta_enabled') !== 'false',
+  danmakuEnabled: localStorage.getItem('yturokTV_danmaku_enabled') !== 'false',
+  danmakuColor: '#ffffff',
+  danmakuLanes: [0, 0, 0, 0, 0, 0, 0, 0]
 };
 
 // Safe DOM Helpers
@@ -962,6 +967,163 @@ async function addReleaseToChannel(alias, titleRu, poster, chIdx) {
 }
 
 // -----------------------------------------------------------------------------
+// TV Ticker Bar & Metadata Card Toggles
+// -----------------------------------------------------------------------------
+function toggleTicker(forceVal = null) {
+  state.tickerEnabled = (forceVal !== null) ? forceVal : !state.tickerEnabled;
+  localStorage.setItem('yturokTV_ticker_enabled', state.tickerEnabled ? 'true' : 'false');
+  
+  const tickerBar = $('tv-ticker-bar');
+  const cabinet = $('tv-cabinet');
+  const chip = $('btn-toggle-ticker-header');
+  const playerBtn = $('btn-player-ticker');
+  const statusTxt = $('ticker-status-text');
+
+  if (state.tickerEnabled) {
+    tickerBar?.classList.remove('hidden');
+    cabinet?.classList.remove('no-ticker');
+    chip?.classList.add('active');
+    playerBtn?.classList.add('active');
+    if (statusTxt) statusTxt.textContent = 'Строка: ВКЛ';
+  } else {
+    tickerBar?.classList.add('hidden');
+    cabinet?.classList.add('no-ticker');
+    chip?.classList.remove('active');
+    playerBtn?.classList.remove('active');
+    if (statusTxt) statusTxt.textContent = 'Строка: ВЫКЛ';
+  }
+}
+
+function toggleMetaCard() {
+  state.metaCardEnabled = !state.metaCardEnabled;
+  localStorage.setItem('yturokTV_meta_enabled', state.metaCardEnabled ? 'true' : 'false');
+  const card = $('show-metadata-card');
+  const icon = $('collapse-meta-icon');
+  if (state.metaCardEnabled) {
+    card?.classList.remove('collapsed');
+    if (icon) icon.textContent = 'expand_more';
+  } else {
+    card?.classList.add('collapsed');
+    if (icon) icon.textContent = 'expand_less';
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Bilibili Danmaku Bullet Comments Engine (Летящие комментарии)
+// -----------------------------------------------------------------------------
+function toggleDanmaku(forceVal = null) {
+  state.danmakuEnabled = (forceVal !== null) ? forceVal : !state.danmakuEnabled;
+  localStorage.setItem('yturokTV_danmaku_enabled', state.danmakuEnabled ? 'true' : 'false');
+  
+  const cabinet = $('tv-cabinet');
+  const chip = $('btn-toggle-danmaku-header');
+  const playerBtn = $('btn-player-danmaku');
+  const statusTxt = $('danmaku-status-text');
+
+  if (state.danmakuEnabled) {
+    cabinet?.classList.remove('no-danmaku');
+    chip?.classList.add('active');
+    playerBtn?.classList.add('active');
+    if (statusTxt) statusTxt.textContent = 'Чат: ВКЛ';
+  } else {
+    cabinet?.classList.add('no-danmaku');
+    chip?.classList.remove('active');
+    playerBtn?.classList.remove('active');
+    if (statusTxt) statusTxt.textContent = 'Чат: ВЫКЛ';
+  }
+}
+
+const DANMAKU_LANE_TOPS = [8, 16, 24, 32, 40, 48, 56, 64];
+
+function sendDanmaku(commentText, color = null, isSelf = false) {
+  if (!commentText || !commentText.trim()) return;
+  const stage = $('danmaku-stage');
+  if (!stage) return;
+
+  const cleanText = commentText.trim();
+  const commentColor = color || state.danmakuColor || '#ffffff';
+
+  const now = Date.now();
+  let bestLane = 0;
+  let oldestTime = Infinity;
+  for (let i = 0; i < state.danmakuLanes.length; i++) {
+    if (state.danmakuLanes[i] < oldestTime) {
+      oldestTime = state.danmakuLanes[i];
+      bestLane = i;
+    }
+  }
+  state.danmakuLanes[bestLane] = now;
+  const laneTopPercent = DANMAKU_LANE_TOPS[bestLane];
+
+  const bullet = document.createElement('div');
+  bullet.className = isSelf ? 'danmaku-bullet self-bullet' : 'danmaku-bullet';
+  bullet.style.top = `${laneTopPercent}%`;
+  bullet.style.color = commentColor;
+
+  const duration = isSelf ? 7.2 : (6.8 + Math.random() * 2.2);
+  bullet.style.animationDuration = `${duration}s`;
+  bullet.textContent = isSelf ? `💬 ${cleanText}` : cleanText;
+
+  bullet.addEventListener('animationend', () => {
+    bullet.remove();
+  });
+
+  stage.appendChild(bullet);
+
+  if (isSelf) {
+    playBumperAmbientTone();
+  }
+}
+
+const DANMAKU_PRESETS = {
+  general: [
+    "ахахахах", "имбаланс!", "лучший момент", "вайб 10/10", "рил база", "это мы смотрим",
+    "🔥", "угар", "наш слон!", "эпично", "кайф", "лол", "звук на максимум", "что он творит",
+    "красота", "погнали", "не переключаем!", "телевидение здорового человека"
+  ],
+  anime: [
+    "опенинг просто разрыв!", "Сукуна соло", "Маки мощь", "Дандадан разъёб", "Аня милаха",
+    "Чосо лучший брат", "годнота пошла", "графика отвал всего", "МАРРАФОН", "Магичка в сердце"
+  ],
+  cartoons: [
+    "Крош базу выдал", "Лосяш гений", "Феноменально!", "Вупсень и Пупсень легенды",
+    "Кто тоже смотрел это в детстве?", "Смешарики на века", "Симка и Нолик спасают", "Ностальгия"
+  ],
+  minecrafters: [
+    "5opka соло!", "Кирилл гений", "Ледшторм легенда", "СП3 в сердце", "БОЛОНЬЕЗЕ",
+    "Мазелов легенда", "фристайл разрыв", "Заквиель 900IQ", "Лололошка наш краш",
+    "Игра Бога шедевр", "Аид тащит BedWars", "Dambo Music клип детства", "Лига Кубизма!"
+  ],
+  music: [
+    "РАУНД!", "Гнойный разъебал", "историческая хуйня", "Судья Егоров в шоке",
+    "Оксимирон не вывез", "бит качает", "какой флоу!", "Детское радио ностальгия", "трек пушка"
+  ]
+};
+
+let danmakuSimTimer = null;
+function startDanmakuSimulation() {
+  if (danmakuSimTimer) clearInterval(danmakuSimTimer);
+
+  danmakuSimTimer = setInterval(() => {
+    if (!state.danmakuEnabled) return;
+    const ch = state.channels[state.currentChannelIndex];
+    if (!ch) return;
+
+    let pool = [...DANMAKU_PRESETS.general];
+    if (ch.category === 'anime') pool = pool.concat(DANMAKU_PRESETS.anime);
+    else if (ch.category === 'cartoons') pool = pool.concat(DANMAKU_PRESETS.cartoons);
+    else if (ch.category === 'minecrafters') pool = pool.concat(DANMAKU_PRESETS.minecrafters);
+    else if (ch.category === 'music') pool = pool.concat(DANMAKU_PRESETS.music);
+
+    const randomComment = pool[Math.floor(Math.random() * pool.length)];
+    const colors = ['#ffffff', '#ffffff', '#ffffff', '#22d3ee', '#facc15', '#a855f7', '#ec4899', '#4ade80'];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+    sendDanmaku(randomComment, randomColor, false);
+  }, 5000);
+}
+
+// -----------------------------------------------------------------------------
 // Event Listeners & UI Handlers
 // -----------------------------------------------------------------------------
 function setupEventListeners() {
@@ -1200,10 +1362,43 @@ function setupEventListeners() {
     btn.addEventListener('click', () => spawnFloatingReaction(btn.dataset.emoji));
   });
 
+  // Ticker and Danmaku Toggle Buttons
+  on('btn-toggle-ticker-header', 'click', () => toggleTicker());
+  on('btn-player-ticker', 'click', () => toggleTicker());
+  on('btn-close-ticker', 'click', () => toggleTicker(false));
+
+  on('btn-toggle-danmaku-header', 'click', () => toggleDanmaku());
+  on('btn-player-danmaku', 'click', () => toggleDanmaku());
+
+  on('btn-toggle-meta-card', 'click', () => toggleMetaCard());
+
+  // Danmaku Color Pills
+  document.querySelectorAll('.danmaku-color-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.danmaku-color-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      state.danmakuColor = btn.dataset.color || '#ffffff';
+    });
+  });
+
+  // Danmaku Form Submit (Bilibili Comments)
+  const danmakuForm = $('danmaku-form');
+  const danmakuInput = $('danmaku-input');
+  if (danmakuForm) {
+    danmakuForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!danmakuInput || !danmakuInput.value.trim()) return;
+      if (!state.danmakuEnabled) toggleDanmaku(true);
+      sendDanmaku(danmakuInput.value, state.danmakuColor, true);
+      danmakuInput.value = '';
+    });
+  }
+
   // Keyboard Shortcuts (TV Remote)
   window.addEventListener('keydown', (e) => {
     if (e.target.tagName === 'INPUT') return;
 
+    const key = e.key.toLowerCase();
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
       state.currentChannelIndex = (state.currentChannelIndex + 1) % state.channels.length;
       playCurrentChannel(true);
@@ -1216,10 +1411,17 @@ function setupEventListeners() {
         state.currentChannelIndex = targetIdx;
         playCurrentChannel(true);
       }
-    } else if (e.key.toLowerCase() === 'm') {
+    } else if (key === 'm' || key === 'ь') {
       toggleMute();
-    } else if (e.key.toLowerCase() === 'f') {
+    } else if (key === 'f' || key === 'а') {
       toggleFullscreen();
+    } else if (key === 't' || key === 'е') {
+      toggleTicker();
+    } else if (key === 'd' || key === 'в') {
+      toggleDanmaku();
+    } else if (key === 'c' || key === 'с') {
+      e.preventDefault();
+      danmakuInput?.focus();
     }
   });
 }
@@ -1299,6 +1501,9 @@ window.addEventListener('DOMContentLoaded', async () => {
   updateChannelInfoDOM(initialChannel, currentItem, elapsed, nextItem, progressPercent);
   updateAmbilight(initialChannel.color);
   applyCRT();
+  toggleTicker(state.tickerEnabled);
+  toggleDanmaku(state.danmakuEnabled);
+  startDanmakuSimulation();
 
   // Start background playback (muted initially for browser autoplay policy)
   playCurrentChannel(false);
