@@ -20,7 +20,6 @@ export default function Player({
     position,
     isTVStarted: started,
     isMuted: muted,
-    isPaused: paused,
     volume,
     isCatchUpMode: catchup,
     error,
@@ -219,24 +218,16 @@ export default function Player({
               >
                 <Icon name="left" />
               </button>
-              <button
-                className="player-icon play-toggle"
-                aria-label={
-                  !started
-                    ? "Включить эфир"
-                    : paused
-                      ? "Продолжить просмотр"
-                      : "Пауза"
-                }
-                onClick={() => (started ? tv.pause() : tv.start())}
-                disabled={!ready}
-              >
-                <Icon
-                  name={started && !paused ? "pause" : "play"}
-                  size={20}
-                  fill="currentColor"
-                />
-              </button>
+              {!started && (
+                <button
+                  className="player-icon play-toggle"
+                  aria-label="Включить эфир"
+                  onClick={() => tv.start()}
+                  disabled={!ready}
+                >
+                  <Icon name="play" size={20} fill="currentColor" />
+                </button>
+              )}
               <button
                 className="player-icon"
                 aria-label="Следующий канал"

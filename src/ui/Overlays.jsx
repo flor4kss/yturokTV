@@ -224,9 +224,6 @@ export function Settings({
           <span>
             <kbd>F</kbd> полный экран
           </span>
-          <span>
-            <kbd>Space</kbd> пауза
-          </span>
         </div>
       </div>
       <button className="studio-link" onClick={onStudio}>

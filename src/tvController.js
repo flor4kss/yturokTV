@@ -1334,16 +1334,6 @@ export const tv = {
       resumeActivePlayer();
     });
   },
-  pause() {
-    return action(() => {
-      state.isPaused = !state.isPaused;
-      if (state.isPaused) {
-        state.isCatchUpMode = true;
-        $("hls-player")?.pause();
-        state.ytPlayer?.pauseVideo?.();
-      } else resumeActivePlayer();
-    });
-  },
   sourceFailure() {
     if (state.currentShow?.type === "youtube" || state.currentShow?.youtubeId)
       return action(() => {

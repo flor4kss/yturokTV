@@ -84,10 +84,6 @@ export default function App() {
       } else if (event.key.toLowerCase() === "m") {
         tv.mute();
         feedback();
-      } else if (event.code === "Space") {
-        event.preventDefault();
-        snapshot.isTVStarted ? tv.pause() : tv.start();
-        feedback();
       } else if (event.key.toLowerCase() === "f") {
         (document.fullscreenElement
           ? document.exitFullscreen()
