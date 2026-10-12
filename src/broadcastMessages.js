@@ -1,5 +1,5 @@
 export function promoMessage(item, elapsed, timestamp = Date.now()) {
-  const startsAt = timestamp + Math.max(0, item.duration - elapsed) * 1000;
+  const startsAt = timestamp + (Math.max(0, item.duration - elapsed) + (item.promoDelay || 0)) * 1000;
   const time = new Date(startsAt).toLocaleTimeString('ru-RU', {
     timeZone: 'Asia/Yekaterinburg', hour: '2-digit', minute: '2-digit',
   });

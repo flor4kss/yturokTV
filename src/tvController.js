@@ -30,9 +30,10 @@ function armLoadingTimeout() {
 import { DEFAULT_CHANNELS } from "../channels.js";
 import { normalizeChannels } from "./programMetadata";
 import { promoMessage } from "./broadcastMessages";
+import { startPromoMusic, stopPromoMusic, setPromoMusicVolume } from "./promoMusic";
 
 const isCurrentCatalog = (data) => Array.isArray(data) && data.length === 6 &&
-  data.every(channel => channel.catalogVersion === 2);
+  data.every(channel => channel.catalogVersion === 3);
 
 // Application State
 const state = {
@@ -206,6 +207,7 @@ function playBumperAmbientTone() {
 // Global Volume & Mute Manager
 // -----------------------------------------------------------------------------
 function applyVolume() {
+  setPromoMusicVolume(state.isMuted || !state.isTVStarted ? 0 : state.volume / 100);
   const iconName =
     state.isMuted || state.volume === 0 ? "volume_off" : "volume_up";
   const muteIcon = $("mute-icon");
@@ -369,14 +371,15 @@ function calculateBroadcastPosition(channel, dayOffset = 0) {
     offset -= dur;
   }
 
-  const nextIndex = (currentIndex + 1) % schedule.length;
+  let nextIndex = (currentIndex + 1) % schedule.length;
+  if (schedule[nextIndex]?.sourceOffset) nextIndex = (nextIndex + 1) % schedule.length;
   const nextItem = schedule[nextIndex];
   const progressPercent = Math.min(
     100,
-    Math.floor((elapsed / (currentItem.duration || 1440)) * 100),
+    Math.floor(((elapsed + (currentItem.sourceOffset || 0)) / (currentItem.mediaDuration || currentItem.duration || 1440)) * 100),
   );
 
-  return { currentItem, elapsed, nextItem, progressPercent, currentIndex,
+  return { currentItem, elapsed: elapsed + (currentItem.sourceOffset || 0), broadcastElapsed: elapsed, nextItem, progressPercent, currentIndex,
     repeat: elapsedFromEpoch >= totalDuration };
 }
 
@@ -434,6 +437,7 @@ function hexToRgb(hex) {
 // Play Current Channel (Dual Playback: HLS + YouTube + Video)
 // -----------------------------------------------------------------------------
 function playCurrentChannel(withGlitch = true) {
+  stopPromoMusic();
   const channel = state.channels[state.currentChannelIndex];
   if (!channel) return;
 
@@ -507,7 +511,7 @@ function playCurrentChannel(withGlitch = true) {
           : currentItem.bumperText || channel.tagline,
       );
     }
-    playBumperAmbientTone();
+    if (state.isTVStarted) startPromoMusic(channel, currentItem, elapsed, state.isMuted ? 0 : state.volume / 100);
   } else if (currentItem.type === "youtube" || currentItem.youtubeId) {
     // Seamless YouTube IFrame Stream (Auto-cropped, Zero YouTube Interface, Instant Seek)
     const ytId =
@@ -1225,7 +1229,7 @@ function startMasterLoop() {
                 const cur = state.ytPlayer.getCurrentTime();
                 if (
                   Math.abs(cur - elapsed) > 4 &&
-                  elapsed < (currentItem.duration || 1400)
+                  elapsed < (currentItem.mediaDuration || currentItem.duration || 1400)
                 ) {
                   state.ytPlayer.seekTo(elapsed, true);
                 }
@@ -1393,7 +1397,9 @@ function action(fn) {
 }
 function resumeActivePlayer() {
   if (state.currentShow?.type === "bumper") {
-    playBumperAmbientTone();
+    const channel = state.channels[state.currentChannelIndex];
+    const { elapsed } = calculateBroadcastPosition(channel);
+    startPromoMusic(channel, state.currentShow, elapsed, state.isMuted ? 0 : state.volume / 100);
     return;
   }
   if (state.currentShow?.type === "youtube" || state.currentShow?.youtubeId)
@@ -1513,8 +1519,8 @@ export const tv = {
       state.channels.find((channel) => channel.id === channelId) ||
       state.channels[0];
     if (!channel?.schedule?.length) return [];
-    const { currentIndex, elapsed, repeat } = calculateBroadcastPosition(channel, day);
-    let start = (getSyncedTimestamp() + day * 86400000) / 1000 - elapsed;
+    const { currentIndex, broadcastElapsed, repeat } = calculateBroadcastPosition(channel, day);
+    let start = (getSyncedTimestamp() + day * 86400000) / 1000 - broadcastElapsed;
     const clock = (seconds) =>
       new Date(seconds * 1000).toLocaleTimeString("ru-RU", {
         timeZone: "Asia/Yekaterinburg",
@@ -1541,3 +1547,4 @@ export const tv = {
     );
   },
 };
+

@@ -3,6 +3,7 @@ import Icon from "./Icon";
 import Poster from "./Poster";
 import { tv } from "../tvController";
 import { remainingLabel } from "../programMetadata";
+import PromoArtwork from "./PromoArtwork";
 function time(seconds = 0) {
   if (seconds >= 3600)
     return `${Math.floor(seconds / 3600)}:${String(Math.floor(seconds / 60) % 60).padStart(2, "0")}:${String(Math.floor(seconds) % 60).padStart(2, "0")}`;
@@ -171,8 +172,10 @@ export default function Player({
           <div id="yt-player" />
         </div>
         <div id="bumper-screen" className="bumper-screen hidden">
+          <PromoArtwork item={item} channel={channel} />
           <span className="bumper-brand">yturokTV · {channel?.shortName}</span>
           <span id="bumper-logo">yturokTV</span>
+          {item.kind === "promo" && <div className="promo-headline"><h2>{item.promoTitle}</h2><p>{promoHook(item)}</p></div>}
           <p id="bumper-text" />
         </div>
         <div id="static-screen" className="static-screen hidden" />
@@ -287,7 +290,7 @@ export default function Player({
               />
               <span className="video-time">
                 {time(elapsed)} <i>/</i>{" "}
-                <span className="video-duration">{time(item.duration)}</span>
+                <span className="video-duration">{time(item.mediaDuration || item.duration)}</span>
               </span>
             </div>
             <div className="player-control-group">
@@ -320,7 +323,7 @@ export default function Player({
           <p>{item.episode || channel?.tagline || "Устраивайся поудобнее"}</p>
           <span className="program-remaining">
             <Icon name="clock" size={14} />{" "}
-            {remainingLabel(item.duration, elapsed)}
+            {remainingLabel(item.mediaDuration || item.duration, elapsed)}
           </span>
         </div>
         <button
@@ -342,4 +345,20 @@ export default function Player({
       </div>
     </section>
   );
+}
+
+function promoHook(item) {
+  const title=item.promoTitle || '';
+  if (/Стоун/.test(title)) return 'Мир застыл. Наука даст ему второй шанс.';
+  if (/рокер/.test(title)) return 'Из своей комнаты — на сцену. Услышь её историю.';
+  if (/шпиона/.test(title)) return 'Идеальная семья. У каждого — свой секрет.';
+  if (/Магическая/.test(title)) return 'Проклятия рядом. Кто выдержит следующий бой?';
+  if (/Клинок/.test(title)) return 'Когда наступит ночь, останется только идти вперёд.';
+  if (/Винланде/.test(title)) return 'Месть — только начало. Что останется после неё?';
+  if (/Киберпанк/.test(title)) return 'Найт-Сити обещает всё. Но у каждой мечты есть цена.';
+  if (/Смешарики/.test(title)) return 'Большие приключения маленького круглого мира.';
+  if (/Фиксики/.test(title)) return 'Тайны обычных вещей. Маленькие герои большой истории.';
+  if (/босс/.test(title)) return 'Работа мечты. Начальство из ада. Буквально.';
+  if (item.promoBlock) return `${item.promoBlock}. Прибавь звук — следующая волна уже близко.`;
+  return 'Новая история. Новые герои. Оставайся на нашей волне.';
 }
