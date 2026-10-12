@@ -61,7 +61,9 @@ export default function App() {
   }, [snapshot.note, showToast]);
   const scrollWatch = useCallback(
     () =>
-      watchRef.current?.scrollIntoView({
+      (
+        document.getElementById("watch-player") || watchRef.current
+      )?.scrollIntoView({
         behavior: matchMedia("(prefers-reduced-motion: reduce)").matches
           ? "auto"
           : "smooth",
@@ -69,6 +71,18 @@ export default function App() {
       }),
     [],
   );
+  useEffect(() => {
+    if (!snapshot.isTVStarted) return;
+    const animation = requestAnimationFrame(scrollWatch);
+    const timer = setTimeout(
+      scrollWatch,
+      matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 420,
+    );
+    return () => {
+      cancelAnimationFrame(animation);
+      clearTimeout(timer);
+    };
+  }, [snapshot.isTVStarted, scrollWatch]);
   useEffect(() => {
     function keydown(event) {
       if (
@@ -132,7 +146,7 @@ export default function App() {
   }
   function selectChannel(index) {
     tv.select(index);
-    if (theater) scrollWatch();
+    if (theater || snapshot.isTVStarted) scrollWatch();
   }
   function toggleWide() {
     setTheater((value) => !value);
@@ -140,7 +154,7 @@ export default function App() {
   }
   return (
     <div
-      className={`app ${theater ? "theater-mode" : ""}`}
+      className={`app ${theater ? "theater-mode" : ""} ${snapshot.isTVStarted ? "viewing" : ""}`}
       onClickCapture={(event) => {
         const button = event.target.closest("button");
         if (button && !button.disabled && !button.hasAttribute("data-silent"))
@@ -207,17 +221,33 @@ export default function App() {
         </header>
         <main className="page-main">
           {!theater && (
-            <Hero
-              clock={snapshot.clock}
-              onWatch={() => watch()}
-              onSchedule={() => setModal("guide")}
-            />
+            <div
+              className="welcome-region"
+              data-collapsed={snapshot.isTVStarted ? "true" : "false"}
+              aria-hidden={snapshot.isTVStarted || undefined}
+              inert={snapshot.isTVStarted ? true : undefined}
+            >
+              <div className="welcome-inner">
+                <Hero
+                  clock={snapshot.clock}
+                  onWatch={() => watch()}
+                  onSchedule={() => setModal("guide")}
+                />
+              </div>
+            </div>
           )}
           <div className="watch-section-heading" ref={watchRef}>
             <div>
-              <p className="eyebrow">БЕЗ ПЛАНОВ. БЕЗ СПЕШКИ.</p>
+              <p className="eyebrow">
+                {snapshot.isTVStarted
+                  ? "ТВОЙ ПРЯМОЙ ЭФИР"
+                  : "БЕЗ ПЛАНОВ. БЕЗ СПЕШКИ."}
+              </p>
               <h2>
-                Поймай свою волну <span>✧</span>
+                {snapshot.isTVStarted
+                  ? "Устраивайся поудобнее"
+                  : "Поймай свою волну"}{" "}
+                <span>✧</span>
               </h2>
             </div>
             <div className="watch-view-actions">
@@ -252,6 +282,7 @@ export default function App() {
               onSettings={() => setModal("settings")}
               onSchedule={() => setModal("guide")}
               onToast={showToast}
+              onChannels={() => setModal("channels")}
             />
             <CommunityPanel
               snapshot={snapshot}
@@ -283,23 +314,40 @@ export default function App() {
       {modal && (
         <Modal
           title={
-            modal === "guide"
-              ? "Каждой истории — своё время."
-              : modal === "studio"
-                ? "Собери свою волну."
-                : "Твоя уютная комната."
+            modal === "channels"
+              ? "Что включим?"
+              : modal === "guide"
+                ? "Каждой истории — своё время."
+                : modal === "studio"
+                  ? "Собери свою волну."
+                  : "Твоя уютная комната."
           }
           eyebrow={
-            modal === "guide"
-              ? "ТЕЛЕПРОГРАММА"
-              : modal === "studio"
-                ? "ЛИЧНАЯ СЕТКА"
-                : "МАЛЕНЬКИЕ НАСТРОЙКИ"
+            modal === "channels"
+              ? "ВСЕ КАНАЛЫ ПОД РУКОЙ"
+              : modal === "guide"
+                ? "ТЕЛЕПРОГРАММА"
+                : modal === "studio"
+                  ? "ЛИЧНАЯ СЕТКА"
+                  : "МАЛЕНЬКИЕ НАСТРОЙКИ"
           }
           wide={modal !== "settings"}
           onClose={closeModal}
         >
-          {modal === "guide" ? (
+          {modal === "channels" ? (
+            <div className="channel-picker">
+              <ChannelRail
+                snapshot={snapshot}
+                favorites={favorites}
+                onFavorite={favorite}
+                onSelect={(index) => {
+                  tv.select(index);
+                  closeModal();
+                  requestAnimationFrame(scrollWatch);
+                }}
+              />
+            </div>
+          ) : modal === "guide" ? (
             <ProgramGuide snapshot={snapshot} onWatch={watch} />
           ) : modal === "studio" ? (
             <Studio snapshot={snapshot} onToast={showToast} />

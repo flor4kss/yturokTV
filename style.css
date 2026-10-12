@@ -4168,3 +4168,440 @@ kbd {
     min-height: 40px;
   }
 }
+/* A compact remote stays outside the video and remains easy to reach. */
+.watch-heading {
+  gap: 16px;
+  margin-bottom: 14px;
+  min-height: 52px;
+}
+.remote-channel {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+}
+.remote-number {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: var(--coral-soft);
+  color: var(--coral);
+  font-size: 16px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.remote-channel > div {
+  min-width: 0;
+}
+.remote-channel strong {
+  display: block;
+  font-size: 16px;
+  margin-top: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.remote-channel .live-label {
+  font-size: 9px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+.remote-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.remote-step {
+  display: flex;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: var(--bg);
+  padding: 1px;
+}
+.remote-step .icon-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 11px;
+}
+.remote-step .icon-button + button {
+  border-left: 1px solid var(--line);
+}
+.remote-channels {
+  min-height: 44px;
+  padding: 0 15px;
+  font-size: 13px;
+  gap: 8px;
+  border-radius: 13px;
+}
+.remote-actions > .favorite-button {
+  width: 40px;
+  height: 40px;
+}
+.channel-transition {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: #282132ed;
+  color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.channel-transition.is-active {
+  opacity: 1;
+}
+.transition-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  max-width: 650px;
+}
+.transition-card .poster {
+  width: 100px;
+  height: 140px;
+  border-radius: 18px;
+  background: #514153;
+}
+.transition-card > div {
+  min-width: 0;
+}
+.transition-channel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #ed9dac;
+}
+.transition-card h3 {
+  font-size: 26px;
+  letter-spacing: -0.7px;
+  line-height: 1.3;
+  margin: 10px 0;
+}
+.transition-card p {
+  font-size: 14px;
+  color: #d0c4d3;
+  line-height: 1.5;
+}
+.transition-status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 20px;
+  font-size: 12px;
+  color: #d0c4d3;
+}
+.program-remaining {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--mint-ink);
+  margin-top: 8px;
+}
+.poster-fallback strong {
+  font-size: 18px;
+  letter-spacing: -0.8px;
+}
+.poster-fallback small {
+  font-size: 7px;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+.error-prompt > div {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.welcome-region {
+  display: grid;
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transition:
+    grid-template-rows 0.4s,
+    opacity 0.3s;
+}
+.welcome-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+.welcome-region[data-collapsed="true"] {
+  grid-template-rows: 0fr;
+  opacity: 0;
+}
+.viewing .watch-section-heading {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+.viewing .watch-section-heading h2 {
+  font-size: 20px;
+}
+.viewing .watch-section-heading h2 > span {
+  font-size: 23px;
+}
+.channel-picker .rail-panel.channel-panel {
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  background: none;
+}
+.channel-picker .rail-header {
+  display: none;
+}
+.channel-picker .rail-filters {
+  grid-template-columns: minmax(0, 1fr) 170px;
+}
+.channel-picker .rail-tabs {
+  max-width: 340px;
+}
+.channel-picker .rail-cards {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-height: 380px;
+}
+.channel-picker .rail-select {
+  min-height: 94px;
+}
+.channel-picker .rail-copy > strong {
+  font-size: 14px;
+}
+.channel-picker .rail-show {
+  font-size: 13px;
+}
+.channel-picker .rail-status {
+  font-size: 11px;
+}
+@media (max-width: 1050px) {
+  .remote-actions {
+    gap: 7px;
+  }
+  .remote-channels {
+    padding: 0 12px;
+  }
+  .remote-channel strong {
+    font-size: 14px;
+  }
+  .remote-number {
+    width: 34px;
+    height: 38px;
+  }
+  .remote-channel {
+    gap: 8px;
+  }
+}
+@media (max-width: 760px) {
+  .watch-heading {
+    min-height: 46px;
+    gap: 9px;
+  }
+  .remote-channel strong {
+    font-size: 14px;
+  }
+  .remote-channel .live-label {
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+  .remote-actions {
+    gap: 6px;
+  }
+  .remote-step .icon-button {
+    width: 36px;
+    height: 38px;
+  }
+  .remote-channels {
+    padding: 0 10px;
+  }
+  .remote-actions > .favorite-button {
+    width: 36px;
+    height: 38px;
+  }
+  .transition-card {
+    gap: 16px;
+    max-width: 100%;
+  }
+  .transition-card .poster {
+    width: 65px;
+    height: 90px;
+    border-radius: 13px;
+  }
+  .transition-card h3 {
+    font-size: 21px;
+  }
+  .transition-card p {
+    font-size: 12px;
+  }
+  .transition-channel {
+    font-size: 9px;
+  }
+  .transition-status {
+    font-size: 11px;
+    margin-top: 14px;
+  }
+  .channel-picker .rail-filters {
+    grid-template-columns: 1fr;
+  }
+  .channel-picker .rail-cards {
+    grid-template-columns: 1fr;
+    max-height: 350px;
+  }
+  .viewing .watch-section-heading h2 {
+    font-size: 20px;
+  }
+}
+@media (max-width: 480px) {
+  .remote-channel {
+    gap: 7px;
+    flex: 1;
+  }
+  .remote-channel strong {
+    font-size: 12px;
+    max-width: 108px;
+  }
+  .remote-channel .live-label {
+    font-size: 7px;
+    letter-spacing: 0.3px;
+  }
+  .remote-number {
+    width: 30px;
+    height: 34px;
+    font-size: 13px;
+    border-radius: 10px;
+  }
+  .remote-actions {
+    gap: 4px;
+  }
+  .remote-channels {
+    width: 34px;
+    min-height: 38px;
+    padding: 0;
+    border-radius: 10px;
+  }
+  .remote-channels > span,
+  .remote-channels > svg:last-child {
+    display: none;
+  }
+  .remote-step .icon-button {
+    width: 31px;
+    height: 34px;
+  }
+  .remote-step {
+    border-radius: 10px;
+  }
+  .remote-step .icon-button svg {
+    width: 18px;
+  }
+  .remote-actions > .favorite-button {
+    width: 30px;
+    height: 34px;
+  }
+  .watch-heading {
+    gap: 5px;
+    margin-bottom: 9px;
+    min-height: 42px;
+  }
+  .transition-card .poster {
+    width: 48px;
+    height: 66px;
+    border-radius: 10px;
+  }
+  .transition-card {
+    gap: 12px;
+  }
+  .transition-card h3 {
+    font-size: 17px;
+    margin: 7px 0;
+    line-height: 1.3;
+  }
+  .transition-card p {
+    font-size: 11px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .transition-status {
+    font-size: 10px;
+    margin-top: 10px;
+  }
+  .transition-channel {
+    font-size: 8px;
+    letter-spacing: 0.6px;
+  }
+  .channel-transition {
+    padding: 18px;
+  }
+  .program-remaining {
+    font-size: 11px;
+    margin-top: 7px;
+  }
+  .channel-picker .rail-tabs {
+    max-width: none;
+  }
+  .channel-picker .rail-cards {
+    max-height: 330px;
+  }
+  .channel-picker .rail-copy > strong {
+    font-size: 15px;
+  }
+  .channel-picker .rail-show {
+    font-size: 14px;
+  }
+  .channel-picker .rail-status {
+    font-size: 12px;
+  }
+  .error-prompt .text-button {
+    font-size: 10px;
+  }
+  .error-prompt > div {
+    gap: 6px 12px;
+  }
+}
+@media (max-width: 360px) {
+  .remote-channel strong {
+    max-width: 82px;
+    font-size: 11px;
+  }
+  .remote-number {
+    width: 27px;
+  }
+  .remote-step .icon-button {
+    width: 27px;
+  }
+  .remote-channels {
+    width: 30px;
+  }
+  .remote-actions > .favorite-button {
+    width: 27px;
+  }
+  .remote-channel .live-label {
+    font-size: 6.5px;
+  }
+  .remote-channel {
+    gap: 5px;
+  }
+}
+.watch-card {
+  scroll-margin-top: 18px;
+}
+.transition-card .poster-fallback strong {
+  font-size: 32px;
+}
+.transition-card .poster-fallback small {
+  font-size: 9px;
+  letter-spacing: 1.4px;
+}
+@media (max-width: 480px) {
+  .transition-card .poster-fallback strong {
+    font-size: 20px;
+  }
+  .transition-card .poster-fallback small {
+    font-size: 7px;
+  }
+  .watch-card {
+    scroll-margin-top: 12px;
+  }
+}

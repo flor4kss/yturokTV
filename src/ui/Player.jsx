@@ -2,7 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import Icon from "./Icon";
 import Poster from "./Poster";
 import { tv } from "../tvController";
+import { remainingLabel } from "../programMetadata";
 function time(seconds = 0) {
+  if (seconds >= 3600)
+    return `${Math.floor(seconds / 3600)}:${String(Math.floor(seconds / 60) % 60).padStart(2, "0")}:${String(Math.floor(seconds) % 60).padStart(2, "0")}`;
   return `${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, "0")}`;
 }
 export default function Player({
@@ -14,6 +17,7 @@ export default function Player({
   onSettings,
   onSchedule,
   onToast,
+  onChannels,
 }) {
   const {
     channel,
@@ -34,6 +38,13 @@ export default function Player({
   } = position;
   const [fullscreen, setFullscreen] = useState(false);
   const [visible, setVisible] = useState(true);
+  const [transitioning, setTransitioning] = useState(false);
+  useEffect(() => {
+    if (!snapshot.loadId) return;
+    setTransitioning(true);
+    const timer = setTimeout(() => setTransitioning(false), 400);
+    return () => clearTimeout(timer);
+  }, [snapshot.loadId]);
   const timer = useRef();
   const active = useRef(false);
   const focusInside = useRef(false);
@@ -62,14 +73,52 @@ export default function Player({
     }
   }
   return (
-    <section className="watch-card" aria-label="Просмотр эфира">
+    <section
+      id="watch-player"
+      className="watch-card"
+      aria-label="Просмотр эфира"
+    >
       <div className="watch-heading">
-        <div className="live-label">
-          <span className="live-dot" /> СЕЙЧАС В ЭФИРЕ
+        <div className="remote-channel">
+          <span className="remote-number">{channel?.number}</span>
+          <div>
+            <span className="live-label">
+              <span className="live-dot" /> ПРЯМОЙ ЭФИР
+            </span>
+            <strong>{channel?.shortName || channel?.name}</strong>
+          </div>
         </div>
-        <div className="watch-heading-actions">
-          <span className="channel-number">{channel?.number}</span>
-          <span>{channel?.shortName || channel?.name}</span>
+        <div className="remote-actions">
+          <div className="remote-step">
+            <button
+              className="icon-button"
+              aria-label="Предыдущий канал"
+              disabled={!ready}
+              onClick={() => tv.next(-1)}
+              data-sound="channel"
+            >
+              <Icon name="left" size={20} />
+            </button>
+            <button
+              className="icon-button"
+              aria-label="Следующий канал"
+              disabled={!ready}
+              onClick={() => tv.next()}
+              data-sound="channel"
+            >
+              <Icon name="right" size={20} />
+            </button>
+          </div>
+          <button
+            className="button button-outline remote-channels"
+            aria-label="Открыть каналы"
+            aria-haspopup="dialog"
+            onClick={onChannels}
+          >
+            <Icon name="grid" size={17} />
+            <span>Каналы</span>
+            <Icon name="down" size={14} />
+          </button>
           <button
             className={`icon-button favorite-button ${favorite ? "is-favorite" : ""}`}
             aria-label={
@@ -134,7 +183,7 @@ export default function Player({
           <Icon name="tv" size={15} /> yturok<span>TV</span> <i />
         </div>
         {error ? (
-          <div className="player-prompt error-prompt">
+          <div className="player-prompt error-prompt" role="alert">
             <span className="prompt-symbol">
               <Icon name="radio" size={28} />
             </span>
@@ -149,6 +198,9 @@ export default function Player({
               </button>
               <button className="text-button" onClick={() => tv.next()}>
                 Другой канал <Icon name="right" size={16} />
+              </button>
+              <button className="text-button" onClick={onChannels}>
+                Выбрать канал <Icon name="grid" size={16} />
               </button>
             </div>
           </div>
@@ -170,11 +222,36 @@ export default function Player({
             <h3>Ты уже почти в эфире.</h3>
             <p>Один клик — и история начинается.</p>
           </div>
-        ) : buffering ? (
-          <div className="buffering-chip">
-            <Icon name="loader" size={16} className="spin" /> Ловим волну…
-          </div>
         ) : null}
+        {started && !error && (
+          <div
+            className={`channel-transition ${transitioning || buffering ? "is-active" : ""}`}
+            aria-hidden={!(transitioning || buffering)}
+          >
+            <div className="transition-card">
+              <Poster
+                src={item.poster}
+                title={item.title}
+                color={channel?.color}
+              />
+              <div>
+                <span className="transition-channel">
+                  КАНАЛ {channel?.number} ·{" "}
+                  {channel?.shortName || channel?.name}
+                </span>
+                <h3>{item.title}</h3>
+                <p>{item.episode || "Прямой эфир"}</p>
+                <span
+                  className="transition-status"
+                  role={transitioning || buffering ? "status" : undefined}
+                >
+                  <Icon name="loader" className="spin" size={16} /> Подключаем
+                  эфир…
+                </span>
+              </div>
+            </div>
+          </div>
+        )}
         <div className="player-tools">
           <span className="source-label">
             {catchup ? "СМОТРИШЬ С НАЧАЛА" : "ПРЯМОЙ ЭФИР"}
@@ -215,7 +292,7 @@ export default function Player({
             <div className="player-control-group">
               <button
                 className="player-icon"
-                aria-label="Предыдущий канал"
+                aria-label="Предыдущий канал в плеере"
                 onClick={() => tv.next(-1)}
                 data-sound="channel"
               >
@@ -233,7 +310,7 @@ export default function Player({
               )}
               <button
                 className="player-icon"
-                aria-label="Следующий канал"
+                aria-label="Следующий канал в плеере"
                 onClick={() => tv.next()}
                 data-sound="channel"
               >
@@ -289,6 +366,10 @@ export default function Player({
           <span className="muted-label">ТВОЯ ИСТОРИЯ СЕЙЧАС</span>
           <h2>{item.title || "Подключаемся к эфиру"}</h2>
           <p>{item.episode || channel?.tagline || "Устраивайся поудобнее"}</p>
+          <span className="program-remaining">
+            <Icon name="clock" size={14} />{" "}
+            {remainingLabel(item.duration, elapsed)}
+          </span>
         </div>
         <button
           className="next-program"

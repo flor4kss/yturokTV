@@ -1,9 +1,38 @@
 let Hls;
+let sourceLoadTimer;
+function isYouTubeSource() {
+  return (
+    state.currentShow?.type === "youtube" ||
+    Boolean(state.currentShow?.youtubeId)
+  );
+}
+function finishLoading() {
+  clearTimeout(sourceLoadTimer);
+  state.buffering = false;
+  state.error = null;
+  notify();
+}
+function failLoading(message) {
+  clearTimeout(sourceLoadTimer);
+  state.buffering = false;
+  state.error = message;
+  notify();
+}
+function armLoadingTimeout() {
+  clearTimeout(sourceLoadTimer);
+  sourceLoadTimer = setTimeout(() => {
+    if (state.buffering)
+      failLoading(
+        "Канал долго не отвечает. Повтори подключение или выбери другой эфир.",
+      );
+  }, 15000);
+}
 import { DEFAULT_CHANNELS } from "../channels.js";
+import { normalizeChannels } from "./programMetadata";
 
 // Application State
 const state = {
-  channels: DEFAULT_CHANNELS,
+  channels: normalizeChannels(DEFAULT_CHANNELS),
   currentChannelIndex: 0,
   activeCategory: "all",
   activeEpgCategory: "all",
@@ -116,7 +145,7 @@ async function loadScheduleFromBackend() {
     if (res.ok) {
       const data = await res.json();
       if (Array.isArray(data) && data.length >= 3) {
-        state.channels = data;
+        state.channels = normalizeChannels(data);
         state.backendAvailable = true;
         return;
       }
@@ -128,13 +157,13 @@ async function loadScheduleFromBackend() {
     try {
       const parsed = JSON.parse(saved);
       if (Array.isArray(parsed) && parsed.length >= 3) {
-        state.channels = parsed;
+        state.channels = normalizeChannels(parsed);
         return;
       }
     } catch (e) {}
   }
 
-  state.channels = DEFAULT_CHANNELS;
+  state.channels = normalizeChannels(DEFAULT_CHANNELS);
 }
 
 // Web Audio API Synthesizer: Rotary Channel Switch Click
@@ -236,10 +265,22 @@ function initYouTubePlayer() {
           }
         },
         onStateChange: (event) => {
+          if (!isYouTubeSource()) return;
+          if (event.data === 1) {
+            const playingId = state.ytPlayer?.getVideoData?.()?.video_id;
+            if (
+              playingId &&
+              state.currentYtId &&
+              playingId !== state.currentYtId
+            )
+              return;
+          }
           state.buffering = event.data === 3;
+          if (state.buffering) armLoadingTimeout();
           if (event.data === 1) {
             state.error = null;
             state.buffering = false;
+            clearTimeout(sourceLoadTimer);
           }
           notify();
           if (event.data === (window.YT?.PlayerState?.ENDED ?? 0)) {
@@ -247,6 +288,8 @@ function initYouTubePlayer() {
           }
         },
         onError: (event) => {
+          if (!isYouTubeSource()) return;
+          clearTimeout(sourceLoadTimer);
           state.error =
             "Этот источник сейчас недоступен. Попробуйте другой канал или повторите подключение.";
           state.buffering = false;
@@ -375,7 +418,15 @@ function playCurrentChannel(withGlitch = true) {
 
   const { currentItem, elapsed, nextItem, progressPercent } =
     calculateBroadcastPosition(channel);
+  const reusingSource =
+    state.currentStreamUrl === currentItem.url &&
+    state.currentShow?.type === currentItem.type;
   state.currentShow = currentItem;
+  state.error = null;
+  state.loadId = (state.loadId || 0) + 1;
+  state.buffering = currentItem.type !== "bumper";
+  clearTimeout(sourceLoadTimer);
+  if (state.buffering) armLoadingTimeout();
 
   // Sound & Static noise glitch
   if (withGlitch) {
@@ -514,6 +565,7 @@ function playCurrentChannel(withGlitch = true) {
         hlsVideo.volume = state.volume / 100;
 
         const applySeek = () => {
+          if (state.currentStreamUrl !== currentItem.url) return;
           if (elapsed > 0 && hlsVideo.duration && elapsed < hlsVideo.duration) {
             try {
               hlsVideo.currentTime = elapsed;
@@ -569,6 +621,7 @@ function playCurrentChannel(withGlitch = true) {
           let recoveryAttempts = 0;
 
           hls.on(Hls.Events.MANIFEST_PARSED, () => {
+            if (state.hlsInstance !== hls) return;
             try {
               if (elapsed > 0) hlsVideo.currentTime = elapsed;
             } catch (e) {}
@@ -587,6 +640,7 @@ function playCurrentChannel(withGlitch = true) {
                 state.error =
                   "Источник сейчас не отвечает. Можно повторить подключение или выбрать другой канал.";
                 state.buffering = false;
+                clearTimeout(sourceLoadTimer);
                 hls.destroy();
                 state.hlsInstance = null;
                 notify();
@@ -625,6 +679,13 @@ function playCurrentChannel(withGlitch = true) {
     }
   }
 
+  if (
+    reusingSource &&
+    !isYouTubeSource() &&
+    hlsVideo?.readyState >= 3 &&
+    !hlsVideo.paused
+  )
+    finishLoading();
   renderVerticalChannelDock();
   renderInspectorGrid();
 }
@@ -792,7 +853,9 @@ async function addReleaseToChannel(alias, titleRu, poster, chIdx) {
     const playable = items.filter((item) => item.url);
     if (!playable.length)
       throw new Error("У этого тайтла пока нет доступных потоков.");
-    state.channels[chIdx].schedule.push(...playable);
+    state.channels[chIdx].schedule.push(
+      ...normalizeChannels([{ schedule: playable }])[0].schedule,
+    );
     localStorage.setItem(
       "yturok_schedule_saved",
       JSON.stringify(state.channels),
@@ -1203,18 +1266,19 @@ export async function initializeTV() {
   const video = $("hls-player");
   if (video) {
     video.addEventListener("waiting", () => {
+      if (isYouTubeSource()) return;
+      armLoadingTimeout();
       state.buffering = true;
       notify();
     });
     video.addEventListener("playing", () => {
-      state.buffering = false;
-      state.error = null;
-      notify();
+      if (!isYouTubeSource()) finishLoading();
     });
     video.addEventListener("error", () => {
       if (state.currentShow?.type === "youtube" || state.currentShow?.youtubeId)
         return;
       state.buffering = false;
+      clearTimeout(sourceLoadTimer);
       state.error = "Не удалось подключиться к видео. Попробуйте другой канал.";
       notify();
     });
@@ -1340,6 +1404,7 @@ export const tv = {
         state.error =
           "YouTube не подключился. Проверь соединение или выбери другой канал.";
         state.buffering = false;
+        clearTimeout(sourceLoadTimer);
       });
   },
   mute() {
