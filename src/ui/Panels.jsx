@@ -3,10 +3,9 @@ import Icon from "./Icon";
 import Poster from "./Poster";
 import { tv } from "../tvController";
 const categories = [
-  { id: "all", label: "Все жанры" },
+  { id: "all", label: "Все категории" },
   { id: "anime", label: "Аниме" },
   { id: "cartoons", label: "Мультфильмы" },
-  { id: "minecrafters", label: "Игры и стримы" },
   { id: "music", label: "Музыка" },
 ];
 export function ChannelRail({
@@ -107,7 +106,7 @@ export function ChannelRail({
         </label>
         <label className="rail-genre">
           <select
-            aria-label="Жанр канала"
+            aria-label="Категория канала"
             value={category}
             onChange={(event) => setCategory(event.target.value)}
           >

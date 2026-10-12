@@ -171,6 +171,7 @@ export default function Player({
           <div id="yt-player" />
         </div>
         <div id="bumper-screen" className="bumper-screen hidden">
+          <span className="bumper-brand">yturokTV · {channel?.shortName}</span>
           <span id="bumper-logo">yturokTV</span>
           <p id="bumper-text" />
         </div>
@@ -314,7 +315,7 @@ export default function Player({
       <div className="now-playing">
         <Poster src={item.poster} title={item.title} color={channel?.color} />
         <div className="now-playing-copy">
-          <span className="muted-label">ТВОЯ ИСТОРИЯ СЕЙЧАС</span>
+          <span className="muted-label">{item.type === "bumper" ? "ЭФИРНАЯ ВСТАВКА" : position.repeat ? "ПОВТОР В ЭФИРЕ" : "ТВОЯ ИСТОРИЯ СЕЙЧАС"}</span>
           <h2>{item.title || "Подключаемся к эфиру"}</h2>
           <p>{item.episode || channel?.tagline || "Устраивайся поудобнее"}</p>
           <span className="program-remaining">

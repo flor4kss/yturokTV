@@ -45,7 +45,7 @@ export function ProgramGuide({ snapshot, onWatch }) {
       </p>
       <div className="guide-list">
         {rows.length ? (
-          rows.map(({ item, start, end, live }, index) => (
+          rows.map(({ item, start, end, live, repeat }, index) => (
             <article
               className={`guide-row ${live ? "is-live" : ""}`}
               key={`${index}-${start}`}
@@ -66,7 +66,7 @@ export function ProgramGuide({ snapshot, onWatch }) {
                   </span>
                 )}
                 <h3>{item.title}</h3>
-                <p>{item.episode || item.description || "История в эфире"}</p>
+                <p>{repeat ? "Повтор · " : ""}{item.episode || item.description || "История в эфире"}</p>
               </div>
               {live && (
                 <button

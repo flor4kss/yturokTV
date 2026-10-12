@@ -29,6 +29,10 @@ function armLoadingTimeout() {
 }
 import { DEFAULT_CHANNELS } from "../channels.js";
 import { normalizeChannels } from "./programMetadata";
+import { promoMessage } from "./broadcastMessages";
+
+const isCurrentCatalog = (data) => Array.isArray(data) && data.length === 6 &&
+  data.every(channel => channel.catalogVersion === 2);
 
 // Application State
 const state = {
@@ -144,7 +148,7 @@ async function loadScheduleFromBackend() {
     const res = await fetch("/api/schedule?t=" + Date.now());
     if (res.ok) {
       const data = await res.json();
-      if (Array.isArray(data) && data.length >= 3) {
+      if (isCurrentCatalog(data)) {
         state.channels = normalizeChannels(data);
         state.backendAvailable = true;
         return;
@@ -156,7 +160,7 @@ async function loadScheduleFromBackend() {
   if (saved) {
     try {
       const parsed = JSON.parse(saved);
-      if (Array.isArray(parsed) && parsed.length >= 3) {
+      if (isCurrentCatalog(parsed)) {
         state.channels = normalizeChannels(parsed);
         return;
       }
@@ -170,7 +174,7 @@ async function loadScheduleFromBackend() {
 function playChannelSwitchAudio() {}
 
 function playBumperAmbientTone() {
-  if (!state.isTVStarted || localStorage.getItem("yturok_sounds") === "false")
+  if (!state.isTVStarted || state.isMuted || state.volume === 0 || localStorage.getItem("yturok_sounds") === "false")
     return;
   try {
     if (!state.audioCtx) {
@@ -187,7 +191,7 @@ function playBumperAmbientTone() {
     osc.frequency.setValueAtTime(80, ctx.currentTime);
     osc.frequency.linearRampToValueAtTime(65, ctx.currentTime + 1.2);
 
-    gain.gain.setValueAtTime(0.018, ctx.currentTime);
+    gain.gain.setValueAtTime(0.018 * state.volume / 100, ctx.currentTime);
     gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 1.2);
 
     osc.connect(gain);
@@ -284,7 +288,7 @@ function initYouTubePlayer() {
           }
           notify();
           if (event.data === (window.YT?.PlayerState?.ENDED ?? 0)) {
-            playCurrentChannel(false);
+            waitForNextBroadcast();
           }
         },
         onError: (event) => {
@@ -318,7 +322,7 @@ if (window.YT && window.YT.Player) {
 // -----------------------------------------------------------------------------
 // Deterministic Sverdlovsk Broadcast Scheduler (UTC+5 / YEKT)
 // -----------------------------------------------------------------------------
-const EPOCH_START = 1791658800; // Today 00:00:00 YEKT (Clean, non-repetitive cycle)
+const EPOCH_START = 1791658800; // Shared broadcast origin: 2026-10-11 00:00 YEKT.
 
 function calculateBroadcastPosition(channel, dayOffset = 0) {
   const schedule = channel.schedule;
@@ -372,7 +376,24 @@ function calculateBroadcastPosition(channel, dayOffset = 0) {
     Math.floor((elapsed / (currentItem.duration || 1440)) * 100),
   );
 
-  return { currentItem, elapsed, nextItem, progressPercent, currentIndex };
+  return { currentItem, elapsed, nextItem, progressPercent, currentIndex,
+    repeat: elapsedFromEpoch >= totalDuration };
+}
+
+// A shorter source must not replay the same episode until its scheduled end.
+function waitForNextBroadcast() {
+  const channel = state.channels[state.currentChannelIndex];
+  const position = calculateBroadcastPosition(channel);
+  if (position.currentItem !== state.currentShow) {
+    playCurrentChannel(false);
+    return;
+  }
+  $("hls-player")?.classList.add("hidden");
+  $("yt-player-container")?.classList.add("hidden");
+  $("bumper-screen")?.classList.remove("hidden");
+  text("bumper-logo", "ДАЛЕЕ В ЭФИРЕ");
+  text("bumper-text", "Передача завершилась. Продолжение эфира — по телепрограмме.");
+  finishLoading();
 }
 
 function formatTime(sec) {
@@ -463,6 +484,9 @@ function playCurrentChannel(withGlitch = true) {
 
   // Handle Playback by Stream Type (Prioritize Direct Native Video Streams!)
   if (currentItem.type === "bumper") {
+    state.hlsInstance?.destroy();
+    state.hlsInstance = null;
+    state.currentStreamUrl = null;
     if (ytContainer) {
       ytContainer.classList.add("hidden");
       try {
@@ -475,10 +499,12 @@ function playCurrentChannel(withGlitch = true) {
     }
     if (bumperScreen) {
       bumperScreen.classList.remove("hidden");
-      text("bumper-logo", "[2x2]");
+      text("bumper-logo", currentItem.kind === "advert" ? "РЕКЛАМНАЯ ПАУЗА" : "СКОРО В ЭФИРЕ");
       text(
         "bumper-text",
-        currentItem.bumperText || "Вы смотрите 2х2. Не переключайтесь.",
+        currentItem.kind === "promo"
+          ? promoMessage(currentItem, elapsed, getSyncedTimestamp())
+          : currentItem.bumperText || channel.tagline,
       );
     }
     playBumperAmbientTone();
@@ -1287,7 +1313,7 @@ export async function initializeTV() {
         state.currentShow?.type !== "youtube" &&
         !state.currentShow?.youtubeId
       )
-        playCurrentChannel(false);
+        waitForNextBroadcast();
     });
   }
   state.ready = true;
@@ -1366,6 +1392,10 @@ function action(fn) {
   return result;
 }
 function resumeActivePlayer() {
+  if (state.currentShow?.type === "bumper") {
+    playBumperAmbientTone();
+    return;
+  }
   if (state.currentShow?.type === "youtube" || state.currentShow?.youtubeId)
     state.ytPlayer?.playVideo?.();
   else
@@ -1483,7 +1513,7 @@ export const tv = {
       state.channels.find((channel) => channel.id === channelId) ||
       state.channels[0];
     if (!channel?.schedule?.length) return [];
-    const { currentIndex, elapsed } = calculateBroadcastPosition(channel, day);
+    const { currentIndex, elapsed, repeat } = calculateBroadcastPosition(channel, day);
     let start = (getSyncedTimestamp() + day * 86400000) / 1000 - elapsed;
     const clock = (seconds) =>
       new Date(seconds * 1000).toLocaleTimeString("ru-RU", {
@@ -1503,6 +1533,7 @@ export const tv = {
           end: clock(start + duration),
           live: index === 0 && day === 0,
           duration: formatTime(duration),
+          repeat: item.type !== "bumper" && (repeat || currentIndex + index >= channel.schedule.length),
         };
         start += duration;
         return result;

@@ -1848,23 +1848,32 @@ kbd {
 .bumper-screen {
   position: absolute;
   inset: 0;
-  z-index: 8;
-  background: #302638;
+  z-index: 2;
+  background: radial-gradient(ellipse at 20% 20%, #537a70 0%, transparent 60%), linear-gradient(135deg, #302638, #17141d);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 24px;
+  padding: clamp(24px, 6vw, 100px);
+  text-align: center;
 }
 .bumper-screen > span {
-  font-size: 40px;
+  font-size: clamp(20px, 3vw, 46px);
   font-weight: 800;
   color: #ed9dac;
 }
 .bumper-screen > p {
-  font-size: 14.4px;
+  font-size: clamp(16px, 2vw, 30px);
   color: #ded2df;
+  max-width: 850px;
+  line-height: 1.5;
 }
+.bumper-screen > .bumper-brand { font-size: 13px; letter-spacing: .12em; color: #b7d7cd; }
+.bumper-screen:not(.hidden) > * { animation: station-arrival .6s ease-out both; }
+.bumper-screen:not(.hidden) > p { animation-delay: .12s; }
+@keyframes station-arrival { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .bumper-screen:not(.hidden) > * { animation: none; } }
 .static-screen {
   position: absolute;
   inset: 0;
