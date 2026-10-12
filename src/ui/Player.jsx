@@ -12,9 +12,6 @@ export default function Player({
   snapshot,
   favorite,
   onFavorite,
-  theater,
-  onTheater,
-  onSettings,
   onSchedule,
   onToast,
   onChannels,
@@ -67,7 +64,7 @@ export default function Player({
   async function expand() {
     try {
       if (document.fullscreenElement) await document.exitFullscreen();
-      else await document.getElementById("tv-cabinet").requestFullscreen();
+      else await document.getElementById("watch-player").requestFullscreen();
     } catch {
       onToast("Полноэкранный режим недоступен в этом браузере");
     }
@@ -256,26 +253,6 @@ export default function Player({
           <span className="source-label">
             {catchup ? "СМОТРИШЬ С НАЧАЛА" : "ПРЯМОЙ ЭФИР"}
           </span>
-          <div className="tool-buttons">
-            <button
-              className="player-icon"
-              aria-label={
-                theater ? "Обычный вид плеера" : "Широкий экран плеера"
-              }
-              title={theater ? "Обычный вид" : "Широкий экран"}
-              aria-pressed={theater}
-              onClick={onTheater}
-            >
-              <Icon name="wide" size={17} />
-            </button>
-            <button
-              className="player-icon"
-              aria-label="Настройки просмотра"
-              onClick={onSettings}
-            >
-              <Icon name="sliders" size={17} />
-            </button>
-          </div>
         </div>
         <div className="player-controls">
           <div
@@ -290,33 +267,6 @@ export default function Player({
           </div>
           <div className="player-control-row">
             <div className="player-control-group">
-              <button
-                className="player-icon"
-                aria-label="Предыдущий канал в плеере"
-                onClick={() => tv.next(-1)}
-                data-sound="channel"
-              >
-                <Icon name="left" />
-              </button>
-              {!started && (
-                <button
-                  className="player-icon play-toggle"
-                  aria-label="Включить эфир"
-                  onClick={() => tv.start()}
-                  disabled={!ready}
-                >
-                  <Icon name="play" size={20} fill="currentColor" />
-                </button>
-              )}
-              <button
-                className="player-icon"
-                aria-label="Следующий канал в плеере"
-                onClick={() => tv.next()}
-                data-sound="channel"
-              >
-                <Icon name="right" />
-              </button>
-              <span className="control-divider" />
               <button
                 className="player-icon"
                 aria-label={muted ? "Включить звук" : "Выключить звук"}

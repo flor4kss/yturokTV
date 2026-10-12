@@ -118,9 +118,7 @@ export function Settings({
   night,
   onNight,
   onStudio,
-  onToast,
 }) {
-  const [syncing, setSyncing] = useState(false);
   return (
     <>
       <p className="modal-description">
@@ -156,23 +154,6 @@ export function Settings({
           onChange={() => tv.crt()}
         />
       </div>
-      <label className="settings-volume">
-        <span>
-          <Icon name={snapshot.isMuted ? "muted" : "volume"} size={18} />{" "}
-          Громкость эфира{" "}
-          <strong>
-            {snapshot.isMuted ? "Без звука" : `${snapshot.volume}%`}
-          </strong>
-        </span>
-        <input
-          aria-label="Громкость в настройках"
-          type="range"
-          min="0"
-          max="100"
-          value={snapshot.isMuted ? 0 : snapshot.volume}
-          onChange={(event) => tv.volume(event.target.value)}
-        />
-      </label>
       <div className="settings-quick">
         <button onClick={() => tv.sleep()}>
           <Icon name="moon" />
@@ -182,30 +163,6 @@ export function Settings({
               {snapshot.sleepTimerMinutes
                 ? `${snapshot.sleepTimerMinutes} мин`
                 : "Выключен"}
-            </strong>
-          </span>
-          <Icon name="right" size={16} />
-        </button>
-        <button
-          disabled={syncing}
-          onClick={async () => {
-            setSyncing(true);
-            try {
-              await tv.sync();
-              onToast("Снова на одной волне с эфиром");
-            } finally {
-              setSyncing(false);
-            }
-          }}
-        >
-          <Icon
-            name={syncing ? "loader" : "restart"}
-            className={syncing ? "spin" : ""}
-          />
-          <span>
-            Вернуться в эфир
-            <strong>
-              {syncing ? "Настраиваем волну…" : "Обновить синхронизацию"}
             </strong>
           </span>
           <Icon name="right" size={16} />

@@ -23,6 +23,14 @@ function saved(key, fallback) {
 export default function App() {
   const snapshot = useSyncExternalStore(subscribe, getSnapshot);
   const [modal, setModal] = useState(null);
+  const [fullscreen, setFullscreen] = useState(
+    Boolean(document.fullscreenElement),
+  );
+  useEffect(() => {
+    const update = () => setFullscreen(Boolean(document.fullscreenElement));
+    document.addEventListener("fullscreenchange", update);
+    return () => document.removeEventListener("fullscreenchange", update);
+  }, []);
   const [favorites, setFavorites] = useState(() => {
     const value = saved("yturok_favorites", []);
     return Array.isArray(value) ? value : [];
@@ -106,7 +114,7 @@ export default function App() {
       } else if (event.key.toLowerCase() === "f") {
         (document.fullscreenElement
           ? document.exitFullscreen()
-          : document.getElementById("tv-cabinet")?.requestFullscreen()
+          : document.getElementById("watch-player")?.requestFullscreen()
         )?.catch(() => showToast("Полноэкранный режим недоступен"));
       }
     }
@@ -161,7 +169,10 @@ export default function App() {
           feedback(button.dataset.sound || "tap");
       }}
     >
-      <div className="page-shell" inert={modal ? true : undefined}>
+      <div
+        className="page-shell"
+        inert={modal && !fullscreen ? true : undefined}
+      >
         <header className="app-header">
           <a
             className="brand"
@@ -197,26 +208,6 @@ export default function App() {
             <span className="header-clock">
               <span className="live-dot" /> {snapshot.clock} <small>ЕКБ</small>
             </span>
-            <button
-              className="icon-button"
-              aria-label={
-                sounds
-                  ? "Отключить звуки интерфейса"
-                  : "Включить звуки интерфейса"
-              }
-              aria-pressed={sounds}
-              onClick={toggleSounds}
-              data-silent
-            >
-              <Icon name={sounds ? "volume" : "muted"} size={19} />
-            </button>
-            <button
-              className="button button-outline cozy-button"
-              onClick={() => setModal("settings")}
-            >
-              <Icon name="sliders" size={16} />
-              <span>Устроиться уютно</span>
-            </button>
           </div>
         </header>
         <main className="page-main">
@@ -277,9 +268,6 @@ export default function App() {
               snapshot={snapshot}
               favorite={favorites.includes(snapshot.channel?.id)}
               onFavorite={() => favorite(snapshot.channel?.id)}
-              theater={theater}
-              onTheater={toggleWide}
-              onSettings={() => setModal("settings")}
               onSchedule={() => setModal("guide")}
               onToast={showToast}
               onChannels={() => setModal("channels")}
@@ -359,7 +347,6 @@ export default function App() {
               night={night}
               onNight={() => setNight(!night)}
               onStudio={() => setModal("studio")}
-              onToast={showToast}
             />
           )}
         </Modal>

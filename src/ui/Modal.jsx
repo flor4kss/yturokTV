@@ -1,4 +1,5 @@
-import { useEffect, useRef, useId } from "react";
+import { useEffect, useRef, useId, useState } from "react";
+import { createPortal } from "react-dom";
 import Icon from "./Icon";
 export default function Modal({
   title,
@@ -9,6 +10,14 @@ export default function Modal({
 }) {
   const ref = useRef(null);
   const id = useId();
+  const [host, setHost] = useState(
+    () => document.fullscreenElement || document.body,
+  );
+  useEffect(() => {
+    const update = () => setHost(document.fullscreenElement || document.body);
+    document.addEventListener("fullscreenchange", update);
+    return () => document.removeEventListener("fullscreenchange", update);
+  }, []);
   useEffect(() => {
     const previous = document.activeElement;
     const overflow = document.body.style.overflow;
@@ -53,8 +62,8 @@ export default function Modal({
       document.removeEventListener("keydown", onKey);
       previous?.focus?.();
     };
-  }, [onClose]);
-  return (
+  }, [onClose, host]);
+  return createPortal(
     <div
       className="modal-scrim"
       onMouseDown={(event) => {
@@ -84,6 +93,7 @@ export default function Modal({
         </header>
         <div className="modal-content">{children}</div>
       </section>
-    </div>
+    </div>,
+    host,
   );
 }

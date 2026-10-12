@@ -791,14 +791,6 @@ kbd {
   letter-spacing: 1.2px;
   opacity: 0.65;
 }
-.tool-buttons {
-  position: absolute;
-  right: 12px;
-  top: 12px;
-  display: flex;
-  gap: 2px;
-  pointer-events: auto;
-}
 .player-icon {
   width: 34px;
   height: 38px;
@@ -811,10 +803,6 @@ kbd {
 }
 .player-icon:hover {
   background: #ffffff1c;
-}
-.tool-buttons .player-icon {
-  background: #ffffff0c;
-  backdrop-filter: blur(8px);
 }
 .player-controls {
   position: absolute;
@@ -866,12 +854,6 @@ kbd {
 }
 .player-control-row {
   justify-content: space-between;
-}
-.control-divider {
-  height: 16px;
-  width: 1px;
-  background: #ffffff25;
-  margin: 0 4px;
 }
 .volume-range {
   width: 48px;
@@ -2024,15 +2006,6 @@ kbd {
   .main-nav {
     gap: 20px;
   }
-  .cozy-button span {
-    display: none;
-  }
-  .cozy-button {
-    padding: 0;
-    width: 44px;
-    height: 44px;
-    min-height: 44px;
-  }
   .header-actions {
     gap: 9px;
   }
@@ -2094,9 +2067,6 @@ kbd {
   }
   .start-over {
     padding: 0 3px;
-  }
-  .control-divider {
-    margin: 0 1px;
   }
 }
 @media (max-width: 1050px) {
@@ -2715,15 +2685,6 @@ kbd {
   .player-channel svg {
     width: 13px;
   }
-  .tool-buttons {
-    right: 7px;
-    top: 7px;
-    gap: 0;
-  }
-  .tool-buttons .player-icon {
-    width: 30px;
-    height: 34px;
-  }
   .source-label {
     font-size: 11px;
   }
@@ -2750,9 +2711,6 @@ kbd {
   .video-time {
     font-size: 11px;
     margin-left: 2px;
-  }
-  .control-divider {
-    margin: 0 2px;
   }
   .start-over {
     font-size: 11px;
@@ -3103,32 +3061,6 @@ kbd {
     margin-top: 21px;
   }
 }
-.settings-volume {
-  display: block;
-  margin-top: 22px;
-}
-.settings-volume > span {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  font-size: 13.2px;
-  font-weight: 600;
-}
-.settings-volume strong {
-  margin-left: auto;
-  font-size: 12px;
-  color: var(--muted);
-}
-.settings-volume svg {
-  color: var(--coral);
-}
-.settings-volume input {
-  width: 100%;
-  height: 32px;
-  accent-color: var(--coral);
-  cursor: pointer;
-  margin-top: 8px;
-}
 @media (max-width: 480px) {
   .player-control-row {
     gap: 2px;
@@ -3138,9 +3070,6 @@ kbd {
   }
   .video-time {
     font-size: 11px;
-  }
-  .control-divider {
-    margin: 0 1px;
   }
   .player-icon {
     width: 27px;
@@ -4603,5 +4532,81 @@ kbd {
   }
   .watch-card {
     scroll-margin-top: 12px;
+  }
+}
+/* One remote, also retained when the whole player enters fullscreen. */
+.watch-card:fullscreen {
+  width: 100vw;
+  height: 100dvh;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: #18151e;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.watch-card:fullscreen > .watch-heading {
+  flex-shrink: 0;
+  margin: 0;
+  min-height: 68px;
+  padding: 10px 24px;
+  background: var(--panel);
+  color: var(--ink);
+}
+.watch-card:fullscreen > .tv-stage {
+  flex: 1;
+  min-height: 0;
+  max-height: none !important;
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  border-radius: 0;
+}
+.watch-card:fullscreen > .now-playing,
+.watch-card:fullscreen > .watch-smallprint {
+  display: none;
+}
+.watch-card:fullscreen .player-controls {
+  padding: 50px 28px 20px;
+}
+.watch-card:fullscreen .player-icon {
+  width: 44px;
+  height: 44px;
+}
+.watch-card:fullscreen .video-time {
+  font-size: 14px;
+}
+.watch-card:fullscreen .volume-range {
+  display: block;
+  width: 100px;
+}
+.settings-quick {
+  grid-template-columns: 1fr;
+}
+@media (max-width: 480px) {
+  .volume-range,
+  .theater-mode .volume-range {
+    display: block;
+    width: 58px;
+  }
+  .watch-card:fullscreen > .watch-heading {
+    min-height: 56px;
+    padding: 8px 14px;
+  }
+  .watch-card:fullscreen .player-controls {
+    padding: 28px 12px 12px;
+  }
+  .watch-card:fullscreen .volume-range {
+    width: 65px;
+  }
+  .watch-card:fullscreen .video-time {
+    font-size: 11px;
+  }
+  .watch-card:fullscreen .player-icon {
+    width: 32px;
+    height: 38px;
   }
 }
