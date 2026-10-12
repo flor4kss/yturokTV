@@ -72,8 +72,31 @@ export default function Player({
   return (
     <section
       id="watch-player"
-      className="watch-card"
+      className={`watch-card ${visible ? "controls-visible" : "controls-hidden"}`}
       aria-label="Просмотр эфира"
+      onPointerEnter={() => {
+        active.current = true;
+        wake();
+      }}
+      onPointerMove={wake}
+      onPointerLeave={() => {
+        active.current = false;
+        clearTimeout(timer.current);
+        if (!focusInside.current) setVisible(false);
+      }}
+      onFocusCapture={(event) => {
+        focusInside.current = event.target.matches(":focus-visible");
+        setVisible(true);
+        if (focusInside.current) clearTimeout(timer.current);
+        else wake();
+      }}
+      onBlurCapture={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) {
+          focusInside.current = false;
+          wake();
+        }
+      }}
+      onPointerDown={wake}
     >
       <div className="watch-heading">
         <div className="remote-channel">
@@ -138,28 +161,6 @@ export default function Player({
       <div
         id="tv-cabinet"
         className={`tv-stage ${snapshot.crtEnabled ? "crt-mode" : ""} ${snapshot.danmakuEnabled ? "" : "no-danmaku"} ${visible ? "controls-visible" : "controls-hidden"}`}
-        onPointerEnter={() => {
-          active.current = true;
-          wake();
-        }}
-        onPointerMove={wake}
-        onPointerLeave={() => {
-          active.current = false;
-          clearTimeout(timer.current);
-          if (!focusInside.current) setVisible(false);
-        }}
-        onFocusCapture={() => {
-          focusInside.current = true;
-          setVisible(true);
-          clearTimeout(timer.current);
-        }}
-        onBlurCapture={(event) => {
-          if (!event.currentTarget.contains(event.relatedTarget)) {
-            focusInside.current = false;
-            wake();
-          }
-        }}
-        onPointerDown={wake}
       >
         <div className="player-ambient" aria-hidden="true">
           <div className="ambient-orb" />
