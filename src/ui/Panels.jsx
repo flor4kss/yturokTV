@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import Icon from "./Icon";
 import Poster from "./Poster";
 import { tv } from "../tvController";
+import { remainingLabel } from "../programMetadata";
 const categories = [
-  { id: "all", label: "Все категории" },
+  { id: "all", label: "Все" },
   { id: "anime", label: "Аниме" },
   { id: "cartoons", label: "Мультфильмы" },
   { id: "music", label: "Музыка" },
@@ -72,6 +73,13 @@ export function ChannelRail({
           <span className="live-dot" /> LIVE
         </span>
       </header>
+      <div className="category-pills" role="group" aria-label="Категория каналов">
+        {categories.map(item => <button key={item.id} aria-pressed={category === item.id}
+          className={category === item.id ? "is-active" : ""} onClick={() => setCategory(item.id)}>
+          <Icon name={{all:"grid",anime:"sparkles",cartoons:"palette",music:"music"}[item.id]} size={16}/>
+          {item.label}
+        </button>)}
+      </div>
       <div className="rail-tabs" aria-label="Подборка каналов">
         <button
           className={!onlyFavorites ? "is-active" : ""}
@@ -104,20 +112,6 @@ export function ChannelRail({
             </button>
           )}
         </label>
-        <label className="rail-genre">
-          <select
-            aria-label="Категория канала"
-            value={category}
-            onChange={(event) => setCategory(event.target.value)}
-          >
-            {categories.map((item) => (
-              <option key={item.id} value={item.id}>
-                {item.label}
-              </option>
-            ))}
-          </select>
-          <Icon name="down" size={16} />
-        </label>
       </div>
       <div className="rail-results">
         <span>{onlyFavorites ? "ТВОЁ ИЗБРАННОЕ" : "СЕЙЧАС В ЭФИРЕ"}</span>
@@ -127,7 +121,7 @@ export function ChannelRail({
       </div>
       <div className="rail-cards" ref={listRef}>
         {filtered.length ? (
-          filtered.map(({ channel, index, currentItem, progressPercent }) => {
+          filtered.map(({ channel, index, currentItem, progressPercent, elapsed, nextItem }) => {
             const active = snapshot.currentChannelIndex === index;
             const favorite = favorites.includes(channel.id);
             const match =
@@ -153,9 +147,9 @@ export function ChannelRail({
                   onClick={() => onSelect(index)}
                   data-sound="channel"
                 >
-                  <span className="rail-number">
-                    <span>{channel.number}</span>
-                    <Icon name="play" size={17} fill="currentColor" />
+                  <span className="rail-poster">
+                    <Poster src={currentItem.poster} title={currentItem.title} color={channel.color}/>
+                    <span className="rail-poster-number">{channel.number}</span>
                   </span>
                   <span className="rail-copy">
                     <strong>{channel.shortName || channel.name}</strong>
@@ -164,6 +158,9 @@ export function ChannelRail({
                       title={(match || currentItem).title}
                     >
                       {(match || currentItem).title}
+                    </span>
+                    <span className="rail-up-next" title={`Далее: ${nextItem?.title || 'Продолжение эфира'}`}>
+                      {remainingLabel(currentItem.mediaDuration || currentItem.duration,elapsed)} · Далее: {nextItem?.title || 'Продолжение эфира'}
                     </span>
                     <span className="rail-status">
                       {active ? (

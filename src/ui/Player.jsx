@@ -168,6 +168,7 @@ export default function Player({
           <img src={`${import.meta.env.BASE_URL}art/tv-muse.png`} alt="" />
         </div>
         <video id="hls-player" className="video-surface hidden" playsInline />
+        <iframe id="rutube-player" className="video-surface hidden" title="Эфир 2×2" allow="autoplay; fullscreen" />
         <div id="yt-player-container" className="video-surface hidden">
           <div id="yt-player" />
         </div>
@@ -254,6 +255,8 @@ export default function Player({
             </div>
           </div>
         )}
+        {started && !catchup && position.adCountdown > 0 && position.adCountdown <= 5 && <span className="ad-notice" role="status">Короткий анонс через {position.adCountdown} с</span>}
+        {started && item.kind==='promo' && item.promoDelay>0 && item.duration-elapsed<=3 && <span className="ad-notice" role="status">Возвращаемся к серии…</span>}
         <div className="player-tools">
           <span className="source-label">
             {catchup ? "СМОТРИШЬ С НАЧАЛА" : "ПРЯМОЙ ЭФИР"}

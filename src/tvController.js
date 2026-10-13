@@ -30,10 +30,12 @@ function armLoadingTimeout() {
 import { DEFAULT_CHANNELS } from "../channels.js";
 import { normalizeChannels } from "./programMetadata";
 import { promoMessage } from "./broadcastMessages";
+import { broadcastPosition, broadcastRows, invalidatePlan } from "./broadcastPlanner";
+import { playRutube, stopRutube, rutubeVolume, rutubeSeek, rutubeTime, resumeRutube } from "./rutubePlayer";
 import { startPromoMusic, stopPromoMusic, setPromoMusicVolume } from "./promoMusic";
 
 const isCurrentCatalog = (data) => Array.isArray(data) && data.length === 6 &&
-  data.every(channel => channel.catalogVersion === 3);
+  data.every(channel => channel.catalogVersion === 4);
 
 // Application State
 const state = {
@@ -207,6 +209,7 @@ function playBumperAmbientTone() {
 // Global Volume & Mute Manager
 // -----------------------------------------------------------------------------
 function applyVolume() {
+  if(state.currentShow?.type==='rutube')rutubeVolume(state.isMuted || !state.isTVStarted ? 0 : state.volume / 100);
   setPromoMusicVolume(state.isMuted || !state.isTVStarted ? 0 : state.volume / 100);
   const iconName =
     state.isMuted || state.volume === 0 ? "volume_off" : "volume_up";
@@ -324,67 +327,13 @@ if (window.YT && window.YT.Player) {
 // -----------------------------------------------------------------------------
 // Deterministic Sverdlovsk Broadcast Scheduler (UTC+5 / YEKT)
 // -----------------------------------------------------------------------------
-const EPOCH_START = 1791658800; // Shared broadcast origin: 2026-10-11 00:00 YEKT.
-
 function calculateBroadcastPosition(channel, dayOffset = 0) {
-  const schedule = channel.schedule;
-  if (!schedule || schedule.length === 0) {
-    return {
-      currentItem: {
-        title: "Профилактика канала",
-        episode: "Эфир временно приостановлен",
-        duration: 3600,
-        type: "placeholder",
-        description: "Скоро эфир возобновится",
-        poster:
-          "https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400",
-      },
-      elapsed: 0,
-      nextItem: null,
-      progressPercent: 0,
-      currentIndex: 0,
-    };
-  }
-
-  const totalDuration = schedule.reduce(
-    (sum, item) => sum + (item.duration || 1440),
-    0,
-  );
-  const currentSec =
-    Math.floor(getSyncedTimestamp() / 1000) + dayOffset * 86400;
-  const elapsedFromEpoch = Math.max(0, currentSec - EPOCH_START);
-  let offset = elapsedFromEpoch % totalDuration;
-
-  let currentItem = schedule[0];
-  let elapsed = 0;
-  let currentIndex = 0;
-
-  for (let i = 0; i < schedule.length; i++) {
-    const item = schedule[i];
-    const dur = item.duration || 1440;
-    if (offset < dur) {
-      currentItem = item;
-      elapsed = offset;
-      currentIndex = i;
-      break;
-    }
-    offset -= dur;
-  }
-
-  let nextIndex = (currentIndex + 1) % schedule.length;
-  if (schedule[nextIndex]?.sourceOffset) nextIndex = (nextIndex + 1) % schedule.length;
-  const nextItem = schedule[nextIndex];
-  const progressPercent = Math.min(
-    100,
-    Math.floor(((elapsed + (currentItem.sourceOffset || 0)) / (currentItem.mediaDuration || currentItem.duration || 1440)) * 100),
-  );
-
-  return { currentItem, elapsed: elapsed + (currentItem.sourceOffset || 0), broadcastElapsed: elapsed, nextItem, progressPercent, currentIndex,
-    repeat: elapsedFromEpoch >= totalDuration };
+  return broadcastPosition(channel, getSyncedTimestamp() + dayOffset * 86400000);
 }
 
 // A shorter source must not replay the same episode until its scheduled end.
 function waitForNextBroadcast() {
+  stopRutube();
   const channel = state.channels[state.currentChannelIndex];
   const position = calculateBroadcastPosition(channel);
   if (position.currentItem !== state.currentShow) {
@@ -437,6 +386,7 @@ function hexToRgb(hex) {
 // Play Current Channel (Dual Playback: HLS + YouTube + Video)
 // -----------------------------------------------------------------------------
 function playCurrentChannel(withGlitch = true) {
+  stopRutube();
   stopPromoMusic();
   const channel = state.channels[state.currentChannelIndex];
   if (!channel) return;
@@ -487,7 +437,15 @@ function playCurrentChannel(withGlitch = true) {
   const bumperScreen = $("bumper-screen");
 
   // Handle Playback by Stream Type (Prioritize Direct Native Video Streams!)
-  if (currentItem.type === "bumper") {
+  if(currentItem.type==='rutube') {
+    state.hlsInstance?.destroy();state.hlsInstance=null;state.currentStreamUrl=null;
+    hlsVideo?.pause();hlsVideo?.classList.add('hidden');
+    state.ytPlayer?.pauseVideo?.();ytContainer?.classList.add('hidden');bumperScreen?.classList.add('hidden');
+    playRutube(currentItem,elapsed,{started:state.isTVStarted,volume:state.isMuted || !state.isTVStarted ? 0 : state.volume/100,
+      isActive:()=>state.currentShow===currentItem,
+      onReady:finishLoading,onError:()=>failLoading('Источник 2×2 сейчас не отвечает. Попробуй другой канал.'),onEnded:waitForNextBroadcast});
+    if(!state.isTVStarted)finishLoading();
+  } else if (currentItem.type === "bumper") {
     state.hlsInstance?.destroy();
     state.hlsInstance = null;
     state.currentStreamUrl = null;
@@ -760,6 +718,7 @@ function checkSleepTimerTick() {
       $("btn-sleep-timer")?.classList.remove("active");
 
       // Pause playback
+      stopRutube();stopPromoMusic();
       const hlsVideo = $("hls-player");
       if (hlsVideo) hlsVideo.pause();
       if (state.ytPlayer && state.ytPlayer.pauseVideo)
@@ -886,6 +845,7 @@ async function addReleaseToChannel(alias, titleRu, poster, chIdx) {
     state.channels[chIdx].schedule.push(
       ...normalizeChannels([{ schedule: playable }])[0].schedule,
     );
+    invalidatePlan(state.channels[chIdx]);
     localStorage.setItem(
       "yturok_schedule_saved",
       JSON.stringify(state.channels),
@@ -1223,7 +1183,10 @@ function startMasterLoop() {
 
         // Stream Drift Auto-Correction
         if (!state.isCatchUpMode && !state.isPaused) {
-          if (currentItem.type === "youtube" || currentItem.youtubeId) {
+          if(currentItem.type==='rutube') {
+            const drift=Math.abs(rutubeTime()-elapsed);
+            if(drift>8 && rutubeTime()>0)rutubeSeek(elapsed);
+          } else if (currentItem.type === "youtube" || currentItem.youtubeId) {
             if (state.ytPlayer && state.ytPlayer.getCurrentTime) {
               try {
                 const cur = state.ytPlayer.getCurrentTime();
@@ -1305,7 +1268,7 @@ export async function initializeTV() {
       if (!isYouTubeSource()) finishLoading();
     });
     video.addEventListener("error", () => {
-      if (state.currentShow?.type === "youtube" || state.currentShow?.youtubeId)
+      if (['rutube','bumper'].includes(state.currentShow?.type) || state.currentShow?.type === "youtube" || state.currentShow?.youtubeId)
         return;
       state.buffering = false;
       clearTimeout(sourceLoadTimer);
@@ -1314,7 +1277,7 @@ export async function initializeTV() {
     });
     video.addEventListener("ended", () => {
       if (
-        state.currentShow?.type !== "youtube" &&
+        !['youtube','rutube','bumper'].includes(state.currentShow?.type) &&
         !state.currentShow?.youtubeId
       )
         waitForNextBroadcast();
@@ -1347,7 +1310,7 @@ function makeSnapshot() {
     let elapsed = 0;
     try {
       elapsed =
-        item.type === "youtube" || item.youtubeId
+        item.type === 'rutube' ? rutubeTime() : item.type === "youtube" || item.youtubeId
           ? state.ytPlayer?.getCurrentTime?.() || 0
           : $("hls-player")?.currentTime || 0;
     } catch {}
@@ -1357,7 +1320,7 @@ function makeSnapshot() {
       elapsed,
       progressPercent: Math.min(
         100,
-        Math.floor((elapsed / (item.duration || 1440)) * 100),
+        Math.floor((elapsed / (item.mediaDuration || item.duration || 1440)) * 100),
       ),
     };
   }
@@ -1396,6 +1359,7 @@ function action(fn) {
   return result;
 }
 function resumeActivePlayer() {
+  if(state.currentShow?.type==='rutube'){resumeRutube();return;}
   if (state.currentShow?.type === "bumper") {
     const channel = state.channels[state.currentChannelIndex];
     const { elapsed } = calculateBroadcastPosition(channel);
@@ -1474,6 +1438,7 @@ export const tv = {
   restart() {
     return action(() => {
       state.isCatchUpMode = true;
+      if(state.currentShow?.type==='rutube'){rutubeSeek(0);return;}
       const video = $("hls-player");
       if (video) video.currentTime = 0;
       state.ytPlayer?.seekTo?.(0, true);
@@ -1519,32 +1484,14 @@ export const tv = {
       state.channels.find((channel) => channel.id === channelId) ||
       state.channels[0];
     if (!channel?.schedule?.length) return [];
-    const { currentIndex, broadcastElapsed, repeat } = calculateBroadcastPosition(channel, day);
-    let start = (getSyncedTimestamp() + day * 86400000) / 1000 - broadcastElapsed;
-    const clock = (seconds) =>
-      new Date(seconds * 1000).toLocaleTimeString("ru-RU", {
-        timeZone: "Asia/Yekaterinburg",
-        hour: "2-digit",
-        minute: "2-digit",
-      });
-    return Array.from(
-      { length: Math.min(channel.schedule.length, 35) },
-      (_, index) => {
-        const item =
-          channel.schedule[(currentIndex + index) % channel.schedule.length];
-        const duration = item.duration || 1440;
-        const result = {
-          item,
-          start: clock(start),
-          end: clock(start + duration),
-          live: index === 0 && day === 0,
-          duration: formatTime(duration),
-          repeat: item.type !== "bumper" && (repeat || currentIndex + index >= channel.schedule.length),
-        };
-        start += duration;
-        return result;
-      },
-    );
+    const timestamp = getSyncedTimestamp() + day * 86400000;
+    const clock = seconds => new Date(seconds * 1000).toLocaleTimeString("ru-RU", {
+      timeZone:"Asia/Yekaterinburg",hour:"2-digit",minute:"2-digit",
+    });
+    return broadcastRows(channel,timestamp).map(({item,start,repeat,duration})=>({
+      item,start:clock(start),end:clock(start+duration),repeat,
+      live:day===0 && start<=timestamp/1000 && start+duration>timestamp/1000,
+      duration:formatTime(duration),
+    }));
   },
 };
-
