@@ -176,7 +176,7 @@ export default function Player({
           <div id="yt-player" />
         </div>
         <div id="bumper-screen" className="bumper-screen hidden">
-          <PromoArtwork item={item} channel={channel} />
+          <PromoArtwork item={item} channel={channel} elapsed={elapsed} active={started && !snapshot.isPaused} />
           <span className="bumper-brand">yturokTV · {channel?.shortName}</span>
           <span id="bumper-logo">yturokTV</span>
           {item.kind === "promo" && <div className="promo-headline"><h2>{item.promoTitle}</h2><p>{promoHook(item)}</p></div>}

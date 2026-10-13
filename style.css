@@ -4778,3 +4778,11 @@ kbd {
 .tv-mode .tv-stage {height:100vh!important;max-height:none!important;min-height:0!important;aspect-ratio:auto!important;border-radius:0!important;background:#000!important;}
 .tv-mode .watch-heading,.tv-mode .remote-channel strong {color:#fff!important;}
 .tv-mode .player-controls {bottom:0!important;}
+.promo-trailer {position:absolute;inset:0;opacity:0;transition:opacity .5s ease;pointer-events:none;z-index:1;}
+.promo-trailer.is-playing {opacity:1;}
+.promo-trailer iframe {position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none;}
+.promo-artwork.has-trailer .promo-poster,.promo-artwork.has-trailer .promo-backdrop {opacity:0;transition:opacity .5s;}
+.promo-artwork::after {z-index:2;background:linear-gradient(90deg,#12101aee 0%,#12101ab0 40%,#12101a30 75%),linear-gradient(0deg,#12101a85,transparent 35%);}
+.promo-category {z-index:3;}
+.bumper-screen:has(.has-trailer) #bumper-text {font-size:clamp(14px,1.8vw,28px);font-weight:700;color:#ffd6df;}
+.promo-artwork {z-index:0;}

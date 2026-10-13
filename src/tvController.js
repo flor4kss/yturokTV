@@ -465,7 +465,7 @@ function playCurrentChannel(withGlitch = true) {
       text(
         "bumper-text",
         currentItem.kind === "promo"
-          ? promoMessage(currentItem, elapsed, getSyncedTimestamp())
+          ? promoMessage(currentItem, elapsed, getSyncedTimestamp()).replace(` — ${currentItem.promoTitle}.`, '.')
           : currentItem.bumperText || channel.tagline,
       );
     }
