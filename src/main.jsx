@@ -4,8 +4,10 @@ import { flushSync } from "react-dom";
 import App from "./App.jsx";
 import { initializeTV, tv } from "./tvController.js";
 import "../style.css";
+import { installTvRemote } from "./tvRemote";
 
 flushSync(() => createRoot(document.getElementById("root")).render(<App />));
+installTvRemote();
 initializeTV()
   .then(() => {
     const script = document.createElement("script");

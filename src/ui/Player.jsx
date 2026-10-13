@@ -16,6 +16,7 @@ export default function Player({
   onSchedule,
   onToast,
   onChannels,
+  onSettings,
 }) {
   const {
     channel,
@@ -110,6 +111,8 @@ export default function Player({
           </div>
         </div>
         <div className="remote-actions">
+          <button className="button button-outline tv-extra" onClick={onSchedule}>Телепрограмма</button>
+          <button className="button button-outline tv-extra" onClick={onSettings}>Моя комната</button>
           <div className="remote-step">
             <button
               className="icon-button"

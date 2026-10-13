@@ -2,6 +2,7 @@ import { useState } from "react";
 import Icon from "./Icon";
 import Poster from "./Poster";
 import { tv } from "../tvController";
+import {tvMode} from '../tvRemote';
 export function ProgramGuide({ snapshot, onWatch }) {
   const [channelId, setChannelId] = useState(snapshot.channel?.id);
   const [day, setDay] = useState(0);
@@ -14,7 +15,7 @@ export function ProgramGuide({ snapshot, onWatch }) {
       <div className="guide-filters">
         <label className="select-field">
           <span>Канал</span>
-          <select
+          {tvMode ? <div className="tv-guide-channels">{snapshot.channels.map(({channel})=><button className={`button ${channelId===channel.id?'button-coral':'button-outline'}`} aria-pressed={channelId===channel.id} key={channel.id} onClick={()=>setChannelId(channel.id)}>{channel.shortName}</button>)}</div> : <select
             aria-label="Канал телепрограммы"
             value={channelId}
             onChange={(event) => setChannelId(event.target.value)}
@@ -24,8 +25,8 @@ export function ProgramGuide({ snapshot, onWatch }) {
                 {channel.number} · {channel.shortName || channel.name}
               </option>
             ))}
-          </select>
-          <Icon name="down" size={17} />
+          </select>}
+          {!tvMode && <Icon name="down" size={17} />}
         </label>
         <div className="day-tabs" aria-label="День телепрограммы">
           {["Сегодня", "Завтра", "Послезавтра"].map((label, index) => (

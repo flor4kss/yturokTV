@@ -1398,6 +1398,14 @@ export const tv = {
       resumeActivePlayer();
     });
   },
+  suspend() {
+    if(!state.isTVStarted)return;
+    state.isPaused=true;
+    $("hls-player")?.pause();state.ytPlayer?.pauseVideo?.();stopRutube();stopPromoMusic();notify();
+  },
+  resume() {
+    if(state.isTVStarted && state.isPaused)action(()=>playCurrentChannel(false));
+  },
   sourceFailure() {
     if (state.currentShow?.type === "youtube" || state.currentShow?.youtubeId)
       return action(() => {

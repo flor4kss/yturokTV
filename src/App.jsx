@@ -271,6 +271,7 @@ export default function App() {
               onSchedule={() => setModal("guide")}
               onToast={showToast}
               onChannels={() => setModal("channels")}
+              onSettings={() => setModal("settings")}
             />
             <CommunityPanel
               snapshot={snapshot}
