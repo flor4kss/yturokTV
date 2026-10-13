@@ -36,7 +36,7 @@ export default function App() {
     return Array.isArray(value) ? value : [];
   });
   const [sounds, setSounds] = useState(() => saved("yturok_sounds", true));
-  const [night, setNight] = useState(() => saved("yturok_night", false));
+  const [night, setNight] = useState(() => saved("yturok_night", new URLSearchParams(location.search).get('tv')==='1'));
   const [theater, setTheater] = useState(
     () => saved("yturok_wide_screen", true) === true,
   );

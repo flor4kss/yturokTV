@@ -4772,3 +4772,9 @@ kbd {
 #yt-player-container {
   pointer-events: none;
 }
+/* TV overrides must follow the desktop/theater layout rules. */
+.tv-mode .watch-layout > aside,.tv-mode .app-header,.tv-mode .app-footer,.tv-mode .watch-section-heading,.tv-mode .now-playing,.tv-mode .watch-smallprint {display:none!important;}
+.tv-mode #watch-player {z-index:20;}
+.tv-mode .tv-stage {height:100vh!important;max-height:none!important;min-height:0!important;aspect-ratio:auto!important;border-radius:0!important;background:#000!important;}
+.tv-mode .watch-heading,.tv-mode .remote-channel strong {color:#fff!important;}
+.tv-mode .player-controls {bottom:0!important;}
