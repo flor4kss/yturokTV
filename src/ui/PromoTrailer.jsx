@@ -21,7 +21,7 @@ export default function PromoTrailer({trailer,item,elapsed,active,onPlaying}) {
       if(item.promoVideoType==='hls'){
         const {default:Hls}=await import('hls.js');if(disposed)return;
         if(Hls.isSupported()){
-          hls=new Hls({maxBufferLength:15,backBufferLength:0,startPosition:60});hls.loadSource(item.promoVideoUrl);hls.attachMedia(video);
+          hls=new Hls({maxBufferLength:15,backBufferLength:0,startPosition:60});hls.loadSource(new URLSearchParams(location.search).get('tv')==='1' ? (item.promoSources?.find(s=>s.quality===480)?.url || item.promoVideoUrl) : item.promoVideoUrl);hls.attachMedia(video);
           hls.on(Hls.Events.MANIFEST_PARSED,()=>{if(!disposed)video.play().catch(()=>{});});
           hls.on(Hls.Events.ERROR,(_,data)=>{if(data.fatal&&!disposed){setPlaying(false);onPlaying(false);setStatus('Видео недоступно · обложка');}});
         }else{video.src=item.promoVideoUrl;video.play().catch(()=>{});}

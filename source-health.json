@@ -1,0 +1,1360 @@
+{
+  "checkedAt": "2026-10-14T08:17:01.693802+00:00",
+  "scope": "One episode per anime release (720/480 manifests), all newly imported cartoon MP4 headers. Not full-length playback.",
+  "results": [
+    {
+      "title": "Доктор Стоун",
+      "episode": "Серия 1: Каменный мир",
+      "releaseId": 8398,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/8398/1/720/cdd452f04705ec04e81e2d666693327e.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Доктор Стоун",
+      "episode": "Серия 1: Каменный мир",
+      "releaseId": 8398,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/8398/1/480/4321c862f4ae7f8d750ea70f547fc80e.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Доктор Стоун: Каменные Войны",
+      "episode": "Серия 1",
+      "releaseId": 8856,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/8856/1/720/0a6bce94e35209d6926da53bb7a98753.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Доктор Стоун: Каменные Войны",
+      "episode": "Серия 1",
+      "releaseId": 8856,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/8856/1/480/f20c4db2b848de462bf4e4d93993b909.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Доктор Стоун: Рюсуй",
+      "episode": "Серия 1",
+      "releaseId": 9451,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/9451/1/720/f5551088dc5cad600707696c98915e3f.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Доктор Стоун: Рюсуй",
+      "episode": "Серия 1",
+      "releaseId": 9451,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/9451/1/480/7d034cad8255f6f5b8b64889feea43b2.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Доктор Стоун: Новый мир",
+      "episode": "Серия 1: Карта Нового Мира",
+      "releaseId": 9407,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/9407/1/720/0c86efa295b24f27566b527d3340ceeb.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Доктор Стоун: Новый мир",
+      "episode": "Серия 1: Карта Нового Мира",
+      "releaseId": 9407,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/9407/1/480/4893fa9ed4d06c49ee25a31b52c1e47e.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Доктор Стоун: Научное будущее",
+      "episode": "Серия 1: Рюсуй против Сэнку",
+      "releaseId": 9842,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/9842/1/720/23649fd2746f4bef54d66f0a161901f5.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Доктор Стоун: Научное будущее",
+      "episode": "Серия 1: Рюсуй против Сэнку",
+      "releaseId": 9842,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/9842/1/480/f8e54226ac2e899dc8b30ccc46fe3f22.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Доктор Стоун: Научное будущее. Часть 2",
+      "episode": "Серия 1: Под одной луной",
+      "releaseId": 9972,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/9972/1/720/20f31d2199757e24fc9bfc1b4005c82f.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Доктор Стоун: Научное будущее. Часть 2",
+      "episode": "Серия 1: Под одной луной",
+      "releaseId": 9972,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/9972/1/480/a14c4072619ae3cddbaff22de90694f5.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Доктор Стоун: Научное будущее. Часть 3",
+      "episode": "Серия 1: Двигатель будущего",
+      "releaseId": 10162,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/10162/1/720/8624f766e66b3bea64efc59ce8e158cd.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Доктор Стоун: Научное будущее. Часть 3",
+      "episode": "Серия 1: Двигатель будущего",
+      "releaseId": 10162,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/10162/1/480/73033bb22156161972130eec82e6d521.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Одинокий рокер!",
+      "episode": "Серия 1",
+      "releaseId": 9293,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/9293/1/720/22c6c333192895bd2ec3fe6cdb36dd57.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Одинокий рокер!",
+      "episode": "Серия 1",
+      "releaseId": 9293,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/9293/1/480/8b0a345b56efddd718e87ba3a0ead81b.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Семья шпиона",
+      "episode": "Серия 1",
+      "releaseId": 9161,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/9161/1/720/035988346d1cc4626f7126516a92d59a.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Семья шпиона",
+      "episode": "Серия 1",
+      "releaseId": 9161,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/9161/1/480/3b6ab3a751d76e39583856b6af67f1fa.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Семья шпиона. Часть 2",
+      "episode": "Серия 1",
+      "releaseId": 9259,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/9259/1/720/89862cdadfc38422af90b881a559fcf2.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Семья шпиона. Часть 2",
+      "episode": "Серия 1",
+      "releaseId": 9259,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/9259/1/480/eb3770c30d8767598d298c8baee95617.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Семья шпиона 2",
+      "episode": "Серия 1: ПРОСЛЕДИТЬ ЗА МАМОЙ И ПАПОЙ",
+      "releaseId": 9535,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/9535/1/720/d1d04089a4d94a6c79fef03e9762a5ec.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Семья шпиона 2",
+      "episode": "Серия 1: ПРОСЛЕДИТЬ ЗА МАМОЙ И ПАПОЙ",
+      "releaseId": 9535,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/9535/1/480/40df392fd4b24d53c02b2eeb8a3c3075.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Семья шпиона 3",
+      "episode": "Серия 1: Переполох в Берлинте",
+      "releaseId": 10029,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/10029/1/720/d804fb39ffc1b0369e79830a34b61dd8.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Семья шпиона 3",
+      "episode": "Серия 1: Переполох в Берлинте",
+      "releaseId": 10029,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/10029/1/480/bb7368af5e1d0669e753c832c281eb91.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "K-On!",
+      "episode": "Серия 1",
+      "releaseId": 824,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/824/1/720/9bbf5a695f1c4528a6ba014dd0dc2564.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "K-On!",
+      "episode": "Серия 1",
+      "releaseId": 824,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/824/1/480/dd6c686ceeebd972706d1c003b77c11f.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Магическая битва",
+      "episode": "Серия 1",
+      "releaseId": 8789,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/8789/1/720/6673036bb2bf535a5e149abe4ed52af3.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Магическая битва",
+      "episode": "Серия 1",
+      "releaseId": 8789,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/8789/1/480/64c606451484062f918a81c46a56e534.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Магическая битва 2",
+      "episode": "Серия 1",
+      "releaseId": 9470,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/9470/1/720/6dfe87dbed2b38b7ba1f51e93cf79f22.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Магическая битва 2",
+      "episode": "Серия 1",
+      "releaseId": 9470,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/9470/1/480/2a2b52de0c458d2914a9644fa1383fdb.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Магическая битва 3",
+      "episode": "Серия 1: ПРИВЕДЕНИЕ В ИСПОЛНЕНИЕ",
+      "releaseId": 10088,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/10088/1/720/be0ea4631c9bb05858c95cf6b5ea63a7.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Магическая битва 3",
+      "episode": "Серия 1: ПРИВЕДЕНИЕ В ИСПОЛНЕНИЕ",
+      "releaseId": 10088,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/10088/1/480/0a982c7e06f13c094f343d5315d70394.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Клинок, рассекающий демонов",
+      "episode": "Серия 1",
+      "releaseId": 8325,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/8325/1/720/6345e24e3d20a19882e0a992f9f7d8d4.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Клинок, рассекающий демонов",
+      "episode": "Серия 1",
+      "releaseId": 8325,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/8325/1/480/8030dc1726b5daadd3dd0a54c9500204.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Клинок, Рассекающий Демонов: Бесконечный Поезд (ТВ)",
+      "episode": "Серия 1",
+      "releaseId": 9103,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/9103/1/720/970c239157a74ac70de3c087f92df07c.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Клинок, Рассекающий Демонов: Бесконечный Поезд (ТВ)",
+      "episode": "Серия 1",
+      "releaseId": 9103,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/9103/1/480/302e38ba52fde2774bf8531228528dc5.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Клинок, Рассекающий Демонов: Квартал Красных Фонарей",
+      "episode": "Серия 1",
+      "releaseId": 9093,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/9093/1/720/8d0186f2eb791f79c8ff1a62d255514c.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Клинок, Рассекающий Демонов: Квартал Красных Фонарей",
+      "episode": "Серия 1",
+      "releaseId": 9093,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/9093/1/480/d2ba988c5ccedff6d835d2c72e23b176.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Клинок, Рассекающий Демонов: Деревня Кузнецов",
+      "episode": "Серия 1",
+      "releaseId": 9406,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/9406/1/720/ae83598c3fe481738e440a569644df82.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Клинок, Рассекающий Демонов: Деревня Кузнецов",
+      "episode": "Серия 1",
+      "releaseId": 9406,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/9406/1/480/df31b96abeeb585b1be0ac462f85da78.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Клинок, Рассекающий Демонов: Тренировка Хашира",
+      "episode": "Серия 1: Победить Кибутсуджи Мудзана",
+      "releaseId": 9660,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/9660/1/720/fe5d2f0a470dfca5d9ee987ea2e8e4ea.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Клинок, Рассекающий Демонов: Тренировка Хашира",
+      "episode": "Серия 1: Победить Кибутсуджи Мудзана",
+      "releaseId": 9660,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/9660/1/480/41d5eced0b261022d7c3f31876c09fe0.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Поднятие уровня в одиночку",
+      "episode": "Серия 1",
+      "releaseId": 9600,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/9600/1/720/70c1078491b5d9ada9d72f4b558d36ef.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Поднятие уровня в одиночку",
+      "episode": "Серия 1",
+      "releaseId": 9600,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/9600/1/480/fee3de6f86af9ed0c52a8604b39c5329.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Поднятие уровня в одиночку 2: Восстаньте из тени",
+      "episode": "Серия 1",
+      "releaseId": 9839,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/9839/1/720/93328dd3b8bbd19a0d4f9d70439d07a9.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Поднятие уровня в одиночку 2: Восстаньте из тени",
+      "episode": "Серия 1",
+      "releaseId": 9839,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/9839/1/480/b5049ca641da79799fabbaee52c6d889.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Ванпанчмен",
+      "episode": "Серия 1",
+      "releaseId": 1210,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/1210/1/720/4c5ec6d26457611fef4853bfa7053746.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Ванпанчмен",
+      "episode": "Серия 1",
+      "releaseId": 1210,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/1210/1/480/17bf178a174d4c9e8b5f09739ed0f381.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Ванпанчмен 2",
+      "episode": "Серия 1",
+      "releaseId": 8335,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/8335/1/720/6ab52d79716711059e9038e2467aa08c.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Ванпанчмен 2",
+      "episode": "Серия 1",
+      "releaseId": 8335,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/8335/1/480/513332002961f0e9d838e8c037d0b28a.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Ванпанчмен 3",
+      "episode": "Серия 0",
+      "releaseId": 10083,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/10083/0/720/0fcde539ae829487af23188ece8c73a1.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Ванпанчмен 3",
+      "episode": "Серия 0",
+      "releaseId": 10083,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/10083/0/480/a9c9e1b5dfb3d93cf6bab5f5b7ab5419.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Моб Психо 100",
+      "episode": "Серия 1",
+      "releaseId": 2622,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/2622/1/720/d14330a13846be8a068ab7e52796a0c2.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Моб Психо 100",
+      "episode": "Серия 1",
+      "releaseId": 2622,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/2622/1/480/983e63dd9d352685782f5e7cfed8b860.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Моб Психо 100 2",
+      "episode": "Серия 1",
+      "releaseId": 8033,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/8033/1/720/489127959890e8f0180cfd31c234ed2d.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Моб Психо 100 2",
+      "episode": "Серия 1",
+      "releaseId": 8033,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/8033/1/480/d3b69d21e7a2398e515c9168a1e45fb1.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Моб Психо 100 3",
+      "episode": "Серия 1: Будущее: Карьерные пути",
+      "releaseId": 9262,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/9262/1/720/6e8e6ed581e0ccdb514aa695e4329ddb.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Моб Психо 100 3",
+      "episode": "Серия 1: Будущее: Карьерные пути",
+      "releaseId": 9262,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/9262/1/480/9d274d395c9b6261bcb5f61e0473747b.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Сага о Винланде",
+      "episode": "Серия 1",
+      "releaseId": 8424,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/8424/1/720/433eee92432a756a072ce3a99cdf7bd3.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Сага о Винланде",
+      "episode": "Серия 1",
+      "releaseId": 8424,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/8424/1/480/c4751c45a3848cb8c02c4863c59cde4c.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Сага о Винланде 2",
+      "episode": "Серия 1: Раб",
+      "releaseId": 9327,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/9327/1/720/75189edb758f7bcd9d33d75685539852.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Сага о Винланде 2",
+      "episode": "Серия 1: Раб",
+      "releaseId": 9327,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/9327/1/480/51b59a4a067fbccf78f95bdeb7713d04.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Киберпанк: Бегущие по краю",
+      "episode": "Серия 1: Подвел Тебя",
+      "releaseId": 9307,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/9307/1/720/585351ecd1ab4afbef42db505154e407.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Киберпанк: Бегущие по краю",
+      "episode": "Серия 1: Подвел Тебя",
+      "releaseId": 9307,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/9307/1/480/37b4165c5b69a590931e607adc89c48c.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Токийский Гуль",
+      "episode": "Серия 1",
+      "releaseId": 432,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/432/1/720/2257451a7b079b3e54fba7676460877b.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Токийский Гуль",
+      "episode": "Серия 1",
+      "releaseId": 432,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/432/1/480/57f58e0080219bdaa85c096b0a483eaf.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Токийский Гуль √A (ТВ-2)",
+      "episode": "Серия 1",
+      "releaseId": 433,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/433/1/720/947937761f7f00167ba3fe587581fc29.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Токийский Гуль √A (ТВ-2)",
+      "episode": "Серия 1",
+      "releaseId": 433,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/433/1/480/034f695486b2326d47f13fa66e44bc5b.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Токийский Гуль: Перерождение",
+      "episode": "Серия 1",
+      "releaseId": 6089,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/6089/1/720/1d67ed755a74cc77f048778877db8592.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Токийский Гуль: Перерождение",
+      "episode": "Серия 1",
+      "releaseId": 6089,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/6089/1/480/98be390d207ee2ad883a3386de947bc8.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Психопаспорт",
+      "episode": "Серия 1: Преступный коэффициент",
+      "releaseId": 9527,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/9527/1/720/46c2892b2791b7abf58f9a5bcabc9097.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Психопаспорт",
+      "episode": "Серия 1: Преступный коэффициент",
+      "releaseId": 9527,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/9527/1/480/c212bcacdfb9aa1a85452655ca506c2a.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Психо-паспорт 2",
+      "episode": "Серия 1",
+      "releaseId": 418,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/418/1/720/c66e508e5b651da13426a83834db2c22.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Психо-паспорт 2",
+      "episode": "Серия 1",
+      "releaseId": 418,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/418/1/480/f2a84f3b91cee3595c806af1fde04db6.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Психопаспорт 3",
+      "episode": "Серия 1",
+      "releaseId": 8506,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/8506/1/720/e7229ef8447aaa89248d8254dab3909f.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Психопаспорт 3",
+      "episode": "Серия 1",
+      "releaseId": 8506,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/8506/1/480/f55eb6757f02384e3fd18e573597d604.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Психопаспорт 3: Первый инспектор",
+      "episode": "Серия 1",
+      "releaseId": 8849,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/8849/1/720/3edacbd13c00184ca0a669120c966865.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Психопаспорт 3: Первый инспектор",
+      "episode": "Серия 1",
+      "releaseId": 8849,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/8849/1/480/1bea2e49074b69605905447f9df5ba50.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 1",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.001.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 2",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.002.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 3",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.003.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 4",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.004.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 5",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.005.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 6",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.006.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 7",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.007.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 8",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.008.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 9",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.009.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 10",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.010.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 11",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.011.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 12",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.012.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 13",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.013.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 14",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.014.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 15",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.015.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 16",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.016.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 17",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.017.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 18",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.018.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 19",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.019.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 20",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.020.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 21",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.021.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 22",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.022.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 23",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.023.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 24",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.024.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 25",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.025.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 26",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.026.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 27",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.027.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 28",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.028.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 29",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.029.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 30",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.030.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 31",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.031.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 32",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.032.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 33",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.033.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 34",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.034.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 35",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.035.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 36",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.036.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 37",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.037.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 38",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.038.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 39",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.039.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 40",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.040.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 41",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.041.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 42",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.042.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 43",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.043.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 44",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.044.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 45",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.045.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 46",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.046.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 47",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/Fiksiki.029/Fiksiki.047.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Лунтик",
+      "episode": "Сборник «Редкий диск» · выпуск 1",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/luntik-redkiy-disk/Luntik.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Лунтик",
+      "episode": "Сборник «Редкий диск» · выпуск 2",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/luntik-redkiy-disk/Luntik1.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Лунтик",
+      "url": "https://archive.org/download/luntik-redkiy-disk/Luntik2.mp4",
+      "http": 206,
+      "validHeader": true,
+      "retried": true
+    },
+    {
+      "title": "Лунтик",
+      "episode": "Сборник «Редкий диск» · выпуск 4",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/luntik-redkiy-disk/Luntik3.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Лунтик",
+      "episode": "Сборник «Редкий диск» · выпуск 5",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/luntik-redkiy-disk/Luntik4.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Лунтик",
+      "episode": "Сборник «Редкий диск» · выпуск 6",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/luntik-redkiy-disk/Luntik5.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Лунтик",
+      "episode": "Сборник «Редкий диск» · выпуск 7",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/luntik-redkiy-disk/Luntik6.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Лунтик",
+      "episode": "Сборник «Редкий диск» · выпуск 8",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/luntik-redkiy-disk/Luntik7.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Лунтик",
+      "episode": "Сборник «Редкий диск» · выпуск 9",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/luntik-redkiy-disk/Luntik8.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Лунтик",
+      "episode": "Сборник «Редкий диск» · выпуск 10",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/luntik-redkiy-disk/Luntik9.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Лунтик",
+      "episode": "Сборник «Редкий диск» · выпуск 11",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/luntik-redkiy-disk/Luntik10.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Лунтик",
+      "episode": "Сборник «Редкий диск» · выпуск 12",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/luntik-redkiy-disk/Luntik11.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Лунтик",
+      "episode": "Сборник «Редкий диск» · выпуск 13",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/luntik-redkiy-disk/Luntik12.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Лунтик",
+      "episode": "Сборник «Редкий диск» · выпуск 14",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/luntik-redkiy-disk/Luntik13.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Лунтик",
+      "episode": "Сборник «Редкий диск» · выпуск 15",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/luntik-redkiy-disk/Luntik14.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Лунтик",
+      "episode": "Сборник «Редкий диск» · выпуск 16",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/luntik-redkiy-disk/Luntik15.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Лунтик",
+      "episode": "Сборник «Редкий диск» · выпуск 17",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/luntik-redkiy-disk/Luntik16.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Лунтик",
+      "episode": "Сборник «Редкий диск» · выпуск 18",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/luntik-redkiy-disk/Luntik17.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Лунтик",
+      "episode": "Сборник «Редкий диск» · выпуск 19",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/luntik-redkiy-disk/Luntik18.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Лунтик",
+      "episode": "Сборник «Редкий диск» · выпуск 20",
+      "releaseId": null,
+      "quality": null,
+      "url": "https://archive.org/download/luntik-redkiy-disk/Luntik19.mp4",
+      "http": 206,
+      "validHeader": true
+    },
+    {
+      "title": "Адский босс",
+      "episode": "Серия 1",
+      "releaseId": 8850,
+      "quality": 720,
+      "url": "https://cache.libria.fun/videos/media/ts/8850/1/720/eef89aca88e3f2f0bbc65adb74bb7c8c.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    },
+    {
+      "title": "Адский босс",
+      "episode": "Серия 1",
+      "releaseId": 8850,
+      "quality": 480,
+      "url": "https://cache.libria.fun/videos/media/ts/8850/1/480/5713388ffdd3fecb4d6d1abbeaa83565.m3u8?countryIso=PL&isAuthorized=0&isWithVideoAds=1&isWithVideoAdsAlways=1",
+      "http": 200,
+      "validHeader": true
+    }
+  ],
+  "decodeSamples": [
+    {
+      "title": "Доктор Стоун: Каменные Войны",
+      "episode": "Серия 1",
+      "decoded": true,
+      "seconds": 2
+    },
+    {
+      "title": "Сага о Винланде 2",
+      "episode": "Серия 1: Раб",
+      "decoded": true,
+      "seconds": 2
+    },
+    {
+      "title": "Фиксики",
+      "episode": "Серия 1",
+      "decoded": true,
+      "seconds": 2
+    },
+    {
+      "title": "Лунтик",
+      "episode": "Сборник «Редкий диск» · выпуск 1",
+      "decoded": true,
+      "seconds": 2
+    }
+  ],
+  "rutubeBrowserCheck": {
+    "episode": "Подозрительная сова, сезон 1 серия 1",
+    "startedAfterPreroll": true,
+    "advancedSeconds": 7.9,
+    "appErrors": 0,
+    "scope": "Desktop Chrome, real official embed; not a complete-episode or hardware TV test."
+  }
+}

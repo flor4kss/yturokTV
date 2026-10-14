@@ -1,0 +1,96 @@
+{
+  "anilibria": {
+    "anime-light": {
+      "dr-stone": [
+        8398,
+        8856,
+        9451,
+        9407,
+        9842,
+        9972,
+        10162
+      ],
+      "bocchi": [
+        9293
+      ],
+      "spy-family": [
+        9161,
+        9259,
+        9535,
+        10029
+      ],
+      "k-on": [
+        824
+      ]
+    },
+    "anime-drive": {
+      "jujutsu-kaisen": [
+        8789,
+        9470,
+        10088
+      ],
+      "demon-slayer": [
+        8325,
+        9103,
+        9093,
+        9406,
+        9660
+      ],
+      "solo-leveling": [
+        9600,
+        9839
+      ],
+      "one-punch": [
+        1210,
+        8335,
+        10083
+      ],
+      "mob-psycho": [
+        2622,
+        8033,
+        9262
+      ]
+    },
+    "anime-edge": {
+      "vinland": [
+        8424,
+        9327
+      ],
+      "cyberpunk": [
+        9307
+      ],
+      "tokyo-ghoul": [
+        432,
+        433,
+        6089
+      ],
+      "psycho-pass": [
+        9527,
+        418,
+        8506,
+        8849
+      ]
+    },
+    "cartoons-edge": {
+      "helluva": [
+        8850
+      ]
+    }
+  },
+  "archive": [
+    {
+      "channel": "cartoons-light",
+      "title": "Фиксики",
+      "collection": "Fiksiki.029",
+      "pattern": "^Fiksiki\\.(\\d+)\\.mp4$",
+      "numbered": true
+    },
+    {
+      "channel": "cartoons-light",
+      "title": "Лунтик",
+      "collection": "luntik-redkiy-disk",
+      "pattern": "^Luntik(\\d*)\\.mp4$",
+      "numbered": false
+    }
+  ]
+}

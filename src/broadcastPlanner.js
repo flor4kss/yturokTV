@@ -4,7 +4,7 @@ export function invalidatePlan(channel){cache.delete(channel);}
 const rotate = (items, step) => items.map((_,i)=>items[(i+step)%items.length]);
 function promo(next, remaining=0) {
   return {title:`Анонс: ${next.title}`,episode:'Скоро на этом канале',duration:18,type:'bumper',kind:'promo',promoTitle:next.title,
-    promoVideoUrl:['hls','mp4'].includes(next.type)?next.url:undefined,promoVideoType:next.type,poster:next.poster,promoYoutubeId:next.youtubeId,promoBlock:next.block,promoDelay:remaining};
+    promoVideoUrl:['hls','mp4','video'].includes(next.type)?next.url:undefined,promoVideoType:next.type,promoSources:next.sources,poster:next.poster,promoYoutubeId:next.youtubeId,promoBlock:next.block,promoDelay:remaining};
 }
 function split(item,next,repeat) {
   const cut=item.adBreakAt;

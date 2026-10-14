@@ -29,6 +29,11 @@ export function installTvRemote() {
     }
     if(!key.startsWith('Arrow'))return false;
     wake();
+    if(active?.matches('select') && ['ArrowLeft','ArrowRight'].includes(key)){
+      const next=Math.max(0,Math.min(active.options.length-1,active.selectedIndex+(key==='ArrowRight'?1:-1)));
+      Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype,'value').set.call(active,active.options[next].value);
+      active.dispatchEvent(new Event('change',{bubbles:true}));return true;
+    }
     if(active?.matches('input[type="range"]') && ['ArrowLeft','ArrowRight'].includes(key)){
       const value=Math.max(Number(active.min||0),Math.min(Number(active.max||100),Number(active.value)+(key==='ArrowRight'?5:-5)));
       Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(active,String(value));

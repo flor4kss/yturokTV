@@ -1,3 +1,5 @@
+import {directRutubeItem,shouldResolveRutube,resolveRutube,resetRutube,rejectDirectRutube} from "./rutubeDirect";
+import {mediaSource,rejectSource,resetSourceFailures} from "./mediaSources";
 let Hls;
 let sourceLoadTimer;
 const stableTV = new URLSearchParams(window.location.search).get("tv") === "1";
@@ -25,7 +27,18 @@ function finishLoading() {
   state.error = null;
   notify();
 }
+function tryAlternateSource() {
+  const item=state.currentShow;
+  if(item?.directRutube){
+    rejectDirectRutube(item);state.hlsInstance?.destroy();state.hlsInstance=null;state.currentStreamUrl=null;
+    playCurrentChannel(false);return true;
+  }
+  if (!item || !['hls','video','mp4'].includes(item.type) || !rejectSource(state.currentStreamUrl,item,stableTV))return false;
+  state.hlsInstance?.destroy();state.hlsInstance=null;state.currentStreamUrl=null;
+  playCurrentChannel(false);return true;
+}
 function failLoading(message) {
+  if(tryAlternateSource())return;
   clearTimeout(sourceLoadTimer);
   state.buffering = false;
   state.error = message;
@@ -39,17 +52,17 @@ function armLoadingTimeout() {
       failLoading(
         "Канал долго не отвечает. Повтори подключение или выбери другой эфир.",
       );
-  }, stableTV ? 90000 : 15000);
+  }, stableTV || state.currentShow?.type === "rutube" ? 90000 : 15000);
 }
 import { DEFAULT_CHANNELS } from "../channels.js";
 import { normalizeChannels } from "./programMetadata";
 import { promoMessage } from "./broadcastMessages";
 import { broadcastPosition, broadcastRows, invalidatePlan } from "./broadcastPlanner";
-import { playRutube, stopRutube, rutubeVolume, rutubeSeek, rutubeTime, resumeRutube } from "./rutubePlayer";
+import { playRutube, stopRutube, rutubeVolume, rutubeSeek, rutubeTime, rutubeIsPlaying, resumeRutube } from "./rutubePlayer";
 import { startPromoMusic, stopPromoMusic, setPromoMusicVolume } from "./promoMusic";
 
 const isCurrentCatalog = (data) => Array.isArray(data) && data.length === 6 &&
-  data.every(channel => channel.catalogVersion === 4);
+  data.every(channel => channel.catalogVersion === 5);
 
 // Application State
 const state = {
@@ -358,8 +371,9 @@ function testPosition() {
   return {currentItem,elapsed:Math.min(elapsed,currentItem.duration)+(currentItem.sourceOffset||0),broadcastElapsed:elapsed,nextItem:testSequence[index+1]||currentItem,progressPercent:Math.min(100,elapsed/currentItem.duration*100)};
 }
 function calculateBroadcastPosition(channel, dayOffset = 0) {
-  if(channel.id === "test-lab" && testSequence.length)return testPosition();
-  return broadcastPosition(channel, playbackTimestamp() + dayOffset * 86400000);
+  if(channel.id === "test-lab" && testSequence.length){const position=testPosition();return {...position,currentItem:directRutubeItem(position.currentItem)};}
+  const position=broadcastPosition(channel, playbackTimestamp() + dayOffset * 86400000);
+  return {...position,currentItem:directRutubeItem(position.currentItem)};
 }
 
 // A shorter source must not replay the same episode until its scheduled end.
@@ -425,7 +439,7 @@ function playCurrentChannel(withGlitch = true) {
   const { currentItem, elapsed, nextItem, progressPercent } =
     calculateBroadcastPosition(channel);
   const reusingSource =
-    state.currentStreamUrl === currentItem.url &&
+    state.currentStreamUrl === (mediaSource(currentItem,stableTV)?.url || currentItem.url) &&
     state.currentShow?.type === currentItem.type;
   state.currentShow = currentItem;
   state.error = null;
@@ -463,11 +477,22 @@ function playCurrentChannel(withGlitch = true) {
   $("btn-go-live")?.classList.add("hidden");
   $("btn-start-over")?.classList.remove("hidden");
 
+  const streamUrl=mediaSource(currentItem,stableTV)?.url || currentItem.url;
+  state.sourceQuality=mediaSource(currentItem,stableTV)?.quality || null;
   const hlsVideo = $("hls-player");
   const ytContainer = $("yt-player-container");
   const bumperScreen = $("bumper-screen");
 
   // Handle Playback by Stream Type (Prioritize Direct Native Video Streams!)
+  if(shouldResolveRutube(currentItem)) {
+    hlsVideo?.pause();hlsVideo?.classList.add('hidden');ytContainer?.classList.add('hidden');bumperScreen?.classList.add('hidden');
+    resolveRutube(currentItem).then(()=>{
+      if(state.currentShow===currentItem)playCurrentChannel(false);
+    }).catch(()=>{
+      if(state.currentShow===currentItem)playCurrentChannel(false);
+    });
+    return;
+  }
   if(currentItem.type==='rutube') {
     state.hlsInstance?.destroy();state.hlsInstance=null;state.currentStreamUrl=null;
     hlsVideo?.pause();hlsVideo?.classList.add('hidden');
@@ -505,10 +530,10 @@ function playCurrentChannel(withGlitch = true) {
     // Seamless YouTube IFrame Stream (Auto-cropped, Zero YouTube Interface, Instant Seek)
     const ytId =
       currentItem.youtubeId ||
-      (currentItem.url
-        ? currentItem.url.includes("watch?v=")
-          ? currentItem.url.split("watch?v=")[1].split("&")[0]
-          : currentItem.url
+      (streamUrl
+        ? streamUrl.includes("watch?v=")
+          ? streamUrl.split("watch?v=")[1].split("&")[0]
+          : streamUrl
         : null);
 
     if (hlsVideo) {
@@ -556,7 +581,7 @@ function playCurrentChannel(withGlitch = true) {
     }
   } else if (
     currentItem.type === "video" ||
-    (currentItem.url && !currentItem.url.includes(".m3u8"))
+    (streamUrl && !streamUrl.includes(".m3u8"))
   ) {
     // Pure Direct MP4 Video Stream (Native HTML5 <video> - Zero YouTube interface / Zero Bot blocks!)
     if (ytContainer) {
@@ -575,16 +600,16 @@ function playCurrentChannel(withGlitch = true) {
         state.hlsInstance = null;
       }
 
-      const isNewUrl = state.currentStreamUrl !== currentItem.url;
-      state.currentStreamUrl = currentItem.url;
+      const isNewUrl = state.currentStreamUrl !== streamUrl;
+      state.currentStreamUrl = streamUrl;
 
-      if (isNewUrl || !hlsVideo.src || hlsVideo.src !== currentItem.url) {
-        hlsVideo.src = currentItem.url;
+      if (isNewUrl || !hlsVideo.src || hlsVideo.src !== streamUrl) {
+        hlsVideo.src = streamUrl;
         hlsVideo.muted = state.isTVStarted ? state.isMuted : true;
         hlsVideo.volume = state.volume / 100;
 
         const applySeek = () => {
-          if (state.currentStreamUrl !== currentItem.url) return;
+          if (state.currentStreamUrl !== streamUrl) return;
           if (elapsed > 0 && hlsVideo.duration && elapsed < hlsVideo.duration) {
             try {
               hlsVideo.currentTime = elapsed;
@@ -608,7 +633,7 @@ function playCurrentChannel(withGlitch = true) {
     }
   } else if (
     currentItem.type === "hls" ||
-    (currentItem.url && currentItem.url.includes(".m3u8"))
+    (streamUrl && streamUrl.includes(".m3u8"))
   ) {
     // Pure HLS Stream (Native AniLibria / HLS.js - Zero YouTube interface!)
     if (ytContainer) {
@@ -622,8 +647,8 @@ function playCurrentChannel(withGlitch = true) {
 
     if (hlsVideo) {
       hlsVideo.classList.remove("hidden");
-      const isNewUrl = state.currentStreamUrl !== currentItem.url;
-      state.currentStreamUrl = currentItem.url;
+      const isNewUrl = state.currentStreamUrl !== streamUrl;
+      state.currentStreamUrl = streamUrl;
 
       if ((isNewUrl || !state.hlsInstance) && hlsVideo.getAttribute("src")) {
         hlsVideo.removeAttribute("src");
@@ -633,9 +658,9 @@ function playCurrentChannel(withGlitch = true) {
       if (Hls.isSupported()) {
         if (isNewUrl || !state.hlsInstance) {
           if (state.hlsInstance) state.hlsInstance.destroy();
-          const hls = new Hls({ maxBufferLength: stableTV ? 90 : 30, maxMaxBufferLength: stableTV ? 120 : 600, maxBufferSize: stableTV ? 48 * 1000 * 1000 : 60 * 1000 * 1000, backBufferLength: stableTV ? 10 : 30, enableWorker: true });
+          const hls = new Hls({ startLevel:stableTV ? 0 : -1, maxBufferLength: stableTV ? 90 : 30, maxMaxBufferLength: stableTV ? 120 : 600, maxBufferSize: stableTV ? 48 * 1000 * 1000 : 60 * 1000 * 1000, backBufferLength: stableTV ? 10 : 30, enableWorker: true });
           state.hlsInstance = hls;
-          hls.loadSource(stableTV && currentItem.tvUrl ? currentItem.tvUrl : currentItem.url);
+          hls.loadSource(streamUrl);
           hls.attachMedia(hlsVideo);
           let recoveryAttempts = 0;
 
@@ -655,6 +680,7 @@ function playCurrentChannel(withGlitch = true) {
             if (data.fatal) {
               if (state.hlsInstance !== hls) return;
               recoveryAttempts++;
+              if(data.type===Hls.ErrorTypes.NETWORK_ERROR && (recoveryAttempts>=2 || [403,404,410].includes(data.response?.code)) && tryAlternateSource())return;
               if (recoveryAttempts > (stableTV ? 8 : 2)) {
                 state.error =
                   "Источник сейчас не отвечает. Можно повторить подключение или выбрать другой канал.";
@@ -693,7 +719,7 @@ function playCurrentChannel(withGlitch = true) {
         }
       } else if (hlsVideo.canPlayType("application/vnd.apple.mpegurl")) {
         if (isNewUrl) {
-          hlsVideo.src = currentItem.url;
+          hlsVideo.src = streamUrl;
           hlsVideo.currentTime = elapsed;
         }
         hlsVideo.muted = state.isTVStarted ? state.isMuted : true;
@@ -1222,7 +1248,7 @@ function startMasterLoop() {
         if (!stableTV && !state.isCatchUpMode && !state.isPaused) {
           if(currentItem.type==='rutube') {
             const drift=Math.abs(rutubeTime()-elapsed);
-            if(drift>8 && rutubeTime()>0)rutubeSeek(elapsed);
+            if(drift>8 && rutubeIsPlaying() && rutubeTime()>0)rutubeSeek(elapsed);
           } else if (currentItem.type === "youtube" || currentItem.youtubeId) {
             if (state.ytPlayer && state.ytPlayer.getCurrentTime) {
               try {
@@ -1310,6 +1336,7 @@ export async function initializeTV() {
         return;
       state.buffering = false;
       clearTimeout(sourceLoadTimer);
+      if(tryAlternateSource())return;
       state.error = "Не удалось подключиться к видео. Попробуйте другой канал.";
       notify();
     });
@@ -1435,7 +1462,7 @@ export const tv = {
       const isTest=state.channels[state.currentChannelIndex]?.id==="test-lab";
       let offset=0;try{offset=current?.type==='youtube' ? state.ytPlayer?.getCurrentTime?.()||0 : current?.type==='rutube' ? rutubeTime() : $("hls-player")?.currentTime||0;}catch{}
       const continuation=isTest && current?.type!=="bumper" ? {...current,sourceOffset:offset,duration:Math.max(1,(current.mediaDuration||current.duration)-offset),mediaDuration:current.mediaDuration||current.duration} : {...item,sourceOffset:0};
-      testSequence=[{title:`Анонс: ${item.title}`,episode:"Ручной запуск анонса",type:"bumper",kind:"promo",duration:30,promoTitle:item.title,poster:item.poster,promoYoutubeId:item.youtubeId,promoVideoUrl:['hls','mp4'].includes(item.type)?item.url:undefined,promoVideoType:item.type},continuation];
+      testSequence=[{title:`Анонс: ${item.title}`,episode:"Ручной запуск анонса",type:"bumper",kind:"promo",duration:30,promoTitle:item.title,poster:item.poster,promoYoutubeId:item.youtubeId,promoVideoUrl:['hls','mp4','video'].includes(item.type)?(mediaSource(item,stableTV)?.url || item.url):undefined,promoVideoType:item.type},continuation];
       testStartedAt=playbackTimestamp();state.currentChannelIndex=state.channels.findIndex(c=>c.id==="test-lab");
       state.isTVStarted=true;state.isPaused=false;playCurrentChannel(false);
     });
@@ -1528,6 +1555,7 @@ export const tv = {
     return action(() => playCurrentChannel(false));
   },
   retry() {
+    resetSourceFailures(state.currentShow);resetRutube(state.currentShow);
     return action(() => {
       state.error = null;
       state.currentYtId = null;

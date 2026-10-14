@@ -101,7 +101,7 @@ export default function Player({
       }}
       onPointerDown={wake}
     >
-      {channel?.id === "test-lab" && <details className="test-player-tools"><summary>Тестовый пульт · выбрать передачу или анонс</summary><TestControls snapshot={snapshot}/></details>}
+      {channel?.id === "test-lab" && <details className="test-player-tools"><summary tabIndex={0}>Тестовый пульт · выбрать передачу или анонс</summary><TestControls snapshot={snapshot}/></details>}
       <div className="watch-heading">
         <div className="remote-channel">
           <span className="remote-number">{channel?.number}</span>
@@ -173,7 +173,7 @@ export default function Player({
           <img src={`${import.meta.env.BASE_URL}art/tv-muse.png`} alt="" />
         </div>
         <video id="hls-player" className="video-surface hidden" playsInline />
-        <iframe id="rutube-player" className="video-surface hidden" title="Эфир 2×2" allow="autoplay; fullscreen" />
+        <iframe id="rutube-player" className="video-surface hidden" title="Эфир 2×2" allow="autoplay; encrypted-media; fullscreen" />
         <div id="yt-player-container" className="video-surface hidden">
           <div id="yt-player" />
         </div>
