@@ -24,7 +24,7 @@ export default function PromoArtwork({item,channel,elapsed=0,active=true}) {
   if(item.kind!=='promo')return null;
   return <div className={`promo-artwork ${src?'has-art':''} ${trailerPlaying?'has-trailer':''}`} aria-hidden="true" style={{'--promo-accent':channel?.color}}>
     {src && <><img className="promo-backdrop" src={src} onError={()=>setSrc(null)} alt=""/><img className="promo-poster" src={src} alt=""/></>}
-    {trailer && <PromoTrailer trailer={trailer} item={item} elapsed={elapsed} active={active} onPlaying={setTrailerPlaying}/>}
+    {(trailer || item.promoVideoUrl) && <PromoTrailer trailer={trailer} item={item} elapsed={elapsed} active={active} onPlaying={setTrailerPlaying}/>}
     <div className="promo-orbit"/><span className="promo-category">{channel?.categoryName}</span>
   </div>;
 }

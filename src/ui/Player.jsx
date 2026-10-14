@@ -1,3 +1,4 @@
+import TestControls from "./TestControls";
 import { useEffect, useRef, useState } from "react";
 import Icon from "./Icon";
 import Poster from "./Poster";
@@ -100,6 +101,7 @@ export default function Player({
       }}
       onPointerDown={wake}
     >
+      {channel?.id === "test-lab" && <details className="test-player-tools"><summary>Тестовый пульт · выбрать передачу или анонс</summary><TestControls snapshot={snapshot}/></details>}
       <div className="watch-heading">
         <div className="remote-channel">
           <span className="remote-number">{channel?.number}</span>

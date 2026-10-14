@@ -1,3 +1,4 @@
+import TestControls from "./TestControls";
 import { useState } from "react";
 import Icon from "./Icon";
 import Poster from "./Poster";
@@ -126,6 +127,8 @@ export function Settings({
         Устройся поудобнее. Здесь всё под тебя.
       </p>
       <div className="settings-group">
+        <SwitchRow icon="sliders" title="Тестовый режим" description="Дополнительный канал: любая серия и ручной запуск анонсов" checked={snapshot.testMode} onChange={()=>tv.testMode(!snapshot.testMode)}/>
+        {snapshot.testMode && <TestControls snapshot={snapshot}/>}
         <SwitchRow
           icon="audio"
           title="Звуки прикосновений"

@@ -53,6 +53,7 @@ const isCurrentCatalog = (data) => Array.isArray(data) && data.length === 6 &&
 
 // Application State
 const state = {
+  testMode: localStorage.getItem("yturok_test_mode") === "true",
   channels: normalizeChannels(DEFAULT_CHANNELS),
   currentChannelIndex: 0,
   activeCategory: "all",
@@ -341,7 +342,23 @@ if (window.YT && window.YT.Player) {
 // -----------------------------------------------------------------------------
 // Deterministic Sverdlovsk Broadcast Scheduler (UTC+5 / YEKT)
 // -----------------------------------------------------------------------------
+let testSequence = [];
+let testStartedAt = 0;
+function attachTestChannel() {
+  state.channels = state.channels.filter(c => c.id !== "test-lab");
+  if (!state.testMode) return;
+  const library = state.channels.flatMap(c => c.schedule).filter(i => i.type !== "bumper" && !i.sourceOffset);
+  state.channels.push({id:"test-lab",number:"07",name:"Тестовый эфир",shortName:"Тестовый эфир",category:"test",categoryName:"Лаборатория",color:"#9edbd1",schedule:library});
+  if (!testSequence.length && library.length) {testSequence=[library[0]];testStartedAt=playbackTimestamp();}
+}
+function testPosition() {
+  let elapsed=Math.max(0,(playbackTimestamp()-testStartedAt)/1000), index=0;
+  while(index<testSequence.length-1 && elapsed>=testSequence[index].duration){elapsed-=testSequence[index].duration;index++;}
+  const currentItem=testSequence[index];
+  return {currentItem,elapsed:Math.min(elapsed,currentItem.duration)+(currentItem.sourceOffset||0),broadcastElapsed:elapsed,nextItem:testSequence[index+1]||currentItem,progressPercent:Math.min(100,elapsed/currentItem.duration*100)};
+}
 function calculateBroadcastPosition(channel, dayOffset = 0) {
+  if(channel.id === "test-lab" && testSequence.length)return testPosition();
   return broadcastPosition(channel, playbackTimestamp() + dayOffset * 86400000);
 }
 
@@ -1254,6 +1271,7 @@ export async function initializeTV() {
   }
 
   await loadScheduleFromBackend();
+  attachTestChannel();
   startMasterLoop();
 
   renderVerticalChannelDock();
@@ -1394,6 +1412,34 @@ function resumeActivePlayer() {
       .catch(() => {});
 }
 export const tv = {
+  testMode(enabled) {
+    return action(()=>{
+      state.testMode=Boolean(enabled);localStorage.setItem("yturok_test_mode",state.testMode);
+      const wasTest=state.channels[state.currentChannelIndex]?.id==="test-lab";
+      attachTestChannel();
+      if(wasTest && !enabled){state.currentChannelIndex=0;playCurrentChannel(false);}
+    });
+  },
+  testPlay(item) {
+    if(!state.testMode || !item)return;
+    return action(()=>{
+      testSequence=[{...item,sourceOffset:0}];testStartedAt=playbackTimestamp();
+      state.currentChannelIndex=state.channels.findIndex(c=>c.id==="test-lab");
+      state.isTVStarted=true;state.isPaused=false;playCurrentChannel(false);
+    });
+  },
+  testPromo(item) {
+    if(!state.testMode || !item)return;
+    return action(()=>{
+      const current=state.currentShow;
+      const isTest=state.channels[state.currentChannelIndex]?.id==="test-lab";
+      let offset=0;try{offset=current?.type==='youtube' ? state.ytPlayer?.getCurrentTime?.()||0 : current?.type==='rutube' ? rutubeTime() : $("hls-player")?.currentTime||0;}catch{}
+      const continuation=isTest && current?.type!=="bumper" ? {...current,sourceOffset:offset,duration:Math.max(1,(current.mediaDuration||current.duration)-offset),mediaDuration:current.mediaDuration||current.duration} : {...item,sourceOffset:0};
+      testSequence=[{title:`Анонс: ${item.title}`,episode:"Ручной запуск анонса",type:"bumper",kind:"promo",duration:30,promoTitle:item.title,poster:item.poster,promoYoutubeId:item.youtubeId,promoVideoUrl:['hls','mp4'].includes(item.type)?item.url:undefined,promoVideoType:item.type},continuation];
+      testStartedAt=playbackTimestamp();state.currentChannelIndex=state.channels.findIndex(c=>c.id==="test-lab");
+      state.isTVStarted=true;state.isPaused=false;playCurrentChannel(false);
+    });
+  },
   select(index) {
     if (!state.ready || !state.channels[index]) return;
     return action(() => {
