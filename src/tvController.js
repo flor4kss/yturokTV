@@ -1,5 +1,14 @@
 let Hls;
 let sourceLoadTimer;
+const stableTV = new URLSearchParams(window.location.search).get("tv") === "1";
+let playbackDelayMs = 0;
+let bufferingSince = null;
+function beginBuffering() {
+  if (stableTV && bufferingSince === null) bufferingSince = Date.now();
+}
+function playbackTimestamp() {
+  return getSyncedTimestamp() - (stableTV ? playbackDelayMs + (bufferingSince === null ? 0 : Date.now() - bufferingSince) : 0);
+}
 function isYouTubeSource() {
   return (
     state.currentShow?.type === "youtube" ||
@@ -7,6 +16,10 @@ function isYouTubeSource() {
   );
 }
 function finishLoading() {
+  if (bufferingSince !== null) {
+    playbackDelayMs += Date.now() - bufferingSince;
+    bufferingSince = null;
+  }
   clearTimeout(sourceLoadTimer);
   state.buffering = false;
   state.error = null;
@@ -19,13 +32,14 @@ function failLoading(message) {
   notify();
 }
 function armLoadingTimeout() {
+  beginBuffering();
   clearTimeout(sourceLoadTimer);
   sourceLoadTimer = setTimeout(() => {
     if (state.buffering)
       failLoading(
         "Канал долго не отвечает. Повтори подключение или выбери другой эфир.",
       );
-  }, 15000);
+  }, stableTV ? 90000 : 15000);
 }
 import { DEFAULT_CHANNELS } from "../channels.js";
 import { normalizeChannels } from "./programMetadata";
@@ -328,7 +342,7 @@ if (window.YT && window.YT.Player) {
 // Deterministic Sverdlovsk Broadcast Scheduler (UTC+5 / YEKT)
 // -----------------------------------------------------------------------------
 function calculateBroadcastPosition(channel, dayOffset = 0) {
-  return broadcastPosition(channel, getSyncedTimestamp() + dayOffset * 86400000);
+  return broadcastPosition(channel, playbackTimestamp() + dayOffset * 86400000);
 }
 
 // A shorter source must not replay the same episode until its scheduled end.
@@ -594,7 +608,7 @@ function playCurrentChannel(withGlitch = true) {
       const isNewUrl = state.currentStreamUrl !== currentItem.url;
       state.currentStreamUrl = currentItem.url;
 
-      if (hlsVideo.getAttribute("src")) {
+      if ((isNewUrl || !state.hlsInstance) && hlsVideo.getAttribute("src")) {
         hlsVideo.removeAttribute("src");
         hlsVideo.load();
       }
@@ -602,9 +616,9 @@ function playCurrentChannel(withGlitch = true) {
       if (Hls.isSupported()) {
         if (isNewUrl || !state.hlsInstance) {
           if (state.hlsInstance) state.hlsInstance.destroy();
-          const hls = new Hls({ maxBufferLength: 30, enableWorker: true });
+          const hls = new Hls({ maxBufferLength: stableTV ? 90 : 30, maxMaxBufferLength: stableTV ? 120 : 600, maxBufferSize: stableTV ? 48 * 1000 * 1000 : 60 * 1000 * 1000, backBufferLength: stableTV ? 10 : 30, enableWorker: true });
           state.hlsInstance = hls;
-          hls.loadSource(currentItem.url);
+          hls.loadSource(stableTV && currentItem.tvUrl ? currentItem.tvUrl : currentItem.url);
           hls.attachMedia(hlsVideo);
           let recoveryAttempts = 0;
 
@@ -624,7 +638,7 @@ function playCurrentChannel(withGlitch = true) {
             if (data.fatal) {
               if (state.hlsInstance !== hls) return;
               recoveryAttempts++;
-              if (recoveryAttempts > 2) {
+              if (recoveryAttempts > (stableTV ? 8 : 2)) {
                 state.error =
                   "Источник сейчас не отвечает. Можно повторить подключение или выбрать другой канал.";
                 state.buffering = false;
@@ -636,7 +650,12 @@ function playCurrentChannel(withGlitch = true) {
               }
               switch (data.type) {
                 case Hls.ErrorTypes.NETWORK_ERROR:
-                  hls.startLoad();
+                  if (stableTV) {
+                    const delay = Math.min(15000, 1000 * 2 ** (recoveryAttempts - 1));
+                    setTimeout(() => {
+                      if (state.hlsInstance === hls) hls.startLoad(hlsVideo.currentTime);
+                    }, delay);
+                  } else hls.startLoad();
                   break;
                 case Hls.ErrorTypes.MEDIA_ERROR:
                   hls.recoverMediaError();
@@ -761,6 +780,7 @@ function getFilteredChannels(category = state.activeCategory) {
 function selectChannel(channel) {
   const index = state.channels.indexOf(channel);
   if (index < 0) return;
+  playbackDelayMs = 0; bufferingSince = null;
   state.currentChannelIndex = index;
   playCurrentChannel(true);
 }
@@ -1182,7 +1202,7 @@ function startMasterLoop() {
         );
 
         // Stream Drift Auto-Correction
-        if (!state.isCatchUpMode && !state.isPaused) {
+        if (!stableTV && !state.isCatchUpMode && !state.isPaused) {
           if(currentItem.type==='rutube') {
             const drift=Math.abs(rutubeTime()-elapsed);
             if(drift>8 && rutubeTime()>0)rutubeSeek(elapsed);
@@ -1379,7 +1399,8 @@ export const tv = {
     return action(() => {
       state.error = null;
       state.isPaused = false;
-      state.currentChannelIndex = index;
+      playbackDelayMs = 0; bufferingSince = null;
+  state.currentChannelIndex = index;
       playCurrentChannel(false);
     });
   },
@@ -1453,6 +1474,7 @@ export const tv = {
     });
   },
   live() {
+    playbackDelayMs = 0; bufferingSince = null;
     return action(() => playCurrentChannel(false));
   },
   async sync() {
