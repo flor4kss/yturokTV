@@ -1,4 +1,3 @@
-import {directRutubeItem,shouldResolveRutube,resolveRutube,resetRutube,rejectDirectRutube} from "./rutubeDirect";
 import {mediaSource,rejectSource,resetSourceFailures} from "./mediaSources";
 let Hls;
 let sourceLoadTimer;
@@ -29,10 +28,6 @@ function finishLoading() {
 }
 function tryAlternateSource() {
   const item=state.currentShow;
-  if(item?.directRutube){
-    rejectDirectRutube(item);state.hlsInstance?.destroy();state.hlsInstance=null;state.currentStreamUrl=null;
-    playCurrentChannel(false);return true;
-  }
   if (!item || !['hls','video','mp4'].includes(item.type) || !rejectSource(state.currentStreamUrl,item,stableTV))return false;
   state.hlsInstance?.destroy();state.hlsInstance=null;state.currentStreamUrl=null;
   playCurrentChannel(false);return true;
@@ -371,9 +366,8 @@ function testPosition() {
   return {currentItem,elapsed:Math.min(elapsed,currentItem.duration)+(currentItem.sourceOffset||0),broadcastElapsed:elapsed,nextItem:testSequence[index+1]||currentItem,progressPercent:Math.min(100,elapsed/currentItem.duration*100)};
 }
 function calculateBroadcastPosition(channel, dayOffset = 0) {
-  if(channel.id === "test-lab" && testSequence.length){const position=testPosition();return {...position,currentItem:directRutubeItem(position.currentItem)};}
-  const position=broadcastPosition(channel, playbackTimestamp() + dayOffset * 86400000);
-  return {...position,currentItem:directRutubeItem(position.currentItem)};
+  if(channel.id === "test-lab" && testSequence.length)return testPosition();
+  return broadcastPosition(channel, playbackTimestamp() + dayOffset * 86400000);
 }
 
 // A shorter source must not replay the same episode until its scheduled end.
@@ -484,15 +478,6 @@ function playCurrentChannel(withGlitch = true) {
   const bumperScreen = $("bumper-screen");
 
   // Handle Playback by Stream Type (Prioritize Direct Native Video Streams!)
-  if(shouldResolveRutube(currentItem)) {
-    hlsVideo?.pause();hlsVideo?.classList.add('hidden');ytContainer?.classList.add('hidden');bumperScreen?.classList.add('hidden');
-    resolveRutube(currentItem).then(()=>{
-      if(state.currentShow===currentItem)playCurrentChannel(false);
-    }).catch(()=>{
-      if(state.currentShow===currentItem)playCurrentChannel(false);
-    });
-    return;
-  }
   if(currentItem.type==='rutube') {
     state.hlsInstance?.destroy();state.hlsInstance=null;state.currentStreamUrl=null;
     hlsVideo?.pause();hlsVideo?.classList.add('hidden');
@@ -1555,7 +1540,7 @@ export const tv = {
     return action(() => playCurrentChannel(false));
   },
   retry() {
-    resetSourceFailures(state.currentShow);resetRutube(state.currentShow);
+    resetSourceFailures(state.currentShow);
     return action(() => {
       state.error = null;
       state.currentYtId = null;
