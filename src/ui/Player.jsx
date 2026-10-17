@@ -36,6 +36,7 @@ export default function Player({
     progressPercent = 0,
     elapsed = 0,
   } = position;
+  const qualityAvailable=item.type==='bumper' || (item.type==='hls' && new Set((item.sources||[]).map(s=>s.quality).filter(Boolean)).size>1);
   const [fullscreen, setFullscreen] = useState(false);
   const [visible, setVisible] = useState(true);
   const [transitioning, setTransitioning] = useState(false);
@@ -178,7 +179,7 @@ export default function Player({
           <div id="yt-player" />
         </div>
         <div id="bumper-screen" className="bumper-screen hidden">
-          <PromoArtwork item={item} channel={channel} elapsed={elapsed} active={started && !snapshot.isPaused} />
+          <PromoArtwork item={item} channel={channel} elapsed={elapsed} active={started && !snapshot.isPaused && snapshot.allowPromoVideo !== false} />
           <span className="bumper-brand">yturokTV · {channel?.shortName}</span>
           <span id="bumper-logo">yturokTV</span>
           {item.kind === "promo" && <div className="promo-headline"><h2>{item.promoTitle}</h2><p>{promoHook(item)}</p></div>}
@@ -253,18 +254,22 @@ export default function Player({
                   className="transition-status"
                   role={transitioning || buffering ? "status" : undefined}
                 >
-                  <Icon name="loader" className="spin" size={16} /> Подключаем
-                  эфир…
+                  <Icon name="loader" className="spin" size={16} /> {snapshot.bufferHolding ? `Копим запас эфира · ${snapshot.bufferSeconds || 0} с` : "Подключаем эфир…"}
                 </span>
               </div>
             </div>
           </div>
         )}
+        {started && snapshot.delaySuggested && !snapshot.delayedMode && <div className="delay-offer" role="region" aria-label="Нестабильное соединение">
+          <div><strong>Эфир прерывается?</strong><p>Включи запас с задержкой: сначала накопим видео, затем продолжим просмотр. Не поможет, если сам источник недоступен.</p></div>
+          <button className="button button-light" onClick={()=>tv.delay(true)}>Включить задержку</button>
+          <button className="text-button" onClick={()=>tv.dismissDelay()}>Не сейчас</button>
+        </div>}
         {started && !catchup && position.adCountdown > 0 && position.adCountdown <= 5 && <span className="ad-notice" role="status">Короткий анонс через {position.adCountdown} с</span>}
         {started && item.kind==='promo' && item.promoDelay>0 && item.duration-elapsed<=3 && <span className="ad-notice" role="status">Возвращаемся к серии…</span>}
         <div className="player-tools">
           <span className="source-label">
-            {catchup ? "СМОТРИШЬ С НАЧАЛА" : "ПРЯМОЙ ЭФИР"}
+            {catchup ? "СМОТРИШЬ С НАЧАЛА" : snapshot.delayedMode ? `ЭФИР С ЗАДЕРЖКОЙ · ${snapshot.delaySeconds || 0} С` : "ПРЯМОЙ ЭФИР"}
           </span>
         </div>
         <div className="player-controls">
@@ -302,6 +307,15 @@ export default function Player({
               </span>
             </div>
             <div className="player-control-group">
+              <label className="quality-control" title={!qualityAvailable && !['youtube','rutube'].includes(item.type) ? 'Этот источник предоставляет только одно качество' : ['youtube','rutube'].includes(item.type) ? 'Качеством этого видео управляет внешний плеер. Выбор сохранится для потоков сайта.' : 'Качество применяется без перезапуска, если источник предлагает несколько вариантов'}>
+                <select aria-label="Качество видео" disabled={!qualityAvailable} value={snapshot.qualityMode || 'auto'} onChange={e=>tv.quality(e.target.value)}>
+                  {!qualityAvailable ? <option value={snapshot.qualityMode || 'auto'}>{['youtube','rutube'].includes(item.type)?'Качество источника':'Исходное качество'}</option> : <>
+                  <option value="auto">Авто{snapshot.qualityMode==='auto' && snapshot.sourceQuality ? ` · ${snapshot.sourceQuality}p` : ''}</option>
+                  <option value="best">Наилучшее</option>
+                  <option value="low">Низкое · до 480p</option></>}
+                </select>
+              </label>
+              {snapshot.delayedMode && !catchup && <button className="start-over delay-return" onClick={()=>tv.delay(false)} aria-label="Выключить задержку и вернуться в эфир"><Icon name="radio" size={16}/><span>В прямой эфир</span></button>}
               <button
                 className="start-over"
                 onClick={() => (catchup ? tv.live() : tv.restart())}

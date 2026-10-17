@@ -127,6 +127,7 @@ export function Settings({
         Устройся поудобнее. Здесь всё под тебя.
       </p>
       <div className="settings-group">
+        <SwitchRow icon="radio" title="Эфир с задержкой" description="Копим больший запас видео и сохраняем место при обрывах сети. Включается только по твоему выбору." checked={snapshot.delayedMode} onChange={()=>tv.delay(!snapshot.delayedMode)}/>
         <SwitchRow icon="sliders" title="Тестовый режим" description="Дополнительный канал: любая серия и ручной запуск анонсов" checked={snapshot.testMode} onChange={()=>tv.testMode(!snapshot.testMode)}/>
         {snapshot.testMode && <TestControls snapshot={snapshot}/>}
         <SwitchRow

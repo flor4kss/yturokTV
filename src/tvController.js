@@ -1,14 +1,56 @@
-import {mediaSource,rejectSource,resetSourceFailures} from "./mediaSources";
+import {bufferedAhead,qualityTarget,qualityLevel,variantPlaylist,shouldSuggestDelay,bufferGoal} from "./playbackPolicy";
+import {setNetworkBudget} from "./networkBudget";
+import {mediaSource,rejectSource,resetSourceFailures,healthySources} from "./mediaSources";
 let Hls;
 let sourceLoadTimer;
-const stableTV = new URLSearchParams(window.location.search).get("tv") === "1";
 let playbackDelayMs = 0;
 let bufferingSince = null;
+let loadingBeganAt=null, suggestionTimer, bufferGate=null, gateStartedAt=0, gateRebuffer=false;
+let recentStalls=[], resumePoint=null, lastQualityDrop=0;
+function sourceTarget(){return qualityTarget(state.qualityMode);}
+function suggestDelay(){
+  if(!state.isTVStarted || state.currentShow?.type==='bumper')return;
+  recentStalls=recentStalls.filter(t=>Date.now()-t<60000);
+  if(shouldSuggestDelay({waitingMs:loadingBeganAt===null?0:Date.now()-loadingBeganAt,stalls:recentStalls.length,enabled:state.delayedMode,dismissed:state.delayDismissed})){
+    state.delaySuggested=true;state.networkConstrained=true;notify();
+  }
+}
+function cancelBufferGate(){clearInterval(bufferGate);bufferGate=null;state.bufferHolding=false;}
+function holdForBuffer(video,rebuffer=false,minimumWait=0){
+  if(!video || !state.isTVStarted || state.currentShow?.type==='bumper')return;
+  if(bufferGate)return;
+  gateStartedAt=Date.now();gateRebuffer=rebuffer;state.bufferHolding=true;state.buffering=true;
+  video.pause();armLoadingTimeout();
+  const notBefore=Date.now()+minimumWait;
+  bufferGate=setInterval(()=>{
+    if(!state.isTVStarted || state.isPaused || state.currentShow?.type==='bumper'){cancelBufferGate();return;}
+    const ahead=bufferedAhead(video),duration=video.duration;
+    const remaining=Number.isFinite(duration)?Math.max(0,duration-video.currentTime):Infinity;
+    const goal=Math.min(bufferGoal(state.delayedMode,gateRebuffer),remaining);
+    // Native MP4 browsers may limit preloading while paused; allow progress after 12s if some media is ready.
+    const nativeFallback=!state.hlsInstance && Date.now()-gateStartedAt>(state.delayedMode?12000:5000) && (ahead>=1 || video.readyState>=2);
+    if(Date.now()>=notBefore && ((goal>0 && ahead>=goal-.15) || nativeFallback)){
+      cancelBufferGate();video.play().catch(()=>{});
+    }
+  },250);
+  notify();
+}
+function applyQuality(manual=false){
+  const hls=state.hlsInstance;
+  if(hls?.levels?.length){
+    hls.autoLevelCapping=-1;const level=qualityLevel(hls.levels,state.qualityMode);
+    if(manual && level>=0 && hls.currentLevel>=0 && level!==hls.currentLevel)hls.nextLevel=level;else hls.loadLevel=level;
+  }
+}
+function rememberMediaPosition(){
+  const video=$("hls-player");
+  if(video && Number.isFinite(video.currentTime) && video.readyState>=1)resumePoint={url:state.currentShow?.url,time:video.currentTime};
+}
 function beginBuffering() {
-  if (stableTV && bufferingSince === null) bufferingSince = Date.now();
+  if (state.delayedMode && bufferingSince === null) bufferingSince = Date.now();
 }
 function playbackTimestamp() {
-  return getSyncedTimestamp() - (stableTV ? playbackDelayMs + (bufferingSince === null ? 0 : Date.now() - bufferingSince) : 0);
+  return getSyncedTimestamp() - (state.delayedMode ? playbackDelayMs + (bufferingSince === null ? 0 : Date.now() - bufferingSince) : 0);
 }
 function isYouTubeSource() {
   return (
@@ -21,33 +63,39 @@ function finishLoading() {
     playbackDelayMs += Date.now() - bufferingSince;
     bufferingSince = null;
   }
-  clearTimeout(sourceLoadTimer);
-  state.buffering = false;
+  clearTimeout(sourceLoadTimer);clearTimeout(suggestionTimer);sourceLoadTimer=null;loadingBeganAt=null;
+  state.buffering = false;state.hasPlayed=true;
   state.error = null;
   notify();
 }
-function tryAlternateSource() {
+function tryAlternateSource(failedUrl) {
+  const engine=state.hlsInstance;
+  if(!failedUrl)failedUrl=engine?.levels?.[engine.nextLoadLevel>=0?engine.nextLoadLevel:engine.currentLevel]?.url?.[0] || state.currentStreamUrl;
   const item=state.currentShow;
-  if (!item || !['hls','video','mp4'].includes(item.type) || !rejectSource(state.currentStreamUrl,item,stableTV))return false;
+  if (!item || !['hls','video','mp4'].includes(item.type) || !rejectSource(failedUrl,item,sourceTarget()))return false;
+  rememberMediaPosition();cancelBufferGate();
   state.hlsInstance?.destroy();state.hlsInstance=null;state.currentStreamUrl=null;
   playCurrentChannel(false);return true;
 }
 function failLoading(message) {
+  suggestDelay();cancelBufferGate();
+  clearTimeout(sourceLoadTimer);sourceLoadTimer=null;loadingBeganAt=null;
   if(tryAlternateSource())return;
-  clearTimeout(sourceLoadTimer);
   state.buffering = false;
   state.error = message;
   notify();
 }
 function armLoadingTimeout() {
   beginBuffering();
+  if(loadingBeganAt===null){loadingBeganAt=Date.now();clearTimeout(suggestionTimer);suggestionTimer=setTimeout(suggestDelay,8100);}
+  if(sourceLoadTimer)return;
   clearTimeout(sourceLoadTimer);
   sourceLoadTimer = setTimeout(() => {
     if (state.buffering)
       failLoading(
         "Канал долго не отвечает. Повтори подключение или выбери другой эфир.",
       );
-  }, stableTV || state.currentShow?.type === "rutube" ? 90000 : 15000);
+  }, state.currentShow?.type === "rutube" ? 90000 : 45000);
 }
 import { DEFAULT_CHANNELS } from "../channels.js";
 import { normalizeChannels } from "./programMetadata";
@@ -61,6 +109,14 @@ const isCurrentCatalog = (data) => Array.isArray(data) && data.length === 6 &&
 
 // Application State
 const state = {
+  delayedMode:false,
+  delaySuggested:false,
+  delayDismissed:false,
+  networkConstrained:false,
+  bufferHolding:false,
+  hasPlayed:false,
+  bufferSeconds:0,
+  qualityMode:['auto','best','low'].includes(localStorage.getItem('yturok_quality'))?localStorage.getItem('yturok_quality'):'auto',
   testMode: localStorage.getItem("yturok_test_mode") === "true",
   channels: normalizeChannels(DEFAULT_CHANNELS),
   currentChannelIndex: 0,
@@ -310,9 +366,7 @@ function initYouTubePlayer() {
           state.buffering = event.data === 3;
           if (state.buffering) armLoadingTimeout();
           if (event.data === 1) {
-            state.error = null;
-            state.buffering = false;
-            clearTimeout(sourceLoadTimer);
+            finishLoading();
           }
           notify();
           if (event.data === (window.YT?.PlayerState?.ENDED ?? 0)) {
@@ -367,7 +421,7 @@ function testPosition() {
 }
 function calculateBroadcastPosition(channel, dayOffset = 0) {
   if(channel.id === "test-lab" && testSequence.length)return testPosition();
-  return broadcastPosition(channel, playbackTimestamp() + dayOffset * 86400000);
+  return broadcastPosition(channel, (channel===state.channels[state.currentChannelIndex]?playbackTimestamp():getSyncedTimestamp()) + dayOffset * 86400000);
 }
 
 // A shorter source must not replay the same episode until its scheduled end.
@@ -430,17 +484,19 @@ function playCurrentChannel(withGlitch = true) {
   const channel = state.channels[state.currentChannelIndex];
   if (!channel) return;
 
-  const { currentItem, elapsed, nextItem, progressPercent } =
+  const { currentItem, elapsed:liveElapsed, nextItem, progressPercent } =
     calculateBroadcastPosition(channel);
+  const elapsed=resumePoint?.url===currentItem.url?resumePoint.time:liveElapsed;
+  resumePoint=null;cancelBufferGate();
   const reusingSource =
-    state.currentStreamUrl === (mediaSource(currentItem,stableTV)?.url || currentItem.url) &&
+    state.currentStreamUrl === (mediaSource(currentItem,sourceTarget())?.url || currentItem.url) &&
     state.currentShow?.type === currentItem.type;
   state.currentShow = currentItem;
   state.error = null;
   state.loadId = (state.loadId || 0) + 1;
   state.buffering = currentItem.type !== "bumper";
-  clearTimeout(sourceLoadTimer);
-  if (state.buffering) armLoadingTimeout();
+  clearTimeout(sourceLoadTimer);sourceLoadTimer=null;loadingBeganAt=null;clearTimeout(suggestionTimer);
+  if (state.buffering) armLoadingTimeout();else finishLoading();
 
   // Sound & Static noise glitch
   if (withGlitch) {
@@ -471,8 +527,8 @@ function playCurrentChannel(withGlitch = true) {
   $("btn-go-live")?.classList.add("hidden");
   $("btn-start-over")?.classList.remove("hidden");
 
-  const streamUrl=mediaSource(currentItem,stableTV)?.url || currentItem.url;
-  state.sourceQuality=mediaSource(currentItem,stableTV)?.quality || null;
+  const streamUrl=mediaSource(currentItem,sourceTarget())?.url || currentItem.url;
+  state.sourceQuality=mediaSource(currentItem,sourceTarget())?.quality || null;
   const hlsVideo = $("hls-player");
   const ytContainer = $("yt-player-container");
   const bumperScreen = $("bumper-screen");
@@ -593,6 +649,7 @@ function playCurrentChannel(withGlitch = true) {
         hlsVideo.muted = state.isTVStarted ? state.isMuted : true;
         hlsVideo.volume = state.volume / 100;
 
+        hlsVideo.preload="auto";
         const applySeek = () => {
           if (state.currentStreamUrl !== streamUrl) return;
           if (elapsed > 0 && hlsVideo.duration && elapsed < hlsVideo.duration) {
@@ -603,17 +660,14 @@ function playCurrentChannel(withGlitch = true) {
         };
         hlsVideo.addEventListener("loadedmetadata", applySeek, { once: true });
         if (hlsVideo.readyState >= 1) applySeek();
-        hlsVideo
-          .play()
-          .catch((e) => console.log("Play waiting interaction:", e));
+        if(state.isTVStarted)holdForBuffer(hlsVideo);
       } else {
         if (Math.abs(hlsVideo.currentTime - elapsed) > 3) {
           try {
             hlsVideo.currentTime = elapsed;
           } catch (e) {}
         }
-        if (hlsVideo.paused && state.isTVStarted)
-          hlsVideo.play().catch(() => {});
+        if (hlsVideo.paused && state.isTVStarted)holdForBuffer(hlsVideo);
       }
     }
   } else if (
@@ -643,9 +697,16 @@ function playCurrentChannel(withGlitch = true) {
       if (Hls.isSupported()) {
         if (isNewUrl || !state.hlsInstance) {
           if (state.hlsInstance) state.hlsInstance.destroy();
-          const hls = new Hls({ startLevel:stableTV ? 0 : -1, maxBufferLength: stableTV ? 90 : 30, maxMaxBufferLength: stableTV ? 120 : 600, maxBufferSize: stableTV ? 48 * 1000 * 1000 : 60 * 1000 * 1000, backBufferLength: stableTV ? 10 : 30, enableWorker: true });
+          const hls = new Hls({startPosition:elapsed,startLevel:0,maxBufferLength:state.delayedMode?120:60,maxMaxBufferLength:180,maxBufferSize:48*1000*1000,backBufferLength:10,enableWorker:true,
+            abrMaxWithRealBitrate:true,abrBandWidthFactor:.7,abrBandWidthUpFactor:.5,abrEwmaFastVoD:3,abrEwmaSlowVoD:12,maxStarvationDelay:4,maxLoadingDelay:4,
+            fragLoadPolicy:{default:{...Hls.DefaultConfig.fragLoadPolicy.default,maxTimeToFirstByteMs:10000,maxLoadTimeMs:25000,
+              errorRetry:{...Hls.DefaultConfig.fragLoadPolicy.default.errorRetry,maxNumRetry:4,retryDelayMs:1000,maxRetryDelayMs:8000},
+              timeoutRetry:{...Hls.DefaultConfig.fragLoadPolicy.default.timeoutRetry,maxNumRetry:3,retryDelayMs:1000,maxRetryDelayMs:8000}}}});
           state.hlsInstance = hls;
-          hls.loadSource(streamUrl);
+          const playlist=variantPlaylist(healthySources(currentItem));
+          const masterUrl=playlist ? URL.createObjectURL(new Blob([playlist],{type:'application/vnd.apple.mpegurl'})) : null;
+          if(masterUrl)hls.on(Hls.Events.DESTROYING,()=>URL.revokeObjectURL(masterUrl));
+          hls.loadSource(masterUrl || streamUrl);
           hls.attachMedia(hlsVideo);
           let recoveryAttempts = 0;
 
@@ -656,34 +717,48 @@ function playCurrentChannel(withGlitch = true) {
             } catch (e) {}
             hlsVideo.muted = state.isTVStarted ? state.isMuted : true;
             hlsVideo.volume = state.volume / 100;
-            hlsVideo
-              .play()
-              .catch((e) => console.log("HLS play waiting interaction:", e));
+            applyQuality();if(state.isTVStarted)holdForBuffer(hlsVideo);
           });
 
+          hls.on(Hls.Events.LEVEL_SWITCHED,(_,data)=>{
+            if(state.hlsInstance!==hls)return;
+            state.sourceQuality=hlsVideo.videoHeight || hls.levels[data.level]?.height || null;notify();
+          });
+          hls.on(Hls.Events.FRAG_BUFFERED,()=>{
+            if(state.hlsInstance!==hls)return;
+            recoveryAttempts=0;
+            const ahead=bufferedAhead(hlsVideo);state.bufferSeconds=Math.floor(ahead);
+            if(state.qualityMode==='auto'){
+              if(ahead<8 && state.hasPlayed){hls.autoLevelCapping=Math.max(0,hls.currentLevel-1);lastQualityDrop=Date.now();}
+              else if(ahead>25 && Date.now()-lastQualityDrop>30000)hls.autoLevelCapping=-1;
+            }
+            if(hls.bandwidthEstimate<1800000)state.networkConstrained=true;
+            else if(ahead>25 && Date.now()-lastQualityDrop>60000)state.networkConstrained=false;
+            notify();
+          });
           hls.on(Hls.Events.ERROR, (event, data) => {
             if (data.fatal) {
               if (state.hlsInstance !== hls) return;
               recoveryAttempts++;
-              if(data.type===Hls.ErrorTypes.NETWORK_ERROR && (recoveryAttempts>=2 || [403,404,410].includes(data.response?.code)) && tryAlternateSource())return;
-              if (recoveryAttempts > (stableTV ? 8 : 2)) {
+              if(data.type===Hls.ErrorTypes.NETWORK_ERROR && (recoveryAttempts>=2 || [403,404,410].includes(data.response?.code)) && tryAlternateSource(hls.levels[data.frag?.level ?? data.context?.level ?? hls.currentLevel]?.url?.[0] || state.currentStreamUrl))return;
+              if (recoveryAttempts > 4) {
                 state.error =
                   "Источник сейчас не отвечает. Можно повторить подключение или выбрать другой канал.";
                 state.buffering = false;
-                clearTimeout(sourceLoadTimer);
-                hls.destroy();
+                clearTimeout(sourceLoadTimer);sourceLoadTimer=null;loadingBeganAt=null;cancelBufferGate();
+                suggestDelay();hls.destroy();
                 state.hlsInstance = null;
                 notify();
                 return;
               }
               switch (data.type) {
                 case Hls.ErrorTypes.NETWORK_ERROR:
-                  if (stableTV) {
+                  {
                     const delay = Math.min(15000, 1000 * 2 ** (recoveryAttempts - 1));
                     setTimeout(() => {
                       if (state.hlsInstance === hls) hls.startLoad(hlsVideo.currentTime);
                     }, delay);
-                  } else hls.startLoad();
+                  }
                   break;
                 case Hls.ErrorTypes.MEDIA_ERROR:
                   hls.recoverMediaError();
@@ -698,9 +773,7 @@ function playCurrentChannel(withGlitch = true) {
           if (Math.abs(hlsVideo.currentTime - elapsed) > 3) {
             hlsVideo.currentTime = elapsed;
           }
-          if (hlsVideo.paused && state.isTVStarted) {
-            hlsVideo.play().catch(() => {});
-          }
+          if (hlsVideo.paused && state.isTVStarted)holdForBuffer(hlsVideo);
         }
       } else if (hlsVideo.canPlayType("application/vnd.apple.mpegurl")) {
         if (isNewUrl) {
@@ -808,7 +881,7 @@ function getFilteredChannels(category = state.activeCategory) {
 function selectChannel(channel) {
   const index = state.channels.indexOf(channel);
   if (index < 0) return;
-  playbackDelayMs = 0; bufferingSince = null;
+  playbackDelayMs = 0; bufferingSince = null;recentStalls=[];
   state.currentChannelIndex = index;
   playCurrentChannel(true);
 }
@@ -880,6 +953,10 @@ async function addReleaseToChannel(alias, titleRu, poster, chIdx) {
         duration: ep.duration || 1440,
         type: "hls",
         url: streamUrl,
+        sources:[720,480,1080].filter(q=>ep['hls_'+q]).map(quality=>({url:ep['hls_'+quality],quality,type:'hls',provider:'aniliberty'})),
+        tvUrl:ep.hls_480 || streamUrl,
+        releaseId:data.id,
+        ordinal:ordNum,
         poster: poster,
         description: data.description
           ? data.description.replace(/<[^>]+>/g, "").slice(0, 150) + "..."
@@ -1191,7 +1268,7 @@ function initCommentSystem() {
   } catch (e) {}
 
   syncCommentsFromBackend().catch(() => {});
-  setInterval(syncCommentsFromBackend, 2000);
+  setInterval(()=>{if(!state.buffering && !state.networkConstrained && navigator.onLine!==false)syncCommentsFromBackend();}, 5000);
 }
 
 // Master Periodic Loop
@@ -1230,23 +1307,8 @@ function startMasterLoop() {
         );
 
         // Stream Drift Auto-Correction
-        if (!stableTV && !state.isCatchUpMode && !state.isPaused) {
-          if(currentItem.type==='rutube') {
-            const drift=Math.abs(rutubeTime()-elapsed);
-            if(drift>8 && rutubeIsPlaying() && rutubeTime()>0)rutubeSeek(elapsed);
-          } else if (currentItem.type === "youtube" || currentItem.youtubeId) {
-            if (state.ytPlayer && state.ytPlayer.getCurrentTime) {
-              try {
-                const cur = state.ytPlayer.getCurrentTime();
-                if (
-                  Math.abs(cur - elapsed) > 4 &&
-                  elapsed < (currentItem.mediaDuration || currentItem.duration || 1400)
-                ) {
-                  state.ytPlayer.seekTo(elapsed, true);
-                }
-              } catch (e) {}
-            }
-          } else {
+        if (!state.delayedMode && !state.buffering && !state.isCatchUpMode && !state.isPaused) {
+          if(!['rutube','youtube'].includes(currentItem.type) && !currentItem.youtubeId) {
             const hlsVideo = $("hls-player");
             if (
               hlsVideo &&
@@ -1255,7 +1317,7 @@ function startMasterLoop() {
               hlsVideo.duration
             ) {
               const drift = Math.abs(hlsVideo.currentTime - elapsed);
-              if (drift > 3 && elapsed < hlsVideo.duration) {
+              if (drift > 15 && bufferedAhead(hlsVideo,elapsed)>=8 && elapsed < hlsVideo.duration) {
                 try {
                   hlsVideo.currentTime = elapsed;
                 } catch (err) {}
@@ -1305,16 +1367,29 @@ export async function initializeTV() {
   initCommentSystem();
   if (window.YT && window.YT.Player) initYouTubePlayer();
 
+  window.addEventListener('offline',()=>{state.networkConstrained=true;notify();});
+  window.addEventListener('online',()=>{
+    if(state.isTVStarted && state.buffering && state.hlsInstance)state.hlsInstance.startLoad($("hls-player")?.currentTime || -1);
+  });
   const video = $("hls-player");
   if (video) {
+    video.addEventListener("resize",()=>{if(video.videoHeight){state.sourceQuality=video.videoHeight;notify();}});
     video.addEventListener("waiting", () => {
-      if (isYouTubeSource()) return;
-      armLoadingTimeout();
-      state.buffering = true;
+      if (isYouTubeSource() || ['bumper','rutube'].includes(state.currentShow?.type) || state.isPaused || !state.isTVStarted) return;
+      if(!state.buffering && state.hasPlayed)recentStalls.push(Date.now());
+      state.buffering = true;armLoadingTimeout();suggestDelay();
+      if(state.hlsInstance && !state.bufferHolding)holdForBuffer(video,true);
       notify();
     });
     video.addEventListener("playing", () => {
-      if (!isYouTubeSource()) finishLoading();
+      if (!isYouTubeSource()) {
+        if(state.bufferHolding){video.pause();return;}
+        finishLoading();
+        if(state.delayedMode && !state.isCatchUpMode){
+          const position=calculateBroadcastPosition(state.channels[state.currentChannelIndex]);
+          if(position.currentItem===state.currentShow)playbackDelayMs=Math.max(0,playbackDelayMs+(position.elapsed-video.currentTime)*1000);
+        }
+      }
     });
     video.addEventListener("error", () => {
       if (['rutube','bumper'].includes(state.currentShow?.type) || state.currentShow?.type === "youtube" || state.currentShow?.youtubeId)
@@ -1393,6 +1468,10 @@ function makeSnapshot() {
   };
 }
 function notify() {
+  state.bufferSeconds=Math.floor(bufferedAhead($("hls-player")));
+  state.delaySeconds=Math.round((playbackDelayMs+(bufferingSince===null?0:Date.now()-bufferingSince))/1000);
+  state.allowPromoVideo=state.qualityMode!=='low' && !state.networkConstrained;
+  setNetworkBudget(Boolean(state.buffering || state.bufferHolding || state.networkConstrained));
   snapshot = makeSnapshot();
   subscribers.forEach((listener) => listener());
 }
@@ -1424,6 +1503,39 @@ function resumeActivePlayer() {
       .catch(() => {});
 }
 export const tv = {
+  quality(mode){
+    if(!['auto','best','low'].includes(mode))return;
+    return action(()=>{
+      state.qualityMode=mode;localStorage.setItem('yturok_quality',mode);
+      if(state.hlsInstance?.levels?.length)applyQuality(true);
+      else if(['hls','video','mp4'].includes(state.currentShow?.type)){
+        const source=mediaSource(state.currentShow,sourceTarget());
+        if(source?.url && source.url!==state.currentStreamUrl){rememberMediaPosition();playCurrentChannel(false);}
+      }
+    });
+  },
+  delay(enabled=true){
+    return action(()=>{
+      if(state.delayedMode===Boolean(enabled))return;
+      state.delayedMode=Boolean(enabled);state.delaySuggested=false;
+      if(!enabled){
+        state.delayDismissed=true;playbackDelayMs=0;bufferingSince=null;
+        cancelBufferGate();if(state.hlsInstance)state.hlsInstance.config.maxBufferLength=60;
+        playCurrentChannel(false);return;
+      }
+      const video=$("hls-player"),channel=state.channels[state.currentChannelIndex];
+      const position=calculateBroadcastPosition(channel);
+      if(video?.readyState>=1 && ['hls','video','mp4'].includes(state.currentShow?.type))
+        playbackDelayMs=Math.max(0,(position.elapsed-video.currentTime)*1000);
+      bufferingSince=null;
+      if(state.hlsInstance)state.hlsInstance.config.maxBufferLength=120;
+      if(['hls','video','mp4'].includes(state.currentShow?.type)){
+        if(state.error){clearTimeout(sourceLoadTimer);sourceLoadTimer=null;loadingBeganAt=null;state.currentStreamUrl=null;playCurrentChannel(false);}
+        cancelBufferGate();holdForBuffer(video,true,10000);
+      }else if(state.buffering)beginBuffering();
+    });
+  },
+  dismissDelay(){return action(()=>{state.delaySuggested=false;state.delayDismissed=true;});},
   testMode(enabled) {
     return action(()=>{
       state.testMode=Boolean(enabled);localStorage.setItem("yturok_test_mode",state.testMode);
@@ -1447,7 +1559,7 @@ export const tv = {
       const isTest=state.channels[state.currentChannelIndex]?.id==="test-lab";
       let offset=0;try{offset=current?.type==='youtube' ? state.ytPlayer?.getCurrentTime?.()||0 : current?.type==='rutube' ? rutubeTime() : $("hls-player")?.currentTime||0;}catch{}
       const continuation=isTest && current?.type!=="bumper" ? {...current,sourceOffset:offset,duration:Math.max(1,(current.mediaDuration||current.duration)-offset),mediaDuration:current.mediaDuration||current.duration} : {...item,sourceOffset:0};
-      testSequence=[{title:`Анонс: ${item.title}`,episode:"Ручной запуск анонса",type:"bumper",kind:"promo",duration:30,promoTitle:item.title,poster:item.poster,promoYoutubeId:item.youtubeId,promoVideoUrl:['hls','mp4','video'].includes(item.type)?(mediaSource(item,stableTV)?.url || item.url):undefined,promoVideoType:item.type},continuation];
+      testSequence=[{title:`Анонс: ${item.title}`,episode:"Ручной запуск анонса",type:"bumper",kind:"promo",duration:30,promoTitle:item.title,poster:item.poster,promoYoutubeId:item.youtubeId,promoVideoUrl:['hls','mp4','video'].includes(item.type)?(mediaSource(item,sourceTarget())?.url || item.url):undefined,promoVideoType:item.type},continuation];
       testStartedAt=playbackTimestamp();state.currentChannelIndex=state.channels.findIndex(c=>c.id==="test-lab");
       state.isTVStarted=true;state.isPaused=false;playCurrentChannel(false);
     });
@@ -1457,7 +1569,7 @@ export const tv = {
     return action(() => {
       state.error = null;
       state.isPaused = false;
-      playbackDelayMs = 0; bufferingSince = null;
+      playbackDelayMs = 0; bufferingSince = null;recentStalls=[];
   state.currentChannelIndex = index;
       playCurrentChannel(false);
     });
@@ -1474,10 +1586,11 @@ export const tv = {
       state.isPaused = false;
       state.isMuted = false;
       applyVolume();
-      resumeActivePlayer();
+      if(["hls","video","mp4"].includes(state.currentShow?.type))holdForBuffer($("hls-player"));else resumeActivePlayer();
     });
   },
   suspend() {
+    cancelBufferGate();
     if(!state.isTVStarted)return;
     state.isPaused=true;
     $("hls-player")?.pause();state.ytPlayer?.pauseVideo?.();stopRutube();stopPromoMusic();notify();
@@ -1532,7 +1645,8 @@ export const tv = {
     });
   },
   live() {
-    playbackDelayMs = 0; bufferingSince = null;
+    state.delayedMode=false;state.delaySuggested=false;state.delayDismissed=true;
+    playbackDelayMs = 0; bufferingSince = null;recentStalls=[];
     return action(() => playCurrentChannel(false));
   },
   async sync() {
@@ -1540,7 +1654,7 @@ export const tv = {
     return action(() => playCurrentChannel(false));
   },
   retry() {
-    resetSourceFailures(state.currentShow);
+    resetSourceFailures(state.currentShow);clearTimeout(sourceLoadTimer);sourceLoadTimer=null;loadingBeganAt=null;
     return action(() => {
       state.error = null;
       state.currentYtId = null;
