@@ -4812,3 +4812,15 @@ kbd {
   .player-control-group:last-child>*{flex-shrink:0;}
   .delay-offer{position:fixed;bottom:14px;left:12px;right:12px;}
 }
+/* Release notes share the site's existing modal, including keyboard and TV focus. */
+.updates-list{max-width:800px;margin:0 auto;line-height:1.65}
+.updates-intro{color:var(--muted,#beb7c8);margin:0 0 24px}
+.update-entry{padding:24px 0;border-top:1px solid var(--line)}
+.update-meta{display:flex;align-items:center;flex-wrap:wrap;gap:12px;font-size:14px;color:var(--muted,#beb7c8)}
+.update-meta span{padding:4px 10px;border-radius:99px;background:var(--coral-soft);color:var(--coral)}
+.update-entry h3{font-size:24px;margin:14px 0 12px}
+.update-entry ul{padding-left:22px;display:grid;gap:10px}
+.update-note{padding:16px;border-radius:16px;background:var(--soft);color:var(--muted)}
+@media(max-width:760px){.main-nav{min-width:0;max-width:100%;gap:8px 14px;flex-wrap:wrap;justify-content:center}.main-nav button{font-size:12px;min-height:40px}.update-entry h3{font-size:21px}}
+.remote-actions .tv-extra{display:none}
+.tv-mode .remote-actions .tv-extra{display:inline-flex}

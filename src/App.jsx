@@ -11,6 +11,7 @@ import Icon from "./ui/Icon";
 import Hero from "./ui/Hero";
 import Player from "./ui/Player";
 import Modal from "./ui/Modal";
+import Updates from "./ui/Updates";
 import { ChannelRail, CommunityPanel } from "./ui/Panels";
 import { ProgramGuide, Settings, Studio } from "./ui/Overlays";
 function saved(key, fallback) {
@@ -203,6 +204,7 @@ export default function App() {
             </button>
             <button onClick={() => setModal("guide")}>Телепрограмма</button>
             <button onClick={() => setModal("settings")}>Моя комната</button>
+            <button onClick={() => setModal("updates")}>Обновы</button>
           </nav>
           <div className="header-actions">
             <span className="header-clock">
@@ -272,6 +274,7 @@ export default function App() {
               onToast={showToast}
               onChannels={() => setModal("channels")}
               onSettings={() => setModal("settings")}
+              onUpdates={() => setModal("updates")}
             />
             <CommunityPanel
               snapshot={snapshot}
@@ -303,7 +306,7 @@ export default function App() {
       {modal && (
         <Modal
           title={
-            modal === "channels"
+            modal === "updates" ? "Что нового?" : modal === "channels"
               ? "Что включим?"
               : modal === "guide"
                 ? "Каждой истории — своё время."
@@ -312,7 +315,7 @@ export default function App() {
                   : "Твоя уютная комната."
           }
           eyebrow={
-            modal === "channels"
+            modal === "updates" ? "ОБНОВЫ" : modal === "channels"
               ? "ВСЕ КАНАЛЫ ПОД РУКОЙ"
               : modal === "guide"
                 ? "ТЕЛЕПРОГРАММА"
@@ -323,7 +326,7 @@ export default function App() {
           wide={modal !== "settings"}
           onClose={closeModal}
         >
-          {modal === "channels" ? (
+          {modal === "updates" ? <Updates /> : modal === "channels" ? (
             <div className="channel-picker">
               <ChannelRail
                 snapshot={snapshot}
