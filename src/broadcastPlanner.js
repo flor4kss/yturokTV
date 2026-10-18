@@ -1,3 +1,5 @@
+import {orderedSeries,nextRound,seriesId} from './episodeQueue.js';
+import {timeline as legacyTimeline} from './legacyBroadcastPlanner.js';
 export const BROADCAST_EPOCH = 1791745200; // 2026-10-12 00:00, Екатеринбург.
 const cache = new WeakMap();
 export function invalidatePlan(channel){cache.delete(channel);}
@@ -13,7 +15,7 @@ function split(item,next,repeat) {
     {...item,duration:item.duration-cut,mediaDuration:item.duration,sourceOffset:cut,episode:`${item.episode} · Продолжение`,repeat}];
 }
 function createWave(channel,index) {
-  const library=channel.schedule.filter(s=>s.type!=='bumper' && !s.sourceOffset);
+  const library=channel.schedule.filter(s=>s.type!=='bumper' && !s.sourceOffset && (channel.category==='music' || (s.type!=='rutube' && s.airStatus!=='excluded')));
   if(!library.length)return [];
   if(channel.category==='music') {
     const blocks=[...new Set(library.map(s=>s.block))];
@@ -51,9 +53,35 @@ function createWave(channel,index) {
 }
 export function timeline(channel, seconds=0) {
   let plan=cache.get(channel);
-  if(!plan){plan={items:[],duration:0,waves:0,starts:[]};cache.set(channel,plan);}
+  if(!plan){
+    plan={items:[],duration:0,waves:0,starts:[]};
+    if(channel.queueVersion===2 && channel.category!=='music') {
+      const migration=channel.migration;
+      if(!migration || !Number.isFinite(migration.activateAt) || !Array.isArray(migration.legacySchedule))throw new Error('Missing broadcast migration');
+      const boundary=migration.activateAt-BROADCAST_EPOCH;
+      const legacy={...channel,queueVersion:1,schedule:migration.legacySchedule};
+      const previous=legacyTimeline(legacy,Math.max(0,boundary));
+      plan.items=previous.items.filter(e=>e.start<boundary);
+      const last=plan.items.at(-1);
+      if(last && last.start+last.item.duration!==boundary)throw new Error('Activation splits a programme');
+      if(last?.item.mediaDuration && !last.item.sourceOffset || last?.item.promoDelay)throw new Error('Activation splits an advertising break');
+      plan.duration=boundary;
+      plan.groups=orderedSeries(channel);
+      plan.cursors={...migration.cursors};
+      plan.previousSeries=migration.previousSeries;
+    }
+    cache.set(channel,plan);
+  }
   while(plan.duration<=seconds+3*86400){
-    const items=createWave(channel,plan.waves++);if(!items.length)break;
+    let items;
+    if(plan.groups) {
+      const round=nextRound(plan.groups,plan.cursors,plan.waves++,plan.previousSeries);
+      if(!round.length)break;
+      plan.previousSeries=seriesId(round.at(-1));
+      const upcoming=nextRound(plan.groups,{...plan.cursors},plan.waves,plan.previousSeries)[0] || round.at(-1);
+      items=round.flatMap((item,i)=>split(item,round[i+1] || upcoming,item.repeat));
+    } else items=createWave(channel,plan.waves++);
+    if(!items.length)break;
     plan.starts.push(plan.duration);
     for(const item of items){plan.items.push({item,start:plan.duration});plan.duration+=item.duration;}
   }

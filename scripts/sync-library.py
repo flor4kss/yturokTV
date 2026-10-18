@@ -1,7 +1,13 @@
 """Refresh curated complete releases and cartoon collections. Never bake expiring Rutube streams into the catalog."""
-import json,re,time,urllib.request,urllib.parse,datetime
+import json,re,time,urllib.request,urllib.parse,datetime,argparse
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
+parser=argparse.ArgumentParser(description='Prepare metadata-only candidate library; does not publish.')
+parser.add_argument('--output-dir',type=Path,default=ROOT/'.tools'/'candidate-library')
+args=parser.parse_args()
+OUTPUT=args.output_dir.resolve()
+if OUTPUT==ROOT:raise SystemExit('Refusing to overwrite the live library. Prepare and validate a candidate package first.')
+OUTPUT.mkdir(parents=True,exist_ok=True)
 def read(name):return json.loads((ROOT/name).read_text(encoding='utf-8-sig'))
 def get(url):
  for attempt in range(3):
@@ -60,7 +66,7 @@ for c in channels:
  c['catalogVersion']=5
  for i in c['schedule']:
   if i.get('sources') is None and i.get('url') and i['type']!='youtube':i['sources']=[{'url':i['url'],'type':i['type']}]
-(ROOT/'schedule.json').write_text(json.dumps(channels,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-(ROOT/'channels.js').write_text('// Curated library; refresh with scripts/sync-library.py.\nexport const DEFAULT_CHANNELS = '+json.dumps(channels,ensure_ascii=False,indent=2)+';\n',encoding='utf-8')
-(ROOT/'library-audit.json').write_text(json.dumps({'checkedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'checks':'Metadata only. Playback checks are recorded separately.','results':report},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+(OUTPUT/'schedule.json').write_text(json.dumps(channels,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+(OUTPUT/'channels.js').write_text('// Candidate only; not approved for broadcast.\nexport const DEFAULT_CHANNELS = '+json.dumps(channels,ensure_ascii=False,indent=2)+';\n',encoding='utf-8')
+(OUTPUT/'library-audit.json').write_text(json.dumps({'checkedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'checks':'Metadata only. Playback checks are recorded separately.','readyForPublication':False,'results':report},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print('counts',[(c['id'],len(c['schedule'])) for c in channels])
